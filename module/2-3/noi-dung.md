@@ -72,7 +72,7 @@ Nói định nghĩa và **điểm phải nhớ**, rồi lật.
 @phut: 1
 @che-do: noi
 
-nó là tính chất của dữ liệu và của phân vùng. `8(E-1)^2·G^2` là giá của bước cục bộ. Phình **bậc hai theo E**. **Điểm phải nhớ:** chỉ số hạng thứ nhất là thứ anh mua được bằng tiền tính toán, và chỉ số hạng thứ ba là thứ anh mua được bằng cách đổi cấu hình. Số hạng giữa thì không:
+nó là tính chất của dữ liệu và của phân vùng. `8(E-1)^2·G^2` là giá của bước cục bộ (local steps). Phình **bậc hai theo E**. **Điểm phải nhớ:** chỉ số hạng thứ nhất là thứ anh mua được bằng tiền tính toán, và chỉ số hạng thứ ba là thứ anh mua được bằng cách đổi cấu hình. Số hạng giữa thì không:
 
 ## Ba số hạng của B, xếp theo thứ mua được · đáp (tiếp)
 @phut: 1

@@ -4,7 +4,12 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
-    "kẻ chậm": "straggler"
+    "trọng số hiệu dụng": "effective weight",
+    "học liên bang": "federated learning",
+    "bước cục bộ": "local steps",
+    "cập nhật cũ": "staleness",
+    "kẻ chậm": "straggler",
+    "hạn chờ": "deadline"
   },
   "s001": "2",
   "s002": "2021",

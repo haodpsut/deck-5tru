@@ -25,7 +25,7 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Key rate của tôi theo khoảng cách là bao nhiêu, và khi so với PQC thì tôi đang so trong mô hình đe doạ nào?
+Key rate của tôi theo khoảng cách là bao nhiêu, và khi so với PQC thì tôi đang so trong mô hình đe doạ (threat model) nào?
 
 ## Hai con số
 @phut: 1.5
@@ -38,7 +38,7 @@ Module này có hai nửa, và nửa thứ hai mới là nửa khó.
 @phut: 1
 @che-do: noi
 
-Nửa thứ nhất là vật lý, và nó chắc như đinh đóng cột. Module này lấy `α = {{s001}} dB mỗi km` ở {{s002}} nm, nên hiệu suất kênh là `η = 10^(−αL/10)`. Ở {{s003}} km con số tròn tuyệt đối: `η = 10⁻²`. Chặn PLOB nói dung lượng khoá bí mật của một kênh mất mát không vượt được `−log₂(1−η)`, tức khoảng **{{s004}} bit mỗi lần dùng kênh** ở {{s003}} km. Ở {{s005}} km thì `η = 10⁻⁶`.
+Nửa thứ nhất là vật lý, và nó chắc như đinh đóng cột. Module này lấy `α = {{s001}} dB mỗi km` ở {{s002}} nm, nên hiệu suất kênh (channel efficiency) là `η = 10^(−αL/10)`. Ở {{s003}} km con số tròn tuyệt đối: `η = 10⁻²`. Chặn PLOB nói dung lượng khoá bí mật của một kênh mất mát không vượt được `−log₂(1−η)`, tức khoảng **{{s004}} bit mỗi lần dùng kênh** ở {{s003}} km. Ở {{s005}} km thì `η = 10⁻⁶`.
 
 ## Hai con số (tiếp)
 @phut: 1
@@ -133,13 +133,13 @@ Nói định nghĩa, điểm phải nhớ, và **chỗ nó gãy**, rồi lật.
 @che-do: noi
 @notes: So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm.
 
-Key rate tiệm cận là giới hạn khi độ dài khối tiến tới vô hạn. Hệ thật xử lý khối hữu hạn, nên phải trừ phần thống kê: ước lượng sai bit trên mẫu hữu hạn có khoảng tin cậy, và khuếch đại riêng tư phải trả giá cho khoảng đó.
+Key rate tiệm cận là giới hạn khi độ dài khối tiến tới vô hạn. Hệ thật xử lý khối hữu hạn (finite-key), nên phải trừ phần thống kê: ước lượng sai bit trên mẫu hữu hạn có khoảng tin cậy, và khuếch đại riêng tư phải trả giá cho khoảng đó.
 
 ## Khối hữu hạn: vì sao phải khai độ dài khối · đáp (tiếp)
 @phut: 1
 @che-do: noi
 
-Điểm phải nhớ: hệ quả của chuyện này không chỉ là con số nhỏ hơn mà là **thứ hạng có thể đảo**. Hai giao thức xếp theo key rate tiệm cận có thể đổi chỗ khi tính khối hữu hạn, vì phần phạt phụ thuộc cách từng giao thức ước lượng tham số. Nên một bảng so sánh key rate không khai độ dài khối là một bảng không so được, giống hệt chuyện bảng precision không khai tỉ lệ nền.
+Điểm phải nhớ: hệ quả của chuyện này không chỉ là con số nhỏ hơn mà là **thứ hạng có thể đảo**. Hai giao thức xếp theo key rate tiệm cận có thể đổi chỗ khi tính khối hữu hạn, vì phần phạt phụ thuộc cách từng giao thức ước lượng tham số. Nên một bảng so sánh key rate không khai độ dài khối là một bảng không so được, giống hệt chuyện bảng precision không khai tỉ lệ nền (base rate).
 
 ## So QKD với PQC: hai điều kiện trước khi được phép so
 @phut: 1
@@ -300,7 +300,7 @@ biết sai bit chỉ làm con số THẤP hơn nữa, nên nó không cứu đư
 @che-do: hoi
 @notes: HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng.
 
-Bảng VI của một bài so key rate QKD với thông lượng của bắt tay PQC. Lỗi nặng nhất của bảng đó là gì?
+Bảng VI của một bài so key rate QKD với thông lượng của bắt tay (handshake) PQC. Lỗi nặng nhất của bảng đó là gì?
 
 - Chưa dùng bộ tham số ML-KEM lớn nhất
 - Chưa đo trên sợi thật mà chỉ mô phỏng
@@ -420,8 +420,8 @@ key rate vừa tính là key rate TIỆM CẬN, tức khối vô hạn, trong kh
 Đoạn mở đầu sau có một câu reviewer gạch ngay. Bấm vào câu đó.
 
 - Mật mã khoá công khai cổ điển đổ trước thuật toán Shor, nên phải đổi hệ.
-- Mật mã hậu lượng tử đứng trên giả định độ khó tính toán, tức an toàn có điều kiện.
-- Phân phối khoá lượng tử an toàn vô điều kiện, nên nó là lựa chọn đúng cho hệ của chúng tôi.
+- Mật mã hậu lượng tử (post-quantum cryptography) đứng trên giả định độ khó tính toán, tức an toàn có điều kiện.
+- Phân phối khoá lượng tử (quantum key distribution) an toàn vô điều kiện, nên nó là lựa chọn đúng cho hệ của chúng tôi.
 
 ## Câu không được chống đỡ · ca ba · đáp
 @phut: 1.5
@@ -436,7 +436,7 @@ Hai câu đầu đều chính xác. Câu này sai ở hai chỗ độc lập, v�
 @phut: 1
 @che-do: noi
 
-Thứ nhất, vô điều kiện là cách nói tắt cho không phụ thuộc năng lực tính toán của kẻ tấn công; chứng minh an toàn của QKD vẫn đứng trên giả định THIẾT BỊ ĐÚNG NHƯ MÔ HÌNH, nên bỏ cụm đó đi là nói quá, và đúng chỗ đó là nơi mọi tấn công QKD thật đã xảy ra (làm mù bộ tách, kênh phụ thời gian).
+Thứ nhất, vô điều kiện là cách nói tắt cho không phụ thuộc năng lực tính toán của kẻ tấn công; chứng minh an toàn của QKD vẫn đứng trên giả định THIẾT BỊ ĐÚNG NHƯ MÔ HÌNH, nên bỏ cụm đó đi là nói quá, và đúng chỗ đó là nơi mọi tấn công QKD thật đã xảy ra (làm mù bộ tách, kênh phụ (side channel) thời gian).
 
 ## Câu không được chống đỡ · ca ba · đáp (tiếp)
 @phut: 1

@@ -4,7 +4,15 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
-    "phần triệu": "ppm"
+    "phân phối khoá lượng tử": "quantum key distribution",
+    "mật mã hậu lượng tử": "post-quantum cryptography",
+    "mô hình đe doạ": "threat model",
+    "hiệu suất kênh": "channel efficiency",
+    "khối hữu hạn": "finite-key",
+    "phần triệu": "ppm",
+    "tỉ lệ nền": "base rate",
+    "kênh phụ": "side channel",
+    "bắt tay": "handshake"
   },
   "s001": "0,2",
   "s002": "1550",

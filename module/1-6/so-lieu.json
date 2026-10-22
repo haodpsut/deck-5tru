@@ -4,6 +4,9 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
+    "không gian đặc trưng": "feature space",
+    "chuẩn hoá đặc trưng": "feature normalisation",
+    "không gian vấn đề": "problem space",
     "luồng": "flow",
     "gói": "packet"
   },

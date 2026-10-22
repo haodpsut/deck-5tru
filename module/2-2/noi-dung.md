@@ -54,13 +54,13 @@ Nói **định nghĩa**, rồi lật.
 @che-do: noi
 @notes: So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm.
 
-Viết phân bố của client `k` là `P_k(x, y) = P_k(y|x)·P_k(x)`. Bốn kiểu lệch: **lệch nhãn:** `P_k(y)` khác nhau. **lệch đặc trưng:** `P_k(x)` khác nhau. **lệch số lượng:** `n_k` khác nhau. **lệch quan hệ:** `P_k(y|x)` khác nhau giữa các client. **Điểm phải nhớ:** ba kiểu đầu giữ nguyên **hàm cần học**, chỉ đổi phân bố mà ta lấy mẫu từ đó, nên hậu quả là hội tụ chậm và phương sai lớn.
+Viết phân bố của client `k` là `P_k(x, y) = P_k(y|x)·P_k(x)`. Bốn kiểu lệch: **lệch nhãn (label skew):** `P_k(y)` khác nhau. **lệch đặc trưng:** `P_k(x)` khác nhau. **lệch số lượng:** `n_k` khác nhau. **lệch quan hệ:** `P_k(y|x)` khác nhau giữa các client. **Điểm phải nhớ:** ba kiểu đầu giữ nguyên **hàm cần học**, chỉ đổi phân bố mà ta lấy mẫu từ đó, nên hậu quả là hội tụ chậm và phương sai lớn.
 
 ## Bốn kiểu lệch, và vì sao kiểu thứ tư khác loại · (tiếp)
 @phut: 1
 @che-do: noi
 
-Kiểu thứ tư đổi chính hàm cần học, nên mô hình toàn cục tốt nhất là một thoả hiệp không tối ưu cho bất kỳ client nào. Đây là lằn ranh giữa FL và FL cá nhân hoá, và nó phải được khai trong phần dựng bài toán chứ không phải trong phần kết quả.
+Kiểu thứ tư đổi chính hàm cần học, nên mô hình toàn cục tốt nhất là một thoả hiệp không tối ưu cho bất kỳ client nào. Đây là lằn ranh giữa FL và FL cá nhân hoá (personalisation), và nó phải được khai trong phần dựng bài toán chứ không phải trong phần kết quả.
 
 ## alpha của Dirichlet là tham số của cái gì
 @phut: 1
@@ -107,7 +107,7 @@ Nói định nghĩa, điểm phải nhớ, và **chỗ nó gãy**, rồi lật.
 
 Nghịch đảo của chỉ số Simpson: nếu `p_k` là phân bố nhãn của client thì `m_k = {{s001}} / sum_c p_k(c)^2`. Nó bằng đúng số lớp khi phân bố đều trên các lớp đó, và bằng {{s001}} khi client chỉ có một lớp.
 
-Với phân vùng `Dir(alpha·1)` trên `C` lớp, kỳ vọng của chỉ số Simpson có dạng đóng, nên **số lớp hiệu dụng kỳ vọng là `(C·alpha + 1)/(alpha + {{s001}})`**.
+Với phân vùng `Dir(alpha·1)` trên `C` lớp, kỳ vọng của chỉ số Simpson có dạng đóng, nên **số lớp hiệu dụng (effective number of classes) kỳ vọng là `(C·alpha + 1)/(alpha + {{s001}})`**.
 
 ## Số lớp hiệu dụng mỗi client · đáp (tiếp)
 @phut: 1

@@ -46,7 +46,7 @@ Trong hệ tôi đang viết, mỗi giao diện kiến trúc tương ứng với
 @phut: 1.5
 @che-do: noi
 
-Mô hình đe doạ là một phép đếm, không phải một danh sách lo lắng
+Mô hình đe doạ (threat model) là một phép đếm, không phải một danh sách lo lắng
 
 ## m4.2 Zero trust và danh tính, phần kế thừa từ 5G
 @phut: 1.5
@@ -81,7 +81,7 @@ Mô hình nằm trong vòng điều khiển thì dữ liệu của nó là thứ
 @che-do: hoi
 @notes: Câu hỏi của module. Trả lời bằng miệng trước khi lật.
 
-Tôi phân biệt được gây nhiễu, giả mạo và phát lại bằng dấu hiệu quan trắc nào, và cơ chế phát hiện tôi đề xuất cần thêm phần cứng gì?
+Tôi phân biệt được gây nhiễu (jamming), giả mạo và phát lại bằng dấu hiệu quan trắc nào, và cơ chế phát hiện tôi đề xuất cần thêm phần cứng gì?
 
 ## m4.4 · luận điểm
 @phut: 1.5
@@ -94,7 +94,7 @@ Phân loại theo hiệu ứng quan trắc, không theo ý định
 @che-do: hoi
 @notes: Câu hỏi của module. Trả lời bằng miệng trước khi lật.
 
-Dung lượng bí mật của tôi dựa trên việc biết kênh của kẻ nghe, và tôi biết nó bằng cách nào?
+Dung lượng bí mật (secrecy capacity) của tôi dựa trên việc biết kênh của kẻ nghe, và tôi biết nó bằng cách nào?
 
 ## m4.5 · luận điểm
 @phut: 1.5

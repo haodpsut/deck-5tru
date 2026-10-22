@@ -38,7 +38,7 @@ Module {{s001}} kết thúc ở một kết luận chưa có lối ra: khi `P(y|
 @phut: 1
 @che-do: noi
 
-Lý do rất gọn. Cá nhân hoá đi tìm một họ `{w_k}`, còn độ chính xác toàn cục là phép đo của một mô hình duy nhất `w⋆`. Hai đối tượng khác nhau, nên so hai phương pháp bằng độ chính xác toàn cục là đo cái mà cá nhân hoá **không nhắm tới**.
+Lý do rất gọn. Cá nhân hoá (personalisation) đi tìm một họ `{w_k}`, còn độ chính xác toàn cục là phép đo của một mô hình duy nhất `w⋆`. Hai đối tượng khác nhau, nên so hai phương pháp bằng độ chính xác toàn cục là đo cái mà cá nhân hoá **không nhắm tới**.
 
 ## Hai con số (tiếp)
 @phut: 1

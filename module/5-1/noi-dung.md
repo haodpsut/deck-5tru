@@ -25,14 +25,14 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Với dữ liệu của tôi, bất đẳng thức Mosca đang nói tôi đã trễ hay chưa, và Grover có là lý do để đổi khoá đối xứng không?
+Với dữ liệu của tôi, bất đẳng thức Mosca (Mosca inequality) đang nói tôi đã trễ hay chưa, và Grover có là lý do để đổi khoá đối xứng không?
 
 ## Hai đường đe doạ
 @phut: 1.5
 @che-do: noi
 @notes: Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau.
 
-Module này tách hai thứ hay bị trộn. **Shor** giải bài toán phân tích số và logarit rời rạc trong thời gian đa thức, nên RSA, Diffie-Hellman trên trường hữu hạn, ECDH và ECDSA **đổ hẳn**, không phải yếu đi. **Grover** chỉ cho tăng tốc bậc căn, và tăng tốc đó tuần tự theo bản chất nên khó song song hoá; vì thế NIST vẫn xếp AES-128 ở mức an toàn thấp nhất chứ không coi nó bị phá.
+Module này tách hai thứ hay bị trộn. **Shor** giải bài toán phân tích số và logarit rời rạc trong thời gian đa thức, nên RSA, Diffie-Hellman trên trường hữu hạn, ECDH và ECDSA **đổ hẳn**, không phải yếu đi. **Grover** chỉ cho tăng tốc bậc căn, và tăng tốc đó tuần tự theo bản chất nên khó song song hoá; vì thế NIST vẫn xếp AES-128 ở mức an toàn (security level) thấp nhất chứ không coi nó bị phá.
 
 ## Hai đường đe doạ (tiếp)
 @phut: 1
@@ -54,7 +54,7 @@ Nói **định nghĩa**, rồi lật.
 @che-do: noi
 @notes: So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm.
 
-Ba đại lượng: `x` là số năm dữ liệu còn cần giữ mật, `y` là số năm cần để di trú xong, `z` là số năm cho tới khi có máy lượng tử đủ sức. Nếu `x + y > z` thì đã trễ.
+Ba đại lượng: `x` là số năm dữ liệu còn cần giữ mật, `y` là số năm cần để di trú (migration) xong, `z` là số năm cho tới khi có máy lượng tử đủ sức. Nếu `x + y > z` thì đã trễ.
 
 ## Bất đẳng thức Mosca · đáp (tiếp)
 @phut: 1
@@ -362,7 +362,7 @@ Kết quả gốc: x = {{s014}} năm · y = {{s015}} năm · z = {{s016}} năm �
 @che-do: so
 
 - **y đo được từ kiểm kê nơi dùng mật mã** tắt đi: Chưa kiểm kê, nên y là phỏng đoán của người viết bài.
-- **Mối đe doạ duy nhất là máy lượng tử** tắt đi: Có lỗi cài đặt, kênh phụ, sinh số ngẫu nhiên yếu, hoặc khoá bị lộ theo đường quản trị.
+- **Mối đe doạ duy nhất là máy lượng tử** tắt đi: Có lỗi cài đặt, kênh phụ (side channel), sinh số ngẫu nhiên yếu, hoặc khoá bị lộ theo đường quản trị.
 
 ## Chỗ này phải tự kéo, không xem được
 @phut: 1.5

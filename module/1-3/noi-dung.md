@@ -4,7 +4,7 @@ phu-de: Trụ 1 NID · module 1.3
 tac-gia: Đỗ Phúc Hảo · CAIRA, Đại học Kiến trúc Đà Nẵng
 noi-ngay: Tự ôn, bộ Năm trụ
 profile: giang-day
-tong-phut: 47.5
+tong-phut: 48.5
 accent: "#2C6E9B"
 ngon-ngu: vi
 gate: khong
@@ -32,7 +32,11 @@ moc-ngay: bản kho 2026.10.06-2
 @che-do: noi
 @notes: Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau.
 
-Module này chỉ có một việc: tách **đại lượng bất biến với tỉ lệ nền** ra khỏi **đại lượng phụ thuộc tỉ lệ nền**. TPR và FPR thuộc nhóm đầu, nên khai được mà không cần nói gì thêm. Precision, F1, accuracy, MCC thuộc nhóm sau, nên khai một mình là không khai được.
+Module này chỉ có một việc: tách **đại lượng bất biến với tỉ lệ nền (base rate)** ra khỏi **đại lượng phụ thuộc tỉ lệ nền**. TPR và FPR thuộc nhóm đầu, nên khai được mà không cần nói gì thêm. Precision, F1, accuracy, MCC thuộc nhóm sau, nên khai một mình là không khai được.
+
+## Phép đo nào khai được, phép đo nào không (tiếp)
+@phut: 1
+@che-do: noi
 
 Hệ quả thực tế rất gọn: bảng kết quả của anh phải có TPR và FPR, còn precision thì phải đi kèm tỉ lệ nền dùng để tính nó.
 
@@ -50,7 +54,7 @@ Nói **định nghĩa**, rồi lật.
 @che-do: noi
 @notes: So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm.
 
-Một bộ phân loại ngẫu nhiên có `precision = p` ở **mọi** mức recall, nên đường cơ sở của đường PR chính là tỉ lệ nền.
+Một bộ phân loại ngẫu nhiên có `precision = p` ở **mọi** mức recall, nên đường cơ sở (baseline) của đường PR chính là tỉ lệ nền.
 
 Hệ quả phải nhớ: **AUPRC không đọc được nếu không biết p**, trong khi AUROC thì luôn có đường cơ sở {{s002}} bất kể p. Đó cũng là lý do AUPRC trung thực hơn trên dữ liệu lệch nặng, nhưng chỉ khi báo kèm p.
 
@@ -70,7 +74,7 @@ Nói định nghĩa và **điểm phải nhớ**, rồi lật.
 
 Số cảnh báo mà đội vận hành thật sự đọc được trong một ngày. Đây là ràng buộc cứng, do con người chứ không do mô hình.
 
-Cách dùng: lấy ngân sách cảnh báo chia cho lưu lượng để ra **FPR tối đa được phép**, rồi mới đi chọn mô hình. Làm theo chiều này thì phần đánh giá của bài báo có một con số bắt buộc để so; làm chiều ngược lại thì chỉ còn nhận xét.
+Cách dùng: lấy ngân sách cảnh báo (alert budget) chia cho lưu lượng để ra **FPR tối đa được phép**, rồi mới đi chọn mô hình. Làm theo chiều này thì phần đánh giá của bài báo có một con số bắt buộc để so; làm chiều ngược lại thì chỉ còn nhận xét.
 
 ## Bốn phép đo, và cái nào phụ thuộc tỉ lệ nền
 @phut: 1.5

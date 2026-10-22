@@ -40,7 +40,7 @@ moc-ngay: bản kho 2026.10.06-2
 @che-do: hoi
 @notes: Câu hỏi của module. Trả lời bằng miệng trước khi lật.
 
-Với dữ liệu của tôi, bất đẳng thức Mosca đang nói tôi đã trễ hay chưa, và Grover có là lý do để đổi khoá đối xứng không?
+Với dữ liệu của tôi, bất đẳng thức Mosca (Mosca inequality) đang nói tôi đã trễ hay chưa, và Grover có là lý do để đổi khoá đối xứng không?
 
 ## m5.1 · luận điểm
 @phut: 1.5
@@ -94,7 +94,7 @@ Hybrid mua tính dự phòng, và nó mua bằng byte
 @che-do: hoi
 @notes: Câu hỏi của module. Trả lời bằng miệng trước khi lật.
 
-Trên mạng {{s004}}, một bắt tay hậu lượng tử của tôi tốn bao nhiêu mảnh, và tỉ lệ mất mảnh làm xác suất hoàn tất bắt tay tụt bao nhiêu?
+Trên mạng {{s004}}, một bắt tay (handshake) hậu lượng tử của tôi tốn bao nhiêu mảnh, và tỉ lệ mất mảnh làm xác suất hoàn tất bắt tay tụt bao nhiêu?
 
 ## m5.5 · luận điểm
 @phut: 1.5
@@ -107,7 +107,7 @@ Byte vào số mũ, vòng thì không
 @che-do: hoi
 @notes: Câu hỏi của module. Trả lời bằng miệng trước khi lật.
 
-Key rate của tôi theo khoảng cách là bao nhiêu, và khi so với PQC thì tôi đang so trong mô hình đe doạ nào?
+Key rate của tôi theo khoảng cách là bao nhiêu, và khi so với PQC thì tôi đang so trong mô hình đe doạ (threat model) nào?
 
 ## m5.6 · luận điểm
 @phut: 1.5

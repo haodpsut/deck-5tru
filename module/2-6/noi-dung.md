@@ -25,7 +25,7 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Trong ba họ tấn công (suy luận, đầu độc, cửa hậu), họ nào áp được vào hệ của tôi với đúng năng lực kẻ tấn công (attacker capability) mà tôi đã khai?
+Trong ba họ tấn công (suy luận, đầu độc, cửa hậu (backdoor)), họ nào áp được vào hệ của tôi với đúng năng lực kẻ tấn công (attacker capability) mà tôi đã khai?
 
 ## Tấn công vào FL
 @phut: 1.5
@@ -38,13 +38,13 @@ Module này không liệt kê tấn công. Nó làm đúng một việc: biến 
 @phut: 1
 @che-do: noi
 
-Lý do phải làm theo chiều này: ba họ tấn công đòi ba bộ năng lực khác nhau, và chúng không trùng nhau. **Suy luận** (truy ngược gradient (gradient inversion), suy luận thành viên) đòi thấy gradient thô hoặc mô hình, cộng biết kiến trúc. Không đòi kiểm soát client nào. **Đầu độc và cửa hậu** đòi kiểm soát được client và được chọn trong vòng. Không đòi thấy gradient của ai khác. Hệ quả thực tế:
+Lý do phải làm theo chiều này: ba họ tấn công đòi ba bộ năng lực khác nhau, và chúng không trùng nhau. **Suy luận** (truy ngược gradient (gradient inversion), suy luận thành viên (membership inference)) đòi thấy gradient thô hoặc mô hình, cộng biết kiến trúc. Không đòi kiểm soát client nào. **Đầu độc và cửa hậu** đòi kiểm soát được client và được chọn trong vòng. Không đòi thấy gradient của ai khác. Hệ quả thực tế:
 
 ## Tấn công vào FL (tiếp)
 @phut: 1
 @che-do: noi
 
-một bài khai mô hình đe doạ mạnh ở phần tấn công rồi lặng lẽ dùng mô hình yếu ở phần phòng vệ là bài tự so với chính mình. Reviewer bắt chỗ này bằng cách đặt hai mục cạnh nhau, và đó là một câu hỏi không có cách trả lời bằng thêm thí nghiệm.
+một bài khai mô hình đe doạ (threat model) mạnh ở phần tấn công rồi lặng lẽ dùng mô hình yếu ở phần phòng vệ là bài tự so với chính mình. Reviewer bắt chỗ này bằng cách đặt hai mục cạnh nhau, và đó là một câu hỏi không có cách trả lời bằng thêm thí nghiệm.
 
 ## Truy ngược gradient (gradient inversion)
 @phut: 1
@@ -122,7 +122,7 @@ Suy luận thành viên không đo bằng accuracy. Nó đo bằng `Adv = TPR �
 @phut: 1
 @che-do: noi
 
-Điểm phải nhớ: **trên tập cân bằng thì `Adv = 2·accuracy − {{s004}}`, nên accuracy {{s005}} tương ứng lợi thế {{s006}}, còn accuracy {{s007}} tương ứng lợi thế {{s008}}.** Và cũng như mọi phép đo phụ thuộc tỉ lệ nền, accuracy của tấn công suy luận trên tập cân bằng là con số dễ nhất:
+Điểm phải nhớ: **trên tập cân bằng thì `Adv = 2·accuracy − {{s004}}`, nên accuracy {{s005}} tương ứng lợi thế {{s006}}, còn accuracy {{s007}} tương ứng lợi thế {{s008}}.** Và cũng như mọi phép đo phụ thuộc tỉ lệ nền (base rate), accuracy của tấn công suy luận trên tập cân bằng là con số dễ nhất:
 
 ## Lợi thế của bộ phân biệt thành viên · đáp (tiếp)
 @phut: 1

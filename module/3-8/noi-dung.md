@@ -84,7 +84,7 @@ Mười hai dòng, chia ba nhóm. **Hình học:** cao độ, độ nghiêng, s�
 @phut: 1
 @che-do: noi
 
-Thiếu góc nâng tối thiểu thì cửa sổ nhìn thấy và tần suất handover thành một khoảng rộng gấp hơn hai lần; thiếu mức khả dụng thì mọi con số SE ở băng Ka không còn định nghĩa được.
+Thiếu góc nâng tối thiểu thì cửa sổ nhìn thấy (visibility window) và tần suất handover thành một khoảng rộng gấp hơn hai lần; thiếu mức khả dụng thì mọi con số SE ở băng Ka không còn định nghĩa được.
 
 ## Luật hai đường
 @phut: 1
@@ -128,7 +128,7 @@ Dòng nào không ảnh hưởng con số nào thì nó không cần khai; con s
 @che-do: so
 
 - Mỗi mũi tên là một phép tính dùng đúng các dòng danh mục ghi trong ngoặc, không dùng gì khác
-- k = −228,6 dBW/K/Hz là hằng số, không phải tham số hiệu chuẩn, nên nó không chiếm một dòng danh mục
+- k = −228,6 dBW/K/Hz là hằng số, không phải tham số hiệu chuẩn (calibration), nên nó không chiếm một dòng danh mục
 - Tần số lấy {{s006}} GHz cố định trong mô phỏng của module này, tức nó là một dòng ĐÃ khai
 
 ## Chuỗi truy vết từ dòng khai tới con số kết quả (tiếp)
@@ -274,7 +274,7 @@ Và câu nói 'hai công cụ đều được chấp nhận' không khai dòng n
 @phut: 0.5
 @che-do: hoi
 
-- Chòm sao gồm {{s020}} vệ tinh ở cao độ {{s008}} km, {{s021}} mặt phẳng, độ nghiêng 53°.
+- Chòm sao (constellation) gồm {{s020}} vệ tinh ở cao độ {{s008}} km, {{s021}} mặt phẳng, độ nghiêng 53°.
 - Liên kết dịch vụ (service link) ở băng Ka {{s006}} GHz, băng thông {{s010}} MHz, EIRP {{s022}} dBW, G/T {{s023}} dB/K.
 - Kênh theo mô hình Rice với hệ số K = {{s009}} dB, người dùng tĩnh phân bố đều trong vệt.
 - Trung bình trên {{s024}} lượt qua, cửa sổ phục vụ của một vệ tinh là {{s025}} phút.

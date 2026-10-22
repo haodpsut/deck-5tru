@@ -209,7 +209,7 @@ Dùng nó làm tuyên bố thực nghiệm là nhầm một chặn lý thuyết 
 @che-do: hoi
 @notes: HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng.
 
-Krum chạy với {{s006}} client mỗi vòng và chặn trên của số kẻ xấu đặt là {{s016}}. Điểm Krum của mỗi client lấy tổng trên bao nhiêu láng giềng?
+Krum chạy với {{s006}} client mỗi vòng và chặn trên của số kẻ xấu đặt là {{s016}}. Điểm Krum (Krum score) của mỗi client lấy tổng trên bao nhiêu láng giềng?
 
 n = {{s006}}, f = {{s016}}
 
@@ -312,7 +312,7 @@ Một bài báo khai phương pháp của họ giữ được độ chính xác 
 @phut: 1
 @che-do: noi
 
-Kết quả bất khả thi không phải một chặn lỏng có thể vượt bằng thuật toán tốt hơn: nó nói server không có thông tin để phá đối xứng. Một số đo nằm trong vùng bất khả thi chỉ có hai cách giải thích, là mô hình đe doạ trong mô phỏng yếu hơn mô hình đã khai, hoặc phép đo đang đo thứ khác.
+Kết quả bất khả thi không phải một chặn lỏng có thể vượt bằng thuật toán tốt hơn: nó nói server không có thông tin để phá đối xứng. Một số đo nằm trong vùng bất khả thi chỉ có hai cách giải thích, là mô hình đe doạ (threat model) trong mô phỏng yếu hơn mô hình đã khai, hoặc phép đo đang đo thứ khác.
 
 ## Chọn một phương án · đáp (tiếp)
 @phut: 1

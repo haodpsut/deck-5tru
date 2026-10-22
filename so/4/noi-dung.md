@@ -101,7 +101,7 @@ gd = {{s005}}, hangMuc = {{s001}}
 @che-do: hoi
 @notes: Dẫn bằng miệng, đừng bấm máy.
 
-Mô hình đe doạ của anh cấp cho kẻ tấn công đúng {{s009}} trong {{s001}} năng lực, với ánh xạ một năng lực ứng một hạng mục. Trên {{s005}} giao diện, bao nhiêu ô bị loại vì không có năng lực tương ứng?
+Mô hình đe doạ (threat model) của anh cấp cho kẻ tấn công đúng {{s009}} trong {{s001}} năng lực, với ánh xạ một năng lực ứng một hạng mục. Trên {{s005}} giao diện, bao nhiêu ô bị loại vì không có năng lực tương ứng?
 
 gd = {{s005}}, hangMuc = {{s001}}, nl = {{s009}}
 
@@ -138,7 +138,7 @@ nếu phòng vệ của anh tuyên bố chặn một ô nằm trong {{s010}} ô 
 @phut: 1
 @che-do: so
 
-- N_ai là số cơ chế trong danh mục nhắm vào danh tính khối lượng công việc AI, phần mà chuẩn 5G không phủ
+- N_ai là số cơ chế trong danh mục nhắm vào danh tính (identity) khối lượng công việc AI, phần mà chuẩn 5G không phủ
 
 ## Con số này bằng bao nhiêu
 @phut: 0.5
@@ -242,7 +242,7 @@ Rào cản thật nằm ở chỗ khác, là có hay không một danh tính đ�
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-Pierazzi và cộng sự khai bao nhiêu nhóm ràng buộc trong không gian vấn đề mà một tấn công đối kháng khả thi phải thoả? Nhập số.
+Pierazzi và cộng sự khai bao nhiêu nhóm ràng buộc trong không gian vấn đề (problem space) mà một tấn công đối kháng khả thi phải thoả? Nhập số.
 
 *Module {{s025}}.*
 
@@ -358,7 +358,7 @@ Mức công suất thu tối thiểu quy định cho tín hiệu GPS L1 C/A, tí
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-Tần số sóng mang GPS L1, tính bằng MHz. Cần con số này vì λ = c / f, và λ vào thẳng suy hao không gian tự do.
+Tần số sóng mang GPS L1, tính bằng MHz. Cần con số này vì λ = c / f, và λ vào thẳng suy hao không gian tự do (free-space path loss).
 
 *Module {{s037}}.*
 
@@ -415,7 +415,7 @@ Khoảng {{s046}} nghìn mét, tức gần {{s046}} km. Con số này lớn hơn
 
 - biết γ_E, tức biết kênh của kẻ nghe; đây là giả thiết nặng nhất và cả module nói về nó
 - kênh của kẻ nghe là bản suy giảm của kênh hợp pháp (kênh wiretap suy giảm), nên tốc độ bí mật đạt được là hiệu hai dung lượng
-- độ dài khối vô hạn và mã đạt dung lượng; với khối hữu hạn thì tốc độ bí mật đạt được thấp hơn
+- độ dài khối vô hạn và mã đạt dung lượng; với khối hữu hạn (finite-key) thì tốc độ bí mật đạt được thấp hơn
 
 ## Giả thiết (tiếp)
 @phut: 1
@@ -450,7 +450,7 @@ Khoảng {{s046}} nghìn mét, tức gần {{s046}} km. Con số này lớn hơn
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-Kẻ nghe ở gần hơn, nên tỉ số tín hiệu trên nhiễu của nó không nhỏ hơn của người nhận hợp pháp. Dung lượng bí mật bằng bao nhiêu bit mỗi ký hiệu?
+Kẻ nghe ở gần hơn, nên tỉ số tín hiệu trên nhiễu của nó không nhỏ hơn của người nhận hợp pháp. Dung lượng bí mật (secrecy capacity) bằng bao nhiêu bit mỗi ký hiệu?
 
 *Module {{s047}}.*
 
@@ -497,7 +497,7 @@ Khoảng {{s050}} bit mỗi ký hiệu. Để ý: cách biệt vẫn đúng {{s0
 @che-do: hoi
 @notes: Dẫn bằng miệng, đừng bấm máy.
 
-Người nhận hợp pháp cố định ở {{s010}} dB. Kẻ nghe có tỉ số tín hiệu trên nhiễu phân bố mũ với trung bình {{s033}} dB. Tốc độ bí mật mục tiêu là {{s009}} bit mỗi ký hiệu. Xác suất mất bí mật bằng bao nhiêu phần trăm?
+Người nhận hợp pháp cố định ở {{s010}} dB. Kẻ nghe có tỉ số tín hiệu trên nhiễu phân bố mũ với trung bình {{s033}} dB. Tốc độ bí mật mục tiêu là {{s009}} bit mỗi ký hiệu. Xác suất mất bí mật (secrecy outage probability) bằng bao nhiêu phần trăm?
 
 gbdB = {{s010}}, rs = {{s009}}, gebardB = {{s033}}
 
@@ -705,7 +705,7 @@ d = {{s003}}, n = {{s002}}, q = {{s068}}, a = {{s069}}, lamB = {{s065}}
 @phut: 1
 @che-do: so
 
-Khoảng {{s072}} ms, so với {{s073}} ms khi slice A ở tải {{s074}}. Slice B không đổi gì cả: cùng tải, cùng hạn mức, cùng cấu hình, mà trễ đuôi của nó xấu đi hơn ba lần vì một slice khác bận hơn. Đây là kênh phụ nhìn từ phía nạn nhân, và nó cũng là đường từ chối dịch vụ nhìn từ phía slice A. Hạn mức {{s070}} không chặn được chuyện này, nó chỉ đặt một sàn cho dung lượng:
+Khoảng {{s072}} ms, so với {{s073}} ms khi slice A ở tải {{s074}}. Slice B không đổi gì cả: cùng tải, cùng hạn mức, cùng cấu hình, mà trễ đuôi của nó xấu đi hơn ba lần vì một slice khác bận hơn. Đây là kênh phụ (side channel) nhìn từ phía nạn nhân, và nó cũng là đường từ chối dịch vụ nhìn từ phía slice A. Hạn mức {{s070}} không chặn được chuyện này, nó chỉ đặt một sàn cho dung lượng:
 
 ## Đáp (tiếp)
 @phut: 1
@@ -746,7 +746,7 @@ muốn chặn hẳn thì phải đẩy hạn mức lên {{s024}} hoặc dành ri
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-Một hệ cảm biến tích hợp dùng băng thông {{s015}} MHz. Phân giải cự ly bằng bao nhiêu mét?
+Một hệ cảm biến tích hợp (integrated sensing) dùng băng thông {{s015}} MHz. Phân giải cự ly (range resolution) bằng bao nhiêu mét?
 
 *Module {{s075}}.*
 

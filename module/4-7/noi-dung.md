@@ -32,7 +32,7 @@ Khi tôi nói hai slice được cô lập, tôi đang nói cô lập ở tầng
 @che-do: noi
 @notes: Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau.
 
-Cô lập slice là cơ chế an ninh được quảng cáo nhiều nhất của 5G và 6G, và cũng là chỗ dễ viết ra một câu không kiểm được nhất. Câu đó là: **các slice được cô lập**. Nó không sai vì toán, nó sai vì **thiếu tầng**.
+Cô lập slice (slice isolation) là cơ chế an ninh được quảng cáo nhiều nhất của 5G và 6G, và cũng là chỗ dễ viết ra một câu không kiểm được nhất. Câu đó là: **các slice được cô lập**. Nó không sai vì toán, nó sai vì **thiếu tầng**.
 
 ## Cô lập là một từ, nhưng có bốn tầng (tiếp)
 @phut: 1
@@ -50,7 +50,7 @@ Có bốn tầng cô lập, và chúng độc lập nhau về cơ chế: **lưu 
 @phut: 1
 @che-do: noi
 
-Chuyện đó không phải suy đoán, nó **đo được**: tương quan giữa tải slice A và phân vị {{s001}} độ trễ của slice B. Khác {{s002}} có ý nghĩa thống kê là bằng chứng kênh phụ, và cũng là một đường từ chối dịch vụ. Module này có hai việc. Một, cho anh một cách phát biểu đứng được: thay vì nói cô lập, kể tên tầng nào cô lập, tầng nào dùng chung, và hạn mức tối thiểu là bao nhiêu.
+Chuyện đó không phải suy đoán, nó **đo được**: tương quan giữa tải slice A và phân vị {{s001}} độ trễ của slice B. Khác {{s002}} có ý nghĩa thống kê là bằng chứng kênh phụ (side channel), và cũng là một đường từ chối dịch vụ. Module này có hai việc. Một, cho anh một cách phát biểu đứng được: thay vì nói cô lập, kể tên tầng nào cô lập, tầng nào dùng chung, và hạn mức tối thiểu là bao nhiêu.
 
 ## Cô lập là một từ, nhưng có bốn tầng (tiếp)
 @phut: 1
@@ -138,7 +138,7 @@ Nói nó, rồi nói **chỗ mình từng dùng sai**, rồi lật.
 @che-do: noi
 @notes: So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm.
 
-Không viết các slice được cô lập. Viết: **cô lập ở tầng lưu lượng, tầng tính toán và tầng quản trị; chia sẻ bộ lập lịch ở tầng tài nguyên vô tuyến, với hạn mức tài nguyên tối thiểu q cho slice B**. Rồi báo tương quan đo được giữa tải slice A và phân vị {{s001}} độ trễ của slice B, kèm khoảng tin.
+Không viết các slice được cô lập. Viết: **cô lập ở tầng lưu lượng, tầng tính toán và tầng quản trị; chia sẻ bộ lập lịch ở tầng tài nguyên vô tuyến, với hạn mức tài nguyên tối thiểu (minimum resource guarantee) q cho slice B**. Rồi báo tương quan đo được giữa tải slice A và phân vị {{s001}} độ trễ của slice B, kèm khoảng tin.
 
 ## Cách phát biểu cô lập mà đứng được trước phản (tiếp)
 @phut: 1
@@ -262,7 +262,7 @@ Ba slice chạy trên cùng một gNB. Mỗi slice có định danh riêng, đư
 
 - Ba slice được cô lập hoàn toàn.
 - Ba slice được cô lập ở tầng tài nguyên vô tuyến, nhờ định danh riêng.
-- Không tầng nào được cô lập, vì bộ lập lịch dùng chung.
+- Không tầng nào được cô lập, vì bộ lập lịch dùng chung (shared scheduler).
 - Cô lập ở tầng lưu lượng, tầng tính toán và tầng quản trị; tầng tài nguyên vô tuyến dùng chung và không có bảo đảm nào.
 
 ## Chọn một phương án · đáp
@@ -539,7 +539,7 @@ We also removed the sentence that claimed protection against a compromised tenan
 
 **Chấm theo:**
 
-- Mức {{s003}}: trả lời rằng hai mục nói về hai tình huống khác nhau và sẽ làm rõ bằng một câu. Nhận ra vấn đề về trình bày, chưa nhận ra là mô hình đe doạ tự mâu thuẫn.
+- Mức {{s003}}: trả lời rằng hai mục nói về hai tình huống khác nhau và sẽ làm rõ bằng một câu. Nhận ra vấn đề về trình bày, chưa nhận ra là mô hình đe doạ (threat model) tự mâu thuẫn.
 - Mức {{s004}}: mở rộng mô hình đe doạ sang kẻ tấn công nội bộ, nhưng vẫn giữ nguyên phần phòng vệ và vẫn khai bốn tầng cô lập như trước.
 
 ## Thang chấm (tiếp)

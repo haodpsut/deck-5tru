@@ -38,7 +38,7 @@ Hình SHAP đẹp nhất trong bài báo thường là hình chưa ai chạy l�
 @phut: 1
 @che-do: noi
 
-Module này đòi ba thứ nói được mà không tra. Một: giá trị Shapley phụ thuộc vào cách chọn nghĩa của **vắng mặt** một đặc trưng, nên hai cài đặt khác nhau cho hai bộ `φ` khác nhau trên cùng một mô hình, và bài báo phải khai mình chọn cách nào. Hai: khi đặc trưng tương quan cao thì công không chia tách được, nên câu *đặc trưng X là nguyên nhân* mất nghĩa, chỉ còn nói được về nhóm. Ba:
+Module này đòi ba thứ nói được mà không tra. Một: giá trị Shapley (Shapley value) phụ thuộc vào cách chọn nghĩa của **vắng mặt** một đặc trưng, nên hai cài đặt khác nhau cho hai bộ `φ` khác nhau trên cùng một mô hình, và bài báo phải khai mình chọn cách nào. Hai: khi đặc trưng tương quan cao thì công không chia tách được, nên câu *đặc trưng X là nguyên nhân* mất nghĩa, chỉ còn nói được về nhóm. Ba:
 
 ## Giải thích được, và độ ổn định của lời giải thích (tiếp)
 @phut: 1
@@ -46,7 +46,7 @@ Module này đòi ba thứ nói được mà không tra. Một: giá trị Shapl
 
 attribution không phải nhân quả, và chỗ này đổ ngay cả khi mọi giả thiết còn bật.
 
-Và một thứ nữa, rẻ nhưng ít ai làm: báo **độ ổn định top-k qua các hạt** bằng một con số, rồi chọn `k` theo con số đó chứ không chọn `k` = {{s001}} vì nó tròn.
+Và một thứ nữa, rẻ nhưng ít ai làm: báo **độ ổn định (stability) top-k qua các hạt** bằng một con số, rồi chọn `k` theo con số đó chứ không chọn `k` = {{s001}} vì nó tròn.
 
 ## Giá trị Shapley
 @phut: 1
@@ -152,7 +152,7 @@ Muốn nói nhân quả thì phải có can thiệp hoặc một đồ thị nh�
 @che-do: so
 
 - Với Jaccard: hai tập A và B cùng cỡ k, và dùng tập không thứ tự, tức bỏ hẳn thông tin thứ hạng bên trong top-k
-- Với công thức Shapley: tổng chạy trên 2^(|F|−1) tập con, nên tính chính xác chỉ khả thi ở |F| nhỏ; mọi cài đặt trên dữ liệu bảng thật đều là xấp xỉ hoặc là thuật toán riêng cho một họ mô hình
+- Với công thức Shapley: tổng chạy trên 2^(|F|−1) tập con, nên tính chính xác chỉ khả thi ở |F| nhỏ; mọi cài đặt trên dữ liệu bảng (tabular data) thật đều là xấp xỉ hoặc là thuật toán riêng cho một họ mô hình
 
 ## Giá trị Shapley, Jaccard top-k, và chi phí (tiếp)
 @phut: 1
@@ -243,7 +243,7 @@ Hai bài báo dùng cùng mô hình gradient boosting đã huấn luyện, cùng
 
 - Một trong hai bài có lỗi cài đặt, vì giá trị Shapley là duy nhất
 - Hai bài chọn nghĩa của vắng mặt hoặc tập nền khác nhau, nên chúng tính hai hàm giá trị f(S) khác nhau và cả hai đều đúng
-- Một trong hai bài không chuẩn hoá đặc trưng
+- Một trong hai bài không chuẩn hoá đặc trưng (feature normalisation)
 - Hiệu ứng của hạt ngẫu nhiên khi vẽ hình
 
 ## Chọn một phương án · đáp

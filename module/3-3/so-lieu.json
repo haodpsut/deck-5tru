@@ -4,7 +4,11 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
-    "vận tốc theo đường ngắm": "line of sight velocity"
+    "tốc độ biến thiên Doppler": "Doppler rate",
+    "vận tốc theo đường ngắm": "line of sight velocity",
+    "bù trước Doppler": "Doppler pre-compensation",
+    "trực giao": "orthogonality",
+    "chòm sao": "constellation"
   },
   "s001": "550",
   "s002": "6,98",

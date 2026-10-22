@@ -44,7 +44,7 @@ Trụ này tới đây chỉ bàn thuật toán trên giấy. Nhưng thứ bị 
 @phut: 1
 @che-do: noi
 
-Việc thứ hai của module là cho anh một con số để trả lời câu hỏi mà phản biện hay hỏi: **che mặt nạ tốn của tôi bao nhiêu lần về thời gian**. Mô hình ở đây là mô hình ước lượng, khai rõ tham số, và nó dùng để ước lượng bậc độ lớn chứ không dùng để báo số trong bản thảo.
+Việc thứ hai của module là cho anh một con số để trả lời câu hỏi mà phản biện hay hỏi: **che mặt nạ (masking) tốn của tôi bao nhiêu lần về thời gian**. Mô hình ở đây là mô hình ước lượng, khai rõ tham số, và nó dùng để ước lượng bậc độ lớn chứ không dùng để báo số trong bản thảo.
 
 ## Chuẩn nói về lớp một, còn lỗ thường ở lớp ba (tiếp)
 @phut: 1
@@ -214,7 +214,7 @@ Khoảng {{s011}} lần. Hai số hạng góp không đều: phần tuyến tín
 @che-do: hoi
 @notes: HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng.
 
-Cài đặt không che mặt nạ đạt {{s017}} bắt tay mỗi giây trên thiết bị đích. Bật che mặt nạ bậc d = {{s003}} với r = {{s010}}. Còn lại bao nhiêu bắt tay mỗi giây?
+Cài đặt không che mặt nạ đạt {{s017}} bắt tay (handshake) mỗi giây trên thiết bị đích. Bật che mặt nạ bậc d = {{s003}} với r = {{s010}}. Còn lại bao nhiêu bắt tay mỗi giây?
 
 h0 = {{s017}}, d = {{s003}}, r = {{s009}}
 
@@ -358,7 +358,7 @@ Viện dẫn chuẩn chỉ trả lời cho lớp thuật toán nên không chạ
 Đoạn sau có một mệnh đề nhảy lớp. Bấm vào mệnh đề đó.
 
 - Chúng tôi dùng ML-KEM-768 theo FIPS {{s001}} cho phần thiết lập khoá,
-- với bộ tham số ở mức an toàn {{s004}} của NIST,
+- với bộ tham số ở mức an toàn (security level) {{s004}} của NIST,
 - nên cài đặt trên thiết bị của chúng tôi an toàn trước tấn công kênh bên.
 
 ## Câu không được chống đỡ · ca một · đáp

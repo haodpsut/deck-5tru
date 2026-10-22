@@ -4,9 +4,12 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
+    "nhiễu loạn khí quyển": "atmospheric turbulence",
     "biên dự phòng mưa": "rain margin",
+    "phương sai Rytov": "Rytov variance",
     "mức khả dụng": "availability",
-    "khoảng xiên": "slant range"
+    "khoảng xiên": "slant range",
+    "chòm sao": "constellation"
   },
   "s001": "3.1",
   "s002": "92,45",

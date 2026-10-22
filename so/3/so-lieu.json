@@ -4,12 +4,21 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
+    "tốc độ biến thiên Doppler": "Doppler rate",
+    "suy hao không gian tự do": "free-space path loss",
     "vận tốc theo đường ngắm": "line of sight velocity",
     "liên kết giữa vệ tinh": "ISL",
     "payload trong suốt": "transparent",
     "số vòng mỗi ngày": "mean motion",
+    "ngân sách truyền": "communication budget",
+    "phương sai Rytov": "Rytov variance",
+    "bù trước Doppler": "Doppler pre-compensation",
+    "cửa sổ nhìn thấy": "visibility window",
     "mức khả dụng": "availability",
+    "cổng mặt đất": "gateway",
     "khoảng xiên": "slant range",
+    "hiệu chuẩn": "calibration",
+    "chòm sao": "constellation",
     "gói": "packet"
   },
   "s001": "6378",

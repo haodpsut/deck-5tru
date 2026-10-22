@@ -38,7 +38,7 @@ Module này có đúng một việc: biến câu "hệ của tôi có thể bị
 @phut: 1
 @che-do: noi
 
-Quy tắc trung tâm, và cũng là chỗ reviewer của IEEE đánh mạnh nhất: **một mục đe doạ không có năng lực cụ thể của kẻ tấn công thì không phải đe doạ, chỉ là lo lắng**. Hệ quả là phần có giá trị nhất của một mô hình đe doạ tốt lại là *danh sách đe doạ bị loại*, vì nó chứng minh anh đã nghĩ tới và đã quyết, chứ không phải chưa nghĩ tới.
+Quy tắc trung tâm, và cũng là chỗ reviewer của IEEE đánh mạnh nhất: **một mục đe doạ không có năng lực cụ thể của kẻ tấn công thì không phải đe doạ, chỉ là lo lắng**. Hệ quả là phần có giá trị nhất của một mô hình đe doạ (threat model) tốt lại là *danh sách đe doạ bị loại*, vì nó chứng minh anh đã nghĩ tới và đã quyết, chứ không phải chưa nghĩ tới.
 
 ## Mô hình đe doạ là một phép đếm (tiếp)
 @phut: 1
@@ -205,7 +205,7 @@ nếu phòng vệ của anh tuyên bố chặn một ô nằm trong {{s010}} ô 
 @che-do: hoi
 @notes: HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng.
 
-Một bảng đe doạ có dòng ghi tấn công kênh phụ trên giao diện A1 nhưng không trỏ tới năng lực nào trong danh sách đã khai. Theo quy tắc của module, phải làm gì với dòng đó?
+Một bảng đe doạ có dòng ghi tấn công kênh phụ (side channel) trên giao diện A1 nhưng không trỏ tới năng lực nào trong danh sách đã khai. Theo quy tắc của module, phải làm gì với dòng đó?
 
 ## Chọn một phương án (tiếp)
 @phut: 0.5
@@ -263,7 +263,7 @@ Mô hình đe doạ của một bài khai kẻ tấn công kiểm soát một xA
 @che-do: hoi
 @notes: HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng.
 
-Anh muốn bảo vệ con số bề mặt tấn công trước một reviewer kể ra một giao diện anh bỏ sót. Cách khai nào làm con số vẫn còn giá trị sau cú đó?
+Anh muốn bảo vệ con số bề mặt tấn công (attack surface) trước một reviewer kể ra một giao diện anh bỏ sót. Cách khai nào làm con số vẫn còn giá trị sau cú đó?
 
 ## Chọn một phương án (tiếp)
 @phut: 0.5

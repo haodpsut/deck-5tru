@@ -32,7 +32,7 @@ Thiết bị của tôi chịu bao nhiêu lần handover mỗi giờ, con số �
 @che-do: noi
 @notes: Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau.
 
-Module này tách hai thứ mà bài báo handover hay trộn. Thứ nhất là **chặn do hình học**: cao độ và góc nâng tối thiểu cho ra cửa sổ nhìn thấy, cửa sổ cho ra chặn trên của thời gian trú (dwell time), và chặn trên của thời gian trú cho ra **chặn dưới** của tần suất handover. Phần này không cần mô phỏng, tính được bằng giấy, và reviewer kiểm lại được trong một phút.
+Module này tách hai thứ mà bài báo handover hay trộn. Thứ nhất là **chặn do hình học**: cao độ và góc nâng tối thiểu cho ra cửa sổ nhìn thấy (visibility window), cửa sổ cho ra chặn trên của thời gian trú (dwell time), và chặn trên của thời gian trú cho ra **chặn dưới** của tần suất handover. Phần này không cần mô phỏng, tính được bằng giấy, và reviewer kiểm lại được trong một phút.
 
 ## Hình học cho chặn, mô hình đo cho con số (tiếp)
 @phut: 1
@@ -163,7 +163,7 @@ Chiều của bất đẳng thức là chỗ dễ viết ngược. `t_vis` là c
 @che-do: hoi
 @notes: HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng.
 
-Chòm sao đổi sang cao độ {{s013}} km, vẫn ε_min = 10°. Cửa sổ nhìn thấy dài nhất là bao nhiêu phút?
+Chòm sao (constellation) đổi sang cao độ {{s013}} km, vẫn ε_min = 10°. Cửa sổ nhìn thấy dài nhất là bao nhiêu phút?
 
 h = {{s013}}, eps = {{s014}}, Re = {{s015}}, mu = {{s016}}
 

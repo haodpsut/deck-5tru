@@ -40,7 +40,7 @@ moc-ngay: bản kho 2026.10.06-2
 @che-do: hoi
 @notes: Câu hỏi của module. Trả lời bằng miệng trước khi lật.
 
-Cho cao độ và góc nâng tối thiểu, tôi tính được cửa sổ nhìn thấy, khoảng xiên (slant range) lớn nhất và trễ một chiều trong bao lâu, bằng giấy?
+Cho cao độ và góc nâng tối thiểu, tôi tính được cửa sổ nhìn thấy (visibility window), khoảng xiên (slant range) lớn nhất và trễ một chiều trong bao lâu, bằng giấy?
 
 ## m3.1 · luận điểm
 @phut: 1.5
@@ -146,7 +146,7 @@ Mười hai dòng, và luật hai đường
 @che-do: hoi
 @notes: Câu hỏi của module. Trả lời bằng miệng trước khi lật.
 
-Đường ngắn nhất theo số chặng trong chòm sao của tôi có phải đường trễ thấp nhất không, và vì sao bảng định tuyến của tôi có hạn sử dụng?
+Đường ngắn nhất theo số chặng trong chòm sao (constellation) của tôi có phải đường trễ thấp nhất không, và vì sao bảng định tuyến (routing table) của tôi có hạn sử dụng?
 
 ## m3.9 · luận điểm
 @phut: 1

@@ -40,7 +40,7 @@ Bảy module trước của trụ này chỉ dạy lattice, nên chúng không t
 
 Thứ ba, bài học của ca SIKE, và nó không phải bài học mà đa số người ta rút ra.
 
-Trục chính là **rủi ro tương quan**. Hai hệ cùng một họ giả định không cho hai lần bảo vệ, vì một kết quả toán học về bài toán nền giết cả hai trong cùng một buổi chiều. Đây đúng là bài học "đa nhà cung cấp không cho lỗi độc lập" đã có trong sổ của nhà, chuyển sang mật mã.
+Trục chính là **rủi ro tương quan (correlated risk)**. Hai hệ cùng một họ giả định không cho hai lần bảo vệ, vì một kết quả toán học về bài toán nền giết cả hai trong cùng một buổi chiều. Đây đúng là bài học "đa nhà cung cấp không cho lỗi độc lập" đã có trong sổ của nhà, chuyển sang mật mã.
 
 ## Nếu lattice gãy ngày mai thì anh còn gì (tiếp)
 @phut: 1
@@ -140,7 +140,7 @@ Nói định nghĩa, điểm phải nhớ, và **chỗ nó gãy**, rồi lật.
 @che-do: noi
 @notes: So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm.
 
-Một mức an toàn luôn là phát biểu **có điều kiện**, nên nó phải kèm **giả định nào** và **mô hình chi phí nào**. Thiếu một trong hai thì con số không kiểm được, và đó đúng là lỗi đã nêu ở module {{s007}}.
+Một mức an toàn (security level) luôn là phát biểu **có điều kiện**, nên nó phải kèm **giả định nào** và **mô hình chi phí nào**. Thiếu một trong hai thì con số không kiểm được, và đó đúng là lỗi đã nêu ở module {{s007}}.
 
 ## Câu an toàn x bit phải kèm hai thứ · đáp (tiếp)
 @phut: 1
@@ -322,7 +322,7 @@ Nâng tham số đổi con số mà không bổ sung hai điều kiện đó, n�
 
 - Lược đồ hybrid của chúng tôi ghép ML-KEM-768 với một KEM thứ hai cũng dựa trên bài toán trên lưới mô đun,
 - nên hệ còn an toàn ngay cả khi một trong hai thành phần bị phá.
-- Chi phí thêm vào là một lần đóng gói (packet) khoá nữa cho mỗi lần bắt tay.
+- Chi phí thêm vào là một lần đóng gói (packet) khoá nữa cho mỗi lần bắt tay (handshake).
 
 ## Câu không được chống đỡ · ca một · đáp
 @phut: 1.5
@@ -382,7 +382,7 @@ nó dẫn người đọc tới chỗ coi lưới là an toàn vì chưa gãy, t
 
 - Lược đồ của chúng tôi đạt mức an toàn {{s001}} bit,
 - tính theo phép quy đổi lõi lưới cho bài toán Module-LWE với bộ tham số ở Bảng II,
-- và biên an toàn này sẽ giảm dần theo thời gian nên chúng tôi theo dõi nó để biết khi nào phải di trú.
+- và biên an toàn này sẽ giảm dần theo thời gian nên chúng tôi theo dõi nó để biết khi nào phải di trú (migration).
 
 ## Câu không được chống đỡ · ca ba · đáp
 @phut: 1.5

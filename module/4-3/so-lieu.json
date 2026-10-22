@@ -5,6 +5,11 @@
   },
   "_thuat_ngu": {
     "năng lực kẻ tấn công": "attacker capability",
+    "không gian đặc trưng": "feature space",
+    "không gian vấn đề": "problem space",
+    "đầu độc dữ liệu": "data poisoning",
+    "mô hình đe doạ": "threat model",
+    "độ phủ": "recall",
     "luồng": "flow",
     "gói": "packet"
   },

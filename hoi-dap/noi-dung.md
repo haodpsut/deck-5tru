@@ -41,7 +41,7 @@ You report {{s004}} accuracy. What is the false positive rate at that operating 
 @phut: 0.5
 @che-do: noi
 
-Câu hỏi nhận chìm anh bằng chính con số anh tự hào. Bẫy là nó mời anh bảo vệ accuracy, trong khi người hỏi đã biết accuracy vô nghĩa ở tỉ lệ nền thật và đang chờ xem anh có biết điều đó không.
+Câu hỏi nhận chìm anh bằng chính con số anh tự hào. Bẫy là nó mời anh bảo vệ accuracy, trong khi người hỏi đã biết accuracy vô nghĩa ở tỉ lệ nền (base rate) thật và đang chờ xem anh có biết điều đó không.
 
 ## Khung trả lời
 @phut: 0.5
@@ -109,7 +109,7 @@ Người hỏi đã đọc phần đặc trưng của anh. Bẫy là trả lời
 @phut: 0.5
 @che-do: so
 
-- Phân nhóm đặc trưng ngay: tải tin, siêu dữ liệu bắt tay, hình dáng luồng.
+- Phân nhóm đặc trưng ngay: tải tin, siêu dữ liệu bắt tay (handshake), hình dáng luồng.
 - Cho con số: bao nhiêu đặc trưng của anh thuộc nhóm còn sống.
 - Tự khai nhóm nào chết và kết quả nào trong bài phụ thuộc nhóm đó.
 
@@ -235,8 +235,8 @@ Người hỏi biết hình học. Bẫy là trả lời "chúng tôi sẽ mở 
 @phut: 0.5
 @che-do: so
 
-- Nói hướng đổi trước khi nói độ lớn: nhiều chùm thì tần suất chuyển giao TĂNG, không giảm.
-- Cho con số: cửa sổ nhìn thấy {{s013}} phút cho chặn dưới {{s014}} lần mỗi giờ với một chùm, và khoảng {{s002}} lần với tám chùm.
+- Nói hướng đổi trước khi nói độ lớn: nhiều chùm thì tần suất chuyển giao (handover) TĂNG, không giảm.
+- Cho con số: cửa sổ nhìn thấy (visibility window) {{s013}} phút cho chặn dưới {{s014}} lần mỗi giờ với một chùm, và khoảng {{s002}} lần với tám chùm.
 - Tự khai rằng kết luận định tính sống sót nhưng con số tuyệt đối thì không, và chỉ ra chỗ nào trong bài phụ thuộc con số tuyệt đối.
 
 ## Đừng nói
@@ -364,7 +364,7 @@ Người hỏi đã biết chỗ hở của mọi tuyên bố cô lập. Bẫy l
 
 - Tách bốn tầng cô lập ngay, và nói rõ tầng nào anh có và tầng nào dùng chung.
 - Cho con số tương quan nếu đã đo, hoặc nói thẳng là chưa đo.
-- Tự khai rằng khi bộ lập lịch dùng chung thì cô lập chỉ là cô lập ba tầng, và viết lại tuyên bố cho đúng.
+- Tự khai rằng khi bộ lập lịch dùng chung (shared scheduler) thì cô lập chỉ là cô lập ba tầng, và viết lại tuyên bố cho đúng.
 
 ## Đừng nói
 @phut: 0.5
@@ -396,7 +396,7 @@ Người hỏi đã nhẩm ra số mảnh trước khi hỏi. Bẫy là trả l�
 
 - Trả lời số mảnh và xác suất hoàn tất ngay, vì đó là điều được hỏi.
 - Cho con số: {{s021}} byte với tải khả dụng khoảng {{s022}} byte là {{s023}} mảnh, và với tỉ lệ mất {{s024}} mỗi mảnh thì xác suất hoàn tất khoảng {{s025}}.
-- Tự khai mô hình mất gói (packet), vì con số trên giả định mất độc lập và mất theo chùm (burst loss) cho kết quả khác.
+- Tự khai mô hình mất gói (packet loss model), vì con số trên giả định mất độc lập và mất theo chùm (burst loss) cho kết quả khác.
 
 ## Đừng nói
 @phut: 0.5
@@ -426,7 +426,7 @@ Bẫy là tranh luận về việc máy lượng tử bao giờ có, tức đi v
 @che-do: so
 
 - Chuyển trục ngay: vấn đề không phải khi nào có máy, mà là dữ liệu hôm nay giữ mật bao lâu.
-- Cho ba con số của bất đẳng thức Mosca: thời gian giữ mật, thời gian di trú, thời gian tới khi có máy.
+- Cho ba con số của bất đẳng thức Mosca (Mosca inequality): thời gian giữ mật, thời gian di trú (migration), thời gian tới khi có máy.
 - Tự khai rằng con số thứ ba là ước lượng, nên kết luận phải viết ở dạng điều kiện.
 
 ## Đừng nói
@@ -457,7 +457,7 @@ Bẫy là trả lời bằng tên chuẩn. Câu hỏi nằm ở lớp cài đặ
 @che-do: so
 
 - Tách ba lớp ngay: thuật toán, giao thức, cài đặt. Nói chuẩn bảo đảm lớp nào.
-- Cho con số về cài đặt của anh: thư viện nào, bản nào, có che mặt nạ hay không, và nếu có thì chậm bao nhiêu lần.
+- Cho con số về cài đặt của anh: thư viện nào, bản nào, có che mặt nạ (masking) hay không, và nếu có thì chậm bao nhiêu lần.
 - Tự khai rằng nếu chưa kiểm thời gian hằng thì kết quả an ninh của bài không nói gì về lớp cài đặt.
 
 ## Đừng nói
@@ -521,7 +521,7 @@ Chủ toạ cho anh {{s012}} giây và một câu hỏi có đúng hai đáp án
 
 - Nói "không" ngay từ chữ đầu tiên, vì đó là đáp án đúng và chủ toạ chỉ cần một chữ.
 - Một con số làm chứng: điểm {{s027}} ở tỉ lệ nền 10⁻⁵ tương ứng PPV dưới {{s028}} phần trăm, chứ không phải {{s029}} phần trăm.
-- Tự khai đã làm gì: hiệu chuẩn lại trên một tập giữ riêng, và báo đường tin cậy cạnh AUROC.
+- Tự khai đã làm gì: hiệu chuẩn (calibration) lại trên một tập giữ riêng, và báo đường tin cậy cạnh AUROC.
 
 ## Đừng nói
 @phut: 0.5
@@ -615,7 +615,7 @@ Câu hỏi thật thà và đúng chỗ, nên bẫy nằm ở giọng và ở m�
 
 - Nói rõ thứ đi qua đường truyền không phải bệnh án mà là bản cập nhật tham số.
 - Cho khối lượng: một mô hình một triệu tham số ở float32 là khoảng {{s036}} MB mỗi client mỗi vòng.
-- Tự khai giới hạn: bản cập nhật vẫn rỉ thông tin, nên phải có kế toán riêng tư, không phải chỉ có một lời hứa.
+- Tự khai giới hạn: bản cập nhật vẫn rỉ thông tin, nên phải có kế toán riêng tư (privacy accounting), không phải chỉ có một lời hứa.
 
 ## Đừng nói
 @phut: 0.5
@@ -669,7 +669,7 @@ You report one hundred rounds. What fraction of clients actually participated in
 @phut: 0.5
 @che-do: noi
 
-Người hỏi biết số vòng là con số dễ báo còn tỉ lệ tham gia là con số dễ bỏ qua. Bẫy nằm ở chữ random: nếu anh cắt theo hạn chờ thì client bị cắt là client CHẬM, tức thiên lệch có hệ thống. Trả lời "ngẫu nhiên" là tự khai một điều sai, và họ hỏi vì họ đã biết điều đó.
+Người hỏi biết số vòng là con số dễ báo còn tỉ lệ tham gia là con số dễ bỏ qua. Bẫy nằm ở chữ random: nếu anh cắt theo hạn chờ (deadline) thì client bị cắt là client CHẬM, tức thiên lệch có hệ thống. Trả lời "ngẫu nhiên" là tự khai một điều sai, và họ hỏi vì họ đã biết điều đó.
 
 ## Khung trả lời
 @phut: 0.5
@@ -706,7 +706,7 @@ Hai câu gói làm một, và câu thứ hai là câu giết. Khi mỗi client c
 @phut: 0.5
 @che-do: so
 
-- Nói rõ phần nào chia chung và phần nào riêng, bằng tên lớp chứ không bằng chữ cá nhân hoá.
+- Nói rõ phần nào chia chung và phần nào riêng, bằng tên lớp chứ không bằng chữ cá nhân hoá (personalisation).
 - Con số: báo trung bình có trọng số theo số mẫu VÀ phân vị thứ {{s006}}, vì trung bình che được một phần mười client tệ nhất.
 - Tự khai rằng mô hình toàn cục không ai chạy, nên con số của nó là chẩn đoán chứ không phải kết quả.
 
@@ -957,7 +957,7 @@ Chủ toạ xin một VIỆC LÀM ĐƯỢC, không xin một kết luận. Bẫy
 @che-do: so
 
 - Một việc, có động từ, làm xong trong một ngày.
-- Một con số làm ngưỡng: chỉ cần MỘT thành phần đọc được giao diện điều khiển ngoài danh sách là mô hình đe doạ đã đổi.
+- Một con số làm ngưỡng: chỉ cần MỘT thành phần đọc được giao diện điều khiển ngoài danh sách là mô hình đe doạ (threat model) đã đổi.
 - Nói hệ quả nếu không làm, trong nửa câu, rồi dừng.
 
 ## Đừng nói

@@ -107,7 +107,7 @@ Chia ngẫu nhiên không phải một lựa chọn kỹ thuật, nó là một 
 @che-do: hoi
 @notes: Câu hỏi của module. Trả lời bằng miệng trước khi lật.
 
-Nhiễu đối kháng tôi sinh ra trong không gian đặc trưng có dựng lại được thành gói tin gửi lên dây không, và nếu không thì bài của tôi đang tuyên bố cái gì?
+Nhiễu đối kháng tôi sinh ra trong không gian đặc trưng (feature space) có dựng lại được thành gói tin gửi lên dây không, và nếu không thì bài của tôi đang tuyên bố cái gì?
 
 ## m1.6 · luận điểm
 @phut: 1
@@ -133,7 +133,7 @@ Một lời giải thích không ổn định thì không phải một lời gi�
 @che-do: hoi
 @notes: Câu hỏi của module. Trả lời bằng miệng trước khi lật.
 
-Trên dữ liệu bảng của IDS, tôi có bằng chứng gì để nói mô hình mới của tôi hơn một bộ gradient boosting được tinh chỉnh tử tế?
+Trên dữ liệu bảng (tabular data) của IDS, tôi có bằng chứng gì để nói mô hình mới của tôi hơn một bộ gradient boosting được tinh chỉnh tử tế?
 
 ## m1.8 · luận điểm
 @phut: 1

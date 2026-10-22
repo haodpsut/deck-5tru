@@ -44,7 +44,7 @@ Module này có ba việc. Việc thứ nhất là tính được byte một vò
 @phut: 1
 @che-do: noi
 
-Việc thứ ba là chỗ đáng giá nhất: nén thêm **không** luôn luôn giảm byte tới mục tiêu. Khi mỗi vòng có một chi phí cố định, dù là bắt tay, lịch chọn client, hay thiết lập secure aggregation, thì có một tỉ lệ thưa tối ưu, và nén thưa hơn mức đó làm byte tới mục tiêu **tăng**. Mốc đó có dạng đóng, nên anh tính được nó cho hệ của mình trong một dòng.
+Việc thứ ba là chỗ đáng giá nhất: nén thêm **không** luôn luôn giảm byte tới mục tiêu. Khi mỗi vòng có một chi phí cố định, dù là bắt tay (handshake), lịch chọn client, hay thiết lập secure aggregation, thì có một tỉ lệ thưa (sparsity ratio) tối ưu, và nén thưa hơn mức đó làm byte tới mục tiêu **tăng**. Mốc đó có dạng đóng, nên anh tính được nó cho hệ của mình trong một dòng.
 
 ## Byte một vòng, và chi phí chỉ số của top-k
 @phut: 1
@@ -371,7 +371,7 @@ Kết quả gốc: ResNet-18 fp32 dày · {{s032}} MB một vòng một chiều 
 @che-do: demo
 @notes: Dừng bài, mở site, kéo thật. Đây là khối slide KHÔNG thay được.
 
-Ngân sách truyền, đọc theo byte tới mục tiêu chứ không theo vòng tới mục tiêu. Mặc định là ResNet-18 fp32 không nén. Kéo tỉ lệ thưa và để ý rằng đường byte tới mục tiêu KHÔNG đơn điệu.
+Ngân sách truyền (communication budget), đọc theo byte tới mục tiêu chứ không theo vòng tới mục tiêu. Mặc định là ResNet-18 fp32 không nén. Kéo tỉ lệ thưa và để ý rằng đường byte tới mục tiêu KHÔNG đơn điệu.
 
 *Mở `https://hoc-5-tru-web.vercel.app/#/module/2.4` và kéo thanh. Slide đứng yên, mô phỏng thì không.*
 

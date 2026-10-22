@@ -4,6 +4,11 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
+    "hạn mức tài nguyên tối thiểu": "minimum resource guarantee",
+    "bộ lập lịch dùng chung": "shared scheduler",
+    "mô hình đe doạ": "threat model",
+    "cô lập slice": "slice isolation",
+    "kênh phụ": "side channel",
     "luồng": "flow"
   },
   "s001": "95",

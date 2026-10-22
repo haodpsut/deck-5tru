@@ -25,7 +25,7 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Trên mạng {{s001}}, một bắt tay hậu lượng tử của tôi tốn bao nhiêu mảnh, và tỉ lệ mất mảnh làm xác suất hoàn tất bắt tay tụt bao nhiêu?
+Trên mạng {{s001}}, một bắt tay (handshake) hậu lượng tử của tôi tốn bao nhiêu mảnh, và tỉ lệ mất mảnh làm xác suất hoàn tất bắt tay tụt bao nhiêu?
 
 ## Byte vào số mũ, vòng thì không
 @phut: 1.5
@@ -44,13 +44,13 @@ nó bị cắt thành **{{s004}} mảnh**, và nếu mỗi mảnh mất độc l
 @phut: 1
 @che-do: noi
 
-Hai hệ quả phải mang theo khi viết bài. Thứ nhất, **giảm byte quan trọng hơn giảm số vòng**: số vòng do giao thức khoá (bốn bản tin EDHOC là bốn bản tin, không bỏ được bản nào mà vẫn còn là trao đổi khoá), còn byte thì cắt được, và byte đã cắt được trả công ở mọi vòng vì nó nằm trong số mũ. Thứ hai, con số {{s006}} phần trăm chỉ tồn tại cùng với một **mô hình mất gói (packet)**.
+Hai hệ quả phải mang theo khi viết bài. Thứ nhất, **giảm byte quan trọng hơn giảm số vòng**: số vòng do giao thức khoá (bốn bản tin EDHOC là bốn bản tin, không bỏ được bản nào mà vẫn còn là trao đổi khoá), còn byte thì cắt được, và byte đã cắt được trả công ở mọi vòng vì nó nằm trong số mũ.
 
 ## Byte vào số mũ, vòng thì không (tiếp)
 @phut: 1
 @che-do: noi
 
-Mô hình mất gói không phải chi tiết kỹ thuật của lớp liên kết, nó là một giả thiết phải khai, và reviewer đọc phần đánh giá sẽ đi tìm đúng chỗ đó.
+Thứ hai, con số {{s006}} phần trăm chỉ tồn tại cùng với một **mô hình mất gói (packet loss model)**. Mô hình mất gói không phải chi tiết kỹ thuật của lớp liên kết, nó là một giả thiết phải khai, và reviewer đọc phần đánh giá sẽ đi tìm đúng chỗ đó.
 
 ## Ngân sách khung 802.15.4 (frame budget)
 @phut: 1
@@ -256,7 +256,7 @@ Số mũ là tổng số mảnh của cả bắt tay, nên cái quyết định 
 
 Bài báo in: xác suất hoàn tất bắt tay {{s006}} phần trăm trên testbed {{s001}}. Thiếu đúng một dữ kiện để con số này kiểm được. Dữ kiện nào?
 
-- Mức an toàn NIST của bộ tham số
+- Mức an toàn (security level) NIST của bộ tham số
 - Số chu kỳ CPU của ML-KEM-768 trên vi điều khiển
 - Mô hình mất gói dùng để tính, và tải khả dụng mỗi mảnh
 - Phiên bản thư viện mật mã

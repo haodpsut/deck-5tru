@@ -4,7 +4,12 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
-    "tính linh hoạt mật mã": "crypto-agility"
+    "tính linh hoạt mật mã": "crypto-agility",
+    "bất đẳng thức Mosca": "Mosca inequality",
+    "mô hình đe doạ": "threat model",
+    "kênh phụ": "side channel",
+    "bắt tay": "handshake",
+    "di trú": "migration"
   },
   "s001": "1",
   "s002": "2",

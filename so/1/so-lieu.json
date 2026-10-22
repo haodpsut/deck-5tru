@@ -4,8 +4,19 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
+    "không gian đặc trưng": "feature space",
+    "hiệu chỉnh nhiệt độ": "temperature scaling",
+    "ngân sách cảnh báo": "alert budget",
+    "không gian vấn đề": "problem space",
+    "lưu lượng mã hoá": "encrypted traffic",
     "đơn vị quan sát": "observation unit",
+    "dữ liệu bảng": "tabular data",
+    "đường cơ sở": "baseline",
     "phần triệu": "ppm",
+    "độ ổn định": "stability",
+    "hiệu chuẩn": "calibration",
+    "tỉ lệ nền": "base rate",
+    "bắt tay": "handshake",
     "luồng": "flow",
     "gói": "packet"
   },

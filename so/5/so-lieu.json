@@ -5,8 +5,16 @@
   },
   "_thuat_ngu": {
     "cửa sổ thời gian": "time window",
+    "kích thước khối": "block size",
+    "mô hình đe doạ": "threat model",
+    "hiệu suất kênh": "channel efficiency",
     "mất theo chùm": "burst loss",
+    "khối hữu hạn": "finite-key",
+    "mức an toàn": "security level",
+    "che mặt nạ": "masking",
     "bộ tổ hợp": "combiner",
+    "bắt tay": "handshake",
+    "di trú": "migration",
     "gói": "packet"
   },
   "s001": "2",

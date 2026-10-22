@@ -4,7 +4,10 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
+    "ngân sách cảnh báo": "alert budget",
+    "đường cơ sở": "baseline",
     "phần triệu": "ppm",
+    "tỉ lệ nền": "base rate",
     "luồng": "flow"
   },
   "s001": "1",

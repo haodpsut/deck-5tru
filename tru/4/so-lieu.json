@@ -3,7 +3,11 @@
     "kho": "working/hoc-5-tru-web/data, bản 2026.10.06-2",
     "sinh_boi": "slides/5tru/sinh.py"
   },
-  "_thuat_ngu": {},
+  "_thuat_ngu": {
+    "dung lượng bí mật": "secrecy capacity",
+    "mô hình đe doạ": "threat model",
+    "gây nhiễu": "jamming"
+  },
   "s001": "8",
   "s002": "161",
   "s003": "33.501",

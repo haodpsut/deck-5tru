@@ -341,7 +341,7 @@ Hai trích dẫn kia đều dùng đặc tả để đỡ tuyên bố bắt bu�
 
 Hai trích dẫn cuối trong tám. Một cái không khai được vì trích cả tài liệu. Bấm vào cái đó.
 
-- [{{s030}}] Chi tiết về che danh tính thường trực của thuê bao, xem 3GPP TS {{s004}}.
+- [{{s030}}] Chi tiết về che danh tính (identity) thường trực của thuê bao, xem 3GPP TS {{s004}}.
 - [{{s009}}] NIST FIPS {{s031}}, bản cuối tháng {{s009}} năm {{s019}}, mục {{s030}} về các thuật toán của ML-KEM.
 
 ## Câu không được chống đỡ · ca ba · đáp

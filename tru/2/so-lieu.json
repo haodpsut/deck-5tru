@@ -4,7 +4,11 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
-    "năng lực kẻ tấn công": "attacker capability"
+    "năng lực kẻ tấn công": "attacker capability",
+    "mô hình đe doạ": "threat model",
+    "bước cục bộ": "local steps",
+    "cửa hậu": "backdoor",
+    "hạn chờ": "deadline"
   },
   "s001": "10",
   "s002": "205",

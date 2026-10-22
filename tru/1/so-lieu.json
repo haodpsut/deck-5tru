@@ -4,8 +4,10 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
+    "không gian đặc trưng": "feature space",
     "cửa sổ thời gian": "time window",
     "đơn vị quan sát": "observation unit",
+    "dữ liệu bảng": "tabular data",
     "luồng": "flow",
     "gói": "packet"
   },

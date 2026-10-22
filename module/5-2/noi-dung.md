@@ -32,7 +32,7 @@ Câu an toàn {{s001}} bit của một bộ tham số lattice nghĩa là gì, v�
 @che-do: noi
 @notes: Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau.
 
-Khi một bài viết bộ tham số này an toàn {{s001}} bit, con số {{s001}} không đo hệ. Nó là đầu ra của một chuỗi: chọn tấn công tốt nhất đã biết, chọn mô hình chi phí cho tấn công đó, chạy bộ ước lượng để ra kích thước khối BKZ cần thiết, rồi nhân số mũ. Đổi một khâu trong chuỗi là đổi con số.
+Khi một bài viết bộ tham số này an toàn {{s001}} bit, con số {{s001}} không đo hệ. Nó là đầu ra của một chuỗi: chọn tấn công tốt nhất đã biết, chọn mô hình chi phí cho tấn công đó, chạy bộ ước lượng để ra kích thước khối (block size) BKZ cần thiết, rồi nhân số mũ. Đổi một khâu trong chuỗi là đổi con số.
 
 ## Con số bit an toàn là con số của một mô hình (tiếp)
 @phut: 1
@@ -54,7 +54,7 @@ Nói **định nghĩa**, rồi lật.
 @che-do: noi
 @notes: So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm.
 
-LWE: cho `(A, b = A·s + e mod q)` với `e` nhỏ, tìm `s`. MLWE thay vô hướng bằng phần tử của một vành đa thức, nên cùng một mức an toàn cần ít byte khoá hơn nhiều.
+LWE: cho `(A, b = A·s + e mod q)` với `e` nhỏ, tìm `s`. MLWE thay vô hướng bằng phần tử của một vành đa thức, nên cùng một mức an toàn (security level) cần ít byte khoá hơn nhiều.
 
 ## LWE và phiên bản module MLWE · đáp (tiếp)
 @phut: 1

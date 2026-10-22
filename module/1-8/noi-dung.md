@@ -25,7 +25,7 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Trên dữ liệu bảng của IDS, tôi có bằng chứng gì để nói mô hình mới của tôi hơn một bộ gradient boosting được tinh chỉnh tử tế?
+Trên dữ liệu bảng (tabular data) của IDS, tôi có bằng chứng gì để nói mô hình mới của tôi hơn một bộ gradient boosting được tinh chỉnh tử tế?
 
 ## Câu hỏi đầu tiên của mọi phản biện về mô hình mới
 @phut: 1.5
@@ -172,7 +172,7 @@ Nếu baseline vẫn đang đi lên ở cuối trục thì bài báo chưa có b
 @phut: 1
 @che-do: so
 
-- Với QSVM: bậc 1/ε² là chặn DƯỚI, vì nó chỉ tính nhiễu lấy mẫu. Nhiễu phần cứng, lỗi đọc và trôi hiệu chuẩn đều làm số lần chạy thật lớn hơn
+- Với QSVM: bậc 1/ε² là chặn DƯỚI, vì nó chỉ tính nhiễu lấy mẫu. Nhiễu phần cứng, lỗi đọc và trôi hiệu chuẩn (calibration) đều làm số lần chạy thật lớn hơn
 - Với QSVM: giả thiết có phần cứng chạy được số lần chạy mạch đó; nếu con số chạy trên bộ mô phỏng cổ điển thì mọi tuyên bố về thời gian là tuyên bố về bộ mô phỏng
 
 ## Dạng KAN, và chi phí dựng ma trận nhân lượng tử · ghi
@@ -268,7 +268,7 @@ Bài báo khai: mô hình mới của chúng tôi đạt F1 {{s019}} so với {{
 @phut: 1
 @che-do: noi
 
-Hiệu {{s021}} điểm trên dữ liệu bảng nằm trong khoảng mà ngân sách tinh chỉnh một mình có thể tạo ra. Không biết ngân sách của hai bên thì không phân biệt được chất lượng mô hình với công sức tác giả, nên tuyên bố không kiểm được. Phiên bản thư viện là chi tiết tái lập, có ích nhưng không gỡ được chỗ này. Số tham số và thời gian huấn luyện đo hai thứ khác.
+Hiệu {{s021}} điểm trên dữ liệu bảng nằm trong khoảng mà ngân sách tinh chỉnh (tuning budget) một mình có thể tạo ra. Không biết ngân sách của hai bên thì không phân biệt được chất lượng mô hình với công sức tác giả, nên tuyên bố không kiểm được. Phiên bản thư viện là chi tiết tái lập, có ích nhưng không gỡ được chỗ này. Số tham số và thời gian huấn luyện đo hai thứ khác.
 
 ## Chọn một phương án
 @phut: 1
@@ -466,12 +466,13 @@ Chênh lệch giữa {{s028}} giây và {{s029}} ngày là dấu hiệu gần nh
 
 Kết quả gốc: mô hình mới xếp nhất · QSVM: {{s031}} phần tử nhân, {{s027}} tỉ lần chạy mạch, {{s029}} ngày máy, {{s025}} triệu lần chạy mỗi mẫu suy luận
 
+- **Baseline được tinh chỉnh ở ngân sách tương đương** tắt đi: Baseline chạy tham số mặc định của thư viện, hoặc được rà {{s006}} cấu hình trong khi mô hình mới được rà {{s024}}.
+
 ## Tắt từng giả thiết (tiếp)
 @phut: 1
 @che-do: so
 
-- **Baseline được tinh chỉnh ở ngân sách tương đương** tắt đi: Baseline chạy tham số mặc định của thư viện, hoặc được rà {{s006}} cấu hình trong khi mô hình mới được rà {{s024}}.
-- **Hai bên đo trên cùng cách chia, cùng tỉ lệ nền, cùng đơn vị quan sát** tắt đi: Mô hình mới đo trên mẫu con cân bằng {{s013}} luồng, còn baseline lấy số từ một bài khác đo trên toàn bộ dataset theo đơn vị cửa sổ.
+- **Hai bên đo trên cùng cách chia, cùng tỉ lệ nền (base rate), cùng đơn vị quan sát** tắt đi: Mô hình mới đo trên mẫu con cân bằng {{s013}} luồng, còn baseline lấy số từ một bài khác đo trên toàn bộ dataset theo đơn vị cửa sổ.
 
 ## Tắt từng giả thiết (tiếp)
 @phut: 1

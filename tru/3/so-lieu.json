@@ -6,8 +6,11 @@
   "_thuat_ngu": {
     "payload trong suốt": "transparent",
     "biên dự phòng mưa": "rain margin",
+    "cửa sổ nhìn thấy": "visibility window",
+    "bảng định tuyến": "routing table",
     "mức khả dụng": "availability",
-    "khoảng xiên": "slant range"
+    "khoảng xiên": "slant range",
+    "chòm sao": "constellation"
   },
   "s001": "10",
   "s002": "216",

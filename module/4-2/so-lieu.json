@@ -4,7 +4,9 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
-    "kiến trúc dựa dịch vụ": "service based architecture"
+    "kiến trúc dựa dịch vụ": "service based architecture",
+    "mô hình đe doạ": "threat model",
+    "danh tính": "identity"
   },
   "s001": "33.501",
   "s002": "1",

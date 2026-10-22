@@ -82,7 +82,7 @@ Nói định nghĩa và **điểm phải nhớ**, rồi lật.
 @che-do: noi
 @notes: So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm.
 
-Mỗi họ có ba bộ tham số ứng với ba mức an toàn. Quy tắc chọn thực dụng: **mức {{s006}} (ML-KEM-768, ML-DSA-65) là mặc định hợp lý cho phần lớn giao thức**, mức {{s005}} khi ngân sách byte rất chật, mức {{s009}} khi có yêu cầu riêng.
+Mỗi họ có ba bộ tham số ứng với ba mức an toàn (security level). Quy tắc chọn thực dụng: **mức {{s006}} (ML-KEM-768, ML-DSA-65) là mặc định hợp lý cho phần lớn giao thức**, mức {{s005}} khi ngân sách byte rất chật, mức {{s009}} khi có yêu cầu riêng.
 
 ## Ba mức tham số, và mức nào là mặc định · đáp (tiếp)
 @phut: 1
@@ -177,7 +177,7 @@ sigPQ = {{s014}}, sigCL = {{s016}}
 
 `sigPQ / sigCL`
 
-Khoảng {{s017}} lần, tức làm tròn là khoảng {{s018}} lần. Đây là tỉ số của RIÊNG chữ ký, đúng theo tiêu chí byte mỗi lần xác thực lại khi khoá công khai đã có sẵn ở hai bên. Nó không trả lời được câu hậu lượng tử đắt hơn bao nhiêu lần một cách chung chung: theo tiêu chí tổng byte một lần bắt tay thì tỉ số tụt xuống khoảng {{s019}} lần.
+Khoảng {{s017}} lần, tức làm tròn là khoảng {{s018}} lần. Đây là tỉ số của RIÊNG chữ ký, đúng theo tiêu chí byte mỗi lần xác thực lại khi khoá công khai đã có sẵn ở hai bên. Nó không trả lời được câu hậu lượng tử đắt hơn bao nhiêu lần một cách chung chung: theo tiêu chí tổng byte một lần bắt tay (handshake) thì tỉ số tụt xuống khoảng {{s019}} lần.
 
 ## Chữ ký ML-DSA-65 so với chữ ký ECDSA P-256 · đáp (tiếp)
 @phut: 1

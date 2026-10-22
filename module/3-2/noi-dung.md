@@ -224,7 +224,7 @@ Khoảng {{s027}} dB. Để ý nó gần bằng {{s028}} dB của {{s003}} GHz �
 @che-do: hoi
 @notes: HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng.
 
-Nhiễu loạn với C_n² = 10⁻¹⁴ m^(−2/3), bước sóng {{s032}} nm, đường truyền {{s031}} m. Phương sai Rytov σ_R² là bao nhiêu?
+Nhiễu loạn với C_n² = 10⁻¹⁴ m^(−2/3), bước sóng {{s032}} nm, đường truyền {{s031}} m. Phương sai Rytov (Rytov variance) σ_R² là bao nhiêu?
 
 cn2 = {{s029}}, lam = {{s030}}, L = {{s031}}
 
@@ -320,7 +320,7 @@ Hai trạm, cùng cường độ mưa mm mỗi giờ, cùng tần số, cùng ph
 
 **Trạm B lớn hơn, vì L_eff dài hơn ở góc nâng thấp**
 
-γ_R = k·R^α giống nhau vì cùng cường độ mưa, cùng tần số, cùng phân cực. Khác nhau ở L_eff: góc nâng thấp thì đường truyền nằm trong lớp mưa dài hơn, nên A_mưa = γ_R·L_eff lớn hơn. Đây là lý do mô hình mưa phải khai kèm góc nâng, và là lý do biên dự phòng của một chòm sao LEO không phải một số duy nhất.
+γ_R = k·R^α giống nhau vì cùng cường độ mưa, cùng tần số, cùng phân cực. Khác nhau ở L_eff: góc nâng thấp thì đường truyền nằm trong lớp mưa dài hơn, nên A_mưa = γ_R·L_eff lớn hơn. Đây là lý do mô hình mưa phải khai kèm góc nâng, và là lý do biên dự phòng của một chòm sao (constellation) LEO không phải một số duy nhất.
 
 ## Câu nào không được số nào chống đỡ · ca một
 @phut: 1
@@ -508,7 +508,7 @@ We also note, for the record, that our own consistency checks could have caught 
 
 **Chấm theo:**
 
-- Mức {{s011}}: trả lời rằng Gamma-Gamma là mô hình tiêu chuẩn cho nhiễu loạn khí quyển và được dùng rộng rãi. Đúng về thực hành, không trả lời được điều reviewer hỏi.
+- Mức {{s011}}: trả lời rằng Gamma-Gamma là mô hình tiêu chuẩn cho nhiễu loạn khí quyển (atmospheric turbulence) và được dùng rộng rãi. Đúng về thực hành, không trả lời được điều reviewer hỏi.
 - Mức {{s012}}: thêm giá trị σ_R² ở một điểm đại diện, thường là điểm thuận lợi nhất, và vẫn giữ một C_n² duy nhất cho đường xiên.
 
 ## Thang chấm (tiếp)

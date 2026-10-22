@@ -25,7 +25,7 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Cho cao độ và góc nâng tối thiểu, tôi tính được cửa sổ nhìn thấy, khoảng xiên (slant range) lớn nhất và trễ một chiều trong bao lâu, bằng giấy?
+Cho cao độ và góc nâng tối thiểu, tôi tính được cửa sổ nhìn thấy (visibility window), khoảng xiên (slant range) lớn nhất và trễ một chiều trong bao lâu, bằng giấy?
 
 ## Hình học quỹ đạo
 @phut: 1.5
@@ -260,7 +260,7 @@ Khoảng {{s033}} phút, lớn hơn {{s034}} phút ở {{s002}} km đúng {{s035
 
 **{{s041}} lần**
 
-{{s003}} km chia {{s002}} km bằng {{s004}} lần. Vì suy hao không gian tự do đi theo bình phương khoảng cách, {{s004}} lần thành 20·log₁₀(4,92) = {{s025}} dB. Hai con số này là cùng một dữ kiện viết ở hai đơn vị, nên nhớ một cái là có cái kia.
+{{s003}} km chia {{s002}} km bằng {{s004}} lần. Vì suy hao không gian tự do (free-space path loss) đi theo bình phương khoảng cách, {{s004}} lần thành 20·log₁₀(4,92) = {{s025}} dB. Hai con số này là cùng một dữ kiện viết ở hai đơn vị, nên nhớ một cái là có cái kia.
 
 ## Chọn một phương án
 @phut: 1
@@ -269,7 +269,7 @@ Khoảng {{s033}} phút, lớn hơn {{s034}} phút ở {{s002}} km đúng {{s035
 
 Một bài báo khai cao độ {{s002}} km và báo cửa sổ nhìn thấy {{s043}} phút, không nói gì thêm. Thiếu đúng một dữ kiện để người khác dựng lại con số đó. Dữ kiện nào?
 
-- Số vệ tinh trong chòm sao
+- Số vệ tinh trong chòm sao (constellation)
 - Băng tần sử dụng
 - Độ nghiêng quỹ đạo
 - Góc nâng tối thiểu ε_min

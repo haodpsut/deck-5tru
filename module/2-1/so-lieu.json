@@ -4,7 +4,10 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
+    "biến điều khiển": "control variate",
     "trôi cục bộ": "client drift",
+    "bước cục bộ": "local steps",
+    "neo gần": "proximal term",
     "gói": "packet"
   },
   "s001": "1",

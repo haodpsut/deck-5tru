@@ -3,7 +3,12 @@
     "kho": "working/hoc-5-tru-web/data, bản 2026.10.06-2",
     "sinh_boi": "slides/5tru/sinh.py"
   },
-  "_thuat_ngu": {},
+  "_thuat_ngu": {
+    "độ chính xác định vị": "localisation accuracy",
+    "cảm biến tích hợp": "integrated sensing",
+    "phân giải cự ly": "range resolution",
+    "mô hình đe doạ": "threat model"
+  },
   "s001": "100",
   "s002": "1,50",
   "s003": "1",

@@ -126,7 +126,7 @@ Nói định nghĩa, điểm phải nhớ, và **chỗ nó gãy**, rồi lật.
 @che-do: noi
 @notes: So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm.
 
-Trong một KEM, phía khách gửi **khoá công khai** và phía chủ gửi **bản mã**. Với ML-KEM-768 thì hai thứ đó khác kích thước, nên hai chiều của bắt tay không bằng nhau.
+Trong một KEM, phía khách gửi **khoá công khai** và phía chủ gửi **bản mã**. Với ML-KEM-768 thì hai thứ đó khác kích thước, nên hai chiều của bắt tay (handshake) không bằng nhau.
 
 ## Hai chiều của một bắt tay KEM không đối xứng · (tiếp)
 @phut: 1

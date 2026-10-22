@@ -40,13 +40,13 @@ Con số: ở cao độ {{s001}} km, thành phần vận tốc theo đường ng
 @phut: 1
 @che-do: noi
 
-Con số {{s007}} là con số mà phản biện sẽ hỏi, vì nó lớn hơn {{s009}}, và lớn hơn {{s009}} nghĩa là trực giao của OFDM không tự sống được.
+Con số {{s007}} là con số mà phản biện sẽ hỏi, vì nó lớn hơn {{s009}}, và lớn hơn {{s009}} nghĩa là trực giao (orthogonality) của OFDM không tự sống được.
 
 ## Hai cực trị, hai chỗ khác nhau (tiếp)
 @phut: 1
 @che-do: noi
 
-Cái bẫy: **Doppler cực đại ở chân trời, nhưng TỐC ĐỘ BIẾN THIÊN Doppler cực đại ở đỉnh đầu.** Hai cực trị ở hai chỗ khác nhau, và ở đỉnh đầu thì Doppler bằng {{s010}} trong khi tốc độ biến thiên của nó lớn nhất, khoảng {{s011}} kHz mỗi giây ở {{s005}} GHz. Đây là điểm dễ nhớ sai nhất của cả trụ {{s012}}.
+Cái bẫy: **Doppler cực đại ở chân trời, nhưng TỐC ĐỘ BIẾN THIÊN Doppler (Doppler rate) cực đại ở đỉnh đầu.** Hai cực trị ở hai chỗ khác nhau, và ở đỉnh đầu thì Doppler bằng {{s010}} trong khi tốc độ biến thiên của nó lớn nhất, khoảng {{s011}} kHz mỗi giây ở {{s005}} GHz. Đây là điểm dễ nhớ sai nhất của cả trụ {{s012}}.
 
 ## Hai cực trị, hai chỗ khác nhau (tiếp)
 @phut: 1
@@ -208,7 +208,7 @@ h = {{s001}}, eps = {{s010}}, fc = {{s024}}
 
 `Math.sqrt(3.986e14/((6378+h)⋆1e3))⋆(6378/(6378+h))⋆Math.cos(eps⋆Math.PI/180)/299792458⋆fc⋆1e9/1e3`
 
-Khoảng {{s025}} kHz, tức {{s026}} lần khoảng sóng mang con {{s008}} kHz và {{s027}} lần khoảng sóng mang con {{s028}} kHz. Lên băng Q hay V thì tỉ số này còn tăng tuyến tính theo tần số, nên bù trước Doppler không phải một tuỳ chọn thiết kế mà là điều kiện để mô hình kênh của bài báo còn có nghĩa.
+Khoảng {{s025}} kHz, tức {{s026}} lần khoảng sóng mang con {{s008}} kHz và {{s027}} lần khoảng sóng mang con {{s028}} kHz. Lên băng Q hay V thì tỉ số này còn tăng tuyến tính theo tần số, nên bù trước Doppler (Doppler pre-compensation) không phải một tuỳ chọn thiết kế mà là điều kiện để mô hình kênh của bài báo còn có nghĩa.
 
 ## Tính ra con số
 @phut: 1
@@ -372,7 +372,7 @@ thời điểm khắt khe nhất là lúc vệ tinh ở đỉnh đầu, nơi Dop
 
 Đoạn tính Doppler sau có một dòng thổi con số lên {{s004}}. Bấm vào dòng đó.
 
-- Cao độ chòm sao {{s001}} km, nên bán kính quỹ đạo là {{s037}} km.
+- Cao độ chòm sao (constellation) {{s001}} km, nên bán kính quỹ đạo là {{s037}} km.
 - Vận tốc quỹ đạo tròn v = sqrt(μ/a) cho {{s003}} km/s.
 - Doppler đỉnh ở {{s005}} GHz tính bằng f_d = (v/c)·f_c, cho khoảng {{s038}} kHz.
 

@@ -224,7 +224,7 @@ Trên một corpus IDS, một đặc trưng đơn lẻ có I(X_i; Y) đo đượ
 @che-do: hoi
 
 - Mô hình chưa học đủ, cần thêm tầng hoặc thêm tham số
-- Không đọc được, vì thông tin tương hỗ cần biết tỉ lệ nền của mạng đích
+- Không đọc được, vì thông tin tương hỗ cần biết tỉ lệ nền (base rate) của mạng đích
 - Đặc trưng đó là tín hiệu an ninh mạnh, nên giữ lại và nhấn mạnh trong bài
 - Dấu hiệu nhãn đã được mã hoá sẵn vào đặc trưng, phải kiểm quy trình sinh dữ liệu trước khi đọc bất cứ con số hiệu năng nào
 

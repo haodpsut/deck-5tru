@@ -4,7 +4,8 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
-    "trôi cục bộ": "client drift"
+    "trôi cục bộ": "client drift",
+    "bước cục bộ": "local steps"
   },
   "s001": "2",
   "s002": "3",

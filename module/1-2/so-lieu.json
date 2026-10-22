@@ -5,6 +5,7 @@
   },
   "_thuat_ngu": {
     "rò rỉ đặc trưng": "feature leakage",
+    "tỉ lệ nền": "base rate",
     "luồng": "flow"
   },
   "s001": "99%",

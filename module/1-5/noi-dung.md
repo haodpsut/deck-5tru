@@ -328,7 +328,7 @@ Hai câu đầu thoả ràng buộc nhất quán thời gian. Câu này phá rà
 @phut: 1
 @che-do: noi
 
-giữ tỉ lệ thật ở tập kiểm, chỉ dùng lấy mẫu lại cho tập huấn luyện, và nếu vẫn muốn có một bảng cân bằng thì khai nó là bảng phụ với tỉ lệ nền được ghi rõ.
+giữ tỉ lệ thật ở tập kiểm, chỉ dùng lấy mẫu lại cho tập huấn luyện, và nếu vẫn muốn có một bảng cân bằng thì khai nó là bảng phụ với tỉ lệ nền (base rate) được ghi rõ.
 
 ## Câu nào không được số nào chống đỡ · ca hai
 @phut: 1

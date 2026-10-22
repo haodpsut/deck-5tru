@@ -4,7 +4,14 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
-    "năng lực kẻ tấn công": "attacker capability"
+    "suy hao không gian tự do": "free-space path loss",
+    "năng lực kẻ tấn công": "attacker capability",
+    "đường tải trọng": "payload link",
+    "mô hình đe doạ": "threat model",
+    "đường cơ sở": "baseline",
+    "hiệu chuẩn": "calibration",
+    "gây nhiễu": "jamming",
+    "chòm sao": "constellation"
   },
   "s001": "1",
   "s002": "2",

@@ -5,6 +5,7 @@
   },
   "_thuat_ngu": {
     "phần triệu": "ppm",
+    "tỉ lệ nền": "base rate",
     "luồng": "flow"
   },
   "s001": "1",

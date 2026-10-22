@@ -8,9 +8,12 @@
     "góc tâm trái đất": "Earth central angle",
     "liên kết dịch vụ": "service link",
     "số vòng mỗi ngày": "mean motion",
+    "cửa sổ nhìn thấy": "visibility window",
     "thời gian trú": "dwell time",
     "mức khả dụng": "availability",
-    "khoảng xiên": "slant range"
+    "khoảng xiên": "slant range",
+    "hiệu chuẩn": "calibration",
+    "chòm sao": "constellation"
   },
   "s001": "3",
   "s002": "12",

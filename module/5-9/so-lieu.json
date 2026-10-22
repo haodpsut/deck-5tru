@@ -5,7 +5,11 @@
   },
   "_thuat_ngu": {
     "tính linh hoạt mật mã": "crypto-agility",
+    "rủi ro tương quan": "correlated risk",
     "cửa sổ thời gian": "time window",
+    "mức an toàn": "security level",
+    "bắt tay": "handshake",
+    "di trú": "migration",
     "gói": "packet"
   },
   "s001": "128",

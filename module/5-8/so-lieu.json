@@ -3,7 +3,11 @@
     "kho": "working/hoc-5-tru-web/data, bản 2026.10.06-2",
     "sinh_boi": "slides/5tru/sinh.py"
   },
-  "_thuat_ngu": {},
+  "_thuat_ngu": {
+    "mức an toàn": "security level",
+    "che mặt nạ": "masking",
+    "bắt tay": "handshake"
+  },
   "s001": "203",
   "s002": "1",
   "s003": "2",

@@ -32,7 +32,7 @@ Trong hệ tôi đang viết, ai giữ khoá nào, trong bao lâu, và tôi đã
 @che-do: noi
 @notes: Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau.
 
-Có một câu phản biện lặp lại nhiều hơn mọi câu khác trong hồ sơ của nhà: **the threat model is not clearly stated**. Nó rẻ để viết ra, tốn kém để trả lời, và không bao giờ trả lời được bằng cách thêm một thí nghiệm. Module này dạy đúng một thứ: khuôn **sáu dòng** để viết phần mô hình đe doạ, và cách kiểm xem từng câu kết luận trong bài còn cơ sở hay không khi thiếu một dòng.
+Có một câu phản biện lặp lại nhiều hơn mọi câu khác trong hồ sơ của nhà: **the threat model is not clearly stated**. Nó rẻ để viết ra, tốn kém để trả lời, và không bao giờ trả lời được bằng cách thêm một thí nghiệm. Module này dạy đúng một thứ: khuôn **sáu dòng** để viết phần mô hình đe doạ (threat model), và cách kiểm xem từng câu kết luận trong bài còn cơ sở hay không khi thiếu một dòng.
 
 ## Module này là bài tập viết (tiếp)
 @phut: 1
@@ -44,13 +44,13 @@ Sáu dòng, học thuộc theo thứ tự: tài sản cần bảo vệ; kẻ t�
 @phut: 1
 @che-do: noi
 
-Dòng năm là dòng duy nhất cho ra một con số, và con số đó chính là `x` trong bất đẳng thức Mosca.
+Dòng năm là dòng duy nhất cho ra một con số, và con số đó chính là `x` trong bất đẳng thức Mosca (Mosca inequality).
 
 ## Module này là bài tập viết (tiếp)
 @phut: 1
 @che-do: noi
 
-Và một thứ tự không đổi được của việc di trú: **kiểm kê trước, phân loại theo thời hạn bảo mật, rồi mới chọn thuật toán**. Chọn thuật toán trước là sai thứ tự, và nó lộ ra ngay trong bài: phần đánh giá so byte của ba bộ tham số rất kỹ, mà không ai biết dữ liệu của hệ cần giữ mật bao lâu.
+Và một thứ tự không đổi được của việc di trú (migration): **kiểm kê trước, phân loại theo thời hạn bảo mật, rồi mới chọn thuật toán**. Chọn thuật toán trước là sai thứ tự, và nó lộ ra ngay trong bài: phần đánh giá so byte của ba bộ tham số rất kỹ, mà không ai biết dữ liệu của hệ cần giữ mật bao lâu.
 
 ## Khuôn mô hình đe doạ sáu dòng
 @phut: 1
@@ -221,7 +221,7 @@ Khoảng {{s012}} lần, tức bậc {{s013}} lần. Con số này là lý do ki
 @phut: 1
 @che-do: noi
 
-chỗ nào trong hệ chỉ ký một lần cho một bản firmware vài trăm kB thì {{s005}} byte chiếm bậc {{s001}} phần trăm bản cập nhật, còn chỗ nào ký từng bản tin cảm biến {{s006}} byte thì chữ ký nặng hơn dữ liệu hơn {{s014}} lần và cả thiết kế phải đổi, ví dụ sang xác thực bằng khoá đối xứng với khoá do bắt tay cấp.
+chỗ nào trong hệ chỉ ký một lần cho một bản firmware vài trăm kB thì {{s005}} byte chiếm bậc {{s001}} phần trăm bản cập nhật, còn chỗ nào ký từng bản tin cảm biến {{s006}} byte thì chữ ký nặng hơn dữ liệu hơn {{s014}} lần và cả thiết kế phải đổi, ví dụ sang xác thực bằng khoá đối xứng với khoá do bắt tay (handshake) cấp.
 
 ## Tính ra con số · đáp (tiếp)
 @phut: 1
@@ -310,7 +310,7 @@ Phần mô hình đe doạ sau thiếu đúng một dòng, và thiếu dòng đ�
 @phut: 0.5
 @che-do: hoi
 
-- Thời hạn bảo mật: {{s006}} năm, theo quy định lưu hồ sơ bệnh án. Ngoài phạm vi: tính sẵn sàng và tấn công kênh phụ.
+- Thời hạn bảo mật: {{s006}} năm, theo quy định lưu hồ sơ bệnh án. Ngoài phạm vi: tính sẵn sàng và tấn công kênh phụ (side channel).
 - Do đó hệ của chúng tôi bảo đảm tính bí mật của phép đo y tế trong {{s006}} năm kể cả trước kẻ tấn công có máy lượng tử.
 
 ## Câu không được chống đỡ · ca một · đáp

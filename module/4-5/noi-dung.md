@@ -25,7 +25,7 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Dung lượng bí mật của tôi dựa trên việc biết kênh của kẻ nghe, và tôi biết nó bằng cách nào?
+Dung lượng bí mật (secrecy capacity) của tôi dựa trên việc biết kênh của kẻ nghe, và tôi biết nó bằng cách nào?
 
 ## Một công thức đúng
 @phut: 1.5
@@ -44,7 +44,7 @@ Hệ quả là một câu rất gọn mà người học phải nói được th
 @phut: 1
 @che-do: noi
 
-Module này có hai việc. Một, tách rõ ba đại lượng: `C_s` tức thời (cần biết `γ_E`), xác suất mất bí mật `P_out` (cần biết **phân bố** của `γ_E`, không cần giá trị), và tỉ lệ thời gian `C_s` bằng {{s001}} (hệ quả của toán tử cắt). Hai, cho thấy bằng số rằng **giữ C_s trung bình không đổi mà làm P_out xấu đi hẳn** là việc làm được, nên báo trung bình là không đủ.
+Module này có hai việc. Một, tách rõ ba đại lượng: `C_s` tức thời (cần biết `γ_E`), xác suất mất bí mật (secrecy outage probability) `P_out` (cần biết **phân bố** của `γ_E`, không cần giá trị), và tỉ lệ thời gian `C_s` bằng {{s001}} (hệ quả của toán tử cắt). Hai, cho thấy bằng số rằng **giữ C_s trung bình không đổi mà làm P_out xấu đi hẳn** là việc làm được, nên báo trung bình là không đủ.
 
 ## Dung lượng bí mật, và đầu vào mà nó đòi
 @phut: 1
@@ -100,7 +100,7 @@ Hệ quả về cách báo số, và đây là chỗ bị bắt: trung bình c�
 @phut: 1
 @che-do: noi
 
-Điểm phải nhớ: **mỗi con số trung bình của C_s phải đi kèm tỉ lệ thời gian nó bằng {{s001}}**, và nếu có tốc độ mục tiêu thì kèm cả `P_out` tại tốc độ đó. Thiếu hai con số đó thì trung bình không khai được, giống hệt cách precision không khai được khi thiếu tỉ lệ nền.
+Điểm phải nhớ: **mỗi con số trung bình của C_s phải đi kèm tỉ lệ thời gian nó bằng {{s001}}**, và nếu có tốc độ mục tiêu thì kèm cả `P_out` tại tốc độ đó. Thiếu hai con số đó thì trung bình không khai được, giống hệt cách precision không khai được khi thiếu tỉ lệ nền (base rate).
 
 ## Xác suất mất bí mật: cái gì được mua
 @phut: 1
@@ -141,7 +141,7 @@ Cái phải trả: phải khai **phân bố** của kênh kẻ nghe và **phân 
 
 - biết γ_E, tức biết kênh của kẻ nghe; đây là giả thiết nặng nhất và cả module nói về nó
 - kênh của kẻ nghe là bản suy giảm của kênh hợp pháp (kênh wiretap suy giảm), nên tốc độ bí mật đạt được là hiệu hai dung lượng
-- độ dài khối vô hạn và mã đạt dung lượng; với khối hữu hạn thì tốc độ bí mật đạt được thấp hơn
+- độ dài khối vô hạn và mã đạt dung lượng; với khối hữu hạn (finite-key) thì tốc độ bí mật đạt được thấp hơn
 
 ## Dung lượng bí mật của kênh Gauss suy giảm (tiếp)
 @phut: 1
@@ -247,7 +247,7 @@ Tắt giả thiết biết kênh của kẻ nghe. Đại lượng nào còn khai
 - C_s tức thời, chỉ cần thay γ_E bằng giá trị trung bình
 - C_s trung bình, vì trung bình không cần biết giá trị tức thời
 - P_out, với một phân bố khai trước cho kênh và vị trí của kẻ nghe
-- Không còn đại lượng nào, nên an ninh lớp vật lý không dùng được
+- Không còn đại lượng nào, nên an ninh lớp vật lý (physical layer security) không dùng được
 
 ## Chọn một phương án · đáp
 @phut: 1.5

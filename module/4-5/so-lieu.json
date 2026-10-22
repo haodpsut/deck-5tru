@@ -3,7 +3,13 @@
     "kho": "working/hoc-5-tru-web/data, bản 2026.10.06-2",
     "sinh_boi": "slides/5tru/sinh.py"
   },
-  "_thuat_ngu": {},
+  "_thuat_ngu": {
+    "xác suất mất bí mật": "secrecy outage probability",
+    "an ninh lớp vật lý": "physical layer security",
+    "dung lượng bí mật": "secrecy capacity",
+    "khối hữu hạn": "finite-key",
+    "tỉ lệ nền": "base rate"
+  },
   "s001": "0",
   "s002": "1",
   "s003": "2",

@@ -39,7 +39,7 @@ Mỗi slide hỏi một con số hoặc một công thức. Dẫn lại **bằng
 @che-do: so
 
 - x đo bằng nghĩa vụ bảo mật của dữ liệu, không bằng vòng đời thiết bị
-- y là thời gian di trú xong toàn bộ nơi dùng mật mã, kể cả hệ đã bàn giao, nên nó đo được bằng kiểm kê chứ không ước bằng cảm tính
+- y là thời gian di trú (migration) xong toàn bộ nơi dùng mật mã, kể cả hệ đã bàn giao, nên nó đo được bằng kiểm kê chứ không ước bằng cảm tính
 - z là ước lượng về thế giới bên ngoài, nên nó mang độ bất định và kết luận phải viết ở dạng điều kiện theo z
 
 ## Giả thiết (tiếp)
@@ -190,7 +190,7 @@ Cùng tấn công đó nhưng tính trong mô hình chi phí lượng tử của
 @che-do: hoi
 @notes: Dẫn bằng miệng, đừng bấm máy.
 
-Trong mô hình core-SVP cổ điển, kích thước khối BKZ cần thiết để đạt {{s004}} bit an toàn là bao nhiêu?
+Trong mô hình core-SVP cổ điển, kích thước khối (block size) BKZ cần thiết để đạt {{s004}} bit an toàn là bao nhiêu?
 
 lam = {{s004}}, ec = {{s015}}
 
@@ -237,7 +237,7 @@ Khoảng {{s019}} bit, tức THẤP HƠN {{s004}} bit chứ không bằng. Cùng
 @phut: 0.5
 @che-do: so
 
-- các bộ được so phải ở cùng một mức an toàn, nếu không thì chênh byte không quy được về chênh chi phí ở cùng mức bảo vệ
+- các bộ được so phải ở cùng một mức an toàn (security level), nếu không thì chênh byte không quy được về chênh chi phí ở cùng mức bảo vệ
 - chỉ cộng byte thuộc tiêu chí đã khai, không trộn byte của tiêu chí khác vào cùng một cột
 
 ## Con số này bằng bao nhiêu
@@ -345,7 +345,7 @@ sigPQ = {{s028}}, sigCL = {{s003}}
 
 `sigPQ / sigCL`
 
-Khoảng {{s030}} lần, tức làm tròn là khoảng {{s031}} lần. Đây là tỉ số của RIÊNG chữ ký, đúng theo tiêu chí byte mỗi lần xác thực lại khi khoá công khai đã có sẵn ở hai bên. Nó không trả lời được câu hậu lượng tử đắt hơn bao nhiêu lần một cách chung chung: theo tiêu chí tổng byte một lần bắt tay thì tỉ số tụt xuống khoảng {{s032}} lần.
+Khoảng {{s030}} lần, tức làm tròn là khoảng {{s031}} lần. Đây là tỉ số của RIÊNG chữ ký, đúng theo tiêu chí byte mỗi lần xác thực lại khi khoá công khai đã có sẵn ở hai bên. Nó không trả lời được câu hậu lượng tử đắt hơn bao nhiêu lần một cách chung chung: theo tiêu chí tổng byte một lần bắt tay (handshake) thì tỉ số tụt xuống khoảng {{s032}} lần.
 
 ## Đáp (tiếp)
 @phut: 0.5
@@ -638,7 +638,7 @@ Khoảng {{s055}} điểm phần trăm, từ {{s056}} lên {{s057}} phần trăm
 
 - α là suy hao trên một km và không đổi theo chiều dài, tức sợi đồng nhất, không mối hàn, không đầu nối
 - chặn PLOB áp cho kênh hai điểm KHÔNG có bộ lặp lượng tử và KHÔNG có node trung gian tin cậy
-- R_BB84 ở dạng này là key rate tiệm cận, tức độ dài khối tiến tới vô hạn, chưa trừ thống kê khối hữu hạn
+- R_BB84 ở dạng này là key rate tiệm cận, tức độ dài khối tiến tới vô hạn, chưa trừ thống kê khối hữu hạn (finite-key)
 
 ## Giả thiết (tiếp)
 @phut: 1
@@ -667,7 +667,7 @@ Sợi G.652.D bán ngoài thị trường bảo đảm suy hao tối đa bao nhi
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-Sợi đơn mode {{s060}} nm với suy hao chuẩn, chiều dài L = {{s042}} km. Hiệu suất kênh η bằng {{s063}} luỹ thừa âm mấy? Nhập số mũ dương.
+Sợi đơn mode {{s060}} nm với suy hao chuẩn, chiều dài L = {{s042}} km. Hiệu suất kênh (channel efficiency) η bằng {{s063}} luỹ thừa âm mấy? Nhập số mũ dương.
 
 *Module {{s061}}.*
 
@@ -773,7 +773,7 @@ Viết con số này vào bài kèm chữ ít nhất thì nó là một tuyên b
 @phut: 1
 @che-do: so
 
-- x là số năm dữ liệu gửi HÔM NAY còn cần giữ mật, và nó đến từ dòng năm của mô hình đe doạ, không từ phỏng đoán
+- x là số năm dữ liệu gửi HÔM NAY còn cần giữ mật, và nó đến từ dòng năm của mô hình đe doạ (threat model), không từ phỏng đoán
 - y là số năm di trú thật của hệ, gồm cả kiểm kê, thử nghiệm, cập nhật thiết bị ngoài hiện trường và thời gian sống của lô thiết bị cũ
 
 ## Giả thiết (tiếp)
@@ -907,7 +907,7 @@ Module này tách bảo đảm an toàn của một hệ PQC thành mấy lớp,
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-Che mặt nạ bậc d = {{s084}}. Mỗi bí mật bị tách thành bao nhiêu phần?
+Che mặt nạ (masking) bậc d = {{s084}}. Mỗi bí mật bị tách thành bao nhiêu phần?
 
 *Module {{s083}}.*
 

@@ -40,7 +40,7 @@ Mỗi slide hỏi một con số hoặc một công thức. Dẫn lại **bằng
 
 - FedAvg như viết ở trên giả định mọi client chạy ĐÚNG E epoch và không client nào bị ngắt giữa vòng
 - Trọng số n_k/n giả định số mẫu là thước đo đúng của tầm quan trọng, tức mọi mẫu đáng giá như nhau giữa các client
-- FedProx giả định bài toán cục bộ được giải xấp xỉ tới một độ chính xác khai được, vì nếu giải quá ít bước thì neo gần chưa phát huy
+- FedProx giả định bài toán cục bộ được giải xấp xỉ tới một độ chính xác khai được, vì nếu giải quá ít bước thì neo gần (proximal term) chưa phát huy
 
 ## Giả thiết (tiếp)
 @phut: 0.5
@@ -138,7 +138,7 @@ r = {{s012}}
 @phut: 0.5
 @che-do: so
 
-- Dòng TV tương đương là TV của một client giữ ĐỀU m lớp, với m là số lớp hiệu dụng ở trên. Nó KHÔNG phải kỳ vọng của TV dưới Dirichlet, mà là TV của một client đại diện có cùng chỉ số Simpson. Dùng nó để đọc bậc độ lớn thì được, dùng nó làm con số báo cáo thì phải khai đúng định nghĩa này
+- Dòng TV tương đương là TV của một client giữ ĐỀU m lớp, với m là số lớp hiệu dụng (effective number of classes) ở trên. Nó KHÔNG phải kỳ vọng của TV dưới Dirichlet, mà là TV của một client đại diện có cùng chỉ số Simpson. Dùng nó để đọc bậc độ lớn thì được, dùng nó làm con số báo cáo thì phải khai đúng định nghĩa này
 
 ## Con số này bằng bao nhiêu
 @phut: 0.5
@@ -268,7 +268,7 @@ C = {{s009}}, a = {{s026}}
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-Trong B, số hạng chứa số bước cục bộ phình theo nó với bậc nào? Nhập bậc đó.
+Trong B, số hạng chứa số bước cục bộ (local steps) phình theo nó với bậc nào? Nhập bậc đó.
 
 *Module {{s032}}.*
 
@@ -354,7 +354,7 @@ E1 = {{s003}}, E2 = {{s042}}
 @che-do: so
 
 - Mỗi toạ độ giữ lại tốn b bit giá trị CỘNG idx bit chỉ số; khi gửi dày đủ thì không cần chỉ số nên idx = {{s030}}
-- H là chi phí cố định mỗi vòng mỗi client, gồm bắt tay, tiêu đề, lịch chọn client và thiết lập secure aggregation; H phải ĐO ĐƯỢC trên hệ thật, không đoán
+- H là chi phí cố định mỗi vòng mỗi client, gồm bắt tay (handshake), tiêu đề, lịch chọn client và thiết lập secure aggregation; H phải ĐO ĐƯỢC trên hệ thật, không đoán
 
 ## Giả thiết (tiếp)
 @phut: 0.5
@@ -437,7 +437,7 @@ bit = {{s006}}, s = {{s051}}, idx = {{s049}}
 @che-do: hoi
 @notes: Dẫn bằng miệng, đừng bấm máy.
 
-ResNet-18 với {{s007}} triệu tham số, {{s006}} bit giá trị và {{s049}} bit chỉ số, chi phí cố định {{s055}} B mỗi vòng mỗi client, hệ số phình vòng rho = {{s017}}. Tỉ lệ thưa tối ưu s⋆ bằng bao nhiêu?
+ResNet-18 với {{s007}} triệu tham số, {{s006}} bit giá trị và {{s049}} bit chỉ số, chi phí cố định {{s055}} B mỗi vòng mỗi client, hệ số phình vòng rho = {{s017}}. Tỉ lệ thưa (sparsity ratio) tối ưu s⋆ bằng bao nhiêu?
 
 rho = {{s023}}, H = {{s055}}, P = {{s005}}, bit = {{s006}}, idx = {{s049}}
 
@@ -597,7 +597,7 @@ Hai, epsilon thật là min theo alpha nên nó nhỏ hơn hoặc bằng {{s061}
 @che-do: so
 
 - Adv đo ở CÙNG một ngưỡng cho cả hai lớp, và tập thành viên với tập không thành viên chỉ khác nhau ở yếu tố thành viên, không khác ở phân bố
-- Cả ba con số đều là hàm của năng lực kẻ tấn công (attacker capability) đã khai, nên đổi mô hình đe doạ là đổi kết quả, không phải đổi cách trình bày
+- Cả ba con số đều là hàm của năng lực kẻ tấn công (attacker capability) đã khai, nên đổi mô hình đe doạ (threat model) là đổi kết quả, không phải đổi cách trình bày
 
 ## Con số này bằng bao nhiêu
 @phut: 0.5
@@ -650,7 +650,7 @@ Bằng {{s064}}, tức gấp bốn lần trường hợp n = {{s004}} với eta 
 @phut: 1
 @che-do: so
 
-thẻ mô phỏng cho thấy cùng lúc đó cửa hậu đã cài vào lại sống dai hơn.
+thẻ mô phỏng cho thấy cùng lúc đó cửa hậu (backdoor) đã cài vào lại sống dai hơn.
 
 ## Tính ra con số
 @phut: 0.5
@@ -769,7 +769,7 @@ Dùng nó làm tuyên bố thực nghiệm là nhầm một chặn lý thuyết 
 @che-do: hoi
 @notes: Dẫn bằng miệng, đừng bấm máy.
 
-Krum chạy với {{s004}} client mỗi vòng và chặn trên của số kẻ xấu đặt là {{s066}}. Điểm Krum của mỗi client lấy tổng trên bao nhiêu láng giềng?
+Krum chạy với {{s004}} client mỗi vòng và chặn trên của số kẻ xấu đặt là {{s066}}. Điểm Krum (Krum score) của mỗi client lấy tổng trên bao nhiêu láng giềng?
 
 n = {{s004}}, f = {{s066}}
 
@@ -992,7 +992,7 @@ Khoảng {{s093}} điểm phần trăm, và đó là mức tăng của TRUNG BÌ
 @phut: 1
 @che-do: so
 
-- Vòng là đồng bộ: server chờ tới khi mọi client trong S báo về hoặc tới hạn chờ D, rồi mới tổng hợp, nên thời gian vòng là max chứ không phải trung bình
+- Vòng là đồng bộ: server chờ tới khi mọi client trong S báo về hoặc tới hạn chờ (deadline) D, rồi mới tổng hợp, nên thời gian vòng là max chứ không phải trung bình
 - Server chuẩn hoá lại trọng số theo tập người về kịp, tức chia cho tổng trọng số của những client có mặt; đây là điều cài đặt thật làm và cũng là chỗ sinh ra thiên lệch
 
 ## Giả thiết (tiếp)
@@ -1023,7 +1023,7 @@ Một vòng chọn {{s066}} client, thời gian mỗi client phân bố đều �
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-Nhóm chậm chiếm tỉ lệ danh nghĩa {{s096}} của dữ liệu và chỉ về kịp hạn chờ với xác suất {{s097}}, còn nhóm nhanh về kịp chắc chắn. Sau khi server chuẩn hoá lại, trọng số hiệu dụng của nhóm chậm bằng bao nhiêu?
+Nhóm chậm chiếm tỉ lệ danh nghĩa {{s096}} của dữ liệu và chỉ về kịp hạn chờ với xác suất {{s097}}, còn nhóm nhanh về kịp chắc chắn. Sau khi server chuẩn hoá lại, trọng số hiệu dụng (effective weight) của nhóm chậm bằng bao nhiêu?
 
 *Module {{s094}}.*
 

@@ -3,7 +3,18 @@
     "kho": "working/hoc-5-tru-web/data, bản 2026.10.06-2",
     "sinh_boi": "slides/5tru/sinh.py"
   },
-  "_thuat_ngu": {},
+  "_thuat_ngu": {
+    "suy hao không gian tự do": "free-space path loss",
+    "xác suất mất bí mật": "secrecy outage probability",
+    "không gian vấn đề": "problem space",
+    "dung lượng bí mật": "secrecy capacity",
+    "cảm biến tích hợp": "integrated sensing",
+    "phân giải cự ly": "range resolution",
+    "mô hình đe doạ": "threat model",
+    "khối hữu hạn": "finite-key",
+    "danh tính": "identity",
+    "kênh phụ": "side channel"
+  },
   "s001": "6",
   "s002": "3",
   "s003": "0",

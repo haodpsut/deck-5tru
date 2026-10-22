@@ -5,7 +5,9 @@
   },
   "_thuat_ngu": {
     "góc tâm trái đất": "Earth central angle",
-    "thời gian trú": "dwell time"
+    "cửa sổ nhìn thấy": "visibility window",
+    "thời gian trú": "dwell time",
+    "chòm sao": "constellation"
   },
   "s001": "0,4%",
   "s002": "60",

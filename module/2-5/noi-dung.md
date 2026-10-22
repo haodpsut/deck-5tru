@@ -4,7 +4,7 @@ phu-de: Trụ 2 FL · module 2.5
 tac-gia: Đỗ Phúc Hảo · CAIRA, Đại học Kiến trúc Đà Nẵng
 noi-ngay: Tự ôn, bộ Năm trụ
 profile: giang-day
-tong-phut: 93.5
+tong-phut: 94.5
 accent: "#2C6E9B"
 ngon-ngu: vi
 gate: khong
@@ -144,7 +144,13 @@ Secure aggregation làm cho server chỉ thấy **tổng** các cập nhật ch�
 @phut: 1
 @che-do: noi
 
-Điểm phải nhớ: **nó không chặn suy luận từ mô hình đã công bố, nên nó không phải DP và không sinh ra con số `epsilon` nào.** Hai thứ này ghép được và nên ghép, nhưng đổi tên cái này thành cái kia là một lỗi khái niệm mà reviewer bắt rất nhanh. Cách khai đúng là: secure aggregation thu hẹp mô hình đe doạ của server trung thực nhưng tò mò, DP thu hẹp lượng thông tin rò ra qua chính mô hình.
+Điểm phải nhớ: **nó không chặn suy luận từ mô hình đã công bố, nên nó không phải DP và không sinh ra con số `epsilon` nào.** Hai thứ này ghép được và nên ghép, nhưng đổi tên cái này thành cái kia là một lỗi khái niệm mà reviewer bắt rất nhanh. Cách khai đúng là:
+
+## Secure aggregation bảo vệ cái gì · đáp (tiếp)
+@phut: 1
+@che-do: noi
+
+secure aggregation thu hẹp mô hình đe doạ (threat model) của server trung thực nhưng tò mò, DP thu hẹp lượng thông tin rò ra qua chính mô hình.
 
 ## Định nghĩa (epsilon
 @phut: 1.5
@@ -280,7 +286,7 @@ Một bài khai: hệ dùng secure aggregation nên server không thấy cập n
 
 **Một cặp (epsilon, delta) kèm đơn vị kề, vì secure aggregation không chặn suy luận từ mô hình đã công bố**
 
-Secure aggregation là bảo đảm về ai thấy gì trên đường truyền và tại server. Mô hình toàn cục vẫn được công bố, và suy luận thành viên hay truy ngược vẫn làm được từ chính mô hình đó. Chỉ DP mới chặn được kênh ấy, và chặn đó phải hiện ra thành một cặp số cộng một đơn vị kề.
+Secure aggregation là bảo đảm về ai thấy gì trên đường truyền và tại server. Mô hình toàn cục vẫn được công bố, và suy luận thành viên (membership inference) hay truy ngược vẫn làm được từ chính mô hình đó. Chỉ DP mới chặn được kênh ấy, và chặn đó phải hiện ra thành một cặp số cộng một đơn vị kề.
 
 ## Hai bài cùng chạy DP-SGD trên cùng dữ liệu
 @phut: 1
@@ -434,7 +440,7 @@ dùng chặn giải tích Gauss của Balle và Wang, hoặc tính sigma từ k�
 @phut: 1
 @che-do: noi
 
-Kế toán ở mức client đang dùng khuếch đại do lấy mẫu Poisson cho từng BƯỚC cục bộ, nhưng dòng này nói lô cục bộ được tạo bằng xáo trộn rồi cắt, tức mỗi mẫu đi qua đúng một lần mỗi epoch. Đó không phải lấy mẫu Poisson, nên định lý khuếch đại không áp được và epsilon báo ra không còn là chặn. Hai dòng đầu đều đúng và không liên quan:
+Kế toán ở mức client đang dùng khuếch đại do lấy mẫu Poisson cho từng BƯỚC cục bộ (local steps), nhưng dòng này nói lô cục bộ được tạo bằng xáo trộn rồi cắt, tức mỗi mẫu đi qua đúng một lần mỗi epoch. Đó không phải lấy mẫu Poisson, nên định lý khuếch đại không áp được và epsilon báo ra không còn là chặn. Hai dòng đầu đều đúng và không liên quan:
 
 ## Câu không được chống đỡ · ca ba · đáp (tiếp)
 @phut: 1

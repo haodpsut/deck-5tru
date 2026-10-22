@@ -38,7 +38,7 @@ Module này không nói về thuật toán. Nó dựng bài toán, và nó có �
 @phut: 1
 @che-do: noi
 
-Nên phân vùng thật là **lệch nhãn cực đoan cộng thiếu nhãn**, không phải một Dirichlet đẹp. **Sao không gom dữ liệu về một chỗ?** Đây là câu phản biện kinh điển, và nó là câu DUY NHẤT trong ba câu có thể trả lời bằng con số: byte nếu gom so với byte nếu liên bang. Hai câu đầu trả lời bằng khai báo, nên chúng rẻ và cũng dễ khai sai mà không ai bắt được.
+Nên phân vùng thật là **lệch nhãn (label skew) cực đoan cộng thiếu nhãn**, không phải một Dirichlet đẹp. **Sao không gom dữ liệu về một chỗ?** Đây là câu phản biện kinh điển, và nó là câu DUY NHẤT trong ba câu có thể trả lời bằng con số: byte nếu gom so với byte nếu liên bang. Hai câu đầu trả lời bằng khai báo, nên chúng rẻ và cũng dễ khai sai mà không ai bắt được.
 
 ## Ba câu hỏi dựng bài toán (tiếp)
 @phut: 1
@@ -78,7 +78,7 @@ Bốn trục: **số client** (cross-silo từ hai tới khoảng một trăm, c
 @phut: 1
 @che-do: noi
 
-Điểm phải nhớ: **FL cho IDS ở biên giới tổ chức gần như luôn là cross-silo, và điều đó đổi cả thiết kế thí nghiệm.** Với cross-silo thì mọi site dự mọi vòng, nên lấy mẫu client không khuếch đại riêng tư; số client nhỏ nên điều kiện tồn tại của bộ tổng hợp bền rất chặt; và độ tin cao nên mô hình đe doạ hợp lý là nửa trung thực chứ không phải Byzantine tuỳ ý.
+Điểm phải nhớ: **FL cho IDS ở biên giới tổ chức gần như luôn là cross-silo, và điều đó đổi cả thiết kế thí nghiệm.** Với cross-silo thì mọi site dự mọi vòng, nên lấy mẫu client không khuếch đại riêng tư; số client nhỏ nên điều kiện tồn tại của bộ tổng hợp bền rất chặt; và độ tin cao nên mô hình đe doạ (threat model) hợp lý là nửa trung thực chứ không phải Byzantine tuỳ ý.
 
 ## Cross-silo và cross-device, bốn trục phân biệt · (tiếp)
 @phut: 1
@@ -239,7 +239,7 @@ Một bài khai chế độ cross-silo giữa {{s015}} bệnh viện, rồi ch�
 @che-do: hoi
 
 - Thời gian huấn luyện trong thí nghiệm không khớp thực tế
-- Thí nghiệm đánh giá một chế độ khác chế độ đã khai, nên mọi kết luận về bộ tổng hợp bền, về kế toán riêng tư và về tính sẵn sàng đều không chuyển sang được
+- Thí nghiệm đánh giá một chế độ khác chế độ đã khai, nên mọi kết luận về bộ tổng hợp bền, về kế toán riêng tư (privacy accounting) và về tính sẵn sàng đều không chuyển sang được
 - Nên dùng FedProx thay vì FedAvg cho cross-silo
 - {{s009}} client là quá nhiều để mô phỏng trên một máy
 
@@ -263,7 +263,7 @@ Ba thứ đổi cùng lúc khi đổi chế độ. Điều kiện tồn tại c�
 
 Bài khai phân vùng non-IID bằng Dirichlet với alpha = {{s016}} để phản ánh thực tế của IDS liên bang. Phần nào của thực tế mà Dirichlet KHÔNG mô hình được?
 
-- Lệch phân bố nhãn giữa các site
+- Lệch phân bố (distribution skew) nhãn giữa các site
 - Lệch số lượng mẫu giữa các site
 - Việc có site hoàn toàn KHÔNG có nhãn, vì nhãn đến từ đội SOC mà không site nào cũng có
 - Việc các site có kích thước mô hình khác nhau
@@ -364,7 +364,7 @@ Ba thứ đó đều sai trong một liên bang IDS thật. Cách sửa rẻ nh�
 
 - Mười hai site, mỗi site sinh khoảng {{s012}} MB siêu dữ liệu luồng mỗi ngày.
 - Mô hình của chúng tôi có {{s018}} MB tham số và huấn luyện trong {{s019}} vòng.
-- Do đó học liên bang là lựa chọn phù hợp vì nó giảm đáng kể băng thông so với gom dữ liệu về trung tâm.
+- Do đó học liên bang (federated learning) là lựa chọn phù hợp vì nó giảm đáng kể băng thông so với gom dữ liệu về trung tâm.
 
 ## Câu không được chống đỡ · ca hai · đáp
 @phut: 1.5

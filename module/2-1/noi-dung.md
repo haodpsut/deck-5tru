@@ -32,13 +32,13 @@ FedProx, SCAFFOLD, FedNova mỗi cái sửa đúng một bệnh nào của FedAv
 @che-do: noi
 @notes: Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau.
 
-Ba thuật toán hậu FedAvg hay bị xếp cạnh nhau như ba mức độ tốt dần. Chúng không phải thế. Mỗi cái sửa **đúng một bệnh** và không sửa hai bệnh kia: **FedProx** sửa *trôi cục bộ (client drift)*, bằng cách thêm một neo gần vào hàm mục tiêu cục bộ. **SCAFFOLD** sửa *lệch hướng cập nhật*, bằng cách trừ đi thiên lệch đã ước lượng, và trả giá bằng gấp đôi lượng truyền.
+Ba thuật toán hậu FedAvg hay bị xếp cạnh nhau như ba mức độ tốt dần. Chúng không phải thế. Mỗi cái sửa **đúng một bệnh** và không sửa hai bệnh kia: **FedProx** sửa *trôi cục bộ (client drift)*, bằng cách thêm một neo gần (proximal term) vào hàm mục tiêu cục bộ. **SCAFFOLD** sửa *lệch hướng cập nhật*, bằng cách trừ đi thiên lệch đã ước lượng, và trả giá bằng gấp đôi lượng truyền.
 
 ## Bốn thuật toán (tiếp)
 @phut: 1
 @che-do: noi
 
-**FedNova** sửa *lệch do số bước cục bộ khác nhau*, bằng cách chuẩn hoá theo `tau_i`. Nên câu hỏi trước khi chọn thuật toán không phải là cái nào mạnh nhất, mà là **hệ của tôi mắc bệnh nào trong ba bệnh đó**.
+**FedNova** sửa *lệch do số bước cục bộ (local steps) khác nhau*, bằng cách chuẩn hoá theo `tau_i`. Nên câu hỏi trước khi chọn thuật toán không phải là cái nào mạnh nhất, mà là **hệ của tôi mắc bệnh nào trong ba bệnh đó**.
 
 ## Bốn thuật toán (tiếp)
 @phut: 1
@@ -112,7 +112,7 @@ SCAFFOLD giữ hai thứ trạng thái: `c_i` ở từng client và `c` ở máy
 @phut: 1
 @che-do: noi
 
-**Điểm phải nhớ:** mỗi vòng, client gửi lên **hai** vật cùng kích thước mô hình, là cập nhật mô hình và cập nhật biến điều khiển. Lượng truyền mỗi vòng **gấp {{s002}}**, và client phải giữ trạng thái giữa các vòng, nên cross-device với client không trạng thái thì SCAFFOLD không áp được như in trong bài gốc.
+**Điểm phải nhớ:** mỗi vòng, client gửi lên **hai** vật cùng kích thước mô hình, là cập nhật mô hình và cập nhật biến điều khiển (control variate). Lượng truyền mỗi vòng **gấp {{s002}}**, và client phải giữ trạng thái giữa các vòng, nên cross-device với client không trạng thái thì SCAFFOLD không áp được như in trong bài gốc.
 
 ## Khi số bước cục bộ khác nhau, FedAvg tối ưu cái gì
 @phut: 1

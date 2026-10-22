@@ -4,7 +4,7 @@ phu-de: Trụ 3 NTN · module 3.7
 tac-gia: Đỗ Phúc Hảo · CAIRA, Đại học Kiến trúc Đà Nẵng
 noi-ngay: Tự ôn, bộ Năm trụ
 profile: giang-day
-tong-phut: 67.5
+tong-phut: 68.5
 accent: "#2C6E9B"
 ngon-ngu: vi
 gate: khong
@@ -32,7 +32,7 @@ Con số thông lượng tôi báo là trung bình trên cái gì, và ở biên
 @che-do: noi
 @notes: Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau.
 
-Vệt phủ của một chùm không đồng nhất. Ở {{s001}} km với góc nâng tối thiểu 10°, suy hao không gian tự do ở biên lớn hơn ở đỉnh đầu {{s002}} dB, và {{s002}} dB SNR không phải là một chi tiết: nó đưa SE từ {{s003}} xuống khoảng {{s004}} bit mỗi ký hiệu, tức còn khoảng một phần bảy.
+Vệt phủ của một chùm không đồng nhất. Ở {{s001}} km với góc nâng tối thiểu 10°, suy hao không gian tự do (free-space path loss) ở biên lớn hơn ở đỉnh đầu {{s002}} dB, và {{s002}} dB SNR không phải là một chi tiết: nó đưa SE từ {{s003}} xuống khoảng {{s004}} bit mỗi ký hiệu, tức còn khoảng một phần bảy.
 
 ## Một con số trung bình luôn kèm một câu hỏi (tiếp)
 @phut: 1
@@ -46,7 +46,11 @@ Nên mọi con số SE hoặc thông lượng trong bài NTN đều là một ph
 
 Và hai phân bố người dùng khác nhau có thể cho CÙNG một trung bình theo diện tích mà khác hẳn theo người dùng, vì trung bình theo diện tích không nhìn thấy người dùng ở đâu.
 
-Hai thứ nữa luôn phải nhân vào trước khi nói thông lượng hệ thống: hệ số tái dùng tần số `N` chia băng cho các nhóm chùm, và tỉ lệ chiếu của beam hopping với ràng buộc tổng các tỉ lệ chiếu không vượt {{s006}}.
+## Một con số trung bình luôn kèm một câu hỏi (tiếp)
+@phut: 1
+@che-do: noi
+
+Hai thứ nữa luôn phải nhân vào trước khi nói thông lượng hệ thống: hệ số tái dùng tần số (frequency reuse factor) `N` chia băng cho các nhóm chùm, và tỉ lệ chiếu (illumination ratio) của beam hopping với ràng buộc tổng các tỉ lệ chiếu không vượt {{s006}}.
 
 ## Khái niệm tầng 3
 @phut: 1
@@ -134,7 +138,7 @@ Vệ tinh chỉ chiếu một tập con các chùm trong mỗi khe thời gian, 
 @che-do: so
 
 - Nhiễu nhiệt trắng Gauss là nguồn nhiễu chi phối, nên dùng được công thức Shannon
-- k là hằng số Boltzmann viết theo dB, không phụ thuộc hệ, nên nó không phải tham số cần hiệu chuẩn
+- k là hằng số Boltzmann viết theo dB, không phụ thuộc hệ, nên nó không phải tham số cần hiệu chuẩn (calibration)
 - A_mưa phụ thuộc mức khả dụng (availability) khai báo và góc nâng, nên nó KHÔNG phải một số cố định của hệ
 - Shannon là chặn trên: SE thực tế lấy theo bảng điều chế mã hoá nên luôn nhỏ hơn, và rời rạc
 

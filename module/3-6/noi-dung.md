@@ -278,7 +278,7 @@ Thay mô hình năng lượng phi tuyến bằng mô hình tuyến tính theo qu
 @che-do: hoi
 
 - Chỉ con số năng lượng, nghiệm quỹ đạo giữ nguyên vì hình học không đổi
-- Chỉ nghiệm quỹ đạo, con số năng lượng vẫn so được vì đã hiệu chuẩn c
+- Chỉ nghiệm quỹ đạo, con số năng lượng vẫn so được vì đã hiệu chuẩn (calibration) c
 - Cả con số và nghiệm quỹ đạo, vì thời gian treo mất giá nên bài toán thành bài toán đường đi ngắn nhất
 - Không đổi gì đáng kể nếu c được hiệu chuẩn từ dữ liệu bay thật
 

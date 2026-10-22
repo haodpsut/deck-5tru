@@ -38,7 +38,7 @@ Module này là một cổng chống tự thổi đóng góp. Cách dùng rất 
 @phut: 1
 @che-do: noi
 
-Lý do phải làm thế: kiến trúc dựa dịch vụ (service based architecture) của 5G đã chuẩn hoá sẵn khá nhiều thứ mà bài báo 6G hay kể như mới, gồm che danh tính thường trực bằng `SUCI`, TLS giữa các hàm mạng, `SEPP` với giao diện `N32` cho liên mạng, và phân quyền bằng token theo từng yêu cầu. Reviewer của IEEE trong lĩnh vực này biết các mục đó, nên một danh mục tự thổi là cách mất bài nhanh nhất.
+Lý do phải làm thế: kiến trúc dựa dịch vụ (service based architecture) của 5G đã chuẩn hoá sẵn khá nhiều thứ mà bài báo 6G hay kể như mới, gồm che danh tính (identity) thường trực bằng `SUCI`, TLS giữa các hàm mạng, `SEPP` với giao diện `N32` cho liên mạng, và phân quyền bằng token theo từng yêu cầu. Reviewer của IEEE trong lĩnh vực này biết các mục đó, nên một danh mục tự thổi là cách mất bài nhanh nhất.
 
 ## Zero trust và danh tính, phần kế thừa từ 5G (tiếp)
 @phut: 1
@@ -100,7 +100,7 @@ Nói định nghĩa và **điểm phải nhớ**, rồi lật.
 @phut: 1
 @che-do: noi
 
-Nhầm che SUPI với bảo vệ vị trí là một trong hai hiểu sai kinh điển của module này, và nó làm hỏng cả phần mô hình đe doạ vì nó cấp cho bài một tính chất riêng tư mà chuẩn không hứa.
+Nhầm che SUPI với bảo vệ vị trí là một trong hai hiểu sai kinh điển của module này, và nó làm hỏng cả phần mô hình đe doạ (threat model) vì nó cấp cho bài một tính chất riêng tư mà chuẩn không hứa.
 
 ## Khái niệm tầng 3
 @phut: 1

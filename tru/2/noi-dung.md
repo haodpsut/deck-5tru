@@ -107,13 +107,13 @@ Một con số epsilon không nói gì nếu thiếu ba thứ đi kèm
 @che-do: hoi
 @notes: Câu hỏi của module. Trả lời bằng miệng trước khi lật.
 
-Trong ba họ tấn công (suy luận, đầu độc, cửa hậu), họ nào áp được vào hệ của tôi với đúng năng lực kẻ tấn công (attacker capability) mà tôi đã khai?
+Trong ba họ tấn công (suy luận, đầu độc, cửa hậu (backdoor)), họ nào áp được vào hệ của tôi với đúng năng lực kẻ tấn công (attacker capability) mà tôi đã khai?
 
 ## m2.6 · luận điểm
 @phut: 1
 @che-do: noi
 
-Tấn công nào khả thi là hệ quả của mô hình đe doạ, không phải của thuật toán
+Tấn công nào khả thi là hệ quả của mô hình đe doạ (threat model), không phải của thuật toán
 
 ## m2.7 Phòng vệ và giới hạn cứng của nó
 @phut: 1
@@ -159,7 +159,7 @@ Hai con số, và cái mà bảng kết quả của anh đang báo
 @che-do: hoi
 @notes: Câu hỏi của module. Trả lời bằng miệng trước khi lật.
 
-Một vòng của tôi mất bao lâu theo đồng hồ treo tường, và hạn chờ tôi đặt đang lặng lẽ loại nhóm client nào ra khỏi mô hình?
+Một vòng của tôi mất bao lâu theo đồng hồ treo tường, và hạn chờ (deadline) tôi đặt đang lặng lẽ loại nhóm client nào ra khỏi mô hình?
 
 ## m2.10 · luận điểm
 @phut: 1
@@ -183,7 +183,7 @@ Vòng của anh dài bằng client chậm nhất, và ai không có mặt trong 
 
 !so {{s007}} | lớp | Cùng công thức, alpha = {{s008}} và C = {{s001}}. Số lớp
 !so {{s009}} | TV | C = {{s001}} lớp
-!so {{s004}} | bậc | Trong B, số hạng chứa số bước cục bộ phình theo nó
+!so {{s004}} | bậc | Trong B, số hạng chứa số bước cục bộ (local steps) phình theo nó
 
 ## Số của trụ (tiếp)
 @phut: 2.5

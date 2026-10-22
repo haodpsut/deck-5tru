@@ -5,7 +5,9 @@
   },
   "_thuat_ngu": {
     "liên kết giữa vệ tinh": "ISL",
-    "khoảng xiên": "slant range"
+    "bảng định tuyến": "routing table",
+    "khoảng xiên": "slant range",
+    "chòm sao": "constellation"
   },
   "s001": "3.1",
   "s002": "3.8",

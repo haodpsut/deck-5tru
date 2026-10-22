@@ -6,8 +6,12 @@
   "_thuat_ngu": {
     "năng lực kẻ tấn công": "attacker capability",
     "truy ngược gradient": "gradient inversion",
+    "suy luận thành viên": "membership inference",
     "thay thế mô hình": "model replacement",
-    "chặn chuẩn": "norm clipping"
+    "mô hình đe doạ": "threat model",
+    "chặn chuẩn": "norm clipping",
+    "tỉ lệ nền": "base rate",
+    "cửa hậu": "backdoor"
   },
   "s001": "2",
   "s002": "3",

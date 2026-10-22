@@ -32,7 +32,7 @@ Trong mạng năm {{s001}}, bao nhiêu phần đặc trưng mà dataset của t�
 @che-do: noi
 @notes: Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau.
 
-Mọi bộ phát hiện xâm nhập đều ăn một vector đặc trưng do bộ bóc gói (packet) sinh ra. Các đặc trưng đó xếp được thành ba nhóm theo **khả năng lấy được** từ một điểm quan sát trên đường truyền: **Tải tin**: n-gram byte, chuỗi ký tự, chữ ký nội dung. Chết với TLS. **Siêu dữ liệu bắt tay**: SNI, dấu tay thư viện TLS, thời điểm và kích thước gói bắt tay. Chết dần với ECH. **Hình dáng luồng (flow)**:
+Mọi bộ phát hiện xâm nhập đều ăn một vector đặc trưng do bộ bóc gói (packet) sinh ra. Các đặc trưng đó xếp được thành ba nhóm theo **khả năng lấy được** từ một điểm quan sát trên đường truyền: **Tải tin**: n-gram byte, chuỗi ký tự, chữ ký nội dung. Chết với TLS. **Siêu dữ liệu bắt tay (handshake)**: SNI, dấu tay thư viện TLS, thời điểm và kích thước gói bắt tay. Chết dần với ECH. **Hình dáng luồng (flow)**:
 
 ## Ba nhóm đặc trưng, và nhóm nào còn sống (tiếp)
 @phut: 1
@@ -161,7 +161,7 @@ nếu nhóm bị mất chỉ nhắc lại thông tin đã có trong nhóm hình 
 @che-do: hoi
 @notes: HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng.
 
-Mô hình dùng {{s007}} đặc trưng tải tin, {{s008}} đặc trưng siêu dữ liệu bắt tay và {{s009}} đặc trưng hình dáng luồng, coi nhóm hình dáng luồng lấy được đủ. Mạng đích có {{s012}} lưu lượng mã hoá, và trong phần mã hoá thì {{s013}} bật ECH. Kỳ vọng số đặc trưng còn lấy được mỗi luồng là bao nhiêu?
+Mô hình dùng {{s007}} đặc trưng tải tin, {{s008}} đặc trưng siêu dữ liệu bắt tay và {{s009}} đặc trưng hình dáng luồng, coi nhóm hình dáng luồng lấy được đủ. Mạng đích có {{s012}} lưu lượng mã hoá (encrypted traffic), và trong phần mã hoá thì {{s013}} bật ECH. Kỳ vọng số đặc trưng còn lấy được mỗi luồng là bao nhiêu?
 
 f1 = {{s007}}, f2 = {{s008}}, f3 = {{s009}}, enc = {{s010}}, ech = {{s011}}
 
@@ -264,7 +264,7 @@ Tải tin lấy được trên {{s023}} luồng, SNI lấy được trên {{s024
 @phut: 1
 @che-do: noi
 
-Và tuyên bố quy luật tổng quát thì không kiểm được: mô hình chỉ tổng quát trên không gian đặc trưng mà nó còn nhìn thấy.
+Và tuyên bố quy luật tổng quát thì không kiểm được: mô hình chỉ tổng quát trên không gian đặc trưng (feature space) mà nó còn nhìn thấy.
 
 ## Phản biện hỏi
 @phut: 1
@@ -368,7 +368,7 @@ bảng tra JA3 có hạn sử dụng, và mô hình neo vào nó tụt dần mà
 
 Đoạn thảo luận sau tự mâu thuẫn. Bấm vào dòng gây ra mâu thuẫn.
 
-- Vì {{s012}} lưu lượng đã mã hoá, soi tải không còn là phương án.
+- Vì {{s012}} lưu lượng đã mã hoá, soi tải (payload inspection) không còn là phương án.
 - Do đó mọi phương pháp dựa trên quan sát đường truyền đều mất hiệu lực, và chỉ còn đặt tác tử trên máy trạm.
 - Chúng tôi vì vậy cũng báo kết quả cho cấu hình chỉ dùng thời điểm, kích thước và hướng gói.
 

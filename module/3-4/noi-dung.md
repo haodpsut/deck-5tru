@@ -38,13 +38,13 @@ Trong suốt hay tái sinh không phải chuyện phân loại. Nó là một l�
 @phut: 1
 @che-do: noi
 
-Con số gọn nhất để nhớ: với payload trong suốt, gNB ở mặt đất nên mỗi bit của người dùng đi qua CẢ chặng feeder. Ở cao độ {{s001}} km, với thiết bị ở góc nâng 40° và cổng mặt đất ở góc nâng 10°, RTT lan truyền là **{{s002}} ms** cho trong suốt và **{{s003}} ms** cho tái sinh, tức **{{s004}} lần**. Khoảng cách {{s005}} ms đó đúng bằng hai lần trễ chặng feeder.
+Con số gọn nhất để nhớ: với payload trong suốt, gNB ở mặt đất nên mỗi bit của người dùng đi qua CẢ chặng feeder. Ở cao độ {{s001}} km, với thiết bị ở góc nâng 40° và cổng mặt đất (gateway) ở góc nâng 10°, RTT lan truyền là **{{s002}} ms** cho trong suốt và **{{s003}} ms** cho tái sinh, tức **{{s004}} lần**. Khoảng cách {{s005}} ms đó đúng bằng hai lần trễ chặng feeder.
 
 ## Một lựa chọn kiến trúc, bốn con số đổi theo (tiếp)
 @phut: 1
 @che-do: noi
 
-Và đây là giả thiết ngầm mà nhiều bài báo NTN không khai: **cổng mặt đất luôn nhìn thấy được từ vệ tinh đang phục vụ**. Với chòm sao không có liên kết giữa vệ tinh (ISL), giả thiết đó sai trong phần lớn quỹ đạo trên biển và trên vùng cực.
+Và đây là giả thiết ngầm mà nhiều bài báo NTN không khai: **cổng mặt đất luôn nhìn thấy được từ vệ tinh đang phục vụ**. Với chòm sao (constellation) không có liên kết giữa vệ tinh (ISL), giả thiết đó sai trong phần lớn quỹ đạo trên biển và trên vùng cực.
 
 ## Một lựa chọn kiến trúc, bốn con số đổi theo (tiếp)
 @phut: 1
@@ -293,8 +293,8 @@ Không có liên kết giữa vệ tinh thì dịch vụ chỉ tồn tại khi m
 Một bài so trong suốt với tái sinh và kết luận tái sinh tốt hơn {{s005}} ms. Số hạng nào đang bị bỏ trống khiến kết luận có thể đảo chiều?
 
 - Góc nâng tối thiểu của thiết bị
-- Hệ số tái dùng tần số
-- Suy hao không gian tự do của chặng feeder
+- Hệ số tái dùng tần số (frequency reuse factor)
+- Suy hao không gian tự do (free-space path loss) của chặng feeder
 - Trễ xử lý băng gốc trên quỹ đạo của kiến trúc tái sinh
 
 ## Chọn một phương án · đáp

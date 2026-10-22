@@ -4,8 +4,22 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
+    "bộ lập lịch dùng chung": "shared scheduler",
     "liên kết giữa vệ tinh": "ISL",
+    "bất đẳng thức Mosca": "Mosca inequality",
+    "kế toán riêng tư": "privacy accounting",
+    "cửa sổ nhìn thấy": "visibility window",
+    "mô hình mất gói": "packet loss model",
+    "mô hình đe doạ": "threat model",
     "mất theo chùm": "burst loss",
+    "cá nhân hoá": "personalisation",
+    "chuyển giao": "handover",
+    "hiệu chuẩn": "calibration",
+    "che mặt nạ": "masking",
+    "tỉ lệ nền": "base rate",
+    "hạn chờ": "deadline",
+    "bắt tay": "handshake",
+    "di trú": "migration",
     "luồng": "flow",
     "gói": "packet"
   },

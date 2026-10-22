@@ -123,7 +123,7 @@ Khoảng xiên ở cao độ {{s003}} km và góc nâng 40°, tính theo km.
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-Cửa sổ nhìn thấy lớn nhất ở cao độ {{s003}} km với góc nâng tối thiểu 10°, tức lượt qua đúng đỉnh đầu, tính theo phút.
+Cửa sổ nhìn thấy (visibility window) lớn nhất ở cao độ {{s003}} km với góc nâng tối thiểu 10°, tức lượt qua đúng đỉnh đầu, tính theo phút.
 
 *Module {{s004}}.*
 
@@ -340,7 +340,7 @@ Khoảng {{s044}} dB. Để ý nó gần bằng {{s045}} dB của {{s034}} GHz �
 @che-do: hoi
 @notes: Dẫn bằng miệng, đừng bấm máy.
 
-Nhiễu loạn với C_n² = 10⁻¹⁴ m^(−2/3), bước sóng {{s039}} nm, đường truyền {{s048}} m. Phương sai Rytov σ_R² là bao nhiêu?
+Nhiễu loạn với C_n² = 10⁻¹⁴ m^(−2/3), bước sóng {{s039}} nm, đường truyền {{s048}} m. Phương sai Rytov (Rytov variance) σ_R² là bao nhiêu?
 
 cn2 = {{s046}}, lam = {{s047}}, L = {{s048}}
 
@@ -508,7 +508,7 @@ h = {{s003}}, eps = {{s011}}, fc = {{s019}}
 
 `Math.sqrt(3.986e14/((6378+h)⋆1e3))⋆(6378/(6378+h))⋆Math.cos(eps⋆Math.PI/180)/299792458⋆fc⋆1e9/1e3`
 
-Khoảng {{s067}} kHz, tức {{s068}} lần khoảng sóng mang con {{s064}} kHz và {{s069}} lần khoảng sóng mang con {{s070}} kHz. Lên băng Q hay V thì tỉ số này còn tăng tuyến tính theo tần số, nên bù trước Doppler không phải một tuỳ chọn thiết kế mà là điều kiện để mô hình kênh của bài báo còn có nghĩa.
+Khoảng {{s067}} kHz, tức {{s068}} lần khoảng sóng mang con {{s064}} kHz và {{s069}} lần khoảng sóng mang con {{s070}} kHz. Lên băng Q hay V thì tỉ số này còn tăng tuyến tính theo tần số, nên bù trước Doppler (Doppler pre-compensation) không phải một tuỳ chọn thiết kế mà là điều kiện để mô hình kênh của bài báo còn có nghĩa.
 
 ## Tính ra con số
 @phut: 0.5
@@ -532,7 +532,7 @@ Khoảng {{s071}}. Để ý biểu thức gọn đến mức này: tỉ số v/v
 @che-do: hoi
 @notes: Dẫn bằng miệng, đừng bấm máy.
 
-Cao độ {{s003}} km, băng S với tần số sóng mang {{s062}} GHz. Tốc độ biến thiên Doppler ở đỉnh đầu là bao nhiêu kHz mỗi giây?
+Cao độ {{s003}} km, băng S với tần số sóng mang {{s062}} GHz. Tốc độ biến thiên Doppler (Doppler rate) ở đỉnh đầu là bao nhiêu kHz mỗi giây?
 
 h = {{s003}}, fc = {{s062}}
 
@@ -556,7 +556,7 @@ Khoảng {{s075}} kHz mỗi giây, nhỏ hơn giá trị ở {{s034}} GHz đúng
 @che-do: so
 
 - Chỉ tính trễ lan truyền; trễ xử lý trên quỹ đạo, trễ xếp hàng và trễ mã hoá đều bỏ qua
-- Vệ tinh đang phục vụ thiết bị ĐỒNG THỜI nhìn thấy cổng mặt đất, nếu không thì τ_trong_suốt không tồn tại
+- Vệ tinh đang phục vụ thiết bị ĐỒNG THỜI nhìn thấy cổng mặt đất (gateway), nếu không thì τ_trong_suốt không tồn tại
 - Không có liên kết giữa vệ tinh trong đường đi, nếu có thì phải cộng từng chặng ISL
 
 ## Giả thiết (tiếp)
@@ -643,7 +643,7 @@ h = {{s003}}, em = {{s024}}
 
 `Math.ceil(360/(2⋆(90-em-180/Math.PI⋆Math.asin(6378/(6378+h)⋆Math.cos(em⋆Math.PI/180)))))`
 
-Đúng {{s052}} vệ tinh, vì {{s084}} chia cho cung nhìn thấy 29,91° cho {{s085}} và phải làm tròn lên. Và đây chỉ là điều kiện CẦN cho một mặt phẳng: nó không nói gì về phủ theo kinh độ, nên tổng số vệ tinh của chòm sao còn nhân thêm số mặt phẳng. Dùng con số này để kiểm nhanh tính hợp lý của một chòm sao khai trong bài báo.
+Đúng {{s052}} vệ tinh, vì {{s084}} chia cho cung nhìn thấy 29,91° cho {{s085}} và phải làm tròn lên. Và đây chỉ là điều kiện CẦN cho một mặt phẳng: nó không nói gì về phủ theo kinh độ, nên tổng số vệ tinh của chòm sao (constellation) còn nhân thêm số mặt phẳng. Dùng con số này để kiểm nhanh tính hợp lý của một chòm sao khai trong bài báo.
 
 ## Công thức này đứng trên giả thiết nào
 @phut: 0.5
@@ -880,7 +880,7 @@ Nên một bài chỉ báo AoI trung bình thì người đọc vẫn đoán đ�
 @che-do: so
 
 - Nhiễu nhiệt trắng Gauss là nguồn nhiễu chi phối, nên dùng được công thức Shannon
-- k là hằng số Boltzmann viết theo dB, không phụ thuộc hệ, nên nó không phải tham số cần hiệu chuẩn
+- k là hằng số Boltzmann viết theo dB, không phụ thuộc hệ, nên nó không phải tham số cần hiệu chuẩn (calibration)
 - A_mưa phụ thuộc mức khả dụng khai báo và góc nâng, nên nó KHÔNG phải một số cố định của hệ
 - Shannon là chặn trên: SE thực tế lấy theo bảng điều chế mã hoá nên luôn nhỏ hơn, và rời rạc
 
@@ -904,7 +904,7 @@ Hằng số Boltzmann viết theo dB trong phương trình đường truyền c�
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-Ở h = {{s003}} km, suy hao không gian tự do tại biên vệt phủ (góc nâng tối thiểu 10°) lớn hơn tại đỉnh đầu bao nhiêu dB?
+Ở h = {{s003}} km, suy hao không gian tự do (free-space path loss) tại biên vệt phủ (góc nâng tối thiểu 10°) lớn hơn tại đỉnh đầu bao nhiêu dB?
 
 *Module {{s118}}.*
 
@@ -1348,7 +1348,7 @@ mbps = {{s182}}, sz = {{s170}}, nen = {{s033}}, h = {{s003}}, em = {{s024}}, luo
 @phut: 0.5
 @che-do: so
 
-Cách khai đúng trong bài: trục hoành của hình hội tụ ghi thêm THỜI GIAN THẬT cạnh số vòng, với ngân sách truyền và số lượt qua mỗi ngày khai rõ.
+Cách khai đúng trong bài: trục hoành của hình hội tụ ghi thêm THỜI GIAN THẬT cạnh số vòng, với ngân sách truyền (communication budget) và số lượt qua mỗi ngày khai rõ.
 
 ## !cam-on
 @phut: 0.5

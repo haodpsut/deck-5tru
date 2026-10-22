@@ -25,7 +25,7 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Đường ngắn nhất theo số chặng trong chòm sao của tôi có phải đường trễ thấp nhất không, và vì sao bảng định tuyến của tôi có hạn sử dụng?
+Đường ngắn nhất theo số chặng trong chòm sao (constellation) của tôi có phải đường trễ thấp nhất không, và vì sao bảng định tuyến (routing table) của tôi có hạn sử dụng?
 
 ## Định tuyến trong chòm sao: liên kết giữa vệ tinh và đồ
 @phut: 1.5

@@ -25,7 +25,7 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Với cửa sổ nhìn thấy {{s001}} phút và mô hình {{s002}} MB, một ngày tôi chạy được bao nhiêu vòng, và con số đó có đủ để hội tụ không?
+Với cửa sổ nhìn thấy (visibility window) {{s001}} phút và mô hình {{s002}} MB, một ngày tôi chạy được bao nhiêu vòng, và con số đó có đủ để hội tụ không?
 
 ## Cửa sổ nhìn thấy là một ràng buộc về BYTE
 @phut: 1.5
@@ -38,13 +38,13 @@ Module này là giao điểm của trụ {{s003}} với trụ {{s004}}, và nó 
 @phut: 1
 @che-do: noi
 
-Hệ quả làm đổi cách đọc mọi bài nén trong học liên bang. Số lượt qua cần cho một vòng là `ceil(byte một vòng / byte một lượt qua)`, và hàm `ceil` đó biến nén từ **một đánh đổi liên tục** thành **một ngưỡng rời rạc**: nén chỉ đổi được tiến độ khi nó vượt qua một bậc, và khi số lượt qua về {{s008}} thì nén thêm mua được đúng {{s009}}.
+Hệ quả làm đổi cách đọc mọi bài nén trong học liên bang (federated learning). Số lượt qua cần cho một vòng là `ceil(byte một vòng / byte một lượt qua)`, và hàm `ceil` đó biến nén từ **một đánh đổi liên tục** thành **một ngưỡng rời rạc**: nén chỉ đổi được tiến độ khi nó vượt qua một bậc, và khi số lượt qua về {{s008}} thì nén thêm mua được đúng {{s009}}.
 
 ## Cửa sổ nhìn thấy là một ràng buộc về BYTE (tiếp)
 @phut: 1
 @che-do: noi
 
-Hệ quả thứ hai nặng hơn, và nó nằm ở tầng {{s010}}. Ghép với module {{s011}}: ở đây **kẻ chậm (straggler) không phải thiết bị yếu, nó là hình học quỹ đạo**. Số lượt qua mỗi ngày của một client là hàm của vĩ độ, nên trọng số hiệu dụng trong tổng hợp lệch theo vĩ độ. Và vì phân bố dữ liệu cũng lệch theo vĩ độ, hai nguồn lệch **cộng hưởng chứ không triệt tiêu**.
+Hệ quả thứ hai nặng hơn, và nó nằm ở tầng {{s010}}. Ghép với module {{s011}}: ở đây **kẻ chậm (straggler) không phải thiết bị yếu, nó là hình học quỹ đạo**. Số lượt qua mỗi ngày của một client là hàm của vĩ độ, nên trọng số hiệu dụng (effective weight) trong tổng hợp lệch theo vĩ độ. Và vì phân bố dữ liệu cũng lệch theo vĩ độ, hai nguồn lệch **cộng hưởng chứ không triệt tiêu**.
 
 ## Cửa sổ nhìn thấy là một ràng buộc về BYTE (tiếp)
 @phut: 1
@@ -52,7 +52,7 @@ Hệ quả thứ hai nặng hơn, và nó nằm ở tầng {{s010}}. Ghép với
 
 Đúng điều kiện làm giả thiết lấy mẫu không chệch sụp.
 
-Một cảnh báo về chính module này: **số lượt qua mỗi ngày là con số tôi KHÔNG khai**. Nó phụ thuộc chòm sao, độ nghiêng quỹ đạo và vĩ độ client. Trong mô phỏng nó là một thanh kéo mà người học phải tự đặt, chứ không phải một hằng số tôi gài sẵn.
+Một cảnh báo về chính module này: **số lượt qua mỗi ngày là con số tôi KHÔNG khai**. Nó phụ thuộc chòm sao (constellation), độ nghiêng quỹ đạo và vĩ độ client. Trong mô phỏng nó là một thanh kéo mà người học phải tự đặt, chứ không phải một hằng số tôi gài sẵn.
 
 ## Ngân sách byte một lượt qua (per-pass byte budget)
 @phut: 1
@@ -74,7 +74,7 @@ Nói **định nghĩa**, rồi lật.
 @phut: 1
 @che-do: noi
 
-Điểm phải nhớ: **một mẹo đổi đơn vị nên thuộc lòng là {{s013}} Mbps đúng bằng {{s008}} MB mỗi giây**. Nên ở {{s013}} Mbps, số MB chở được trong một lượt qua bằng đúng số GIÂY của cửa sổ, tức {{s012}} MB ở {{s005}} km. Phép kiểm này bắt được mọi lỗi lệch hệ số {{s013}} giữa bit và byte, và lỗi đó là lỗi hay gặp nhất trong bảng ngân sách truyền của bài học liên bang qua vệ tinh.
+Điểm phải nhớ: **một mẹo đổi đơn vị nên thuộc lòng là {{s013}} Mbps đúng bằng {{s008}} MB mỗi giây**. Nên ở {{s013}} Mbps, số MB chở được trong một lượt qua bằng đúng số GIÂY của cửa sổ, tức {{s012}} MB ở {{s005}} km. Phép kiểm này bắt được mọi lỗi lệch hệ số {{s013}} giữa bit và byte, và lỗi đó là lỗi hay gặp nhất trong bảng ngân sách truyền (communication budget) của bài học liên bang qua vệ tinh.
 
 ## Khái niệm tầng 3
 @phut: 1
@@ -124,7 +124,7 @@ Số lượt qua mỗi ngày của một client là hàm của vĩ độ client 
 @phut: 1
 @che-do: noi
 
-Điểm phải nhớ: **trọng số HIỆU DỤNG là trọng số khai nhân số lần được tính**. Tổng hợp theo số mẫu vẫn lệch theo vĩ độ nếu số lần tham gia lệch theo vĩ độ. Và vì phân bố dữ liệu của mạng phi mặt đất cũng lệch theo vĩ độ, hai nguồn lệch cộng hưởng. Hệ quả cho bài báo:
+Điểm phải nhớ: **trọng số HIỆU DỤNG là trọng số khai nhân số lần được tính**. Tổng hợp theo số mẫu vẫn lệch theo vĩ độ nếu số lần tham gia lệch theo vĩ độ. Và vì phân bố dữ liệu của mạng phi mặt đất (non-terrestrial network) cũng lệch theo vĩ độ, hai nguồn lệch cộng hưởng. Hệ quả cho bài báo:
 
 ## Kẻ chậm là hình học, và nó tương quan với dữ liệu (tiếp)
 @phut: 1

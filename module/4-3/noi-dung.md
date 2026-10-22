@@ -66,13 +66,13 @@ Nói định nghĩa và **điểm phải nhớ**, rồi lật.
 @che-do: noi
 @notes: So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm.
 
-Một, **đầu độc dữ liệu quan trắc**: kẻ tấn công sinh lưu lượng làm lệch thống kê mà mô hình thu, rẻ nhất vì chỉ cần ở trong mạng. Hai, **đầu độc nhãn**: nhãn sinh tự động từ chỉ số vận hành, nên bẻ được chỉ số là bẻ được nhãn. Ba, **tấn công thời điểm suy luận**: tạo ra một trạng thái mạng giả để mô hình ra quyết định sai ngay lúc đó.
+Một, **đầu độc dữ liệu (data poisoning) quan trắc**: kẻ tấn công sinh lưu lượng làm lệch thống kê mà mô hình thu, rẻ nhất vì chỉ cần ở trong mạng. Hai, **đầu độc nhãn**: nhãn sinh tự động từ chỉ số vận hành, nên bẻ được chỉ số là bẻ được nhãn. Ba, **tấn công thời điểm suy luận**: tạo ra một trạng thái mạng giả để mô hình ra quyết định sai ngay lúc đó.
 
 ## Khái niệm tầng 2 · đáp (tiếp)
 @phut: 1
 @che-do: noi
 
-Điểm phải nhớ: **mô hình đe doạ nào đòi kẻ tấn công phải truy cập máy chủ huấn luyện thì đã bỏ cả ba đường này**. Hệ quả viết bài: nếu phần giả định của anh viết kẻ tấn công không có quyền trên hạ tầng huấn luyện, thì phần đó phải nói thêm nó có hay không có quyền sinh lưu lượng trong mạng được quan trắc. Hai câu đó khác nhau, và câu thứ hai mới là câu quyết định.
+Điểm phải nhớ: **mô hình đe doạ (threat model) nào đòi kẻ tấn công phải truy cập máy chủ huấn luyện thì đã bỏ cả ba đường này**. Hệ quả viết bài: nếu phần giả định của anh viết kẻ tấn công không có quyền trên hạ tầng huấn luyện, thì phần đó phải nói thêm nó có hay không có quyền sinh lưu lượng trong mạng được quan trắc. Hai câu đó khác nhau, và câu thứ hai mới là câu quyết định.
 
 ## Khái niệm tầng 3
 @phut: 1
@@ -346,7 +346,7 @@ Nhiễu trong một quả cầu L2 trên vector đặc trưng đã chuẩn hoá 
 @phut: 1
 @che-do: noi
 
-Ba câu kia đều hợp lệ, trong đó câu cuối là phần thú vị nhất của bài. Cách sửa: khai một tập phép biến đổi trên lưu lượng thật, ví dụ chèn luồng (flow), dịch thời điểm, đổi kích thước gói, rồi sinh nhiễu bằng cách tìm trong tập đó. Nếu không làm được thì chuyển phần này sang phụ lục và nói rõ nó là phép đo trong không gian đặc trưng.
+Ba câu kia đều hợp lệ, trong đó câu cuối là phần thú vị nhất của bài. Cách sửa: khai một tập phép biến đổi trên lưu lượng thật, ví dụ chèn luồng (flow), dịch thời điểm, đổi kích thước gói, rồi sinh nhiễu bằng cách tìm trong tập đó. Nếu không làm được thì chuyển phần này sang phụ lục và nói rõ nó là phép đo trong không gian đặc trưng (feature space).
 
 ## Câu nào không được số nào chống đỡ · ca hai
 @phut: 1
@@ -432,7 +432,7 @@ Sửa trực tiếp tệp nhãn đòi quyền trên hạ tầng huấn luyện, 
 @phut: 1
 @che-do: noi
 
-thực hiện việc bẻ nhãn qua đường chỉ số vận hành, rồi báo tỉ lệ nhãn bị bẻ như một đại lượng dẫn xuất chứ không như một tham số tự đặt. Ba câu kia đều hợp lệ, và câu cuối là cách khai độ phủ đúng chiều.
+thực hiện việc bẻ nhãn qua đường chỉ số vận hành, rồi báo tỉ lệ nhãn bị bẻ như một đại lượng dẫn xuất chứ không như một tham số tự đặt. Ba câu kia đều hợp lệ, và câu cuối là cách khai độ phủ (recall) đúng chiều.
 
 ## Dẫn lại từng bước
 @phut: 2
@@ -463,7 +463,7 @@ Kết quả gốc: tỉ lệ đầu độc {{s001}}, hệ số phản hồi {{s0
 @che-do: so
 
 - **Dữ liệu quan trắc đáng tin** tắt đi: Kẻ tấn công sinh được lưu lượng trong mạng được quan trắc, nên dữ liệu mà mô hình thu đã nằm một phần trong tầm của nó.
-- **Nhiễu đối kháng sinh ra được bằng lưu lượng thật** tắt đi: Cho phép nhiễu tuỳ ý trên vector đặc trưng, tức bỏ ràng buộc không gian vấn đề.
+- **Nhiễu đối kháng sinh ra được bằng lưu lượng thật** tắt đi: Cho phép nhiễu tuỳ ý trên vector đặc trưng, tức bỏ ràng buộc không gian vấn đề (problem space).
 
 ## Tắt từng giả thiết (tiếp)
 @phut: 1

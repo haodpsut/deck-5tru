@@ -4,6 +4,11 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
+    "kế toán riêng tư": "privacy accounting",
+    "mô hình đe doạ": "threat model",
+    "học liên bang": "federated learning",
+    "lệch phân bố": "distribution skew",
+    "lệch nhãn": "label skew",
     "luồng": "flow",
     "gói": "packet"
   },

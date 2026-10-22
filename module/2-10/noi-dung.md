@@ -4,7 +4,7 @@ phu-de: Trụ 2 FL · module 2.10
 tac-gia: Đỗ Phúc Hảo · CAIRA, Đại học Kiến trúc Đà Nẵng
 noi-ngay: Tự ôn, bộ Năm trụ
 profile: giang-day
-tong-phut: 78
+tong-phut: 79
 accent: "#2C6E9B"
 ngon-ngu: vi
 gate: khong
@@ -25,7 +25,7 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Một vòng của tôi mất bao lâu theo đồng hồ treo tường, và hạn chờ tôi đặt đang lặng lẽ loại nhóm client nào ra khỏi mô hình?
+Một vòng của tôi mất bao lâu theo đồng hồ treo tường, và hạn chờ (deadline) tôi đặt đang lặng lẽ loại nhóm client nào ra khỏi mô hình?
 
 ## Vòng của anh dài bằng client chậm nhất
 @phut: 1.5
@@ -100,7 +100,13 @@ Với hạn chờ `D`, client `k` vào tổng hợp với xác suất `q_k = P(t
 @phut: 1
 @che-do: noi
 
-Điểm phải nhớ: **tỉ lệ client bị bỏ và mức thiên lệch là hai con số khác nhau**, và cái thứ hai mới là cái đi vào mô hình. Ở cấu hình mặc định của mô phỏng trong module này, tỉ lệ bỏ là {{s005}} trong khi trọng số hiệu dụng của nhóm chậm là {{s006}} so với danh nghĩa: nhóm đó bị loại hoàn toàn. Báo tỉ lệ bỏ rồi coi như đã khai thiên lệch là khai thiếu đúng chỗ quan trọng.
+Điểm phải nhớ: **tỉ lệ client bị bỏ và mức thiên lệch là hai con số khác nhau**, và cái thứ hai mới là cái đi vào mô hình. Ở cấu hình mặc định của mô phỏng trong module này, tỉ lệ bỏ là {{s005}} trong khi trọng số hiệu dụng (effective weight) của nhóm chậm là {{s006}} so với danh nghĩa: nhóm đó bị loại hoàn toàn.
+
+## Trọng số hiệu dụng khi có hạn chờ · đáp (tiếp)
+@phut: 1
+@che-do: noi
+
+Báo tỉ lệ bỏ rồi coi như đã khai thiên lệch là khai thiếu đúng chỗ quan trọng.
 
 ## Hạn chờ là một quyết định về công bằng
 @phut: 1
@@ -122,7 +128,7 @@ Vì `q_k` phụ thuộc thiết bị và đường truyền, nó **tương quan 
 @phut: 1
 @che-do: noi
 
-Điểm phải nhớ: lối ra không phải siết hạn chờ mà là **khai và sửa trọng số**. Hai cách đứng được: chia lại trọng số của người về kịp theo `p_k/q_k` với `q_k` ước lượng theo nhóm, hoặc chuyển sang bán bất đồng bộ, nơi cập nhật cũ `τ` vòng được hạ trọng số thường theo `1/(1+τ)` thay vì bị bỏ hẳn. Cách thứ hai đổi bài toán: không ai bị loại, nhưng xuất hiện độ cũ phải khai.
+Điểm phải nhớ: lối ra không phải siết hạn chờ mà là **khai và sửa trọng số**. Hai cách đứng được: chia lại trọng số của người về kịp theo `p_k/q_k` với `q_k` ước lượng theo nhóm, hoặc chuyển sang bán bất đồng bộ, nơi cập nhật cũ (staleness) `τ` vòng được hạ trọng số thường theo `1/(1+τ)` thay vì bị bỏ hẳn. Cách thứ hai đổi bài toán: không ai bị loại, nhưng xuất hiện độ cũ phải khai.
 
 ## Thời gian vòng
 @phut: 1.5
@@ -151,6 +157,8 @@ Vì `q_k` phụ thuộc thiết bị và đường truyền, nó **tương quan 
 ## Thời gian vòng · ghi chú
 @phut: 1
 @che-do: noi
+@wow
+@dan: Tắt một giả thiết rồi xem tuyên bố nào còn đứng.
 
 Hai con số dễ bị lẫn với nhau: **tỉ lệ client bị bỏ** là một đại lượng của hệ thống, còn **trọng số hiệu dụng** là một đại lượng của mô hình. Chúng không suy ra được từ nhau: bỏ {{s005}} client có thể ứng với thiên lệch bằng {{s008}} nếu việc bỏ là ngẫu nhiên đều, hoặc ứng với việc một nhóm bị loại hoàn toàn nếu `q_k` gần {{s008}} trên đúng nhóm đó.
 
@@ -163,8 +171,6 @@ Con số phải vào bài là con số thứ hai, kèm cách ước lượng `q_
 ## Số phải biết
 @phut: 2
 @che-do: so
-@wow
-@dan: Tắt một giả thiết rồi xem tuyên bố nào còn đứng.
 @notes: Đọc to con số và ĐƠN VỊ. Nhớ số mà quên đơn vị là chưa nhớ.
 
 !so {{s009}} | giây | Một vòng chọn {{s010}} client
@@ -234,7 +240,7 @@ Thí nghiệm của anh báo {{s029}} vòng tới khi hội tụ. Reviewer hỏi
 @phut: 1
 @che-do: noi
 
-Phải là giây mỗi vòng đo được nhân số vòng, kèm hạn chờ. Lý do: số vòng là đại lượng không có đơn vị thời gian, nên nó không chuyển thành chi phí nếu không biết một vòng dài bao lâu, và một vòng dài bằng client chậm nhất chứ không bằng client trung bình. Tổng số bước SGD lại càng xa, vì bước cục bộ chạy song song trên các client nên nó không cộng dồn theo thời gian.
+Phải là giây mỗi vòng đo được nhân số vòng, kèm hạn chờ. Lý do: số vòng là đại lượng không có đơn vị thời gian, nên nó không chuyển thành chi phí nếu không biết một vòng dài bao lâu, và một vòng dài bằng client chậm nhất chứ không bằng client trung bình. Tổng số bước SGD lại càng xa, vì bước cục bộ (local steps) chạy song song trên các client nên nó không cộng dồn theo thời gian.
 
 ## Chọn một phương án · đáp (tiếp)
 @phut: 1
@@ -455,7 +461,7 @@ We also separated computation from communication in Table III, which shows that 
 
 **Chấm theo:**
 
-- Mức {{s003}}: trả lời rằng số vòng truyền là thước đo quy ước trong học liên bang vì truyền thông là cổ chai. Đúng về quy ước, không trả lời được chuyện vòng của hai bên dài khác nhau.
+- Mức {{s003}}: trả lời rằng số vòng truyền là thước đo quy ước trong học liên bang (federated learning) vì truyền thông là cổ chai. Đúng về quy ước, không trả lời được chuyện vòng của hai bên dài khác nhau.
 - Mức {{s001}}: thêm một con số giây mỗi vòng, nhưng là con số ước từ kích thước cập nhật và thông lượng trung bình, chứ không phải con số đo được, và không khai hạn chờ.
 
 ## Thang chấm (tiếp)

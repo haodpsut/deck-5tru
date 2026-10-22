@@ -56,7 +56,7 @@ Mỗi slide hỏi một con số hoặc một công thức. Dẫn lại **bằng
 
 - không có hoà điểm, hoặc hoà điểm được tính một nửa
 - mọi mẫu dùng cùng một hàm điểm s và cùng một thang điểm
-- hai mẫu lấy độc lập từ hai phân bố điều kiện, nên tỉ lệ nền không vào công thức
+- hai mẫu lấy độc lập từ hai phân bố điều kiện, nên tỉ lệ nền (base rate) không vào công thức
 
 ## Con số này bằng bao nhiêu
 @phut: 0.5
@@ -306,7 +306,7 @@ FPR = 10⁻³ trên {{s001}} triệu sự kiện lành mỗi ngày. Bao nhiêu c
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-Ngân sách cảnh báo là {{s001}} mỗi ngày, lưu lượng {{s001}} triệu sự kiện lành mỗi ngày. FPR tối đa được phép là {{s001}} luỹ thừa âm bao nhiêu? Nhập số mũ.
+Ngân sách cảnh báo (alert budget) là {{s001}} mỗi ngày, lưu lượng {{s001}} triệu sự kiện lành mỗi ngày. FPR tối đa được phép là {{s001}} luỹ thừa âm bao nhiêu? Nhập số mũ.
 
 *Module {{s046}}.*
 
@@ -321,7 +321,7 @@ Ngân sách cảnh báo là {{s001}} mỗi ngày, lưu lượng {{s001}} triệu
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-Đường cơ sở của đường PR khi tỉ lệ nền p = 10⁻⁴ là bao nhiêu (nhập dưới dạng phần trăm)?
+Đường cơ sở (baseline) của đường PR khi tỉ lệ nền p = 10⁻⁴ là bao nhiêu (nhập dưới dạng phần trăm)?
 
 *Module {{s046}}.*
 
@@ -602,7 +602,7 @@ Mức thổi thật phải đo trên dataset thật, và đó là con số bài 
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-Có mấy ràng buộc không gian vấn đề mà một phép biến đổi tấn công thật phải thoả đồng thời?
+Có mấy ràng buộc không gian vấn đề (problem space) mà một phép biến đổi tấn công thật phải thoả đồng thời?
 
 *Module {{s082}}.*
 
@@ -617,7 +617,7 @@ Có mấy ràng buộc không gian vấn đề mà một phép biến đổi t�
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-CICFlowMeter, bộ trích đặc trưng dùng cho CIC-IDS2017, sinh bao nhiêu đặc trưng cho mỗi luồng? Đây là số chiều của không gian đặc trưng mà nhiễu được tìm trong đó.
+CICFlowMeter, bộ trích đặc trưng dùng cho CIC-IDS2017, sinh bao nhiêu đặc trưng cho mỗi luồng? Đây là số chiều của không gian đặc trưng (feature space) mà nhiễu được tìm trong đó.
 
 *Module {{s082}}.*
 
@@ -696,7 +696,7 @@ Con số {{s052}} chỉ đạt được khi sửa được cả hai toạ độ 
 @che-do: so
 
 - Với Jaccard: hai tập A và B cùng cỡ k, và dùng tập không thứ tự, tức bỏ hẳn thông tin thứ hạng bên trong top-k
-- Với công thức Shapley: tổng chạy trên 2^(|F|−1) tập con, nên tính chính xác chỉ khả thi ở |F| nhỏ; mọi cài đặt trên dữ liệu bảng thật đều là xấp xỉ hoặc là thuật toán riêng cho một họ mô hình
+- Với công thức Shapley: tổng chạy trên 2^(|F|−1) tập con, nên tính chính xác chỉ khả thi ở |F| nhỏ; mọi cài đặt trên dữ liệu bảng (tabular data) thật đều là xấp xỉ hoặc là thuật toán riêng cho một họ mô hình
 
 ## Giả thiết (tiếp)
 @phut: 1
@@ -749,7 +749,7 @@ t = {{s014}}, l = {{s002}}, dd = {{s048}}
 
 `t⋆l⋆Math.pow(dd,2)`
 
-{{s095}} đơn vị công việc cho MỘT mẫu. Chỗ phải đọc ra: nhân với số mẫu cần giải thích thì con số nổ rất nhanh. Giải thích {{s096}} mẫu của tập kiểm là bậc {{s097}} tỉ đơn vị, nên phần giải thích của bài báo thường đắt hơn phần huấn luyện. Và nếu muốn đo độ ổn định top-k qua {{s006}} hạt thì nhân thêm {{s006}} lần nữa; đó là lý do thật mà nhiều bài bỏ phép đo độ ổn định:
+{{s095}} đơn vị công việc cho MỘT mẫu. Chỗ phải đọc ra: nhân với số mẫu cần giải thích thì con số nổ rất nhanh. Giải thích {{s096}} mẫu của tập kiểm là bậc {{s097}} tỉ đơn vị, nên phần giải thích của bài báo thường đắt hơn phần huấn luyện. Và nếu muốn đo độ ổn định (stability) top-k qua {{s006}} hạt thì nhân thêm {{s006}} lần nữa; đó là lý do thật mà nhiều bài bỏ phép đo độ ổn định:
 
 ## Đáp (tiếp)
 @phut: 1
@@ -805,7 +805,7 @@ khi phản biện đòi con số độ ổn định thì báo Jaccard kèm cả 
 @phut: 1
 @che-do: so
 
-- Với QSVM: bậc 1/ε² là chặn DƯỚI, vì nó chỉ tính nhiễu lấy mẫu. Nhiễu phần cứng, lỗi đọc và trôi hiệu chuẩn đều làm số lần chạy thật lớn hơn
+- Với QSVM: bậc 1/ε² là chặn DƯỚI, vì nó chỉ tính nhiễu lấy mẫu. Nhiễu phần cứng, lỗi đọc và trôi hiệu chuẩn (calibration) đều làm số lần chạy thật lớn hơn
 - Với QSVM: giả thiết có phần cứng chạy được số lần chạy mạch đó; nếu con số chạy trên bộ mô phỏng cổ điển thì mọi tuyên bố về thời gian là tuyên bố về bộ mô phỏng
 
 ## Con số này bằng bao nhiêu
@@ -897,7 +897,7 @@ Chiều thứ hai, nếu con số thời gian trong bài nhỏ hơn thế nhiề
 
 - ECE: mỗi ô có đủ mẫu để tần suất trong ô là một ước lượng dùng được; thiếu điều này thì con số đo cái sàn chứ không đo sai lệch
 - ECE: số ô M chốt TRƯỚC khi xem kết quả, nếu không thì giá trị nhỏ nhất trên một họ M là một đại lượng khác hẳn
-- Hiệu chỉnh nhiệt độ: T học trên một tập hiệu chuẩn tách khỏi tập kiểm, và T lớn hơn {{s076}}
+- Hiệu chỉnh nhiệt độ (temperature scaling): T học trên một tập hiệu chuẩn tách khỏi tập kiểm, và T lớn hơn {{s076}}
 
 ## Giả thiết (tiếp)
 @phut: 1
@@ -1053,7 +1053,7 @@ Module này xếp đặc trưng mạng thành mấy nhóm theo khả năng lấy
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-Bản TLS nào mã hoá phần sau của bắt tay, gồm cả chuỗi chứng chỉ của máy chủ, nên nhóm siêu dữ liệu bắt tay rút về còn SNI với dấu tay thư viện? Nhập số bản, dùng dấu phẩy thập phân.
+Bản TLS nào mã hoá phần sau của bắt tay (handshake), gồm cả chuỗi chứng chỉ của máy chủ, nên nhóm siêu dữ liệu bắt tay rút về còn SNI với dấu tay thư viện? Nhập số bản, dùng dấu phẩy thập phân.
 
 *Module {{s125}}.*
 
@@ -1068,7 +1068,7 @@ Bản TLS nào mã hoá phần sau của bắt tay, gồm cả chuỗi chứng c
 @che-do: hoi
 @notes: Dẫn bằng miệng, đừng bấm máy.
 
-Mô hình dùng {{s006}} đặc trưng tải tin, {{s077}} đặc trưng siêu dữ liệu bắt tay và {{s126}} đặc trưng hình dáng luồng, coi nhóm hình dáng luồng lấy được đủ. Mạng đích có {{s034}} lưu lượng mã hoá, và trong phần mã hoá thì {{s128}} bật ECH. Kỳ vọng số đặc trưng còn lấy được mỗi luồng là bao nhiêu?
+Mô hình dùng {{s006}} đặc trưng tải tin, {{s077}} đặc trưng siêu dữ liệu bắt tay và {{s126}} đặc trưng hình dáng luồng, coi nhóm hình dáng luồng lấy được đủ. Mạng đích có {{s034}} lưu lượng mã hoá (encrypted traffic), và trong phần mã hoá thì {{s128}} bật ECH. Kỳ vọng số đặc trưng còn lấy được mỗi luồng là bao nhiêu?
 
 f1 = {{s006}}, f2 = {{s077}}, f3 = {{s126}}, enc = {{s063}}, ech = {{s127}}
 

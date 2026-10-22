@@ -4,11 +4,14 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
+    "suy hao không gian tự do": "free-space path loss",
     "biên dự phòng mưa": "rain margin",
     "góc tâm trái đất": "Earth central angle",
+    "cửa sổ nhìn thấy": "visibility window",
     "thời gian trú": "dwell time",
     "mức khả dụng": "availability",
-    "khoảng xiên": "slant range"
+    "khoảng xiên": "slant range",
+    "chòm sao": "constellation"
   },
   "s001": "3.1",
   "s002": "550",

@@ -4,7 +4,7 @@ phu-de: Trụ 1 NID · module 1.6
 tac-gia: Đỗ Phúc Hảo · CAIRA, Đại học Kiến trúc Đà Nẵng
 noi-ngay: Tự ôn, bộ Năm trụ
 profile: giang-day
-tong-phut: 82.5
+tong-phut: 83
 accent: "#2C6E9B"
 ngon-ngu: vi
 gate: khong
@@ -25,7 +25,7 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Nhiễu đối kháng tôi sinh ra trong không gian đặc trưng có dựng lại được thành gói (packet) tin gửi lên dây không, và nếu không thì bài của tôi đang tuyên bố cái gì?
+Nhiễu đối kháng tôi sinh ra trong không gian đặc trưng (feature space) có dựng lại được thành gói (packet) tin gửi lên dây không, và nếu không thì bài của tôi đang tuyên bố cái gì?
 
 ## Lẩn tránh: không gian đặc trưng so với không gian vấn đề
 @phut: 1.5
@@ -44,7 +44,7 @@ Hệ quả phải nói được trong một câu: nghiệm trong không gian đ�
 @phut: 1
 @che-do: noi
 
-Module này có một việc duy nhất và nó là việc khó: nhớ được bốn ràng buộc không gian vấn đề, rời nhau, và nói được cái nào làm con số XẤU đi, cái nào làm câu nói **mất nghĩa**. Chỉ có một trong bốn cái thuộc loại thứ hai, và đó là cái mọi người hay bỏ qua.
+Module này có một việc duy nhất và nó là việc khó: nhớ được bốn ràng buộc không gian vấn đề (problem space), rời nhau, và nói được cái nào làm con số XẤU đi, cái nào làm câu nói **mất nghĩa**. Chỉ có một trong bốn cái thuộc loại thứ hai, và đó là cái mọi người hay bỏ qua.
 
 ## Bốn ràng buộc không gian vấn đề
 @phut: 1
@@ -346,9 +346,13 @@ liệt kê tập phép biến đổi khả thi, chiếu bài toán xuống khôn
 
 Đoạn trả lời phản biện sau có một câu không đứng được. Bấm vào câu đó.
 
+## Câu nào không được số nào chống đỡ · ca hai (tiếp)
+@phut: 0.5
+@che-do: hoi
+
 - Chúng tôi đồng ý rằng nhiễu trong không gian đặc trưng không phải tấn công, nên đã thêm bước dựng lại.
 - Bước dựng lại sinh gói tin thật từ vector nhiễu bằng cách giải bài toán ngược của bộ trích đặc trưng.
-- Vì chuẩn hoá đặc trưng làm nhiễu nhỏ đi, mô hình của chúng tôi vốn đã có một lớp phòng vệ sẵn.
+- Vì chuẩn hoá đặc trưng (feature normalisation) làm nhiễu nhỏ đi, mô hình của chúng tôi vốn đã có một lớp phòng vệ sẵn.
 
 ## Câu nào không được số nào chống đỡ · ca hai (tiếp)
 @phut: 0.5

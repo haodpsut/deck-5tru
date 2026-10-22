@@ -4,6 +4,9 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
+    "hiệu chỉnh nhiệt độ": "temperature scaling",
+    "hiệu chuẩn": "calibration",
+    "tỉ lệ nền": "base rate",
     "luồng": "flow"
   },
   "s001": "0,9",

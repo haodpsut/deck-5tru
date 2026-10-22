@@ -89,7 +89,7 @@ Phân biệt cho chặt: **TPR trả lời câu hỏi của nhà nghiên cứu**
 
 **Giả thiết nó đứng trên:**
 
-- p là tỉ lệ nền tại thời điểm chạy, không phải tỉ lệ trong tập kiểm tra
+- p là tỉ lệ nền (base rate) tại thời điểm chạy, không phải tỉ lệ trong tập kiểm tra
 - các sự kiện độc lập với nhau
 - một ngưỡng quyết định duy nhất, cố định
 

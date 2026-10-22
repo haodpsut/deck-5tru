@@ -25,14 +25,14 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Tôi phân biệt được gây nhiễu, giả mạo và phát lại bằng dấu hiệu quan trắc nào, và cơ chế phát hiện tôi đề xuất cần thêm phần cứng gì?
+Tôi phân biệt được gây nhiễu (jamming), giả mạo và phát lại bằng dấu hiệu quan trắc nào, và cơ chế phát hiện tôi đề xuất cần thêm phần cứng gì?
 
 ## Phân loại theo hiệu ứng quan trắc, không theo ý định
 @phut: 1.5
 @che-do: noi
 @notes: Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau.
 
-Mô hình đe doạ GNSS tự mâu thuẫn gần như luôn vì một lý do: nó phân loại tấn công theo **ý định của kẻ tấn công** (muốn chặn, muốn lừa) rồi lại đo bằng dấu hiệu của loại khác. Ý định không quan trắc được. Cái quan trắc được là ba thứ: tỉ số công suất sóng mang trên mật độ nhiễu `C/N0`, nghiệm vị trí, và nghiệm thời gian.
+Mô hình đe doạ (threat model) GNSS tự mâu thuẫn gần như luôn vì một lý do: nó phân loại tấn công theo **ý định của kẻ tấn công** (muốn chặn, muốn lừa) rồi lại đo bằng dấu hiệu của loại khác. Ý định không quan trắc được. Cái quan trắc được là ba thứ: tỉ số công suất sóng mang trên mật độ nhiễu `C/N0`, nghiệm vị trí, và nghiệm thời gian.
 
 ## Phân loại theo hiệu ứng quan trắc, không theo ý (tiếp)
 @phut: 1
@@ -90,13 +90,13 @@ Nói định nghĩa và **điểm phải nhớ**, rồi lật.
 @che-do: noi
 @notes: So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm.
 
-Từ rẻ tới đắt: Bất thường `C/N0` và AGC: chỉ cần đọc trường bộ thu đã in ra. Nhảy bậc của sai lệch đồng hồ: cần một mốc thời gian tương đối ổn định bên trong bộ thu. Nhất quán Doppler với ephemeris: cần quỹ đạo khai báo đáng tin và tính lại Doppler kỳ vọng. Nhất quán giữa nhiều chòm sao: cần bộ thu đa chòm sao. Góc tới bằng nhiều ăng ten:
+Từ rẻ tới đắt: Bất thường `C/N0` và AGC: chỉ cần đọc trường bộ thu đã in ra. Nhảy bậc của sai lệch đồng hồ: cần một mốc thời gian tương đối ổn định bên trong bộ thu. Nhất quán Doppler với ephemeris: cần quỹ đạo khai báo đáng tin và tính lại Doppler kỳ vọng. Nhất quán giữa nhiều chòm sao (constellation): cần bộ thu đa chòm sao. Góc tới bằng nhiều ăng ten:
 
 ## Năm dấu hiệu phát hiện, xếp theo chi phí phần (tiếp)
 @phut: 1
 @che-do: noi
 
-cần dàn ăng ten, biết khoảng cách phần tử, và hiệu chuẩn pha. Đắt nhất, mạnh nhất. Điểm phải nhớ: **thứ tự này là thứ tự chi phí, và nó phải xuất hiện trong bài báo**. Một bài đề xuất dấu hiệu số {{s003}} mà không khai thêm phần cứng đang trộn hai hệ thống khác nhau vào một bảng kết quả.
+cần dàn ăng ten, biết khoảng cách phần tử, và hiệu chuẩn (calibration) pha. Đắt nhất, mạnh nhất. Điểm phải nhớ: **thứ tự này là thứ tự chi phí, và nó phải xuất hiện trong bài báo**. Một bài đề xuất dấu hiệu số {{s003}} mà không khai thêm phần cứng đang trộn hai hệ thống khác nhau vào một bảng kết quả.
 
 ## Đường TT&C khác đường tải trọng ở chỗ nào
 @phut: 1
@@ -112,7 +112,7 @@ Nói định nghĩa, điểm phải nhớ, và **chỗ nó gãy**, rồi lật.
 @che-do: noi
 @notes: So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm.
 
-Đường tải trọng chở dữ liệu người dùng; mất bí mật ở đó là mất dữ liệu. Đường **TT&C** (telemetry, tracking and command) chở lệnh điều khiển vệ tinh; mất **tính xác thực** ở đó là mất quyền điều khiển.
+Đường tải trọng (payload link) chở dữ liệu người dùng; mất bí mật ở đó là mất dữ liệu. Đường **TT&C** (telemetry, tracking and command) chở lệnh điều khiển vệ tinh; mất **tính xác thực** ở đó là mất quyền điều khiển.
 
 ## Đường TT&C khác đường tải trọng ở chỗ nào · đáp (tiếp)
 @phut: 1
@@ -140,7 +140,7 @@ Nói định nghĩa và **điểm phải nhớ**, rồi lật.
 @che-do: noi
 @notes: So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm.
 
-Mức công suất thu danh định của tín hiệu dân dụng rất nhỏ, còn suy hao không gian tự do thì tăng {{s005}} dB mỗi lần khoảng cách tăng {{s006}} lần. Vệ tinh ở cách hơn hai vạn kilomet; kẻ tấn công ở cách trăm mét. Chênh khoảng cách năm bậc độ lớn cho chênh suy hao khoảng {{s007}} dB.
+Mức công suất thu danh định của tín hiệu dân dụng rất nhỏ, còn suy hao không gian tự do (free-space path loss) thì tăng {{s005}} dB mỗi lần khoảng cách tăng {{s006}} lần. Vệ tinh ở cách hơn hai vạn kilomet; kẻ tấn công ở cách trăm mét. Chênh khoảng cách năm bậc độ lớn cho chênh suy hao khoảng {{s007}} dB.
 
 ## Vì sao giả mạo khả thi về mặt công suất · đáp (tiếp)
 @phut: 1
@@ -343,7 +343,7 @@ vẽ hiệu năng theo lề công suất của tín hiệu giả tính bằng dB
 
 - Bộ phát hiện đề xuất hợp ba dấu hiệu: bất thường C/N0, nhất quán Doppler với ephemeris, và góc tới của tín hiệu.
 - Thực nghiệm chạy trên bản ghi IQ của một bộ thu thương mại một ăng ten, lấy tại hai địa điểm trong ba ngày,
-- và so với ba đường cơ sở ở cùng tỉ lệ cảnh báo sai.
+- và so với ba đường cơ sở (baseline) ở cùng tỉ lệ cảnh báo sai.
 
 ## Câu không được chống đỡ · ca hai · đáp
 @phut: 1.5

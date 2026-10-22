@@ -4,7 +4,11 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
+    "ngân sách tinh chỉnh": "tuning budget",
     "đơn vị quan sát": "observation unit",
+    "dữ liệu bảng": "tabular data",
+    "hiệu chuẩn": "calibration",
+    "tỉ lệ nền": "base rate",
     "luồng": "flow",
     "gói": "packet"
   },

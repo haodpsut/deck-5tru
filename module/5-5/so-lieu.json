@@ -4,7 +4,10 @@
     "sinh_boi": "slides/5tru/sinh.py"
   },
   "_thuat_ngu": {
+    "mô hình mất gói": "packet loss model",
     "mất theo chùm": "burst loss",
+    "mức an toàn": "security level",
+    "bắt tay": "handshake",
     "gói": "packet"
   },
   "s001": "802.15.4",

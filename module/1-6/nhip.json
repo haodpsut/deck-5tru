@@ -1,7 +1,7 @@
 {
   "profile": "giang-day",
-  "tong_phut_khai": 82.5,
-  "tong_phut_cong": 82.5,
+  "tong_phut_khai": 83.0,
+  "tong_phut_cong": 83.0,
   "moc": [
     {
       "id": "s01",
@@ -410,47 +410,47 @@
     },
     {
       "id": "s46",
-      "tieu_de": "Câu không được chống đỡ · ca hai · đáp",
+      "tieu_de": "Câu nào không được số nào chống đỡ · ca hai (tiếp)",
       "dang": "noi-dung",
-      "che_do": "noi",
+      "che_do": "hoi",
       "bat_dau": 49.0,
-      "phut": 1.5,
+      "phut": 0.5,
       "wow": false
     },
     {
       "id": "s47",
-      "tieu_de": "Câu không được chống đỡ · ca hai · đáp (tiếp)",
+      "tieu_de": "Câu không được chống đỡ · ca hai · đáp",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 50.5,
-      "phut": 1.0,
+      "bat_dau": 49.5,
+      "phut": 1.5,
       "wow": false
     },
     {
       "id": "s48",
-      "tieu_de": "Câu nào không được số nào chống đỡ · ca ba",
+      "tieu_de": "Câu không được chống đỡ · ca hai · đáp (tiếp)",
       "dang": "noi-dung",
-      "che_do": "hoi",
-      "bat_dau": 51.5,
+      "che_do": "noi",
+      "bat_dau": 51.0,
       "phut": 1.0,
       "wow": false
     },
     {
       "id": "s49",
-      "tieu_de": "Câu không được chống đỡ · ca ba · đáp",
+      "tieu_de": "Câu nào không được số nào chống đỡ · ca ba",
       "dang": "noi-dung",
-      "che_do": "noi",
-      "bat_dau": 52.5,
-      "phut": 1.5,
+      "che_do": "hoi",
+      "bat_dau": 52.0,
+      "phut": 1.0,
       "wow": false
     },
     {
       "id": "s50",
-      "tieu_de": "Câu không được chống đỡ · ca ba · đáp (tiếp)",
+      "tieu_de": "Câu không được chống đỡ · ca ba · đáp",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 54.0,
-      "phut": 1.0,
+      "bat_dau": 53.0,
+      "phut": 1.5,
       "wow": false
     },
     {
@@ -458,26 +458,26 @@
       "tieu_de": "Câu không được chống đỡ · ca ba · đáp (tiếp)",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 55.0,
+      "bat_dau": 54.5,
       "phut": 1.0,
       "wow": false
     },
     {
       "id": "s52",
-      "tieu_de": "Dẫn lại từng bước",
+      "tieu_de": "Câu không được chống đỡ · ca ba · đáp (tiếp)",
       "dang": "noi-dung",
-      "che_do": "so",
-      "bat_dau": 56.0,
-      "phut": 2.0,
+      "che_do": "noi",
+      "bat_dau": 55.5,
+      "phut": 1.0,
       "wow": false
     },
     {
       "id": "s53",
-      "tieu_de": "Dẫn lại từng bước (tiếp)",
+      "tieu_de": "Dẫn lại từng bước",
       "dang": "noi-dung",
       "che_do": "so",
-      "bat_dau": 58.0,
-      "phut": 1.0,
+      "bat_dau": 56.5,
+      "phut": 2.0,
       "wow": false
     },
     {
@@ -485,26 +485,26 @@
       "tieu_de": "Dẫn lại từng bước (tiếp)",
       "dang": "noi-dung",
       "che_do": "so",
-      "bat_dau": 59.0,
+      "bat_dau": 58.5,
       "phut": 1.0,
       "wow": false
     },
     {
       "id": "s55",
-      "tieu_de": "Tắt từng giả thiết",
+      "tieu_de": "Dẫn lại từng bước (tiếp)",
       "dang": "noi-dung",
       "che_do": "so",
-      "bat_dau": 60.0,
-      "phut": 2.0,
+      "bat_dau": 59.5,
+      "phut": 1.0,
       "wow": false
     },
     {
       "id": "s56",
-      "tieu_de": "Tắt từng giả thiết (tiếp)",
+      "tieu_de": "Tắt từng giả thiết",
       "dang": "noi-dung",
       "che_do": "so",
-      "bat_dau": 62.0,
-      "phut": 1.0,
+      "bat_dau": 60.5,
+      "phut": 2.0,
       "wow": false
     },
     {
@@ -512,7 +512,7 @@
       "tieu_de": "Tắt từng giả thiết (tiếp)",
       "dang": "noi-dung",
       "che_do": "so",
-      "bat_dau": 63.0,
+      "bat_dau": 62.5,
       "phut": 1.0,
       "wow": false
     },
@@ -521,44 +521,44 @@
       "tieu_de": "Tắt từng giả thiết (tiếp)",
       "dang": "noi-dung",
       "che_do": "so",
-      "bat_dau": 64.0,
+      "bat_dau": 63.5,
       "phut": 1.0,
       "wow": false
     },
     {
       "id": "s59",
-      "tieu_de": "Chỗ này phải tự kéo, không xem được",
+      "tieu_de": "Tắt từng giả thiết (tiếp)",
       "dang": "noi-dung",
-      "che_do": "demo",
-      "bat_dau": 65.0,
-      "phut": 1.5,
+      "che_do": "so",
+      "bat_dau": 64.5,
+      "phut": 1.0,
       "wow": false
     },
     {
       "id": "s60",
-      "tieu_de": "Phản biện hỏi",
+      "tieu_de": "Chỗ này phải tự kéo, không xem được",
       "dang": "noi-dung",
-      "che_do": "hoi",
-      "bat_dau": 66.5,
+      "che_do": "demo",
+      "bat_dau": 65.5,
       "phut": 1.5,
       "wow": false
     },
     {
       "id": "s61",
-      "tieu_de": "Đáp mẫu",
+      "tieu_de": "Phản biện hỏi",
       "dang": "noi-dung",
-      "che_do": "noi",
-      "bat_dau": 68.0,
+      "che_do": "hoi",
+      "bat_dau": 67.0,
       "phut": 1.5,
       "wow": false
     },
     {
       "id": "s62",
-      "tieu_de": "Đáp mẫu (tiếp)",
+      "tieu_de": "Đáp mẫu",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 69.5,
-      "phut": 1.0,
+      "bat_dau": 68.5,
+      "phut": 1.5,
       "wow": false
     },
     {
@@ -566,7 +566,7 @@
       "tieu_de": "Đáp mẫu (tiếp)",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 70.5,
+      "bat_dau": 70.0,
       "phut": 1.0,
       "wow": false
     },
@@ -575,26 +575,26 @@
       "tieu_de": "Đáp mẫu (tiếp)",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 71.5,
+      "bat_dau": 71.0,
       "phut": 1.0,
       "wow": false
     },
     {
       "id": "s65",
-      "tieu_de": "Thang chấm",
+      "tieu_de": "Đáp mẫu (tiếp)",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 72.5,
+      "bat_dau": 72.0,
       "phut": 1.0,
       "wow": false
     },
     {
       "id": "s66",
-      "tieu_de": "Thang chấm (tiếp)",
+      "tieu_de": "Thang chấm",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 73.5,
-      "phut": 0.5,
+      "bat_dau": 73.0,
+      "phut": 1.0,
       "wow": false
     },
     {
@@ -608,29 +608,29 @@
     },
     {
       "id": "s68",
-      "tieu_de": "Phản biện hỏi",
+      "tieu_de": "Thang chấm (tiếp)",
       "dang": "noi-dung",
-      "che_do": "hoi",
+      "che_do": "noi",
       "bat_dau": 74.5,
-      "phut": 1.5,
+      "phut": 0.5,
       "wow": false
     },
     {
       "id": "s69",
-      "tieu_de": "Đáp mẫu",
+      "tieu_de": "Phản biện hỏi",
       "dang": "noi-dung",
-      "che_do": "noi",
-      "bat_dau": 76.0,
+      "che_do": "hoi",
+      "bat_dau": 75.0,
       "phut": 1.5,
       "wow": false
     },
     {
       "id": "s70",
-      "tieu_de": "Đáp mẫu (tiếp)",
+      "tieu_de": "Đáp mẫu",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 77.5,
-      "phut": 1.0,
+      "bat_dau": 76.5,
+      "phut": 1.5,
       "wow": false
     },
     {
@@ -638,26 +638,26 @@
       "tieu_de": "Đáp mẫu (tiếp)",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 78.5,
+      "bat_dau": 78.0,
       "phut": 1.0,
       "wow": false
     },
     {
       "id": "s72",
-      "tieu_de": "Thang chấm",
+      "tieu_de": "Đáp mẫu (tiếp)",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 79.5,
+      "bat_dau": 79.0,
       "phut": 1.0,
       "wow": false
     },
     {
       "id": "s73",
-      "tieu_de": "Thang chấm (tiếp)",
+      "tieu_de": "Thang chấm",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 80.5,
-      "phut": 0.5,
+      "bat_dau": 80.0,
+      "phut": 1.0,
       "wow": false
     },
     {
@@ -671,19 +671,28 @@
     },
     {
       "id": "s75",
-      "tieu_de": "cam-on",
-      "dang": "cam-on",
-      "che_do": "lang",
+      "tieu_de": "Thang chấm (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
       "bat_dau": 81.5,
       "phut": 0.5,
       "wow": false
     },
     {
       "id": "s76",
+      "tieu_de": "cam-on",
+      "dang": "cam-on",
+      "che_do": "lang",
+      "bat_dau": 82.0,
+      "phut": 0.5,
+      "wow": false
+    },
+    {
+      "id": "s77",
       "tieu_de": "one-more-thing",
       "dang": "one-more-thing",
       "che_do": "noi",
-      "bat_dau": 82.0,
+      "bat_dau": 82.5,
       "phut": 0.5,
       "wow": false
     }

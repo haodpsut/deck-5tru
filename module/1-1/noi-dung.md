@@ -44,7 +44,7 @@ Vì sao đây là chỗ reviewer đánh: một bài khai FPR ở mức gói rồ
 @phut: 1
 @che-do: noi
 
-Ba thứ phải dẫn lại được trong {{s001}} giây trên giấy: kiểm định tỉ số hợp lẽ và điều nó đòi, AUC là một xác suất so cặp chứ không phải một điểm làm việc, và bài toán tập mở (open-set) cần một hàm từ chối với ngưỡng riêng.
+Ba thứ phải dẫn lại được trong {{s001}} giây trên giấy: kiểm định tỉ số hợp lẽ (likelihood ratio) và điều nó đòi, AUC là một xác suất so cặp chứ không phải một điểm làm việc, và bài toán tập mở (open-set) cần một hàm từ chối (reject function) với ngưỡng riêng.
 
 ## Đơn vị quan sát (observation unit)
 @phut: 1
@@ -110,7 +110,7 @@ Nói định nghĩa và **điểm phải nhớ**, rồi lật.
 @phut: 1
 @che-do: noi
 
-**Điểm phải nhớ:** AUC là một xác suất so cặp, nó **không phụ thuộc tỉ lệ nền** và **không ứng với một điểm làm việc nào**. Chính vì thế AUC {{s004}} không nói được một cảnh báo có đáng đọc hay không, và cũng vì thế nó là con số dễ gây hiểu nhầm nhất trong trụ này.
+**Điểm phải nhớ:** AUC là một xác suất so cặp, nó **không phụ thuộc tỉ lệ nền (base rate)** và **không ứng với một điểm làm việc nào**. Chính vì thế AUC {{s004}} không nói được một cảnh báo có đáng đọc hay không, và cũng vì thế nó là con số dễ gây hiểu nhầm nhất trong trụ này.
 
 ## Tập mở (open-set) và hàm từ chối
 @phut: 1

@@ -38,13 +38,13 @@ Một bộ phát hiện in ra một số trong khoảng {{s003}} tới {{s004}}.
 @phut: 1
 @che-do: noi
 
-Module này tách hai việc ra. Hệ quả nối thẳng sang module {{s005}}: ngưỡng tối ưu chỉ đọc được trực tiếp từ tỉ lệ chi phí khi điểm số đã hiệu chuẩn. Chưa hiệu chuẩn thì `ngưỡng {{s001}}` là một nhãn trên thang riêng của mô hình, và nó trỏ tới một điểm làm việc khác với mỗi phép biến đổi đơn điệu mà anh áp lên logit, dù không ai sửa một tham số nào của mô hình.
+Module này tách hai việc ra. Hệ quả nối thẳng sang module {{s005}}: ngưỡng tối ưu chỉ đọc được trực tiếp từ tỉ lệ chi phí khi điểm số đã hiệu chuẩn (calibration). Chưa hiệu chuẩn thì `ngưỡng {{s001}}` là một nhãn trên thang riêng của mô hình, và nó trỏ tới một điểm làm việc khác với mỗi phép biến đổi đơn điệu mà anh áp lên logit, dù không ai sửa một tham số nào của mô hình.
 
 ## Thứ hạng và xác suất là hai thứ khác nhau (tiếp)
 @phut: 1
 @che-do: noi
 
-Ba thứ anh phải khai được sau module này: định nghĩa hiệu chuẩn hoàn hảo, vì sao ECE không đọc được khi thiếu số ô, và vì sao hiệu chỉnh nhiệt độ không thể đổi AUROC.
+Ba thứ anh phải khai được sau module này: định nghĩa hiệu chuẩn hoàn hảo, vì sao ECE không đọc được khi thiếu số ô, và vì sao hiệu chỉnh nhiệt độ (temperature scaling) không thể đổi AUROC.
 
 ## Hiệu chuẩn hoàn hảo
 @phut: 1
@@ -198,7 +198,7 @@ cfp = {{s004}}, cfn = {{s020}}
 
 `cfp/(cfp + cfn)`
 
-Khoảng {{s021}}, tức đúng {{s022}}. Để ý biểu thức không chứa tỉ lệ nền: tỉ lệ nền đã nằm trong xác suất hậu nghiệm, nên ngưỡng Bayes trên xác suất là cùng một con số ở mọi mạng. Và đây là chỗ hiệu chuẩn đi vào: con số này áp trực tiếp lên điểm số của mô hình chỉ khi điểm số đã hiệu chuẩn.
+Khoảng {{s021}}, tức đúng {{s022}}. Để ý biểu thức không chứa tỉ lệ nền (base rate): tỉ lệ nền đã nằm trong xác suất hậu nghiệm, nên ngưỡng Bayes trên xác suất là cùng một con số ở mọi mạng. Và đây là chỗ hiệu chuẩn đi vào: con số này áp trực tiếp lên điểm số của mô hình chỉ khi điểm số đã hiệu chuẩn.
 
 ## Bỏ sót một tấn công tốn 100 đơn vị · đáp (tiếp)
 @phut: 1

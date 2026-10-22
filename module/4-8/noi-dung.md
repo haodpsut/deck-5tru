@@ -32,7 +32,7 @@ Nếu trạm gốc dùng chính tín hiệu truyền thông để định vị, 
 @che-do: noi
 @notes: Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau.
 
-Cảm biến tích hợp, tức integrated sensing and communication, không thêm một khối phần cứng nào vào mô hình đe doạ của anh. Nó chỉ nói ra một điều đã có sẵn: **phân giải cự ly bằng c chia hai lần băng thông**, và **phân giải vận tốc bằng bước sóng chia hai lần thời gian quan sát**. Hai đại lượng đó là hai thứ mà mọi hệ 6G đều đẩy lên vì chúng làm truyền thông tốt hơn.
+Cảm biến tích hợp, tức integrated sensing and communication, không thêm một khối phần cứng nào vào mô hình đe doạ (threat model) của anh. Nó chỉ nói ra một điều đã có sẵn: **phân giải cự ly (range resolution) bằng c chia hai lần băng thông**, và **phân giải vận tốc bằng bước sóng chia hai lần thời gian quan sát**. Hai đại lượng đó là hai thứ mà mọi hệ 6G đều đẩy lên vì chúng làm truyền thông tốt hơn.
 
 ## Cảm biến tích hợp ISAC: mạng vừa truyền vừa biết (tiếp)
 @phut: 1
@@ -44,7 +44,7 @@ Hệ quả là một câu phải nói được thành tiếng: **khả năng c�
 @phut: 1
 @che-do: noi
 
-Module này có ba việc. Một, cho anh bốn con số neo để nhớ thuộc: ở {{s001}} MHz thì phân giải cự ly khoảng {{s002}} m, ở {{s003}} GHz thì khoảng {{s004}} m, và ở {{s005}} GHz với {{s006}} ms quan sát thì phân giải vận tốc khoảng {{s007}} m/s. Hai, tách rõ **phân giải** khỏi **độ chính xác định vị**:
+Module này có ba việc. Một, cho anh bốn con số neo để nhớ thuộc: ở {{s001}} MHz thì phân giải cự ly khoảng {{s002}} m, ở {{s003}} GHz thì khoảng {{s004}} m, và ở {{s005}} GHz với {{s006}} ms quan sát thì phân giải vận tốc khoảng {{s007}} m/s. Hai, tách rõ **phân giải** khỏi **độ chính xác định vị (localisation accuracy)**:
 
 ## Cảm biến tích hợp ISAC: mạng vừa truyền vừa biết (tiếp)
 @phut: 1

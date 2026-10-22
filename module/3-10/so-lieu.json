@@ -5,7 +5,13 @@
   },
   "_thuat_ngu": {
     "ngân sách byte một lượt qua": "per-pass byte budget",
+    "trọng số hiệu dụng": "effective weight",
     "số vòng mỗi ngày": "mean motion",
+    "ngân sách truyền": "communication budget",
+    "mạng phi mặt đất": "non-terrestrial network",
+    "cửa sổ nhìn thấy": "visibility window",
+    "học liên bang": "federated learning",
+    "chòm sao": "constellation",
     "kẻ chậm": "straggler"
   },
   "s001": "7,95",

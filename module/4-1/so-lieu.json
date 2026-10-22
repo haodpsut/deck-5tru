@@ -7,7 +7,10 @@
     "lớp dữ liệu và vận hành": "data and operations",
     "năng lực kẻ tấn công": "attacker capability",
     "lớp điều phối và AI": "orchestration and AI layer",
+    "bề mặt tấn công": "attack surface",
+    "mô hình đe doạ": "threat model",
     "lõi dịch vụ": "service based core",
+    "kênh phụ": "side channel",
     "luồng": "flow"
   },
   "s001": "1",
