@@ -44,7 +44,7 @@ nó bị cắt thành **{{s004}} mảnh**, và nếu mỗi mảnh mất độc l
 @phut: 1
 @che-do: noi
 
-Hai hệ quả phải mang theo khi viết bài. Thứ nhất, **giảm byte quan trọng hơn giảm số vòng**: số vòng do giao thức khoá (bốn bản tin EDHOC là bốn bản tin, không bỏ được bản nào mà vẫn còn là trao đổi khoá), còn byte thì cắt được, và byte đã cắt được trả công ở mọi vòng vì nó nằm trong số mũ. Thứ hai, con số {{s006}} phần trăm chỉ tồn tại cùng với một **mô hình mất gói**.
+Hai hệ quả phải mang theo khi viết bài. Thứ nhất, **giảm byte quan trọng hơn giảm số vòng**: số vòng do giao thức khoá (bốn bản tin EDHOC là bốn bản tin, không bỏ được bản nào mà vẫn còn là trao đổi khoá), còn byte thì cắt được, và byte đã cắt được trả công ở mọi vòng vì nó nằm trong số mũ. Thứ hai, con số {{s006}} phần trăm chỉ tồn tại cùng với một **mô hình mất gói (packet)**.
 
 ## Byte vào số mũ, vòng thì không (tiếp)
 @phut: 1
@@ -110,7 +110,7 @@ Nói định nghĩa, điểm phải nhớ, và **chỗ nó gãy**, rồi lật.
 @che-do: noi
 @notes: So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm.
 
-Công thức `(1-p)^n` đứng trên giả thiết mất **độc lập**. Trên liên kết vô tuyến thật, mất thường theo chùm (burst loss): một lần nhiễu ăn vài mảnh liền nhau. Với cùng tỉ lệ mất trung bình, mất theo chùm cho xác suất hoàn tất **cao hơn** công thức độc lập, vì các lần mất dồn vào ít lần thử hơn.
+Công thức `(1-p)^n` đứng trên giả thiết mất **độc lập**. Trên liên kết vô tuyến thật, mất thường theo chùm (burst loss): một lần nhiễu ăn vài mảnh liền nhau. Với cùng tỉ lệ mất trung bình, mất theo chùm (burst loss) cho xác suất hoàn tất **cao hơn** công thức độc lập, vì các lần mất dồn vào ít lần thử hơn.
 
 ## Mô hình mất gói là một giả thiết phải khai · đáp (tiếp)
 @phut: 1

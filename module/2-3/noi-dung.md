@@ -365,7 +365,7 @@ Gamma được định nghĩa qua các GIÁ TRỊ TỐI ƯU F⋆ và F_k⋆, nê
 @phut: 1
 @che-do: noi
 
-đổi trọng số p_k thì đổi chính hàm F mà ta tối ưu, nên F⋆ đổi và Gamma đổi theo, nhưng lúc đó bài toán đã khác bài toán đã phát biểu, nên không được gọi đó là bound chặt hơn cho cùng một bài toán. Cách sửa: nói bộ tổng hợp giảm ảnh hưởng của trôi cục bộ, một đại lượng về đường đi, và đừng nói nó giảm Gamma.
+đổi trọng số p_k thì đổi chính hàm F mà ta tối ưu, nên F⋆ đổi và Gamma đổi theo, nhưng lúc đó bài toán đã khác bài toán đã phát biểu, nên không được gọi đó là bound chặt hơn cho cùng một bài toán. Cách sửa: nói bộ tổng hợp giảm ảnh hưởng của trôi cục bộ (client drift), một đại lượng về đường đi, và đừng nói nó giảm Gamma.
 
 ## Dẫn lại từng bước · ca một
 @phut: 2

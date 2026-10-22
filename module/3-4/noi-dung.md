@@ -25,7 +25,7 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Bài của tôi giả định payload trong suốt hay tái sinh, và lựa chọn đó đổi những con số nào trong phần kết quả?
+Bài của tôi giả định payload trong suốt (transparent) hay tái sinh, và lựa chọn đó đổi những con số nào trong phần kết quả?
 
 ## Một lựa chọn kiến trúc, bốn con số đổi theo
 @phut: 1.5
@@ -44,7 +44,7 @@ Con số gọn nhất để nhớ: với payload trong suốt, gNB ở mặt đ�
 @phut: 1
 @che-do: noi
 
-Và đây là giả thiết ngầm mà nhiều bài báo NTN không khai: **cổng mặt đất luôn nhìn thấy được từ vệ tinh đang phục vụ**. Với chòm sao không có liên kết giữa vệ tinh, giả thiết đó sai trong phần lớn quỹ đạo trên biển và trên vùng cực.
+Và đây là giả thiết ngầm mà nhiều bài báo NTN không khai: **cổng mặt đất luôn nhìn thấy được từ vệ tinh đang phục vụ**. Với chòm sao không có liên kết giữa vệ tinh (ISL), giả thiết đó sai trong phần lớn quỹ đạo trên biển và trên vùng cực.
 
 ## Một lựa chọn kiến trúc, bốn con số đổi theo (tiếp)
 @phut: 1
@@ -161,7 +161,7 @@ Mọi con số trễ của kiến trúc trong suốt đứng trên một điều
 @phut: 1
 @che-do: so
 
-- d_dịch_vụ và d_feeder đều là khoảng xiên, tính từ cùng công thức của module {{s013}} với hai góc nâng khác nhau
+- d_dịch_vụ và d_feeder đều là khoảng xiên (slant range), tính từ cùng công thức của module {{s013}} với hai góc nâng khác nhau
 
 ## Trễ theo kiến trúc: trong suốt và tái sinh · ghi chú
 @phut: 1

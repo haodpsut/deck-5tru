@@ -32,7 +32,7 @@ Khi mô hình của tôi in ra {{s001}}, có đúng {{s002}} các lần như th�
 @che-do: noi
 @notes: Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau.
 
-Một bộ phát hiện in ra một số trong khoảng {{s003}} tới {{s004}}. Số đó dùng được cho hai việc rất khác nhau: **xếp hạng** các luồng, và **định lượng** khả năng một luồng là tấn công. AUROC, AUPRC và mọi phép đo dựa trên đường cong chỉ đọc thứ hạng. Chúng không nhìn thấy việc con số {{s001}} có nghĩa là {{s002}} hay không, và không có bất kỳ giá trị AUROC nào chứng minh được điều đó.
+Một bộ phát hiện in ra một số trong khoảng {{s003}} tới {{s004}}. Số đó dùng được cho hai việc rất khác nhau: **xếp hạng** các luồng (flow), và **định lượng** khả năng một luồng là tấn công. AUROC, AUPRC và mọi phép đo dựa trên đường cong chỉ đọc thứ hạng. Chúng không nhìn thấy việc con số {{s001}} có nghĩa là {{s002}} hay không, và không có bất kỳ giá trị AUROC nào chứng minh được điều đó.
 
 ## Thứ hạng và xác suất là hai thứ khác nhau (tiếp)
 @phut: 1

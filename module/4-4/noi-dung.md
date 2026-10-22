@@ -476,7 +476,7 @@ Under that attacker the power based features fall to near chance, detection rest
 @phut: 0.5
 @che-do: noi
 
-- Mức {{s004}}: khai mô hình năng lực kẻ tấn công gồm dải công suất điều chỉnh được, vẽ hiệu năng theo lề công suất trong dải đó, và tách bảng kết quả thành gây nhiễu và giả mạo với hai trục khác nhau.
+- Mức {{s004}}: khai mô hình năng lực kẻ tấn công (attacker capability) gồm dải công suất điều chỉnh được, vẽ hiệu năng theo lề công suất trong dải đó, và tách bảng kết quả thành gây nhiễu và giả mạo với hai trục khác nhau.
 
 ## Phản biện hỏi
 @phut: 1.5

@@ -321,6 +321,11 @@ body.pdf .nut,body.pdf .in-huong{display:none!important}
              text-transform:uppercase;color:var(--accent);line-height:1.4}
 .luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
 .nen-toi .luu-y{background:#ffffff0f}
+/* ⚠ Chữ mã trên nền MỰC: luật chung cho nó nền sáng và chữ mờ, nên trên slide tối
+   nó thành xám nhạt trên xám nhạt, gần như không đọc được. Đo trên bản đã deploy
+   mới thấy, vì không cổng nào đo tương phản của chữ mã. */
+.nen-toi .slide code,.nen-toi code{background:#ffffff14;color:#dfe5ec;
+                    border-color:#ffffff2e}
 @media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
 
 /* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
@@ -687,7 +692,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <div class="slide-trong"><p class="label">41</p><h2 class="d2" data-reveal>Tắt từng giả thiết</h2><div data-reveal style="--tre:.18s"><p>Kết quả gốc: C = 10 · alpha = 0,5 · 4,00 lớp hiệu dụng mỗi client · TV tương đương 0,600 · 10 000 mẫu mỗi client</p></div></div><div class="chan"><span>Tắt từng giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">41</span></div>
 </section>
 <section id="s42" class="slide nen-vach" data-slide data-title="Tắt từng giả thiết (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">42</p><h2 class="d2" data-reveal>Tắt từng giả thiết (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li><strong>P(y|x) giống nhau giữa các client, chỉ P(x) và P(y) khác nhau</strong> tắt đi: Có lệch quan hệ: cùng một luồng mạng được gán nhãn khác nhau ở hai site, vì chính sách của SOC khác nhau hoặc vì ngữ cảnh mạng khác nhau.</li><li><strong>Phân vùng được sinh bằng Dirichlet đối xứng Dir(alpha·1)</strong> tắt đi: Dữ liệu đã liên bang sẵn: ranh giới client là ranh giới tổ chức, chứ không do bộ sinh nào tạo ra.</li></ul></div></div><div class="chan"><span>Tắt từng giả thiết (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">42</span></div>
+<div class="slide-trong"><p class="label">42</p><h2 class="d2" data-reveal>Tắt từng giả thiết (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li><strong>P(y|x) giống nhau giữa các client, chỉ P(x) và P(y) khác nhau</strong> tắt đi: Có lệch quan hệ: cùng một luồng (flow) mạng được gán nhãn khác nhau ở hai site, vì chính sách của SOC khác nhau hoặc vì ngữ cảnh mạng khác nhau.</li><li><strong>Phân vùng được sinh bằng Dirichlet đối xứng Dir(alpha·1)</strong> tắt đi: Dữ liệu đã liên bang sẵn: ranh giới client là ranh giới tổ chức, chứ không do bộ sinh nào tạo ra.</li></ul></div></div><div class="chan"><span>Tắt từng giả thiết (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">42</span></div>
 </section>
 <section id="s43" class="slide nen-vach" data-slide data-title="Tắt từng giả thiết (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">43</p><h2 class="d2" data-reveal>Tắt từng giả thiết (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li><strong>Mọi client dùng cùng một tập lớp</strong> tắt đi: Site A chưa bao giờ thấy lớp tấn công thứ 7, và không chỉ là thấy ít mà là không có nhãn đó trong lược đồ.</li><li><strong>Số mẫu mỗi client bằng nhau</strong> tắt đi: Có lệch số lượng: n_k lệch nhau hàng chục lần, như lưu lượng giữa một trung tâm dữ liệu và một chi nhánh.</li></ul></div></div><div class="chan"><span>Tắt từng giả thiết (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">43</span></div>

@@ -48,7 +48,7 @@ Câu hỏi nhận chìm anh bằng chính con số anh tự hào. Bẫy là nó 
 @che-do: so
 
 - Nói thẳng rằng accuracy không phải con số đúng để đánh giá, trước khi ai kịp hỏi thêm.
-- Cho FPR và số cảnh báo mỗi ngày, ví dụ FPR 10⁻³ trên {{s006}} triệu luồng lành là {{s007}} cảnh báo sai mỗi ngày.
+- Cho FPR và số cảnh báo mỗi ngày, ví dụ FPR 10⁻³ trên {{s006}} triệu luồng (flow) lành là {{s007}} cảnh báo sai mỗi ngày.
 - Tự khai rằng con số đó vượt ngân sách của một SOC, và nói cơ chế nào trong bài xử lý chuyện đó.
 
 ## Đừng nói
@@ -396,7 +396,7 @@ Người hỏi đã nhẩm ra số mảnh trước khi hỏi. Bẫy là trả l�
 
 - Trả lời số mảnh và xác suất hoàn tất ngay, vì đó là điều được hỏi.
 - Cho con số: {{s021}} byte với tải khả dụng khoảng {{s022}} byte là {{s023}} mảnh, và với tỉ lệ mất {{s024}} mỗi mảnh thì xác suất hoàn tất khoảng {{s025}}.
-- Tự khai mô hình mất gói, vì con số trên giả định mất độc lập và mất theo chùm cho kết quả khác.
+- Tự khai mô hình mất gói (packet), vì con số trên giả định mất độc lập và mất theo chùm (burst loss) cho kết quả khác.
 
 ## Đừng nói
 @phut: 0.5
@@ -862,7 +862,7 @@ Người hỏi nối hai thứ anh trình bày rời nhau: cửa sổ nhìn th�
 @phut: 0.5
 @che-do: so
 
-- Nói ai tổng hợp và tổng hợp ở đâu: trên vệ tinh, ở trạm mặt đất, hay qua liên kết giữa vệ tinh.
+- Nói ai tổng hợp và tổng hợp ở đâu: trên vệ tinh, ở trạm mặt đất, hay qua liên kết giữa vệ tinh (ISL).
 - Con số: chu kỳ {{s043}} phút, nên lịch gặp lại là tuần hoàn chứ không phải lấy mẫu ngẫu nhiên độc lập.
 - Tự khai rằng bound dẫn trong bài giả thiết lấy mẫu độc lập, nên nó KHÔNG áp dụng nguyên văn, và nói anh dùng gì thay.
 

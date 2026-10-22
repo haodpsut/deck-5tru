@@ -391,7 +391,7 @@ mọi câu dạng hậu lượng tử tốn khoảng N lần byte phải kèm ti
 @phut: 0.5
 @che-do: so
 
-- bộ tổ hợp có tính chất an toàn miễn ít nhất một thành phần còn an toàn, và tính chất đó phải được chứng minh hoặc dẫn, chứ không suy ra từ việc có hai thành phần
+- bộ tổ hợp (combiner) có tính chất an toàn miễn ít nhất một thành phần còn an toàn, và tính chất đó phải được chứng minh hoặc dẫn, chứ không suy ra từ việc có hai thành phần
 - cả hai bí mật đều vào hàm dẫn xuất khoá của giao thức, không bí mật nào bị cắt bỏ ở khâu nào trong chuỗi dẫn xuất
 
 ## Giả thiết (tiếp)
@@ -510,7 +510,7 @@ Cả hai hạng tử đang ở trạng thái chưa xác minh.
 @che-do: so
 
 - W là tải khả dụng cho tầng trên sau mọi tiêu đề, và là hằng số với mọi mảnh của cùng một bản tin
-- mỗi mảnh mất độc lập với xác suất p, không có tương quan thời gian và không có mất theo chùm
+- mỗi mảnh mất độc lập với xác suất p, không có tương quan thời gian và không có mất theo chùm (burst loss)
 - không có truyền lại ở lớp liên kết, nên mất một mảnh là mất cả bản tin
 - v vòng trao đổi đều phải hoàn tất, và mỗi vòng mang đúng B byte
 
@@ -1006,7 +1006,7 @@ vet = {{s097}}, n1 = {{s098}}, kappa = {{s073}}
 @phut: 1
 @che-do: so
 
-- p là xác suất một HỌ giả định gãy trong cửa sổ thời gian đang xét, không phải xác suất một cài đặt có lỗi
+- p là xác suất một HỌ giả định gãy trong cửa sổ thời gian (time window) đang xét, không phải xác suất một cài đặt có lỗi
 - c là tỉ lệ hệ dùng chung một họ giả định: c = {{s012}} là n họ khác nhau, c = {{s021}} là tất cả cùng một họ
 
 ## Giả thiết (tiếp)

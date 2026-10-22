@@ -3,6 +3,12 @@
     "kho": "working/hoc-5-tru-web/data, bản 2026.10.06-2",
     "sinh_boi": "slides/5tru/sinh.py"
   },
+  "_thuat_ngu": {
+    "liên kết giữa vệ tinh": "ISL",
+    "mất theo chùm": "burst loss",
+    "luồng": "flow",
+    "gói": "packet"
+  },
   "s001": "20",
   "s002": "60",
   "s003": "5",

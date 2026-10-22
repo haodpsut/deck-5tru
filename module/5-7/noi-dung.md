@@ -376,7 +376,7 @@ trong cùng một hệ, khoá phiên của kênh điều khiển có thời hạ
 
 - Đóng góp thứ nhất: một kiến trúc tách bộ định danh thuật toán ra khỏi định dạng bản tin, nên đổi KEM không đổi định dạng.
 - Đóng góp thứ hai: một phép đo chi phí byte và chu kỳ của ML-KEM-768 trên thiết bị lớp Cortex-M.
-- Nhờ tính linh hoạt mật mã này, hệ của chúng tôi đổi sang bất kỳ KEM hậu lượng tử tương lai nào mà không cần đổi kiến trúc.
+- Nhờ tính linh hoạt mật mã (crypto-agility) này, hệ của chúng tôi đổi sang bất kỳ KEM hậu lượng tử tương lai nào mà không cần đổi kiến trúc.
 
 ## Câu không được chống đỡ · ca ba · đáp
 @phut: 1.5

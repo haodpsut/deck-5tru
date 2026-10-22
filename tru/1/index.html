@@ -321,6 +321,11 @@ body.pdf .nut,body.pdf .in-huong{display:none!important}
              text-transform:uppercase;color:var(--accent);line-height:1.4}
 .luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
 .nen-toi .luu-y{background:#ffffff0f}
+/* ⚠ Chữ mã trên nền MỰC: luật chung cho nó nền sáng và chữ mờ, nên trên slide tối
+   nó thành xám nhạt trên xám nhạt, gần như không đọc được. Đo trên bản đã deploy
+   mới thấy, vì không cổng nào đo tương phản của chữ mã. */
+.nen-toi .slide code,.nen-toi code{background:#ffffff14;color:#dfe5ec;
+                    border-color:#ffffff2e}
 @media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
 
 /* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
@@ -560,7 +565,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 </svg><figcaption>Số khối <strong>có chấm điểm</strong> của từng module. Thanh dài là chỗ phải để dành nhiều buổi hơn.</figcaption></figure></div></div><div class="chan"><span>Module nào dày nhất · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">03</span></div>
 </section>
 <section id="s04" class="slide nen-vach" data-slide data-title="m1.1 Đặt bài toán phát hiện" data-phut="1.5" data-chedo="hoi" data-notes="Câu hỏi của module. Trả lời bằng miệng trước khi lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">04</p><h2 class="d2" data-reveal>m1.1 Đặt bài toán phát hiện</h2><div data-reveal style="--tre:.18s"><p>Đơn vị quan sát của tôi là gói tin, luồng, cửa sổ thời gian hay đồ thị, và lựa chọn đó làm cho tuyên bố nào của tôi không còn kiểm được?</p></div></div><div class="chan"><span>m1.1 Đặt bài toán phát hiện · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">04</span></div>
+<div class="slide-trong"><p class="label">04</p><h2 class="d2" data-reveal>m1.1 Đặt bài toán phát hiện</h2><div data-reveal style="--tre:.18s"><p>Đơn vị quan sát (observation unit) của tôi là gói (packet) tin, luồng (flow), cửa sổ thời gian (time window) hay đồ thị, và lựa chọn đó làm cho tuyên bố nào của tôi không còn kiểm được?</p></div></div><div class="chan"><span>m1.1 Đặt bài toán phát hiện · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">04</span></div>
 </section>
 <section id="s05" class="slide nen-vach" data-slide data-title="m1.1 · luận điểm" data-phut="1.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">05</p><h2 class="d2" data-reveal>m1.1 · luận điểm</h2><div data-reveal style="--tre:.18s"><p>Đơn vị quan sát là câu đầu tiên của phần đánh giá, không phải câu cuối</p></div></div><div class="chan"><span>m1.1 · luận điểm · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">05</span></div>

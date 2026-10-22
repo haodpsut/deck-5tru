@@ -366,7 +366,7 @@ Kết quả gốc: toàn cục {{s027}} · trung bình theo client {{s028}} · p
 @phut: 1
 @che-do: so
 
-- **Mọi client cùng một bài toán, tức P(y|x) như nhau** tắt đi: P(y|x) khác nhau giữa các cụm: cùng một luồng mạng được gán nhãn tấn công ở cụm này và lành ở cụm kia, vì chính sách và nền lưu lượng của hai mạng khác nhau.
+- **Mọi client cùng một bài toán, tức P(y|x) như nhau** tắt đi: P(y|x) khác nhau giữa các cụm: cùng một luồng (flow) mạng được gán nhãn tấn công ở cụm này và lành ở cụm kia, vì chính sách và nền lưu lượng của hai mạng khác nhau.
 - **Client nào cũng đủ dữ liệu để học riêng** tắt đi: n_k nhỏ, nên s = σ²/n_k lớn: mô hình riêng khớp vào nhiễu của chính client đó.
 
 ## Tắt từng giả thiết (tiếp)

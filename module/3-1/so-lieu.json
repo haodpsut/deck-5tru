@@ -3,6 +3,13 @@
     "kho": "working/hoc-5-tru-web/data, bản 2026.10.06-2",
     "sinh_boi": "slides/5tru/sinh.py"
   },
+  "_thuat_ngu": {
+    "biên dự phòng mưa": "rain margin",
+    "góc tâm trái đất": "Earth central angle",
+    "thời gian trú": "dwell time",
+    "mức khả dụng": "availability",
+    "khoảng xiên": "slant range"
+  },
   "s001": "3.1",
   "s002": "550",
   "s003": "2705",

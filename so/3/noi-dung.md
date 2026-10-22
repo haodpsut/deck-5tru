@@ -93,7 +93,7 @@ Vận tốc quỹ đạo tròn ở cao độ {{s003}} km, tính theo km/s.
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-Khoảng xiên ở cao độ {{s003}} km và góc nâng 0°, tức ở chân trời hình học, tính theo km.
+Khoảng xiên (slant range) ở cao độ {{s003}} km và góc nâng 0°, tức ở chân trời hình học, tính theo km.
 
 *Module {{s004}}.*
 
@@ -367,7 +367,7 @@ snr = {{s052}}, amua = {{s024}}
 
 `100⋆(1-Math.log2(1+Math.pow(10,(snr-amua)/10))/Math.log2(1+Math.pow(10,snr/10)))`
 
-Khoảng {{s053}}, tức gần hai phần ba. SNR chỉ đi từ {{s052}} dB về {{s054}} dB, mà SE tụt từ {{s055}} xuống {{s056}} bit mỗi ký hiệu. Nói ngược lại: con số SE của trời quang bị thổi lên {{s057}} lần so với con số ở điều kiện mưa đó. Đây là lý do SE in một mình, không kèm mức khả dụng, là con số không khai được.
+Khoảng {{s053}}, tức gần hai phần ba. SNR chỉ đi từ {{s052}} dB về {{s054}} dB, mà SE tụt từ {{s055}} xuống {{s056}} bit mỗi ký hiệu. Nói ngược lại: con số SE của trời quang bị thổi lên {{s057}} lần so với con số ở điều kiện mưa đó. Đây là lý do SE in một mình, không kèm mức khả dụng (availability), là con số không khai được.
 
 ## Công thức này đứng trên giả thiết nào
 @phut: 0.5
@@ -406,7 +406,7 @@ Khoảng {{s053}}, tức gần hai phần ba. SNR chỉ đi từ {{s052}} dB v�
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-Thành phần vận tốc theo đường ngắm lớn nhất, ở cao độ {{s003}} km, tính theo km/s.
+Thành phần vận tốc theo đường ngắm (line of sight velocity) lớn nhất, ở cao độ {{s003}} km, tính theo km/s.
 
 *Module {{s059}}.*
 
@@ -616,7 +616,7 @@ Bản Release nào của 3GPP đưa NTN vào NR và vào nhánh IoT? Nhập số
 @che-do: hoi
 @notes: Dẫn bằng miệng, đừng bấm máy.
 
-Cao độ {{s003}} km, thiết bị ở góc nâng 40°, cổng mặt đất ở góc nâng 10°, payload trong suốt. RTT lan truyền là bao nhiêu ms?
+Cao độ {{s003}} km, thiết bị ở góc nâng 40°, cổng mặt đất ở góc nâng 10°, payload trong suốt (transparent). RTT lan truyền là bao nhiêu ms?
 
 h = {{s003}}, es = {{s079}}, ef = {{s024}}, c = {{s012}}
 
@@ -778,7 +778,7 @@ Khoảng {{s097}} lần mỗi giờ, tức khoảng một lần mỗi phút. Chi
 @phut: 0.5
 @che-do: so
 
-- Không mất gói: mọi gói sinh ra đều tới đích
+- Không mất gói (packet): mọi gói sinh ra đều tới đích
 - Hàng đợi không tích luỹ, tức tốc độ phục vụ theo kịp tốc độ sinh, nên S không phình theo thời gian
 - Lấy mẫu đúng chu kỳ T, không jitter, nên đường AoI là răng cưa đều
 - Một nguồn một đích, không cạnh tranh tài nguyên với nguồn khác

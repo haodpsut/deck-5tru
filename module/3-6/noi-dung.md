@@ -118,7 +118,7 @@ Nói định nghĩa, điểm phải nhớ, và **chỗ nó gãy**, rồi lật.
 @che-do: noi
 @notes: So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm.
 
-AoI là `Δ(t) = t − U(t)` với `U(t)` là thời điểm SINH của gói mới nhất đã nhận. Nó không phải trễ (trễ đo một gói), không phải thông lượng (thông lượng đo số gói). Với lấy mẫu chu kỳ `T` và thời gian phục vụ `S`: `AoI trung bình ≈ T/2 + E[S]`, `AoI đỉnh ≈ T + S`.
+AoI là `Δ(t) = t − U(t)` với `U(t)` là thời điểm SINH của gói (packet) mới nhất đã nhận. Nó không phải trễ (trễ đo một gói), không phải thông lượng (thông lượng đo số gói). Với lấy mẫu chu kỳ `T` và thời gian phục vụ `S`: `AoI trung bình ≈ T/2 + E[S]`, `AoI đỉnh ≈ T + S`.
 
 ## AoI trung bình so với AoI đỉnh · đáp (tiếp)
 @phut: 1

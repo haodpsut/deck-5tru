@@ -321,6 +321,11 @@ body.pdf .nut,body.pdf .in-huong{display:none!important}
              text-transform:uppercase;color:var(--accent);line-height:1.4}
 .luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
 .nen-toi .luu-y{background:#ffffff0f}
+/* ⚠ Chữ mã trên nền MỰC: luật chung cho nó nền sáng và chữ mờ, nên trên slide tối
+   nó thành xám nhạt trên xám nhạt, gần như không đọc được. Đo trên bản đã deploy
+   mới thấy, vì không cổng nào đo tương phản của chữ mã. */
+.nen-toi .slide code,.nen-toi code{background:#ffffff14;color:#dfe5ec;
+                    border-color:#ffffff2e}
 @media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
 
 /* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
@@ -556,7 +561,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <div class="slide-trong"><p class="label">03</p><h2 class="d2" data-reveal>Vòng của anh dài bằng client chậm nhất</h2><div data-reveal style="--tre:.18s"><p>Tám module đầu của trụ 2 đều giả định vòng huấn luyện diễn ra sạch sẽ: không ai rơi, không ai chậm. Module này bỏ giả định đó, và hai hệ quả xuất hiện ngay.</p></div></div><div class="chan"><span>Vòng của anh dài bằng client chậm nhất · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">03</span></div>
 </section>
 <section id="s04" class="slide nen-vach" data-slide data-title="Vòng của anh dài bằng client chậm nhất (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">04</p><h2 class="d2" data-reveal>Vòng của anh dài bằng client chậm nhất (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Hệ quả thứ nhất là về thời gian: vòng đồng bộ dài bằng <strong>max</strong>, không bằng trung bình, nên một kẻ chậm quyết định cả vòng. Số vòng là đại lượng không có đơn vị thời gian, nên một bảng chỉ báo số vòng thì không kiểm được tuyên bố nào về chi phí.</p></div></div><div class="chan"><span>Vòng của anh dài bằng client chậm nhất (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">04</span></div>
+<div class="slide-trong"><p class="label">04</p><h2 class="d2" data-reveal>Vòng của anh dài bằng client chậm nhất (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Hệ quả thứ nhất là về thời gian: vòng đồng bộ dài bằng <strong>max</strong>, không bằng trung bình, nên một kẻ chậm (straggler) quyết định cả vòng. Số vòng là đại lượng không có đơn vị thời gian, nên một bảng chỉ báo số vòng thì không kiểm được tuyên bố nào về chi phí.</p></div></div><div class="chan"><span>Vòng của anh dài bằng client chậm nhất (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">04</span></div>
 </section>
 <section id="s05" class="slide nen-vach" data-slide data-title="Vòng của anh dài bằng client chậm nhất (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">05</p><h2 class="d2" data-reveal>Vòng của anh dài bằng client chậm nhất (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Hệ quả thứ hai nặng hơn và gần như không ai khai: đặt hạn chờ <code>D</code> làm trọng số của client <code>k</code> trong mô hình đổi từ <code>p_k</code> thành <code>p_k·q_k</code> chuẩn hoá lại, với <code>q_k</code> là xác suất client đó về kịp. Hệ đang tối thiểu hoá một mục tiêu <strong>khác</strong> mục tiêu viết trong phần phương pháp, và chênh lệch đó đi vào mô hình chứ không đi vào bảng kết quả.</p></div></div><div class="chan"><span>Vòng của anh dài bằng client chậm nhất (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">05</span></div>

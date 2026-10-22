@@ -321,6 +321,11 @@ body.pdf .nut,body.pdf .in-huong{display:none!important}
              text-transform:uppercase;color:var(--accent);line-height:1.4}
 .luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
 .nen-toi .luu-y{background:#ffffff0f}
+/* ⚠ Chữ mã trên nền MỰC: luật chung cho nó nền sáng và chữ mờ, nên trên slide tối
+   nó thành xám nhạt trên xám nhạt, gần như không đọc được. Đo trên bản đã deploy
+   mới thấy, vì không cổng nào đo tương phản của chữ mã. */
+.nen-toi .slide code,.nen-toi code{background:#ffffff14;color:#dfe5ec;
+                    border-color:#ffffff2e}
 @media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
 
 /* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
@@ -585,7 +590,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <div class="slide-trong"><p class="label">11</p><h2 class="d2" data-reveal>Bayes cho giá trị dự đoán dương · ghi chú</h2><div data-reveal style="--tre:.18s"><p>Đảo ngược để lấy yêu cầu thiết kế: <code>FPR ≤ TPR · p · (1 − PPV⋆) / (PPV⋆ · (1 − p))</code>. Đây là dạng dùng được nhất, vì nó cho ra <strong>một con số bắt buộc</strong> chứ không phải một nhận xét.</p></div></div><div class="chan"><span>Bayes cho giá trị dự đoán dương · ghi chú · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">11</span></div>
 </section>
 <section id="s12" class="slide nen-vach" data-slide data-title="Số phải biết" data-phut="2.0" data-chedo="so" data-notes="Đọc to con số và ĐƠN VỊ. Nhớ số mà quên đơn vị là chưa nhớ." data-wow><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">12</p><h2 class="d2" data-reveal>Số phải biết</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">0.99</div><div class="nhan">%</div><div class="moc">Với p = 10⁻⁵</div></div><div class="so-o"><div class="num">5</div><div class="nhan">số mũ âm</div><div class="moc">Vẫn p = 10⁻⁵ và TPR = 1. Muốn PPV đạt 50%</div></div><div class="so-o"><div class="num">10000</div><div class="nhan">cảnh báo mỗi ngày</div><div class="moc">FPR = 10⁻³ trên 10 triệu luồng lành mỗi ngày. Bao nhiêu</div></div></div></div></div><div class="chan"><span>Số phải biết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">12</span></div>
+<div class="slide-trong"><p class="label">12</p><h2 class="d2" data-reveal>Số phải biết</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">0.99</div><div class="nhan">%</div><div class="moc">Với p = 10⁻⁵</div></div><div class="so-o"><div class="num">5</div><div class="nhan">số mũ âm</div><div class="moc">Vẫn p = 10⁻⁵ và TPR = 1. Muốn PPV đạt 50%</div></div><div class="so-o"><div class="num">10000</div><div class="nhan">cảnh báo mỗi ngày</div><div class="moc">FPR = 10⁻³ trên 10 triệu luồng (flow) lành mỗi ngày. Bao nhiêu</div></div></div></div></div><div class="chan"><span>Số phải biết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">12</span></div>
 </section>
 <section id="s13" class="slide nen-vach" data-slide data-title="Một bài báo khai p = 10⁻³" data-phut="1.0" data-chedo="hoi" data-notes="HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">13</p><h2 class="d2" data-reveal>Một bài báo khai p = 10⁻³</h2><div data-reveal style="--tre:.18s"><p>Một bài báo khai p = 10⁻³, TPR = 0,95, FPR = 0,02. PPV bằng bao nhiêu phần trăm?</p>

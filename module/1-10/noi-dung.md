@@ -32,7 +32,7 @@ Trong mạng năm {{s001}}, bao nhiêu phần đặc trưng mà dataset của t�
 @che-do: noi
 @notes: Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau.
 
-Mọi bộ phát hiện xâm nhập đều ăn một vector đặc trưng do bộ bóc gói sinh ra. Các đặc trưng đó xếp được thành ba nhóm theo **khả năng lấy được** từ một điểm quan sát trên đường truyền: **Tải tin**: n-gram byte, chuỗi ký tự, chữ ký nội dung. Chết với TLS. **Siêu dữ liệu bắt tay**: SNI, dấu tay thư viện TLS, thời điểm và kích thước gói bắt tay. Chết dần với ECH. **Hình dáng luồng**:
+Mọi bộ phát hiện xâm nhập đều ăn một vector đặc trưng do bộ bóc gói (packet) sinh ra. Các đặc trưng đó xếp được thành ba nhóm theo **khả năng lấy được** từ một điểm quan sát trên đường truyền: **Tải tin**: n-gram byte, chuỗi ký tự, chữ ký nội dung. Chết với TLS. **Siêu dữ liệu bắt tay**: SNI, dấu tay thư viện TLS, thời điểm và kích thước gói bắt tay. Chết dần với ECH. **Hình dáng luồng (flow)**:
 
 ## Ba nhóm đặc trưng, và nhóm nào còn sống (tiếp)
 @phut: 1

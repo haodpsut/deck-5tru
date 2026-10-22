@@ -4,7 +4,7 @@ phu-de: Trụ 4 6G Sec · module 4.1
 tac-gia: Đỗ Phúc Hảo · CAIRA, Đại học Kiến trúc Đà Nẵng
 noi-ngay: Tự ôn, bộ Năm trụ
 profile: giang-day
-tong-phut: 84.5
+tong-phut: 85.5
 accent: "#2C6E9B"
 ngon-ngu: vi
 gate: khong
@@ -437,7 +437,7 @@ Kết quả gốc: {{s006}} giao diện × {{s004}} hạng mục = {{s007}} ô; 
 @phut: 1
 @che-do: so
 
-- **Danh mục giao diện là đóng và biết hết** tắt đi: Còn cổng quản trị ngoài luồng, cổng gỡ lỗi, giao diện riêng của nhà cung cấp, hoặc kênh cập nhật phần mềm không nằm trong sơ đồ.
+- **Danh mục giao diện là đóng và biết hết** tắt đi: Còn cổng quản trị ngoài luồng (flow), cổng gỡ lỗi, giao diện riêng của nhà cung cấp, hoặc kênh cập nhật phần mềm không nằm trong sơ đồ.
 - **Giao diện mở được giám sát và ghi vết** tắt đi: Không có bản ghi trên E2 và A1, hoặc bản ghi bị chính kẻ tấn công xoá được.
 
 ## Chỗ này phải tự kéo, không xem được
@@ -445,7 +445,11 @@ Kết quả gốc: {{s006}} giao diện × {{s004}} hạng mục = {{s007}} ô; 
 @che-do: demo
 @notes: Dừng bài, mở site, kéo thật. Đây là khối slide KHÔNG thay được.
 
-Bộ đếm bề mặt tấn công theo năng lực kẻ tấn công. Đây là một mô hình đếm khai rõ ({{s004}} hạng mục STRIDE trên mỗi giao diện, ánh xạ một-một hạng mục với năng lực), không phải số đo thực nghiệm. Kéo số giao diện mở, số xApp của bên thứ ba và số năng lực được cấp, rồi đọc cả hai con số: ô khả thi và ô bị loại.
+Bộ đếm bề mặt tấn công theo năng lực kẻ tấn công (attacker capability). Đây là một mô hình đếm khai rõ ({{s004}} hạng mục STRIDE trên mỗi giao diện, ánh xạ một-một hạng mục với năng lực), không phải số đo thực nghiệm. Kéo số giao diện mở, số xApp của bên thứ ba và số năng lực được cấp, rồi đọc cả hai con số: ô khả thi và ô bị loại.
+
+## Chỗ này phải tự kéo, không xem được (tiếp)
+@phut: 1
+@che-do: demo
 
 *Mở `https://hoc-5-tru-web.vercel.app/#/module/4.1` và kéo thanh. Slide đứng yên, mô phỏng thì không.*
 

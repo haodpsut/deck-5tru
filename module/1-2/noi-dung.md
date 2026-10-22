@@ -38,13 +38,13 @@ Module này không xếp hạng dataset. Nó làm một việc hẹp hơn và d�
 @phut: 1
 @che-do: noi
 
-Ba cơ chế chính, và chỉ ba: **Trùng bản ghi.** Nhân một lớp lên r lần thì trọng số của lớp đó trong trung bình đổi, nên accuracy quan sát dịch về phía lớp đó. Khả năng tổng quát hoá không đổi một chút nào. **Rò rỉ đặc trưng.** Một đặc trưng đơn lẻ gần như xác định được nhãn. Đó là dấu hiệu quy trình sinh dữ liệu đã mã hoá nhãn vào đầu vào, không phải dấu hiệu mô hình giỏi.
+Ba cơ chế chính, và chỉ ba: **Trùng bản ghi.** Nhân một lớp lên r lần thì trọng số của lớp đó trong trung bình đổi, nên accuracy quan sát dịch về phía lớp đó. Khả năng tổng quát hoá không đổi một chút nào. **Rò rỉ đặc trưng (feature leakage).** Một đặc trưng đơn lẻ gần như xác định được nhãn.
 
 ## Mỗi dataset có một vết thương (tiếp)
 @phut: 1
 @che-do: noi
 
-**Nhiễu nhãn.** Nó đặt một trần cho accuracy quan sát và co khoảng cách giữa hai mô hình lại. Hai mô hình chênh một điểm phần trăm ở vùng {{s001}} thì chênh lệch đó nằm dưới mức nhiễu nhãn có thể gây ra. Khai ba thứ này vào bài không làm con số của anh xấu đi.
+Đó là dấu hiệu quy trình sinh dữ liệu đã mã hoá nhãn vào đầu vào, không phải dấu hiệu mô hình giỏi. **Nhiễu nhãn.** Nó đặt một trần cho accuracy quan sát và co khoảng cách giữa hai mô hình lại. Hai mô hình chênh một điểm phần trăm ở vùng {{s001}} thì chênh lệch đó nằm dưới mức nhiễu nhãn có thể gây ra. Khai ba thứ này vào bài không làm con số của anh xấu đi.
 
 ## Mỗi dataset có một vết thương (tiếp)
 @phut: 1
@@ -72,7 +72,7 @@ Khi một đặc trưng đầu vào mang thông tin về nhãn không phải vì
 @phut: 1
 @che-do: noi
 
-**Điểm phải nhớ:** `I(X_i; Y)` gần `H(Y)` là **dấu hiệu rò rỉ**, không phải dấu hiệu mô hình giỏi. Trong các corpus IDS, cổng đích và thời lượng luồng là hai chỗ rò rỉ hay gặp nhất, vì kịch bản sinh lưu lượng gán sẵn chúng cho từng loại tấn công.
+**Điểm phải nhớ:** `I(X_i; Y)` gần `H(Y)` là **dấu hiệu rò rỉ**, không phải dấu hiệu mô hình giỏi. Trong các corpus IDS, cổng đích và thời lượng luồng (flow) là hai chỗ rò rỉ hay gặp nhất, vì kịch bản sinh lưu lượng gán sẵn chúng cho từng loại tấn công.
 
 ## Trần hiệu năng do nhiễu nhãn (label noise ceiling)
 @phut: 1

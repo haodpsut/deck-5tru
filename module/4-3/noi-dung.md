@@ -340,13 +340,13 @@ Suy giảm vòng kín bị chặn trên bởi {{s018}} trong khi mẫu số r t�
 @phut: 1
 @che-do: noi
 
-Nhiễu trong một quả cầu L2 trên vector đặc trưng đã chuẩn hoá không ứng với một chuỗi gói tin nào mà kẻ tấn công sinh ra được, nên phép đo này đúng về tính toán và không nói gì về mạng. Nó còn chạm vào quy tắc trung tâm của trụ: không có phép biến đổi khả thi nào thì không có năng lực kẻ tấn công, nên đây là lo lắng chứ không phải đe doạ.
+Nhiễu trong một quả cầu L2 trên vector đặc trưng đã chuẩn hoá không ứng với một chuỗi gói (packet) tin nào mà kẻ tấn công sinh ra được, nên phép đo này đúng về tính toán và không nói gì về mạng. Nó còn chạm vào quy tắc trung tâm của trụ: không có phép biến đổi khả thi nào thì không có năng lực kẻ tấn công (attacker capability), nên đây là lo lắng chứ không phải đe doạ.
 
 ## Câu không được chống đỡ · ca một · đáp (tiếp)
 @phut: 1
 @che-do: noi
 
-Ba câu kia đều hợp lệ, trong đó câu cuối là phần thú vị nhất của bài. Cách sửa: khai một tập phép biến đổi trên lưu lượng thật, ví dụ chèn luồng, dịch thời điểm, đổi kích thước gói, rồi sinh nhiễu bằng cách tìm trong tập đó. Nếu không làm được thì chuyển phần này sang phụ lục và nói rõ nó là phép đo trong không gian đặc trưng.
+Ba câu kia đều hợp lệ, trong đó câu cuối là phần thú vị nhất của bài. Cách sửa: khai một tập phép biến đổi trên lưu lượng thật, ví dụ chèn luồng (flow), dịch thời điểm, đổi kích thước gói, rồi sinh nhiễu bằng cách tìm trong tập đó. Nếu không làm được thì chuyển phần này sang phụ lục và nói rõ nó là phép đo trong không gian đặc trưng.
 
 ## Câu nào không được số nào chống đỡ · ca hai
 @phut: 1

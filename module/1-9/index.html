@@ -321,6 +321,11 @@ body.pdf .nut,body.pdf .in-huong{display:none!important}
              text-transform:uppercase;color:var(--accent);line-height:1.4}
 .luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
 .nen-toi .luu-y{background:#ffffff0f}
+/* ⚠ Chữ mã trên nền MỰC: luật chung cho nó nền sáng và chữ mờ, nên trên slide tối
+   nó thành xám nhạt trên xám nhạt, gần như không đọc được. Đo trên bản đã deploy
+   mới thấy, vì không cổng nào đo tương phản của chữ mã. */
+.nen-toi .slide code,.nen-toi code{background:#ffffff14;color:#dfe5ec;
+                    border-color:#ffffff2e}
 @media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
 
 /* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
@@ -553,7 +558,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <p>Khi mô hình của tôi in ra 0,9, có đúng 90% các lần như thế là tấn công thật không, và nếu không thì ngưỡng tôi chọn còn nghĩa gì?</p></div></div><div class="chan"><span>Câu hỏi của module · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">02</span></div>
 </section>
 <section id="s03" class="slide nen-vach" data-slide data-title="Thứ hạng và xác suất là hai thứ khác nhau" data-phut="1.5" data-chedo="noi" data-notes="Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">03</p><h2 class="d2" data-reveal>Thứ hạng và xác suất là hai thứ khác nhau</h2><div data-reveal style="--tre:.18s"><p>Một bộ phát hiện in ra một số trong khoảng 0 tới 1. Số đó dùng được cho hai việc rất khác nhau: <strong>xếp hạng</strong> các luồng, và <strong>định lượng</strong> khả năng một luồng là tấn công. AUROC, AUPRC và mọi phép đo dựa trên đường cong chỉ đọc thứ hạng. Chúng không nhìn thấy việc con số 0,9 có nghĩa là 90% hay không, và không có bất kỳ giá trị AUROC nào chứng minh được điều đó.</p></div></div><div class="chan"><span>Thứ hạng và xác suất là hai thứ khác nhau · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">03</span></div>
+<div class="slide-trong"><p class="label">03</p><h2 class="d2" data-reveal>Thứ hạng và xác suất là hai thứ khác nhau</h2><div data-reveal style="--tre:.18s"><p>Một bộ phát hiện in ra một số trong khoảng 0 tới 1. Số đó dùng được cho hai việc rất khác nhau: <strong>xếp hạng</strong> các luồng (flow), và <strong>định lượng</strong> khả năng một luồng là tấn công. AUROC, AUPRC và mọi phép đo dựa trên đường cong chỉ đọc thứ hạng. Chúng không nhìn thấy việc con số 0,9 có nghĩa là 90% hay không, và không có bất kỳ giá trị AUROC nào chứng minh được điều đó.</p></div></div><div class="chan"><span>Thứ hạng và xác suất là hai thứ khác nhau · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">03</span></div>
 </section>
 <section id="s04" class="slide nen-vach" data-slide data-title="Thứ hạng và xác suất là hai thứ khác nhau (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">04</p><h2 class="d2" data-reveal>Thứ hạng và xác suất là hai thứ khác nhau (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Module này tách hai việc ra. Hệ quả nối thẳng sang module 1.4: ngưỡng tối ưu chỉ đọc được trực tiếp từ tỉ lệ chi phí khi điểm số đã hiệu chuẩn. Chưa hiệu chuẩn thì <code>ngưỡng 0,9</code> là một nhãn trên thang riêng của mô hình, và nó trỏ tới một điểm làm việc khác với mỗi phép biến đổi đơn điệu mà anh áp lên logit, dù không ai sửa một tham số nào của mô hình.</p></div></div><div class="chan"><span>Thứ hạng và xác suất là hai thứ khác nhau (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">04</span></div>

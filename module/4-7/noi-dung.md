@@ -282,7 +282,7 @@ Ba trong bốn tầng được cô lập, và tầng tài nguyên vô tuyến th
 @phut: 1
 @che-do: noi
 
-nó tách luồng, nó không cấp khối tài nguyên vô tuyến nào.
+nó tách luồng (flow), nó không cấp khối tài nguyên vô tuyến nào.
 
 ## Chọn một phương án
 @phut: 1

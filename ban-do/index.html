@@ -321,6 +321,11 @@ body.pdf .nut,body.pdf .in-huong{display:none!important}
              text-transform:uppercase;color:var(--accent);line-height:1.4}
 .luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
 .nen-toi .luu-y{background:#ffffff0f}
+/* ⚠ Chữ mã trên nền MỰC: luật chung cho nó nền sáng và chữ mờ, nên trên slide tối
+   nó thành xám nhạt trên xám nhạt, gần như không đọc được. Đo trên bản đã deploy
+   mới thấy, vì không cổng nào đo tương phản của chữ mã. */
+.nen-toi .slide code,.nen-toi code{background:#ffffff14;color:#dfe5ec;
+                    border-color:#ffffff2e}
 @media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
 
 /* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
@@ -584,7 +589,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <div class="slide-trong"><p class="label">11</p><h2 class="d2" data-reveal>Trụ 2 FL (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>m2.5 Riêng tư có định nghĩa: DP và kế toán</li><li>m2.6 Tấn công vào FL</li><li>m2.7 Phòng vệ và giới hạn cứng của nó</li><li>m2.8 FL cho IDS: dựng bài toán cho đúng</li></ul></div></div><div class="chan"><span>Trụ 2 FL (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">11</span></div>
 </section>
 <section id="s12" class="slide nen-vach" data-slide data-title="Trụ 2 FL (tiếp)" data-phut="1.5" data-chedo="hoi" data-notes="Đọc lướt. Ai hỏi sâu thì mở deck riêng của trụ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">12</p><h2 class="d2" data-reveal>Trụ 2 FL (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>m2.9 Cá nhân hoá: khi một mô hình toàn cục là lời giải sai</li><li>m2.10 Hệ thống thật: kẻ chậm, client rơi, và thiên lệch do lấy mẫu</li></ul></div></div><div class="chan"><span>Trụ 2 FL (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">12</span></div>
+<div class="slide-trong"><p class="label">12</p><h2 class="d2" data-reveal>Trụ 2 FL (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>m2.9 Cá nhân hoá: khi một mô hình toàn cục là lời giải sai</li><li>m2.10 Hệ thống thật: kẻ chậm (straggler), client rơi, và thiên lệch do lấy mẫu</li></ul></div></div><div class="chan"><span>Trụ 2 FL (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">12</span></div>
 </section>
 <section id="s13" class="slide nen-vach" data-slide data-title="Trụ 3 NTN" data-phut="1.5" data-chedo="noi" data-notes="Đọc lướt. Ai hỏi sâu thì mở deck riêng của trụ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">13</p><h2 class="d2" data-reveal>Trụ 3 NTN</h2><div data-reveal style="--tre:.18s"><ul><li>m3.1 Hình học quỹ đạo</li><li>m3.2 Kênh: suy hao, mưa, nhiễu loạn</li><li>m3.3 Doppler và định thời</li><li>m3.4 Kiến trúc 3GPP NTN</li><li>m3.5 Handover trong chòm sao LEO</li></ul></div></div><div class="chan"><span>Trụ 3 NTN · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">13</span></div>
@@ -593,7 +598,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <div class="slide-trong"><p class="label">14</p><h2 class="d2" data-reveal>Trụ 3 NTN (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>m3.6 UAV và HAPS: năng lượng và tuổi thông tin</li><li>m3.7 Dung lượng và tài nguyên</li><li>m3.8 Mô phỏng NTN đáng tin</li></ul></div></div><div class="chan"><span>Trụ 3 NTN (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">14</span></div>
 </section>
 <section id="s15" class="slide nen-vach" data-slide data-title="Trụ 3 NTN (tiếp)" data-phut="1.5" data-chedo="noi" data-notes="Đọc lướt. Ai hỏi sâu thì mở deck riêng của trụ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">15</p><h2 class="d2" data-reveal>Trụ 3 NTN (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>m3.9 Định tuyến trong chòm sao: liên kết giữa vệ tinh và đồ thị động</li><li>m3.10 Học liên bang qua liên kết vệ tinh: khi vòng huấn luyện gặp cửa sổ nhìn thấy</li></ul></div></div><div class="chan"><span>Trụ 3 NTN (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">15</span></div>
+<div class="slide-trong"><p class="label">15</p><h2 class="d2" data-reveal>Trụ 3 NTN (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>m3.9 Định tuyến trong chòm sao: liên kết giữa vệ tinh (ISL) và đồ thị động</li><li>m3.10 Học liên bang qua liên kết vệ tinh: khi vòng huấn luyện gặp cửa sổ nhìn thấy</li></ul></div></div><div class="chan"><span>Trụ 3 NTN (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">15</span></div>
 </section>
 <section id="s16" class="slide nen-vach" data-slide data-title="Trụ 4 6G Sec" data-phut="1.5" data-chedo="noi" data-notes="Đọc lướt. Ai hỏi sâu thì mở deck riêng của trụ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">16</p><h2 class="d2" data-reveal>Trụ 4 6G Sec</h2><div data-reveal style="--tre:.18s"><ul><li>m4.1 Bề mặt tấn công: đọc kiến trúc trước khi nói về tấn công</li><li>m4.2 Zero trust và danh tính, phần kế thừa từ 5G</li><li>m4.3 An ninh của chính AI trong vòng điều khiển mạng</li></ul></div></div><div class="chan"><span>Trụ 4 6G Sec · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">16</span></div>

@@ -72,7 +72,7 @@ Hai tập dữ liệu `D` và `D'` gọi là kề nhau khi chúng khác nhau đ�
 @phut: 1
 @che-do: noi
 
-Một bài FL cho IDS mà mỗi thiết bị sinh hàng nghìn luồng một ngày thì khai `epsilon` mức bản ghi gần như không nói gì về thiết bị đó.
+Một bài FL cho IDS mà mỗi thiết bị sinh hàng nghìn luồng (flow) một ngày thì khai `epsilon` mức bản ghi gần như không nói gì về thiết bị đó.
 
 ## Vùng hiệu lực của một chặn
 @phut: 1

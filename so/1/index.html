@@ -321,6 +321,11 @@ body.pdf .nut,body.pdf .in-huong{display:none!important}
              text-transform:uppercase;color:var(--accent);line-height:1.4}
 .luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
 .nen-toi .luu-y{background:#ffffff0f}
+/* ⚠ Chữ mã trên nền MỰC: luật chung cho nó nền sáng và chữ mờ, nên trên slide tối
+   nó thành xám nhạt trên xám nhạt, gần như không đọc được. Đo trên bản đã deploy
+   mới thấy, vì không cổng nào đo tương phản của chữ mã. */
+.nen-toi .slide code,.nen-toi code{background:#ffffff14;color:#dfe5ec;
+                    border-color:#ffffff2e}
 @media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
 
 /* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
@@ -556,7 +561,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <div class="slide-trong"><p class="label">03</p><h2 class="d2" data-reveal>Công thức này đứng trên giả thiết nào</h2><div data-reveal style="--tre:.18s"><p><code>Báo động khi Λ(x) = p(x | tấn công) / p(x | bình thường) ≥ τ</code></p></div></div><div class="chan"><span>Công thức này đứng trên giả thiết nào · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">03</span></div>
 </section>
 <section id="s04" class="slide nen-vach" data-slide data-title="Giả thiết" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">04</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>biết cả hai phân bố điều kiện p(x | tấn công) và p(x | bình thường)</li><li>chi phí của hai loại lỗi cố định, nên tỉ số chi phí chọn được một τ duy nhất</li><li>một ngưỡng duy nhất, áp cho mọi mẫu và mọi thời điểm</li><li>đơn vị quan sát x cố định, cùng một x cho cả bộ phát hiện và cho baseline</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">04</span></div>
+<div class="slide-trong"><p class="label">04</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>biết cả hai phân bố điều kiện p(x | tấn công) và p(x | bình thường)</li><li>chi phí của hai loại lỗi cố định, nên tỉ số chi phí chọn được một τ duy nhất</li><li>một ngưỡng duy nhất, áp cho mọi mẫu và mọi thời điểm</li><li>đơn vị quan sát (observation unit) x cố định, cùng một x cho cả bộ phát hiện và cho baseline</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">04</span></div>
 </section>
 <section id="s05" class="slide nen-vach" data-slide data-title="Công thức này đứng trên giả thiết nào" data-phut="0.5" data-chedo="hoi" data-notes="Kể đủ giả thiết trước khi lật. Thiếu một cái là chỗ gãy khi dùng lại."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">05</p><h2 class="d2" data-reveal>Công thức này đứng trên giả thiết nào</h2><div data-reveal style="--tre:.18s"><p><code>AUC = P(s(x₊) &gt; s(x₋)) = U / (n₊ · n₋)</code></p></div></div><div class="chan"><span>Công thức này đứng trên giả thiết nào · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">05</span></div>
@@ -565,7 +570,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <div class="slide-trong"><p class="label">06</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>không có hoà điểm, hoặc hoà điểm được tính một nửa</li><li>mọi mẫu dùng cùng một hàm điểm s và cùng một thang điểm</li><li>hai mẫu lấy độc lập từ hai phân bố điều kiện, nên tỉ lệ nền không vào công thức</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">06</span></div>
 </section>
 <section id="s07" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">07</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Liên kết 10 Gbps, khung Ethernet ngắn nhất 64 byte. Tốc độ gói tối đa là bao nhiêu triệu gói mỗi giây?</p>
+<div class="slide-trong"><p class="label">07</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Liên kết 10 Gbps, khung Ethernet ngắn nhất 64 byte. Tốc độ gói (packet) tối đa là bao nhiêu triệu gói mỗi giây?</p>
 <p><em>Module 1.1.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">07</span></div>
 </section>
 <section id="s08" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
@@ -594,7 +599,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <p>Khoảng 14,88 triệu gói mỗi giây, phân số đúng là 312500000/21. Nghịch đảo của nó là 67,2 nano giây cho mỗi gói. Đó là lý do mọi bộ phát hiện đặt ở mức gói đều phải là mô hình nhỏ hoặc phần cứng: 67 nano giây không đủ cho một lượt suy diễn mạng neural trên CPU.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">14</span></div>
 </section>
 <section id="s15" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">15</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>FPR mức gói là 10⁻⁴. Gộp 20 gói thành một luồng theo luật báo động nếu có ít nhất một gói vượt ngưỡng. FPR mức luồng là bao nhiêu phần trăm?</p>
+<div class="slide-trong"><p class="label">15</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>FPR mức gói là 10⁻⁴. Gộp 20 gói thành một luồng (flow) theo luật báo động nếu có ít nhất một gói vượt ngưỡng. FPR mức luồng là bao nhiêu phần trăm?</p>
 <p>f = 0.0001, n = 20</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">15</span></div>
 </section>
 <section id="s16" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
@@ -699,7 +704,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <p>Khoảng 0,950. Để ý ma trận này có TN chỉ 98, tức tập kiểm tra gần cân bằng. Cùng mô hình đó chạy ở p = 10⁻⁵ thì MCC tụt sâu, vì MCC phụ thuộc tỉ lệ nền.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">44</span></div>
 </section>
 <section id="s45" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">45</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>SOC có 3 người, mỗi người đọc 60 cảnh báo một ngày. Lưu lượng 50 triệu sự kiện lành mỗi ngày. FPR tối đa được phép là bao nhiêu phần triệu (nhập số)?</p>
+<div class="slide-trong"><p class="label">45</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>SOC có 3 người, mỗi người đọc 60 cảnh báo một ngày. Lưu lượng 50 triệu sự kiện lành mỗi ngày. FPR tối đa được phép là bao nhiêu phần triệu (ppm) (nhập số)?</p>
 <p>nguoi = 3, moiNguoi = 60, nLanh = 50000000</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">45</span></div>
 </section>
 <section id="s46" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>

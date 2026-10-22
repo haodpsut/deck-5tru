@@ -135,7 +135,7 @@ Vệ tinh chỉ chiếu một tập con các chùm trong mỗi khe thời gian, 
 
 - Nhiễu nhiệt trắng Gauss là nguồn nhiễu chi phối, nên dùng được công thức Shannon
 - k là hằng số Boltzmann viết theo dB, không phụ thuộc hệ, nên nó không phải tham số cần hiệu chuẩn
-- A_mưa phụ thuộc mức khả dụng khai báo và góc nâng, nên nó KHÔNG phải một số cố định của hệ
+- A_mưa phụ thuộc mức khả dụng (availability) khai báo và góc nâng, nên nó KHÔNG phải một số cố định của hệ
 - Shannon là chặn trên: SE thực tế lấy theo bảng điều chế mã hoá nên luôn nhỏ hơn, và rời rạc
 
 ## Đường truyền tới SE · ghi chú
@@ -263,7 +263,7 @@ Hệ số tái dùng tần số thì đổi thông lượng chứ không đổi 
 Một bài báo ở băng Ka khai SE {{s003}} bit mỗi ký hiệu và nói hệ đạt dung lượng mục tiêu. Thiếu đúng một dữ kiện để kiểm câu đó. Dữ kiện nào?
 
 - Mức khả dụng và mô hình mưa dùng để trừ suy hao
-- Kiến trúc payload trong suốt hay tái sinh
+- Kiến trúc payload trong suốt (transparent) hay tái sinh
 - Độ nghiêng quỹ đạo
 - Số chùm trên vệ tinh
 
@@ -339,7 +339,7 @@ chỗ sai nằm ở việc con số cuối không truy được về các dòng 
 @che-do: so
 @notes: Bước nào có giả thiết riêng thì đó là chỗ gãy khi dùng lại.
 
-- Từ cao độ và góc nâng tối thiểu, tính khoảng xiên lớn nhất d(ε_min)
+- Từ cao độ và góc nâng tối thiểu, tính khoảng xiên (slant range) lớn nhất d(ε_min)
 - Tính FSPL = {{s043}} + 20·log₁₀ d(km) + 20·log₁₀ f(GHz) ở khoảng xiên đó
 - Tra A_mưa từ mô hình mưa ứng với MỨC KHẢ DỤNG đã khai và góc nâng ở biên
 - C/N₀ = EIRP − FSPL − A_mưa + G/T − k với k = −228,6 dBW/K/Hz

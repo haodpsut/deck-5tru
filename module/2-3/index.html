@@ -321,6 +321,11 @@ body.pdf .nut,body.pdf .in-huong{display:none!important}
              text-transform:uppercase;color:var(--accent);line-height:1.4}
 .luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
 .nen-toi .luu-y{background:#ffffff0f}
+/* ⚠ Chữ mã trên nền MỰC: luật chung cho nó nền sáng và chữ mờ, nên trên slide tối
+   nó thành xám nhạt trên xám nhạt, gần như không đọc được. Đo trên bản đã deploy
+   mới thấy, vì không cổng nào đo tương phản của chữ mã. */
+.nen-toi .slide code,.nen-toi code{background:#ffffff14;color:#dfe5ec;
+                    border-color:#ffffff2e}
 @media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
 
 /* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
@@ -695,7 +700,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <p>Gamma được định nghĩa qua các GIÁ TRỊ TỐI ƯU F⋆ và F_k⋆, nên nó không phụ thuộc thuật toán, không phụ thuộc khởi tạo, không phụ thuộc E. Một bộ tổng hợp mới không chạm tới nó được. Hai câu đầu đều đúng. Có một lối thoát hẹp mà nếu dùng thì phải khai thẳng:</p></div></div><div class="chan"><span>Câu không được chống đỡ · ca hai · đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">45</span></div>
 </section>
 <section id="s46" class="slide nen-vach" data-slide data-title="Câu không được chống đỡ · ca hai · đáp (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">46</p><h2 class="d2" data-reveal>Câu không được chống đỡ · ca hai · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>đổi trọng số p_k thì đổi chính hàm F mà ta tối ưu, nên F⋆ đổi và Gamma đổi theo, nhưng lúc đó bài toán đã khác bài toán đã phát biểu, nên không được gọi đó là bound chặt hơn cho cùng một bài toán. Cách sửa: nói bộ tổng hợp giảm ảnh hưởng của trôi cục bộ, một đại lượng về đường đi, và đừng nói nó giảm Gamma.</p></div></div><div class="chan"><span>Câu không được chống đỡ · ca hai · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">46</span></div>
+<div class="slide-trong"><p class="label">46</p><h2 class="d2" data-reveal>Câu không được chống đỡ · ca hai · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>đổi trọng số p_k thì đổi chính hàm F mà ta tối ưu, nên F⋆ đổi và Gamma đổi theo, nhưng lúc đó bài toán đã khác bài toán đã phát biểu, nên không được gọi đó là bound chặt hơn cho cùng một bài toán. Cách sửa: nói bộ tổng hợp giảm ảnh hưởng của trôi cục bộ (client drift), một đại lượng về đường đi, và đừng nói nó giảm Gamma.</p></div></div><div class="chan"><span>Câu không được chống đỡ · ca hai · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">46</span></div>
 </section>
 <section id="s47" class="slide nen-vach" data-slide data-title="Dẫn lại từng bước · ca một" data-phut="2.0" data-chedo="so" data-notes="Bước nào có giả thiết riêng thì đó là chỗ gãy khi dùng lại."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">47</p><h2 class="d2" data-reveal>Dẫn lại từng bước · ca một</h2><div data-reveal style="--tre:.18s"><ul><li>Số hạng thứ nhất sum_k p_k^2 sigma_k^2 không chứa E, nên tăng E không đổi nó</li><li>Số hạng thứ hai 6·L·Gamma không chứa E, và cũng không chứa gì của thuật toán</li><li>Số hạng thứ ba 8(E-1)^2·G^2 là số hạng DUY NHẤT chứa E, và nó bậc hai theo E-1</li><li>Vậy tăng E từ E_1 lên E_2 nhân số hạng thứ ba lên ((E_2-1)/(E_1-1))^2 lần, hai số hạng kia giữ nguyên</li></ul></div></div><div class="chan"><span>Dẫn lại từng bước · ca một · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">47</span></div>

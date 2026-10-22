@@ -134,7 +134,7 @@ Chỉ có ba lý do chịu được phản biện, và mỗi lý do đòi một 
 @phut: 1
 @che-do: noi
 
-**Độ nhạy:** đòi loại dữ liệu cụ thể, ví dụ tải nội dung gói so với siêu dữ liệu luồng, vì hai loại này có mức nhạy khác nhau hẳn. Điểm phải nhớ: **lý do khối lượng là lý do có thể ĐẢO CHIỀU, và nó đảo theo một phân số đơn giản.** Tỉ số byte bằng lưu lượng mỗi site chia hai lần kích thước mô hình, nên mô hình lớn với lưu lượng nhỏ làm liên bang tốn hơn gom.
+**Độ nhạy:** đòi loại dữ liệu cụ thể, ví dụ tải nội dung gói (packet) so với siêu dữ liệu luồng (flow), vì hai loại này có mức nhạy khác nhau hẳn. Điểm phải nhớ: **lý do khối lượng là lý do có thể ĐẢO CHIỀU, và nó đảo theo một phân số đơn giản.** Tỉ số byte bằng lưu lượng mỗi site chia hai lần kích thước mô hình, nên mô hình lớn với lưu lượng nhỏ làm liên bang tốn hơn gom.
 
 ## Ba lý do chính đáng để không gom · đáp (tiếp)
 @phut: 1

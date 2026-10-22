@@ -38,7 +38,7 @@ Tám module đầu của trụ {{s001}} đều giả định vòng huấn luyệ
 @phut: 1
 @che-do: noi
 
-Hệ quả thứ nhất là về thời gian: vòng đồng bộ dài bằng **max**, không bằng trung bình, nên một kẻ chậm quyết định cả vòng. Số vòng là đại lượng không có đơn vị thời gian, nên một bảng chỉ báo số vòng thì không kiểm được tuyên bố nào về chi phí.
+Hệ quả thứ nhất là về thời gian: vòng đồng bộ dài bằng **max**, không bằng trung bình, nên một kẻ chậm (straggler) quyết định cả vòng. Số vòng là đại lượng không có đơn vị thời gian, nên một bảng chỉ báo số vòng thì không kiểm được tuyên bố nào về chi phí.
 
 ## Vòng của anh dài bằng client chậm nhất (tiếp)
 @phut: 1

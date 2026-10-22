@@ -4,7 +4,7 @@ phu-de: Trụ 5 PQC · module 5.9
 tac-gia: Đỗ Phúc Hảo · CAIRA, Đại học Kiến trúc Đà Nẵng
 noi-ngay: Tự ôn, bộ Năm trụ
 profile: giang-day
-tong-phut: 86.5
+tong-phut: 87.5
 accent: "#2C6E9B"
 ngon-ngu: vi
 gate: khong
@@ -157,7 +157,11 @@ Một mức an toàn luôn là phát biểu **có điều kiện**, nên nó ph�
 
 **Giả thiết nó đứng trên:**
 
-- p là xác suất một HỌ giả định gãy trong cửa sổ thời gian đang xét, không phải xác suất một cài đặt có lỗi
+## Công thức và giả thiết (tiếp)
+@phut: 1
+@che-do: so
+
+- p là xác suất một HỌ giả định gãy trong cửa sổ thời gian (time window) đang xét, không phải xác suất một cài đặt có lỗi
 - c là tỉ lệ hệ dùng chung một họ giả định: c = {{s008}} là n họ khác nhau, c = {{s002}} là tất cả cùng một họ
 
 ## Công thức và giả thiết (tiếp)
@@ -170,14 +174,14 @@ Một mức an toàn luôn là phát biểu **có điều kiện**, nên nó ph�
 ## Công thức · ghi chú
 @phut: 1
 @che-do: noi
+@wow
+@dan: Tắt một giả thiết rồi xem tuyên bố nào còn đứng.
 
 **Khai rõ:** `n_hiệu dụng` là một phép nội suy tuyến tính giữa hai ca tính được bằng tay, không phải kết quả lấy từ một bài báo. Nó dùng để dạy CHIỀU biến thiên và bậc độ lớn, không dùng để báo số trong bản thảo. Hai ca biên là chỗ duy nhất trong công thức này mà anh được phép tin: `c = {{s008}}` cho `p^n`, và `c = {{s002}}` cho `p`.
 
 ## Số phải biết
 @phut: 2
 @che-do: so
-@wow
-@dan: Tắt một giả thiết rồi xem tuyên bố nào còn đứng.
 @notes: Đọc to con số và ĐƠN VỊ. Nhớ số mà quên đơn vị là chưa nhớ.
 
 !so {{s006}} | họ | Sau vòng chuẩn hoá của NIST
@@ -276,7 +280,7 @@ SIKE đã bị cả cộng đồng soi nhiều năm và đi tới vòng bốn c�
 @phut: 1
 @che-do: noi
 
-độ an toàn của một giả định mới không trôi dần mà có thể rơi xuống không trong một bước, nên kế hoạch phải là tính linh hoạt mật mã chứ không phải theo dõi số bit còn lại. Lập luận này áp cho cả lưới, vì lưới cũng là một họ giả định mới.
+độ an toàn của một giả định mới không trôi dần mà có thể rơi xuống không trong một bước, nên kế hoạch phải là tính linh hoạt mật mã (crypto-agility) chứ không phải theo dõi số bit còn lại. Lập luận này áp cho cả lưới, vì lưới cũng là một họ giả định mới.
 
 ## Phản biện viết
 @phut: 1
@@ -318,7 +322,7 @@ Nâng tham số đổi con số mà không bổ sung hai điều kiện đó, n�
 
 - Lược đồ hybrid của chúng tôi ghép ML-KEM-768 với một KEM thứ hai cũng dựa trên bài toán trên lưới mô đun,
 - nên hệ còn an toàn ngay cả khi một trong hai thành phần bị phá.
-- Chi phí thêm vào là một lần đóng gói khoá nữa cho mỗi lần bắt tay.
+- Chi phí thêm vào là một lần đóng gói (packet) khoá nữa cho mỗi lần bắt tay.
 
 ## Câu không được chống đỡ · ca một · đáp
 @phut: 1.5

@@ -352,7 +352,7 @@ Kết quả gốc: C = {{s004}} · alpha = {{s007}} · {{s015}} lớp hiệu d�
 @phut: 1
 @che-do: so
 
-- **P(y|x) giống nhau giữa các client, chỉ P(x) và P(y) khác nhau** tắt đi: Có lệch quan hệ: cùng một luồng mạng được gán nhãn khác nhau ở hai site, vì chính sách của SOC khác nhau hoặc vì ngữ cảnh mạng khác nhau.
+- **P(y|x) giống nhau giữa các client, chỉ P(x) và P(y) khác nhau** tắt đi: Có lệch quan hệ: cùng một luồng (flow) mạng được gán nhãn khác nhau ở hai site, vì chính sách của SOC khác nhau hoặc vì ngữ cảnh mạng khác nhau.
 - **Phân vùng được sinh bằng Dirichlet đối xứng Dir(alpha·1)** tắt đi: Dữ liệu đã liên bang sẵn: ranh giới client là ranh giới tổ chức, chứ không do bộ sinh nào tạo ra.
 
 ## Tắt từng giả thiết (tiếp)

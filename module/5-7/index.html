@@ -321,6 +321,11 @@ body.pdf .nut,body.pdf .in-huong{display:none!important}
              text-transform:uppercase;color:var(--accent);line-height:1.4}
 .luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
 .nen-toi .luu-y{background:#ffffff0f}
+/* ⚠ Chữ mã trên nền MỰC: luật chung cho nó nền sáng và chữ mờ, nên trên slide tối
+   nó thành xám nhạt trên xám nhạt, gần như không đọc được. Đo trên bản đã deploy
+   mới thấy, vì không cổng nào đo tương phản của chữ mã. */
+.nen-toi .slide code,.nen-toi code{background:#ffffff14;color:#dfe5ec;
+                    border-color:#ffffff2e}
 @media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
 
 /* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
@@ -705,7 +710,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <div class="slide-trong"><p class="label">49</p><h2 class="d2" data-reveal>Câu nào không được số nào chống đỡ · ca ba</h2><div data-reveal style="--tre:.18s"><p>Đoạn đóng góp sau có một câu mà phần còn lại của bài không đỡ được. Bấm vào câu đó.</p></div></div><div class="chan"><span>Câu nào không được số nào chống đỡ · ca ba · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">49</span></div>
 </section>
 <section id="s50" class="slide nen-vach" data-slide data-title="Câu nào không được số nào chống đỡ · ca ba (tiếp)" data-phut="0.5" data-chedo="hoi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">50</p><h2 class="d2" data-reveal>Câu nào không được số nào chống đỡ · ca ba (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>Đóng góp thứ nhất: một kiến trúc tách bộ định danh thuật toán ra khỏi định dạng bản tin, nên đổi KEM không đổi định dạng.</li><li>Đóng góp thứ hai: một phép đo chi phí byte và chu kỳ của ML-KEM-768 trên thiết bị lớp Cortex-M.</li><li>Nhờ tính linh hoạt mật mã này, hệ của chúng tôi đổi sang bất kỳ KEM hậu lượng tử tương lai nào mà không cần đổi kiến trúc.</li></ul></div></div><div class="chan"><span>Câu nào không được số nào chống đỡ · ca ba (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">50</span></div>
+<div class="slide-trong"><p class="label">50</p><h2 class="d2" data-reveal>Câu nào không được số nào chống đỡ · ca ba (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>Đóng góp thứ nhất: một kiến trúc tách bộ định danh thuật toán ra khỏi định dạng bản tin, nên đổi KEM không đổi định dạng.</li><li>Đóng góp thứ hai: một phép đo chi phí byte và chu kỳ của ML-KEM-768 trên thiết bị lớp Cortex-M.</li><li>Nhờ tính linh hoạt mật mã (crypto-agility) này, hệ của chúng tôi đổi sang bất kỳ KEM hậu lượng tử tương lai nào mà không cần đổi kiến trúc.</li></ul></div></div><div class="chan"><span>Câu nào không được số nào chống đỡ · ca ba (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">50</span></div>
 </section>
 <section id="s51" class="slide nen-vach" data-slide data-title="Câu không được chống đỡ · ca ba · đáp" data-phut="1.5" data-chedo="noi" data-notes="Đây đúng là việc reviewer làm với bài của mình."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">51</p><h2 class="d2" data-reveal>Câu không được chống đỡ · ca ba · đáp</h2><div data-reveal style="--tre:.18s"><p><strong>Nhờ tính linh hoạt mật mã này, hệ của chúng tôi đổi sang bất kỳ KEM hậu lượng tử tương lai nào mà không cần đổi kiến trúc.</strong></p>

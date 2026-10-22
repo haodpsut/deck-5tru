@@ -28,6 +28,13 @@ TRU = {t["id"]: t for t in MF["tru"]}
 TRAN = 90          # trần từ mỗi slide của profile giang-day
 TRAN_HOI = 70      # slide hỏi để thoáng hơn
 
+# Sổ thuật ngữ nằm TRONG KHO, không nằm ở đây: site và deck phải tra cùng một chỗ,
+# nếu không hai nơi sẽ lệch nhau mà không ai biết.
+_TN = json.loads((KHO / "thuat-ngu.json").read_text(encoding="utf-8"))
+# dài trước ngắn sau, để "liên kết giữa vệ tinh" thắng "liên kết dịch vụ"
+THUAT_NGU = sorted(((m["vi"], m["en"]) for m in _TN["muc"]),
+                   key=lambda x: -len(x[0]))
+
 
 # ---------------------------------------------------------------- chữ
 
@@ -249,7 +256,37 @@ def tieu_de(s: str, du_phong: str, toi_da: int = 12) -> str:
 class Deck:
     TRAN_PROFILE = {"giang-day": 90, "nghien-cuu": 60, "hoi-thao": 45}
 
+    def chu_giai(self, s: str) -> str:
+        """Kèm tiếng Anh vào LẦN ĐẦU một thuật ngữ xuất hiện trong deck này.
+
+        ⚠ Lần đầu thôi. Kèm mọi lần thì slide loãng và mắt bỏ qua luôn cả chú giải.
+        ⚠ Không chèn vào trong khối mã, và không chèn nếu chỗ ấy đã có sẵn tiếng
+        Anh, vì kho đã tự chú giải 34 thẻ rồi.
+        """
+        if not s:
+            return s
+        # tách khối mã ra, chỉ xét phần văn xuôi
+        phan = re.split(r"(`[^`]*`)", s)
+        for i, x in enumerate(phan):
+            if x.startswith("`"):
+                continue
+            for vi, en in THUAT_NGU:
+                if vi in self.da_chu:
+                    continue
+                m = re.search(r"(?<![\w])(%s)(?![\w])" % re.escape(vi), x, re.I)
+                if not m:
+                    continue
+                sau = x[m.end():m.end() + 60]
+                if en.lower() in sau.lower():      # kho đã chú giải sẵn ở đây
+                    self.da_chu.add(vi)
+                    continue
+                x = x[:m.end()] + " (%s)" % en + x[m.end():]
+                self.da_chu.add(vi)
+            phan[i] = x
+        return "".join(phan)
+
     def __init__(self, thu_muc: Path, tieu_de, phu_de, profile, phan_mac=""):
+        self.da_chu: set = set()
         self.tran = self.TRAN_PROFILE[profile] - 6
         self.d = thu_muc
         self.tieu_de = tieu_de
@@ -267,6 +304,7 @@ class Deck:
         phỏng 138 từ, slide trắc nghiệm, slide bản đồ 50 từ trên trần 45. Luật mà
         người gọi phải nhớ thì không phải luật, nó là một lời nhắc.
         """
+        than = self.chu_giai(than)
         mau = chia(than, self.tran) if than else [than]
         for i, x in enumerate(mau):
             t = tieu_de if i == 0 else tieu_de + " (tiếp)"
@@ -397,10 +435,15 @@ class Deck:
         (self.d / "so-lieu.json").write_text(
             json.dumps({"_nguon": {"kho": "working/hoc-5-tru-web/data, bản %s" % MF["version"],
                                    "sinh_boi": "slides/5tru/sinh.py"},
+                        "_thuat_ngu": {vi: en for vi, en in THUAT_NGU if vi in self.da_chu},
                         **self.so.gt}, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8")
         (self.d / "nguoi-nghe.md").write_text(nguoi_nghe, encoding="utf-8")
-        (self.d / "take-home.txt").write_text(take_home.strip() + "\n", encoding="utf-8")
+        # ⚠ Take-home cũng phải được chú giải. Nó vào slide qua macro {{TAKE_HOME}}
+        # nên chu_giai() không bao giờ thấy nó, mà nó lại là câu hiện SỚM NHẤT và
+        # lặp lại nhiều nhất trong deck.
+        (self.d / "take-home.txt").write_text(self.chu_giai(take_home.strip()) + "\n",
+                                              encoding="utf-8")
         return tong
 
 

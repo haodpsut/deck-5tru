@@ -40,7 +40,7 @@ moc-ngay: bản kho 2026.10.06-2
 @che-do: hoi
 @notes: Câu hỏi của module. Trả lời bằng miệng trước khi lật.
 
-Đơn vị quan sát của tôi là gói tin, luồng, cửa sổ thời gian hay đồ thị, và lựa chọn đó làm cho tuyên bố nào của tôi không còn kiểm được?
+Đơn vị quan sát (observation unit) của tôi là gói (packet) tin, luồng (flow), cửa sổ thời gian (time window) hay đồ thị, và lựa chọn đó làm cho tuyên bố nào của tôi không còn kiểm được?
 
 ## m1.1 · luận điểm
 @phut: 1.5

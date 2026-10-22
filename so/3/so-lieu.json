@@ -3,6 +3,15 @@
     "kho": "working/hoc-5-tru-web/data, bản 2026.10.06-2",
     "sinh_boi": "slides/5tru/sinh.py"
   },
+  "_thuat_ngu": {
+    "vận tốc theo đường ngắm": "line of sight velocity",
+    "liên kết giữa vệ tinh": "ISL",
+    "payload trong suốt": "transparent",
+    "số vòng mỗi ngày": "mean motion",
+    "mức khả dụng": "availability",
+    "khoảng xiên": "slant range",
+    "gói": "packet"
+  },
   "s001": "6378",
   "s002": "299792,458",
   "s003": "550",

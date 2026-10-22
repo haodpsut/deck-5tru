@@ -94,7 +94,7 @@ vong = {{s004}}, P = {{s005}}, bit = {{s006}}
 
 `2⋆vong⋆P⋆bit/8/1e9`
 
-{{s008}} GB mỗi client cho {{s004}} vòng. Con số này đáng nhớ vì nó biến một câu định tính thành một ràng buộc: với client dùng gói dữ liệu di động, gần {{s009}} GB cho một lần huấn luyện là không chạy được, và đó là lý do thật của mọi phần nén trong các bài FL cross-device.
+{{s008}} GB mỗi client cho {{s004}} vòng. Con số này đáng nhớ vì nó biến một câu định tính thành một ràng buộc: với client dùng gói (packet) dữ liệu di động, gần {{s009}} GB cho một lần huấn luyện là không chạy được, và đó là lý do thật của mọi phần nén trong các bài FL cross-device.
 
 ## Đáp (tiếp)
 @phut: 0.5
@@ -367,7 +367,7 @@ E1 = {{s003}}, E2 = {{s042}}
 @phut: 0.5
 @che-do: so
 
-- Mọi công thức trên giả định nén còn giữ được ĐIỂM TỚI, tức không chệch hoặc có phản hồi lỗi; nếu không thì không có mục tiêu nào để đếm byte tới
+- Mọi công thức trên giả định nén còn giữ được ĐIỂM TỚI, tức không chệch hoặc có phản hồi lỗi (error feedback); nếu không thì không có mục tiêu nào để đếm byte tới
 - Mô hình chi phí là tuyến tính theo byte, tức băng thông là cổ chai; nếu độ trễ là cổ chai thì phải thay bằng mô hình theo số vòng
 
 ## Con số này bằng bao nhiêu
@@ -589,15 +589,15 @@ Hai, epsilon thật là min theo alpha nên nó nhỏ hơn hoặc bằng {{s061}
 @phut: 1
 @che-do: so
 
-- Truy ngược gradient cần bốn thứ cùng lúc: biết kiến trúc và hàm mất mát, thấy gradient THÔ của một client, lô nhỏ, và không có nhiễu DP đáng kể
-- Thay thế mô hình cần ba thứ: kẻ xấu được chọn trong vòng đó, mô hình đã gần hội tụ nên cập nhật lành gần triệt tiêu, và server không chặn chuẩn cập nhật
+- Truy ngược gradient (gradient inversion) cần bốn thứ cùng lúc: biết kiến trúc và hàm mất mát, thấy gradient THÔ của một client, lô nhỏ, và không có nhiễu DP đáng kể
+- Thay thế mô hình (model replacement) cần ba thứ: kẻ xấu được chọn trong vòng đó, mô hình đã gần hội tụ nên cập nhật lành gần triệt tiêu, và server không chặn chuẩn (norm clipping) cập nhật
 
 ## Giả thiết (tiếp)
 @phut: 1
 @che-do: so
 
 - Adv đo ở CÙNG một ngưỡng cho cả hai lớp, và tập thành viên với tập không thành viên chỉ khác nhau ở yếu tố thành viên, không khác ở phân bố
-- Cả ba con số đều là hàm của năng lực kẻ tấn công đã khai, nên đổi mô hình đe doạ là đổi kết quả, không phải đổi cách trình bày
+- Cả ba con số đều là hàm của năng lực kẻ tấn công (attacker capability) đã khai, nên đổi mô hình đe doạ là đổi kết quả, không phải đổi cách trình bày
 
 ## Con số này bằng bao nhiêu
 @phut: 0.5
@@ -878,7 +878,7 @@ luuLuong = {{s009}}
 @phut: 1
 @che-do: so
 
-Với mô hình thị giác hay mô hình ngôn ngữ cỡ vài trăm MB tới vài GB đặt cạnh các site chỉ sinh siêu dữ liệu luồng, hệ rơi vào vùng đảo chiều dễ hơn nhiều người tưởng, nên phải kiểm phân số này trước khi viết phần biện minh.
+Với mô hình thị giác hay mô hình ngôn ngữ cỡ vài trăm MB tới vài GB đặt cạnh các site chỉ sinh siêu dữ liệu luồng (flow), hệ rơi vào vùng đảo chiều dễ hơn nhiều người tưởng, nên phải kiểm phân số này trước khi viết phần biện minh.
 
 ## Công thức này đứng trên giả thiết nào
 @phut: 0.5

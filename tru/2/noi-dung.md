@@ -107,7 +107,7 @@ Một con số epsilon không nói gì nếu thiếu ba thứ đi kèm
 @che-do: hoi
 @notes: Câu hỏi của module. Trả lời bằng miệng trước khi lật.
 
-Trong ba họ tấn công (suy luận, đầu độc, cửa hậu), họ nào áp được vào hệ của tôi với đúng năng lực kẻ tấn công mà tôi đã khai?
+Trong ba họ tấn công (suy luận, đầu độc, cửa hậu), họ nào áp được vào hệ của tôi với đúng năng lực kẻ tấn công (attacker capability) mà tôi đã khai?
 
 ## m2.6 · luận điểm
 @phut: 1

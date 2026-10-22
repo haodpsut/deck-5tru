@@ -25,7 +25,7 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Cho cao độ và góc nâng tối thiểu, tôi tính được cửa sổ nhìn thấy, khoảng xiên lớn nhất và trễ một chiều trong bao lâu, bằng giấy?
+Cho cao độ và góc nâng tối thiểu, tôi tính được cửa sổ nhìn thấy, khoảng xiên (slant range) lớn nhất và trễ một chiều trong bao lâu, bằng giấy?
 
 ## Hình học quỹ đạo
 @phut: 1.5
@@ -293,7 +293,7 @@ Cửa sổ nhìn thấy chỉ cần hai số: h và ε_min. Ở {{s002}} km, ε_
 - Chòm sao mô phỏng ở cao độ {{s002}} km, góc nâng tối thiểu 10°.
 - Tần số đường xuống {{s044}} GHz, băng thông {{s045}} MHz.
 - Suy hao không gian tự do tính với khoảng cách truyền {{s002}} km, tức cao độ của vệ tinh.
-- Biên dự phòng mưa {{s046}} dB, mức khả dụng mục tiêu {{s047}}.
+- Biên dự phòng mưa (rain margin) {{s046}} dB, mức khả dụng (availability) mục tiêu {{s047}}.
 
 ## Câu không được chống đỡ · ca một · đáp
 @phut: 1.5
@@ -321,7 +321,7 @@ tính FSPL ở góc nâng xấu nhất mà bài còn phục vụ, rồi khai rõ
 
 Đoạn kết quả sau có một câu không dẫn ra được từ dữ kiện đã khai. Bấm vào câu đó.
 
-- Với h = {{s002}} km và ε_min = 10°, góc tâm Trái Đất là 14,96°.
+- Với h = {{s002}} km và ε_min = 10°, góc tâm Trái Đất (Earth central angle) là 14,96°.
 - Cửa sổ nhìn thấy của một lượt qua đỉnh đầu là {{s034}} phút.
 - Vậy thời gian phục vụ trung bình của một thiết bị là {{s034}} phút, và tần suất handover là {{s050}} lần mỗi giờ.
 
@@ -342,7 +342,7 @@ Hai mệnh đề đầu đều đúng và dẫn được từ hình học. Mện
 @phut: 1
 @che-do: noi
 
-Thêm nữa, thời gian phục vụ còn ngắn hơn cửa sổ nhìn thấy vì còn chia chùm và chia tải. Cách sửa: gọi {{s034}} phút là chặn trên, rồi báo thời gian trú trung bình đo từ mô phỏng chòm sao kèm mô hình gán chùm.
+Thêm nữa, thời gian phục vụ còn ngắn hơn cửa sổ nhìn thấy vì còn chia chùm và chia tải. Cách sửa: gọi {{s034}} phút là chặn trên, rồi báo thời gian trú (dwell time) trung bình đo từ mô phỏng chòm sao kèm mô hình gán chùm.
 
 ## Dẫn lại từng bước · ca một
 @phut: 2

@@ -3,6 +3,12 @@
     "kho": "working/hoc-5-tru-web/data, bản 2026.10.06-2",
     "sinh_boi": "slides/5tru/sinh.py"
   },
+  "_thuat_ngu": {
+    "payload trong suốt": "transparent",
+    "biên dự phòng mưa": "rain margin",
+    "mức khả dụng": "availability",
+    "khoảng xiên": "slant range"
+  },
   "s001": "10",
   "s002": "216",
   "s003": "7,95",

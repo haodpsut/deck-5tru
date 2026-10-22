@@ -44,7 +44,7 @@ Hệ quả làm đổi cách đọc mọi bài nén trong học liên bang. Số
 @phut: 1
 @che-do: noi
 
-Hệ quả thứ hai nặng hơn, và nó nằm ở tầng {{s010}}. Ghép với module {{s011}}: ở đây **kẻ chậm không phải thiết bị yếu, nó là hình học quỹ đạo**. Số lượt qua mỗi ngày của một client là hàm của vĩ độ, nên trọng số hiệu dụng trong tổng hợp lệch theo vĩ độ. Và vì phân bố dữ liệu cũng lệch theo vĩ độ, hai nguồn lệch **cộng hưởng chứ không triệt tiêu**.
+Hệ quả thứ hai nặng hơn, và nó nằm ở tầng {{s010}}. Ghép với module {{s011}}: ở đây **kẻ chậm (straggler) không phải thiết bị yếu, nó là hình học quỹ đạo**. Số lượt qua mỗi ngày của một client là hàm của vĩ độ, nên trọng số hiệu dụng trong tổng hợp lệch theo vĩ độ. Và vì phân bố dữ liệu cũng lệch theo vĩ độ, hai nguồn lệch **cộng hưởng chứ không triệt tiêu**.
 
 ## Cửa sổ nhìn thấy là một ràng buộc về BYTE (tiếp)
 @phut: 1
@@ -256,7 +256,7 @@ Cách khai đúng trong bài: trục hoành của hình hội tụ ghi thêm TH�
 @che-do: hoi
 @notes: HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng.
 
-Ở cấu hình mặc định của mô phỏng, tăng tỉ lệ nén từ {{s016}} lên {{s040}} làm số vòng mỗi ngày đổi thế nào?
+Ở cấu hình mặc định của mô phỏng, tăng tỉ lệ nén từ {{s016}} lên {{s040}} làm số vòng mỗi ngày (mean motion) đổi thế nào?
 
 - Tăng khoảng {{s039}} lần
 - Không đổi, vì một vòng đã vừa khít một lượt qua từ tỉ lệ nén {{s015}}
@@ -385,7 +385,7 @@ số lượt qua mỗi ngày là con số module này cố tình KHÔNG khai, v�
 @che-do: so
 @notes: Bước nào có giả thiết riêng thì đó là chỗ gãy khi dùng lại.
 
-- Ngân sách byte một lượt qua: B_lượt = R·t_vis, với t_vis lấy từ hình học quỹ đạo theo cao độ và góc nâng tối thiểu
+- Ngân sách byte một lượt qua (per-pass byte budget): B_lượt = R·t_vis, với t_vis lấy từ hình học quỹ đạo theo cao độ và góc nâng tối thiểu
 - Byte một vòng: B_vòng = 2·S/ρ, mô hình xuống và cập nhật lên, cùng tỉ lệ nén
 - Số lượt qua cần cho một vòng: n_lượt = ceil(B_vòng/B_lượt), lấy trần vì không có lượt qua lẻ
 

@@ -321,6 +321,11 @@ body.pdf .nut,body.pdf .in-huong{display:none!important}
              text-transform:uppercase;color:var(--accent);line-height:1.4}
 .luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
 .nen-toi .luu-y{background:#ffffff0f}
+/* ⚠ Chữ mã trên nền MỰC: luật chung cho nó nền sáng và chữ mờ, nên trên slide tối
+   nó thành xám nhạt trên xám nhạt, gần như không đọc được. Đo trên bản đã deploy
+   mới thấy, vì không cổng nào đo tương phản của chữ mã. */
+.nen-toi .slide code,.nen-toi code{background:#ffffff14;color:#dfe5ec;
+                    border-color:#ffffff2e}
 @media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
 
 /* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
@@ -572,7 +577,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <div class="slide-trong"><p class="label">08</p><h2 class="d2" data-reveal>Đơn vị kề (adjacency unit · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Điểm phải nhớ: <strong>cùng một con số <code>epsilon</code> ở mức bản ghi và ở mức người dùng là hai bảo đảm khác nhau về độ mạnh.</strong> Nếu một người đóng góp <code>k</code> bản ghi thì riêng tư nhóm chỉ cho chặn trên <code>k·epsilon</code> ở mức người dùng, và muốn giữ nguyên <code>epsilon</code> ở mức người dùng thì độ nhạy tăng <code>k</code> lần nên <code>sigma</code> cũng phải tăng <code>k</code> lần.</p></div></div><div class="chan"><span>Đơn vị kề (adjacency unit · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">08</span></div>
 </section>
 <section id="s09" class="slide nen-vach" data-slide data-title="Đơn vị kề (adjacency unit · đáp (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">09</p><h2 class="d2" data-reveal>Đơn vị kề (adjacency unit · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Một bài FL cho IDS mà mỗi thiết bị sinh hàng nghìn luồng một ngày thì khai <code>epsilon</code> mức bản ghi gần như không nói gì về thiết bị đó.</p></div></div><div class="chan"><span>Đơn vị kề (adjacency unit · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">09</span></div>
+<div class="slide-trong"><p class="label">09</p><h2 class="d2" data-reveal>Đơn vị kề (adjacency unit · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Một bài FL cho IDS mà mỗi thiết bị sinh hàng nghìn luồng (flow) một ngày thì khai <code>epsilon</code> mức bản ghi gần như không nói gì về thiết bị đó.</p></div></div><div class="chan"><span>Đơn vị kề (adjacency unit · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">09</span></div>
 </section>
 <section id="s10" class="slide nen-vach" data-slide data-title="Vùng hiệu lực của một chặn" data-phut="1.0" data-chedo="hoi" data-notes="HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">10</p><h2 class="d2" data-reveal>Vùng hiệu lực của một chặn</h2><div data-reveal style="--tre:.18s"><p>Nói định nghĩa, điểm phải nhớ, và <strong>chỗ nó gãy</strong>, rồi lật.</p>

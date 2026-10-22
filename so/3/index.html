@@ -321,6 +321,11 @@ body.pdf .nut,body.pdf .in-huong{display:none!important}
              text-transform:uppercase;color:var(--accent);line-height:1.4}
 .luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
 .nen-toi .luu-y{background:#ffffff0f}
+/* ⚠ Chữ mã trên nền MỰC: luật chung cho nó nền sáng và chữ mờ, nên trên slide tối
+   nó thành xám nhạt trên xám nhạt, gần như không đọc được. Đo trên bản đã deploy
+   mới thấy, vì không cổng nào đo tương phản của chữ mã. */
+.nen-toi .slide code,.nen-toi code{background:#ffffff14;color:#dfe5ec;
+                    border-color:#ffffff2e}
 @media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
 
 /* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
@@ -579,7 +584,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <div class="slide-trong"><p class="label">10</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">7.585</div><div class="nhan">km/s</div><div class="moc">module 3.1</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">10</span></div>
 </section>
 <section id="s11" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">11</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Khoảng xiên ở cao độ 550 km và góc nâng 0°, tức ở chân trời hình học, tính theo km.</p>
+<div class="slide-trong"><p class="label">11</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Khoảng xiên (slant range) ở cao độ 550 km và góc nâng 0°, tức ở chân trời hình học, tính theo km.</p>
 <p><em>Module 3.1.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">11</span></div>
 </section>
 <section id="s12" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
@@ -705,7 +710,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 </section>
 <section id="s46" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">46</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>100⋆(1-Math.log2(1+Math.pow(10,(snr-amua)/10))/Math.log2(1+Math.pow(10,snr/10)))</code></p>
-<p>Khoảng 63,9%, tức gần hai phần ba. SNR chỉ đi từ 13 dB về 3 dB, mà SE tụt từ 4,39 xuống 1,58 bit mỗi ký hiệu. Nói ngược lại: con số SE của trời quang bị thổi lên 2,77 lần so với con số ở điều kiện mưa đó. Đây là lý do SE in một mình, không kèm mức khả dụng, là con số không khai được.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">46</span></div>
+<p>Khoảng 63,9%, tức gần hai phần ba. SNR chỉ đi từ 13 dB về 3 dB, mà SE tụt từ 4,39 xuống 1,58 bit mỗi ký hiệu. Nói ngược lại: con số SE của trời quang bị thổi lên 2,77 lần so với con số ở điều kiện mưa đó. Đây là lý do SE in một mình, không kèm mức khả dụng (availability), là con số không khai được.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">46</span></div>
 </section>
 <section id="s47" class="slide nen-vach" data-slide data-title="Công thức này đứng trên giả thiết nào" data-phut="0.5" data-chedo="hoi" data-notes="Kể đủ giả thiết trước khi lật. Thiếu một cái là chỗ gãy khi dùng lại."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">47</p><h2 class="d2" data-reveal>Công thức này đứng trên giả thiết nào</h2><div data-reveal style="--tre:.18s"><p><code>f_d = (v_r/c)·f_c v_r(ε) = v·(R_E/(R_E+h))·cos ε v_r,max = v·R_E/(R_E+h) tại ε = 0</code></p></div></div><div class="chan"><span>Công thức này đứng trên giả thiết nào · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">47</span></div>
@@ -720,7 +725,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <div class="slide-trong"><p class="label">50</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>Lượt qua đúng đỉnh đầu, nên biểu thức cho d²d/dt² ở trên là giá trị CỰC ĐẠI của lượt qua đó</li><li>Quỹ đạo tròn với tốc độ góc ω = v/(R_E+h) không đổi</li><li>Khai triển d(t) quanh đỉnh đầu tới bậc hai: d ≈ h + R_E(R_E+h)ω²t²/(2h)</li><li>RTT chỉ gồm trễ lan truyền, không gồm trễ xử lý, xếp hàng hay trễ chặng feeder</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">50</span></div>
 </section>
 <section id="s51" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">51</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Thành phần vận tốc theo đường ngắm lớn nhất, ở cao độ 550 km, tính theo km/s.</p>
+<div class="slide-trong"><p class="label">51</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Thành phần vận tốc theo đường ngắm (line of sight velocity) lớn nhất, ở cao độ 550 km, tính theo km/s.</p>
 <p><em>Module 3.3.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">51</span></div>
 </section>
 <section id="s52" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes="" data-wow><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
@@ -815,7 +820,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <div class="slide-trong"><p class="label">77</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">17</div><div class="nhan">số Release</div><div class="moc">module 3.4</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">77</span></div>
 </section>
 <section id="s78" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">78</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Cao độ 550 km, thiết bị ở góc nâng 40°, cổng mặt đất ở góc nâng 10°, payload trong suốt. RTT lan truyền là bao nhiêu ms?</p>
+<div class="slide-trong"><p class="label">78</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Cao độ 550 km, thiết bị ở góc nâng 40°, cổng mặt đất ở góc nâng 10°, payload trong suốt (transparent). RTT lan truyền là bao nhiêu ms?</p>
 <p>h = 550, es = 40, ef = 10, c = 299.792458</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">78</span></div>
 </section>
 <section id="s79" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
@@ -889,7 +894,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <div class="slide-trong"><p class="label">98</p><h2 class="d2" data-reveal>Công thức này đứng trên giả thiết nào</h2><div data-reveal style="--tre:.18s"><p><code>Δ(t) = t − U(t); AoI trung bình ≈ T/2 + E[S]; AoI đỉnh ≈ T + S</code></p></div></div><div class="chan"><span>Công thức này đứng trên giả thiết nào · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">98</span></div>
 </section>
 <section id="s99" class="slide nen-vach" data-slide data-title="Giả thiết" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">99</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>Không mất gói: mọi gói sinh ra đều tới đích</li><li>Hàng đợi không tích luỹ, tức tốc độ phục vụ theo kịp tốc độ sinh, nên S không phình theo thời gian</li><li>Lấy mẫu đúng chu kỳ T, không jitter, nên đường AoI là răng cưa đều</li><li>Một nguồn một đích, không cạnh tranh tài nguyên với nguồn khác</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">99</span></div>
+<div class="slide-trong"><p class="label">99</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>Không mất gói (packet): mọi gói sinh ra đều tới đích</li><li>Hàng đợi không tích luỹ, tức tốc độ phục vụ theo kịp tốc độ sinh, nên S không phình theo thời gian</li><li>Lấy mẫu đúng chu kỳ T, không jitter, nên đường AoI là răng cưa đều</li><li>Một nguồn một đích, không cạnh tranh tài nguyên với nguồn khác</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">99</span></div>
 </section>
 <section id="s100" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">100</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Trong công thức AoI trung bình của lấy mẫu chu kỳ, hệ số nhân với chu kỳ lấy mẫu là bao nhiêu?</p>

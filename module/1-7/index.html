@@ -321,6 +321,11 @@ body.pdf .nut,body.pdf .in-huong{display:none!important}
              text-transform:uppercase;color:var(--accent);line-height:1.4}
 .luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
 .nen-toi .luu-y{background:#ffffff0f}
+/* ⚠ Chữ mã trên nền MỰC: luật chung cho nó nền sáng và chữ mờ, nên trên slide tối
+   nó thành xám nhạt trên xám nhạt, gần như không đọc được. Đo trên bản đã deploy
+   mới thấy, vì không cổng nào đo tương phản của chữ mã. */
+.nen-toi .slide code,.nen-toi code{background:#ffffff14;color:#dfe5ec;
+                    border-color:#ffffff2e}
 @media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
 
 /* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
@@ -711,7 +716,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 </section>
 <section id="s51" class="slide nen-vach" data-slide data-title="Tắt từng giả thiết" data-phut="2.0" data-chedo="so" data-notes="Tuyên bố nào đổ khi tắt một công tắc thì tuyên bố ấy là của GIẢ THIẾT, không phải của phương pháp."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">51</p><h2 class="d2" data-reveal>Tắt từng giả thiết</h2><div data-reveal style="--tre:.18s"><p>Kết quả gốc: Jaccard trung bình 0,2222 · kỳ vọng 3,64 trên 10 đặc trưng lặp lại · 6,36 chỗ đổi khi đổi hạt · tỉ lệ chỗ ổn định 36,4%</p>
-<ul><li><strong>Đặc trưng độc lập, không tương quan cao theo nhóm</strong> tắt đi: Dữ liệu bảng của IDS có nhiều nhóm gần như trùng nhau: tổng byte và byte trung bình mỗi gói, thời lượng luồng và khoảng cách gói trung bình, cổng đích và tên dịch vụ.</li></ul></div></div><div class="chan"><span>Tắt từng giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">51</span></div>
+<ul><li><strong>Đặc trưng độc lập, không tương quan cao theo nhóm</strong> tắt đi: Dữ liệu bảng của IDS có nhiều nhóm gần như trùng nhau: tổng byte và byte trung bình mỗi gói (packet), thời lượng luồng (flow) và khoảng cách gói trung bình, cổng đích và tên dịch vụ.</li></ul></div></div><div class="chan"><span>Tắt từng giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">51</span></div>
 </section>
 <section id="s52" class="slide nen-vach" data-slide data-title="Tắt từng giả thiết (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">52</p><h2 class="d2" data-reveal>Tắt từng giả thiết (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li><strong>Hàm giá trị f(S) định nghĩa được khi thiếu đặc trưng</strong> tắt đi: Mô hình đòi đủ |F| đầu vào và không có chế độ đánh dấu thiếu, trong khi tập nền để lấy kỳ vọng không khai được, ví dụ vì mỗi triển khai có phân bố lưu lượng riêng.</li></ul></div></div><div class="chan"><span>Tắt từng giả thiết (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">52</span></div>

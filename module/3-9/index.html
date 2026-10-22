@@ -321,6 +321,11 @@ body.pdf .nut,body.pdf .in-huong{display:none!important}
              text-transform:uppercase;color:var(--accent);line-height:1.4}
 .luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
 .nen-toi .luu-y{background:#ffffff0f}
+/* ⚠ Chữ mã trên nền MỰC: luật chung cho nó nền sáng và chữ mờ, nên trên slide tối
+   nó thành xám nhạt trên xám nhạt, gần như không đọc được. Đo trên bản đã deploy
+   mới thấy, vì không cổng nào đo tương phản của chữ mã. */
+.nen-toi .slide code,.nen-toi code{background:#ffffff14;color:#dfe5ec;
+                    border-color:#ffffff2e}
 @media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
 
 /* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
@@ -553,7 +558,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <p>Đường ngắn nhất theo số chặng trong chòm sao của tôi có phải đường trễ thấp nhất không, và vì sao bảng định tuyến của tôi có hạn sử dụng?</p></div></div><div class="chan"><span>Câu hỏi của module · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">02</span></div>
 </section>
 <section id="s03" class="slide nen-vach" data-slide data-title="Định tuyến trong chòm sao: liên kết giữa vệ tinh và đồ" data-phut="1.5" data-chedo="noi" data-notes="Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">03</p><h2 class="d2" data-reveal>Định tuyến trong chòm sao: liên kết giữa vệ tinh và đồ</h2><div data-reveal style="--tre:.18s"><p>Từ 3.1 tới 3.8, mọi con số đều của <strong>một</strong> vệ tinh với <strong>một</strong> chặng: cao độ, góc nâng, khoảng xiên, trễ, Doppler. Module này đổi đối tượng: chòm sao là một <strong>đồ thị</strong>, các đỉnh là vệ tinh, các cạnh là liên kết giữa vệ tinh (inter-satellite link, ISL), và đồ thị đó <strong>đổi theo thời gian</strong>.</p></div></div><div class="chan"><span>Định tuyến trong chòm sao: liên kết giữa vệ tinh và đồ · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">03</span></div>
+<div class="slide-trong"><p class="label">03</p><h2 class="d2" data-reveal>Định tuyến trong chòm sao: liên kết giữa vệ tinh và đồ</h2><div data-reveal style="--tre:.18s"><p>Từ 3.1 tới 3.8, mọi con số đều của <strong>một</strong> vệ tinh với <strong>một</strong> chặng: cao độ, góc nâng, khoảng xiên (slant range), trễ, Doppler. Module này đổi đối tượng: chòm sao là một <strong>đồ thị</strong>, các đỉnh là vệ tinh, các cạnh là liên kết giữa vệ tinh (inter-satellite link, ISL), và đồ thị đó <strong>đổi theo thời gian</strong>.</p></div></div><div class="chan"><span>Định tuyến trong chòm sao: liên kết giữa vệ tinh và đồ · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">03</span></div>
 </section>
 <section id="s04" class="slide nen-vach" data-slide data-title="Định tuyến trong chòm sao: liên kết giữa vệ tinh (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">04</p><h2 class="d2" data-reveal>Định tuyến trong chòm sao: liên kết giữa vệ tinh (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Hai thứ phải cài vào tay. Thứ nhất, <strong>độ dài một chặng là hình học, không phải một tham số mô phỏng</strong>. Với quỹ đạo tròn và <code>T_mp</code> vệ tinh chia đều pha trong một mặt phẳng, khoảng cách trong mặt phẳng là <code>2(R_E+h)·sin(π/T_mp)</code>, và ở 550 km với 22 vệ tinh mỗi mặt phẳng nó là <strong>1972 km</strong>, tức trễ một chặng <strong>6,58 ms</strong>. Không cần mô phỏng để biết con số đó.</p></div></div><div class="chan"><span>Định tuyến trong chòm sao: liên kết giữa vệ tinh (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">04</span></div>

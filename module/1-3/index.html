@@ -321,6 +321,11 @@ body.pdf .nut,body.pdf .in-huong{display:none!important}
              text-transform:uppercase;color:var(--accent);line-height:1.4}
 .luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
 .nen-toi .luu-y{background:#ffffff0f}
+/* ⚠ Chữ mã trên nền MỰC: luật chung cho nó nền sáng và chữ mờ, nên trên slide tối
+   nó thành xám nhạt trên xám nhạt, gần như không đọc được. Đo trên bản đã deploy
+   mới thấy, vì không cổng nào đo tương phản của chữ mã. */
+.nen-toi .slide code,.nen-toi code{background:#ffffff14;color:#dfe5ec;
+                    border-color:#ffffff2e}
 @media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
 
 /* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
@@ -592,12 +597,12 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <p>Khoảng 0,950. Để ý ma trận này có TN chỉ 98, tức tập kiểm tra gần cân bằng. Cùng mô hình đó chạy ở p = 10⁻⁵ thì MCC tụt sâu, vì MCC phụ thuộc tỉ lệ nền.</p></div></div><div class="chan"><span>Một bảng kết quả khai TP=97 · đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">12</span></div>
 </section>
 <section id="s13" class="slide nen-vach" data-slide data-title="SOC có 3 người" data-phut="1.0" data-chedo="hoi" data-notes="HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">13</p><h2 class="d2" data-reveal>SOC có 3 người</h2><div data-reveal style="--tre:.18s"><p>SOC có 3 người, mỗi người đọc 60 cảnh báo một ngày. Lưu lượng 50 triệu sự kiện lành mỗi ngày. FPR tối đa được phép là bao nhiêu phần triệu (nhập số)?</p>
+<div class="slide-trong"><p class="label">13</p><h2 class="d2" data-reveal>SOC có 3 người</h2><div data-reveal style="--tre:.18s"><p>SOC có 3 người, mỗi người đọc 60 cảnh báo một ngày. Lưu lượng 50 triệu sự kiện lành mỗi ngày. FPR tối đa được phép là bao nhiêu phần triệu (ppm) (nhập số)?</p>
 <p>nguoi = 3, moiNguoi = 60, nLanh = 50000000</p></div></div><div class="chan"><span>SOC có 3 người · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">13</span></div>
 </section>
 <section id="s14" class="slide nen-vach" data-slide data-title="SOC có 3 người · đáp" data-phut="1.5" data-chedo="noi" data-notes="Dẫn lại bằng miệng trong ba mươi giây, đừng bấm máy tính."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">14</p><h2 class="d2" data-reveal>SOC có 3 người · đáp</h2><div data-reveal style="--tre:.18s"><p><code>1e6 × nguoi × moiNguoi / nLanh</code></p>
-<p>Khoảng 3,6 phần triệu, tức 3,6 × 10⁻⁶. Con số này thấp hơn FPR của gần như mọi bài báo IDS từ hai tới bốn bậc, và đó chính là lý do thực tế mà hệ thống phát hiện phải tổng hợp cảnh báo thay vì báo từng luồng.</p></div></div><div class="chan"><span>SOC có 3 người · đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">14</span></div>
+<p>Khoảng 3,6 phần triệu, tức 3,6 × 10⁻⁶. Con số này thấp hơn FPR của gần như mọi bài báo IDS từ hai tới bốn bậc, và đó chính là lý do thực tế mà hệ thống phát hiện phải tổng hợp cảnh báo thay vì báo từng luồng (flow).</p></div></div><div class="chan"><span>SOC có 3 người · đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">14</span></div>
 </section>
 <section id="s15" class="slide nen-vach" data-slide data-title="Mô hình và ngưỡng giữ nguyên" data-phut="1.0" data-chedo="hoi" data-notes="HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">15</p><h2 class="d2" data-reveal>Mô hình và ngưỡng giữ nguyên</h2><div data-reveal style="--tre:.18s"><p>Mô hình và ngưỡng giữ nguyên, chuyển từ tập kiểm tra cân bằng sang lưu lượng thật. Đại lượng nào KHÔNG đổi?</p>

@@ -41,7 +41,7 @@ Mỗi slide hỏi một con số hoặc một công thức. Dẫn lại **bằng
 - biết cả hai phân bố điều kiện p(x | tấn công) và p(x | bình thường)
 - chi phí của hai loại lỗi cố định, nên tỉ số chi phí chọn được một τ duy nhất
 - một ngưỡng duy nhất, áp cho mọi mẫu và mọi thời điểm
-- đơn vị quan sát x cố định, cùng một x cho cả bộ phát hiện và cho baseline
+- đơn vị quan sát (observation unit) x cố định, cùng một x cho cả bộ phát hiện và cho baseline
 
 ## Công thức này đứng trên giả thiết nào
 @phut: 0.5
@@ -63,7 +63,7 @@ Mỗi slide hỏi một con số hoặc một công thức. Dẫn lại **bằng
 @che-do: hoi
 @notes: Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ.
 
-Liên kết {{s001}} Gbps, khung Ethernet ngắn nhất {{s002}} byte. Tốc độ gói tối đa là bao nhiêu triệu gói mỗi giây?
+Liên kết {{s001}} Gbps, khung Ethernet ngắn nhất {{s002}} byte. Tốc độ gói (packet) tối đa là bao nhiêu triệu gói mỗi giây?
 
 *Module {{s003}}.*
 
@@ -125,7 +125,7 @@ Khoảng {{s009}} triệu gói mỗi giây, phân số đúng là {{s010}}. Ngh�
 @che-do: hoi
 @notes: Dẫn bằng miệng, đừng bấm máy.
 
-FPR mức gói là 10⁻⁴. Gộp {{s006}} gói thành một luồng theo luật báo động nếu có ít nhất một gói vượt ngưỡng. FPR mức luồng là bao nhiêu phần trăm?
+FPR mức gói là 10⁻⁴. Gộp {{s006}} gói thành một luồng (flow) theo luật báo động nếu có ít nhất một gói vượt ngưỡng. FPR mức luồng là bao nhiêu phần trăm?
 
 f = {{s013}}, n = {{s006}}
 
@@ -353,7 +353,7 @@ Khoảng {{s054}}. Để ý ma trận này có TN chỉ {{s053}}, tức tập ki
 @che-do: hoi
 @notes: Dẫn bằng miệng, đừng bấm máy.
 
-SOC có {{s051}} người, mỗi người đọc {{s055}} cảnh báo một ngày. Lưu lượng {{s057}} triệu sự kiện lành mỗi ngày. FPR tối đa được phép là bao nhiêu phần triệu (nhập số)?
+SOC có {{s051}} người, mỗi người đọc {{s055}} cảnh báo một ngày. Lưu lượng {{s057}} triệu sự kiện lành mỗi ngày. FPR tối đa được phép là bao nhiêu phần triệu (ppm) (nhập số)?
 
 nguoi = {{s051}}, moiNguoi = {{s055}}, nLanh = {{s056}}
 

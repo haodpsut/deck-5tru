@@ -391,7 +391,7 @@ khai cách vắng mặt và tập nền của mình, rồi chỉ so với bài n
 
 Kết quả gốc: Jaccard trung bình {{s025}} · kỳ vọng {{s026}} trên {{s001}} đặc trưng lặp lại · {{s027}} chỗ đổi khi đổi hạt · tỉ lệ chỗ ổn định {{s028}}
 
-- **Đặc trưng độc lập, không tương quan cao theo nhóm** tắt đi: Dữ liệu bảng của IDS có nhiều nhóm gần như trùng nhau: tổng byte và byte trung bình mỗi gói, thời lượng luồng và khoảng cách gói trung bình, cổng đích và tên dịch vụ.
+- **Đặc trưng độc lập, không tương quan cao theo nhóm** tắt đi: Dữ liệu bảng của IDS có nhiều nhóm gần như trùng nhau: tổng byte và byte trung bình mỗi gói (packet), thời lượng luồng (flow) và khoảng cách gói trung bình, cổng đích và tên dịch vụ.
 
 ## Tắt từng giả thiết (tiếp)
 @phut: 1

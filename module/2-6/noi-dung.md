@@ -25,7 +25,7 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Trong ba họ tấn công (suy luận, đầu độc, cửa hậu), họ nào áp được vào hệ của tôi với đúng năng lực kẻ tấn công mà tôi đã khai?
+Trong ba họ tấn công (suy luận, đầu độc, cửa hậu), họ nào áp được vào hệ của tôi với đúng năng lực kẻ tấn công (attacker capability) mà tôi đã khai?
 
 ## Tấn công vào FL
 @phut: 1.5
@@ -38,7 +38,7 @@ Module này không liệt kê tấn công. Nó làm đúng một việc: biến 
 @phut: 1
 @che-do: noi
 
-Lý do phải làm theo chiều này: ba họ tấn công đòi ba bộ năng lực khác nhau, và chúng không trùng nhau. **Suy luận** (truy ngược gradient, suy luận thành viên) đòi thấy gradient thô hoặc mô hình, cộng biết kiến trúc. Không đòi kiểm soát client nào. **Đầu độc và cửa hậu** đòi kiểm soát được client và được chọn trong vòng. Không đòi thấy gradient của ai khác. Hệ quả thực tế:
+Lý do phải làm theo chiều này: ba họ tấn công đòi ba bộ năng lực khác nhau, và chúng không trùng nhau. **Suy luận** (truy ngược gradient (gradient inversion), suy luận thành viên) đòi thấy gradient thô hoặc mô hình, cộng biết kiến trúc. Không đòi kiểm soát client nào. **Đầu độc và cửa hậu** đòi kiểm soát được client và được chọn trong vòng. Không đòi thấy gradient của ai khác. Hệ quả thực tế:
 
 ## Tấn công vào FL (tiếp)
 @phut: 1
@@ -174,7 +174,7 @@ Cách sửa rẻ nhất là viết một bảng năng lực duy nhất ở đầ
 @che-do: so
 
 - Truy ngược gradient cần bốn thứ cùng lúc: biết kiến trúc và hàm mất mát, thấy gradient THÔ của một client, lô nhỏ, và không có nhiễu DP đáng kể
-- Thay thế mô hình cần ba thứ: kẻ xấu được chọn trong vòng đó, mô hình đã gần hội tụ nên cập nhật lành gần triệt tiêu, và server không chặn chuẩn cập nhật
+- Thay thế mô hình (model replacement) cần ba thứ: kẻ xấu được chọn trong vòng đó, mô hình đã gần hội tụ nên cập nhật lành gần triệt tiêu, và server không chặn chuẩn cập nhật
 
 ## Ba họ tấn công (tiếp)
 @phut: 1

@@ -38,7 +38,7 @@ Mọi bảng so sánh nén đều có thể viết theo hai tiêu chí, và hai 
 @phut: 1
 @che-do: noi
 
-Module này có ba việc. Việc thứ nhất là tính được byte một vòng, kể cả **chi phí chỉ số** mà top-k phải trả và hay bị bỏ. Việc thứ hai là phân biệt nén **không chệch** với nén **chệch**: top-k thuần không phải chậm hơn, nó hội tụ về **điểm khác**, và phản hồi lỗi là thứ mua lại tính đúng chứ không phải thứ tăng tốc.
+Module này có ba việc. Việc thứ nhất là tính được byte một vòng, kể cả **chi phí chỉ số** mà top-k phải trả và hay bị bỏ. Việc thứ hai là phân biệt nén **không chệch** với nén **chệch**: top-k thuần không phải chậm hơn, nó hội tụ về **điểm khác**, và phản hồi lỗi (error feedback) là thứ mua lại tính đúng chứ không phải thứ tăng tốc.
 
 ## Byte tới mục tiêu, không phải vòng tới mục tiêu (tiếp)
 @phut: 1

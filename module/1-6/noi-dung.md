@@ -25,7 +25,7 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Nhiễu đối kháng tôi sinh ra trong không gian đặc trưng có dựng lại được thành gói tin gửi lên dây không, và nếu không thì bài của tôi đang tuyên bố cái gì?
+Nhiễu đối kháng tôi sinh ra trong không gian đặc trưng có dựng lại được thành gói (packet) tin gửi lên dây không, và nếu không thì bài của tôi đang tuyên bố cái gì?
 
 ## Lẩn tránh: không gian đặc trưng so với không gian vấn đề
 @phut: 1.5
@@ -60,7 +60,7 @@ Nói định nghĩa và **điểm phải nhớ**, rồi lật.
 @che-do: noi
 @notes: So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm.
 
-Phép biến đổi `T` mà kẻ tấn công thật dùng phải thoả cả bốn, cùng lúc: **Có sẵn:** `T` thuộc tập phép biến đổi mà kẻ tấn công thực sự làm được trên đối tượng thật. **Giữ nguyên ngữ nghĩa độc hại:** `z = T(z0)` vẫn thực hiện đúng hành vi tấn công ban đầu. **Chịu được tiền xử lý:** nhiễu còn sống sót qua chuẩn hoá, gộp luồng, cắt gói, phân mảnh lại.
+Phép biến đổi `T` mà kẻ tấn công thật dùng phải thoả cả bốn, cùng lúc: **Có sẵn:** `T` thuộc tập phép biến đổi mà kẻ tấn công thực sự làm được trên đối tượng thật. **Giữ nguyên ngữ nghĩa độc hại:** `z = T(z0)` vẫn thực hiện đúng hành vi tấn công ban đầu. **Chịu được tiền xử lý:** nhiễu còn sống sót qua chuẩn hoá, gộp luồng (flow), cắt gói, phân mảnh lại.
 
 ## Bốn ràng buộc không gian vấn đề · đáp (tiếp)
 @phut: 1

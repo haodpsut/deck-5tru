@@ -321,6 +321,11 @@ body.pdf .nut,body.pdf .in-huong{display:none!important}
              text-transform:uppercase;color:var(--accent);line-height:1.4}
 .luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
 .nen-toi .luu-y{background:#ffffff0f}
+/* ⚠ Chữ mã trên nền MỰC: luật chung cho nó nền sáng và chữ mờ, nên trên slide tối
+   nó thành xám nhạt trên xám nhạt, gần như không đọc được. Đo trên bản đã deploy
+   mới thấy, vì không cổng nào đo tương phản của chữ mã. */
+.nen-toi .slide code,.nen-toi code{background:#ffffff14;color:#dfe5ec;
+                    border-color:#ffffff2e}
 @media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
 
 /* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
@@ -748,7 +753,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <div class="slide-trong"><p class="label">61</p><h2 class="d2" data-reveal>Thang chấm (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>Mức 1: trả lời rằng J/S là trục phổ biến trong tài liệu chống nhiễu. Đúng về thực hành, nhưng không chạm vào phản bác, vì phản bác nói chính trục đó là trục của loại tấn công khác.</li><li>Mức 2: đổi trục sang lề công suất của tín hiệu giả, nhưng vẫn để kẻ tấn công ở một mức công suất cố định, nên phần đánh giá vẫn đo trên kẻ tấn công không thích ứng mà không nói ra.</li></ul></div></div><div class="chan"><span>Thang chấm (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">61</span></div>
 </section>
 <section id="s62" class="slide nen-vach" data-slide data-title="Thang chấm (tiếp)" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">62</p><h2 class="d2" data-reveal>Thang chấm (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>Mức 3: khai mô hình năng lực kẻ tấn công gồm dải công suất điều chỉnh được, vẽ hiệu năng theo lề công suất trong dải đó, và tách bảng kết quả thành gây nhiễu và giả mạo với hai trục khác nhau.</li></ul></div></div><div class="chan"><span>Thang chấm (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">62</span></div>
+<div class="slide-trong"><p class="label">62</p><h2 class="d2" data-reveal>Thang chấm (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>Mức 3: khai mô hình năng lực kẻ tấn công (attacker capability) gồm dải công suất điều chỉnh được, vẽ hiệu năng theo lề công suất trong dải đó, và tách bảng kết quả thành gây nhiễu và giả mạo với hai trục khác nhau.</li></ul></div></div><div class="chan"><span>Thang chấm (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">62</span></div>
 </section>
 <section id="s63" class="slide nen-vach" data-slide data-title="Phản biện hỏi" data-phut="1.5" data-chedo="hoi" data-notes="Đọc to như reviewer đọc. Trả lời bằng miệng trước khi lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">63</p><h2 class="d2" data-reveal>Phản biện hỏi</h2><div data-reveal style="--tre:.18s"><p>The threat model in Section II grants the adversary the ability to inject and to block messages on the TT&amp;C link, but the proposed command protection in Section IV provides only encryption of the command payload. Please explain how your design resists replay of a previously valid command under the stated threat model.</p></div></div><div class="chan"><span>Phản biện hỏi · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">63</span></div>

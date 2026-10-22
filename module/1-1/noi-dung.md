@@ -25,7 +25,7 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Đơn vị quan sát của tôi là gói tin, luồng, cửa sổ thời gian hay đồ thị, và lựa chọn đó làm cho tuyên bố nào của tôi không còn kiểm được?
+Đơn vị quan sát (observation unit) của tôi là gói (packet) tin, luồng (flow), cửa sổ thời gian (time window) hay đồ thị, và lựa chọn đó làm cho tuyên bố nào của tôi không còn kiểm được?
 
 ## Đơn vị quan sát là câu đầu tiên của phần đánh giá
 @phut: 1.5
@@ -44,7 +44,7 @@ Vì sao đây là chỗ reviewer đánh: một bài khai FPR ở mức gói rồ
 @phut: 1
 @che-do: noi
 
-Ba thứ phải dẫn lại được trong {{s001}} giây trên giấy: kiểm định tỉ số hợp lẽ và điều nó đòi, AUC là một xác suất so cặp chứ không phải một điểm làm việc, và bài toán tập mở cần một hàm từ chối với ngưỡng riêng.
+Ba thứ phải dẫn lại được trong {{s001}} giây trên giấy: kiểm định tỉ số hợp lẽ và điều nó đòi, AUC là một xác suất so cặp chứ không phải một điểm làm việc, và bài toán tập mở (open-set) cần một hàm từ chối với ngưỡng riêng.
 
 ## Đơn vị quan sát (observation unit)
 @phut: 1

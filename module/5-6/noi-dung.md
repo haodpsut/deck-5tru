@@ -365,7 +365,7 @@ Máy lượng tử chỉ giết phần cổ điển của hybrid, PQC hậu lư�
 - Ở {{s003}} km, hệ QKD của chúng tôi cho key rate {{s035}} kbit mỗi giây với nguồn lặp {{s003}} MHz,
 - tức khoảng 1,2·10⁻⁵ bit mỗi lần dùng kênh, nằm dưới chặn PLOB {{s004}} bit mỗi lần dùng kênh.
 - Trong khi đó liên kết dữ liệu của chúng tôi chạy {{s013}} Gbit mỗi giây,
-- nên QKD hiện chỉ đạt khoảng một phần triệu thông lượng của kênh dữ liệu.
+- nên QKD hiện chỉ đạt khoảng một phần triệu (ppm) thông lượng của kênh dữ liệu.
 
 ## Câu không được chống đỡ · ca một · đáp
 @phut: 1.5

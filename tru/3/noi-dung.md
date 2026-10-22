@@ -40,7 +40,7 @@ moc-ngay: bản kho 2026.10.06-2
 @che-do: hoi
 @notes: Câu hỏi của module. Trả lời bằng miệng trước khi lật.
 
-Cho cao độ và góc nâng tối thiểu, tôi tính được cửa sổ nhìn thấy, khoảng xiên lớn nhất và trễ một chiều trong bao lâu, bằng giấy?
+Cho cao độ và góc nâng tối thiểu, tôi tính được cửa sổ nhìn thấy, khoảng xiên (slant range) lớn nhất và trễ một chiều trong bao lâu, bằng giấy?
 
 ## m3.1 · luận điểm
 @phut: 1.5
@@ -53,7 +53,7 @@ Ba đại lượng hình học quyết định gần hết bảng kết quả
 @che-do: hoi
 @notes: Câu hỏi của module. Trả lời bằng miệng trước khi lật.
 
-Ở băng Ka, biên dự phòng mưa của tôi là bao nhiêu dB, và nếu bỏ nó thì SE tôi báo bị thổi lên bao nhiêu?
+Ở băng Ka, biên dự phòng mưa (rain margin) của tôi là bao nhiêu dB, và nếu bỏ nó thì SE tôi báo bị thổi lên bao nhiêu?
 
 ## m3.2 · luận điểm
 @phut: 1.5
@@ -61,7 +61,7 @@ Ba đại lượng hình học quyết định gần hết bảng kết quả
 @wow
 @dan: Chỗ này là chỗ tuyên bố đổi nghĩa, không phải chỗ thêm số.
 
-SE là một hàm của mức khả dụng, không phải một con số
+SE là một hàm của mức khả dụng (availability), không phải một con số
 
 ## m3.3 Doppler và định thời
 @phut: 1.5
@@ -81,7 +81,7 @@ Hai cực trị, hai chỗ khác nhau
 @che-do: hoi
 @notes: Câu hỏi của module. Trả lời bằng miệng trước khi lật.
 
-Bài của tôi giả định payload trong suốt hay tái sinh, và lựa chọn đó đổi những con số nào trong phần kết quả?
+Bài của tôi giả định payload trong suốt (transparent) hay tái sinh, và lựa chọn đó đổi những con số nào trong phần kết quả?
 
 ## m3.4 · luận điểm
 @phut: 1

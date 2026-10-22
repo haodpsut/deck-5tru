@@ -62,7 +62,7 @@ Nói định nghĩa và **điểm phải nhớ**, rồi lật.
 @che-do: noi
 @notes: So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm.
 
-Ba cái, phải kể được rời nhau: **Nhất quán thời gian khi huấn luyện:** mọi mẫu huấn luyện phải có mốc thời gian trước mọi mẫu kiểm. Vi phạm cái này là huấn luyện trên tương lai. **Cùng kỳ giữa hai lớp:** cửa sổ thời gian của lớp lành và lớp độc phải trùng nhau. Vi phạm cái này thì bộ phân loại học được chỗ lệch kỳ chứ không học tấn công.
+Ba cái, phải kể được rời nhau: **Nhất quán thời gian khi huấn luyện:** mọi mẫu huấn luyện phải có mốc thời gian trước mọi mẫu kiểm. Vi phạm cái này là huấn luyện trên tương lai. **Cùng kỳ giữa hai lớp:** cửa sổ thời gian (time window) của lớp lành và lớp độc phải trùng nhau. Vi phạm cái này thì bộ phân loại học được chỗ lệch kỳ chứ không học tấn công.
 
 ## Ba ràng buộc thời gian của TESSERACT · đáp (tiếp)
 @phut: 1
@@ -212,7 +212,7 @@ Mức thổi thật phải đo trên dataset thật, và đó là con số bài 
 @che-do: hoi
 @notes: HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng.
 
-Một bài dùng 10-fold ngẫu nhiên có phân tầng trên CIC-IDS2017, là bộ dữ liệu có mốc thời gian theo từng luồng, trải năm ngày. Ràng buộc TESSERACT nào bị vi phạm TRƯỚC NHẤT?
+Một bài dùng 10-fold ngẫu nhiên có phân tầng trên CIC-IDS2017, là bộ dữ liệu có mốc thời gian theo từng luồng (flow), trải năm ngày. Ràng buộc TESSERACT nào bị vi phạm TRƯỚC NHẤT?
 
 ## Chọn một phương án (tiếp)
 @phut: 0.5

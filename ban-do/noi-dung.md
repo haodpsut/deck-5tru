@@ -113,7 +113,7 @@ Năm trụ phủ đúng trục nghiên cứu của tôi: an ninh cho mạng phi 
 @notes: Đọc lướt. Ai hỏi sâu thì mở deck riêng của trụ.
 
 - m2.9 Cá nhân hoá: khi một mô hình toàn cục là lời giải sai
-- m2.10 Hệ thống thật: kẻ chậm, client rơi, và thiên lệch do lấy mẫu
+- m2.10 Hệ thống thật: kẻ chậm (straggler), client rơi, và thiên lệch do lấy mẫu
 
 ## Trụ 3 NTN
 @phut: 1.5
@@ -140,7 +140,7 @@ Năm trụ phủ đúng trục nghiên cứu của tôi: an ninh cho mạng phi 
 @che-do: noi
 @notes: Đọc lướt. Ai hỏi sâu thì mở deck riêng của trụ.
 
-- m3.9 Định tuyến trong chòm sao: liên kết giữa vệ tinh và đồ thị động
+- m3.9 Định tuyến trong chòm sao: liên kết giữa vệ tinh (ISL) và đồ thị động
 - m3.10 Học liên bang qua liên kết vệ tinh: khi vòng huấn luyện gặp cửa sổ nhìn thấy
 
 ## Trụ 4 6G Sec

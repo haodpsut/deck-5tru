@@ -125,7 +125,7 @@ Khoảng {{s011}}. Để ý ma trận này có TN chỉ {{s010}}, tức tập ki
 @che-do: hoi
 @notes: HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng.
 
-SOC có {{s009}} người, mỗi người đọc {{s012}} cảnh báo một ngày. Lưu lượng {{s014}} triệu sự kiện lành mỗi ngày. FPR tối đa được phép là bao nhiêu phần triệu (nhập số)?
+SOC có {{s009}} người, mỗi người đọc {{s012}} cảnh báo một ngày. Lưu lượng {{s014}} triệu sự kiện lành mỗi ngày. FPR tối đa được phép là bao nhiêu phần triệu (ppm) (nhập số)?
 
 nguoi = {{s009}}, moiNguoi = {{s012}}, nLanh = {{s013}}
 
@@ -136,7 +136,7 @@ nguoi = {{s009}}, moiNguoi = {{s012}}, nLanh = {{s013}}
 
 `1e6 × nguoi × moiNguoi / nLanh`
 
-Khoảng {{s015}} phần triệu, tức {{s015}} × 10⁻⁶. Con số này thấp hơn FPR của gần như mọi bài báo IDS từ hai tới bốn bậc, và đó chính là lý do thực tế mà hệ thống phát hiện phải tổng hợp cảnh báo thay vì báo từng luồng.
+Khoảng {{s015}} phần triệu, tức {{s015}} × 10⁻⁶. Con số này thấp hơn FPR của gần như mọi bài báo IDS từ hai tới bốn bậc, và đó chính là lý do thực tế mà hệ thống phát hiện phải tổng hợp cảnh báo thay vì báo từng luồng (flow).
 
 ## Mô hình và ngưỡng giữ nguyên
 @phut: 1

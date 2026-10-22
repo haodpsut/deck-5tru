@@ -3,6 +3,12 @@
     "kho": "working/hoc-5-tru-web/data, bản 2026.10.06-2",
     "sinh_boi": "slides/5tru/sinh.py"
   },
+  "_thuat_ngu": {
+    "đơn vị quan sát": "observation unit",
+    "phần triệu": "ppm",
+    "luồng": "flow",
+    "gói": "packet"
+  },
   "s001": "10",
   "s002": "64",
   "s003": "1.1",

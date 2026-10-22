@@ -32,7 +32,7 @@ moc-ngay: bản kho 2026.10.06-2
 @che-do: noi
 @notes: Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau.
 
-Từ {{s001}} tới {{s002}}, mọi con số đều của **một** vệ tinh với **một** chặng: cao độ, góc nâng, khoảng xiên, trễ, Doppler. Module này đổi đối tượng: chòm sao là một **đồ thị**, các đỉnh là vệ tinh, các cạnh là liên kết giữa vệ tinh (inter-satellite link, ISL), và đồ thị đó **đổi theo thời gian**.
+Từ {{s001}} tới {{s002}}, mọi con số đều của **một** vệ tinh với **một** chặng: cao độ, góc nâng, khoảng xiên (slant range), trễ, Doppler. Module này đổi đối tượng: chòm sao là một **đồ thị**, các đỉnh là vệ tinh, các cạnh là liên kết giữa vệ tinh (inter-satellite link, ISL), và đồ thị đó **đổi theo thời gian**.
 
 ## Định tuyến trong chòm sao: liên kết giữa vệ tinh (tiếp)
 @phut: 1

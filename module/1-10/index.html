@@ -321,6 +321,11 @@ body.pdf .nut,body.pdf .in-huong{display:none!important}
              text-transform:uppercase;color:var(--accent);line-height:1.4}
 .luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
 .nen-toi .luu-y{background:#ffffff0f}
+/* ⚠ Chữ mã trên nền MỰC: luật chung cho nó nền sáng và chữ mờ, nên trên slide tối
+   nó thành xám nhạt trên xám nhạt, gần như không đọc được. Đo trên bản đã deploy
+   mới thấy, vì không cổng nào đo tương phản của chữ mã. */
+.nen-toi .slide code,.nen-toi code{background:#ffffff14;color:#dfe5ec;
+                    border-color:#ffffff2e}
 @media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
 
 /* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
@@ -553,7 +558,7 @@ body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-he
 <p>Trong mạng năm 2026, bao nhiêu phần đặc trưng mà dataset của tôi dùng còn lấy được, và bộ phát hiện của tôi có đang học trên thứ không còn tồn tại?</p></div></div><div class="chan"><span>Câu hỏi của module · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">02</span></div>
 </section>
 <section id="s03" class="slide nen-vach" data-slide data-title="Ba nhóm đặc trưng, và nhóm nào còn sống" data-phut="1.5" data-chedo="noi" data-notes="Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
-<div class="slide-trong"><p class="label">03</p><h2 class="d2" data-reveal>Ba nhóm đặc trưng, và nhóm nào còn sống</h2><div data-reveal style="--tre:.18s"><p>Mọi bộ phát hiện xâm nhập đều ăn một vector đặc trưng do bộ bóc gói sinh ra. Các đặc trưng đó xếp được thành ba nhóm theo <strong>khả năng lấy được</strong> từ một điểm quan sát trên đường truyền: <strong>Tải tin</strong>: n-gram byte, chuỗi ký tự, chữ ký nội dung. Chết với TLS. <strong>Siêu dữ liệu bắt tay</strong>: SNI, dấu tay thư viện TLS, thời điểm và kích thước gói bắt tay. Chết dần với ECH. <strong>Hình dáng luồng</strong>:</p></div></div><div class="chan"><span>Ba nhóm đặc trưng, và nhóm nào còn sống · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">03</span></div>
+<div class="slide-trong"><p class="label">03</p><h2 class="d2" data-reveal>Ba nhóm đặc trưng, và nhóm nào còn sống</h2><div data-reveal style="--tre:.18s"><p>Mọi bộ phát hiện xâm nhập đều ăn một vector đặc trưng do bộ bóc gói (packet) sinh ra. Các đặc trưng đó xếp được thành ba nhóm theo <strong>khả năng lấy được</strong> từ một điểm quan sát trên đường truyền: <strong>Tải tin</strong>: n-gram byte, chuỗi ký tự, chữ ký nội dung. Chết với TLS. <strong>Siêu dữ liệu bắt tay</strong>: SNI, dấu tay thư viện TLS, thời điểm và kích thước gói bắt tay. Chết dần với ECH. <strong>Hình dáng luồng (flow)</strong>:</p></div></div><div class="chan"><span>Ba nhóm đặc trưng, và nhóm nào còn sống · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">03</span></div>
 </section>
 <section id="s04" class="slide nen-vach" data-slide data-title="Ba nhóm đặc trưng, và nhóm nào còn sống (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
 <div class="slide-trong"><p class="label">04</p><h2 class="d2" data-reveal>Ba nhóm đặc trưng, và nhóm nào còn sống (tiếp)</h2><div data-reveal style="--tre:.18s"><p>thời điểm, kích thước, hướng, nhịp. Vẫn còn. Điểm quan trọng nhất của module này không phải là mã hoá làm mất đặc trưng, mà là một bảng kết quả <strong>không khai nhóm đặc trưng nào nó dùng</strong> thì không ai biết nó còn chạy được ở đâu. Hai bài cùng báo F1 bằng 0,98 có thể ở hai phía của ranh giới đó, và không phép đo nào trong bảng phân biệt được chúng.</p></div></div><div class="chan"><span>Ba nhóm đặc trưng, và nhóm nào còn sống (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">04</span></div>

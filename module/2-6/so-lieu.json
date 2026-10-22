@@ -3,6 +3,12 @@
     "kho": "working/hoc-5-tru-web/data, bản 2026.10.06-2",
     "sinh_boi": "slides/5tru/sinh.py"
   },
+  "_thuat_ngu": {
+    "năng lực kẻ tấn công": "attacker capability",
+    "truy ngược gradient": "gradient inversion",
+    "thay thế mô hình": "model replacement",
+    "chặn chuẩn": "norm clipping"
+  },
   "s001": "2",
   "s002": "3",
   "s003": "100",

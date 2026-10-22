@@ -108,7 +108,7 @@ Phân biệt cho chặt: **TPR trả lời câu hỏi của nhà nghiên cứu**
 
 !so {{s004}} | % | Với p = 10⁻⁵
 !so {{s005}} | số mũ âm | Vẫn p = 10⁻⁵ và TPR = {{s001}}. Muốn PPV đạt {{s006}}
-!so {{s007}} | cảnh báo mỗi ngày | FPR = 10⁻³ trên {{s008}} triệu luồng lành mỗi ngày. Bao nhiêu
+!so {{s007}} | cảnh báo mỗi ngày | FPR = 10⁻³ trên {{s008}} triệu luồng (flow) lành mỗi ngày. Bao nhiêu
 
 ## Một bài báo khai p = 10⁻³
 @phut: 1

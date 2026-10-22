@@ -3,6 +3,14 @@
     "kho": "working/hoc-5-tru-web/data, bản 2026.10.06-2",
     "sinh_boi": "slides/5tru/sinh.py"
   },
+  "_thuat_ngu": {
+    "cửa sổ thời gian": "time window",
+    "đơn vị quan sát": "observation unit",
+    "đồ thị kết nối": "connection graph",
+    "tập mở": "open-set",
+    "luồng": "flow",
+    "gói": "packet"
+  },
   "s001": "30",
   "s002": "1",
   "s003": "2",

@@ -32,7 +32,7 @@ FedProx, SCAFFOLD, FedNova mỗi cái sửa đúng một bệnh nào của FedAv
 @che-do: noi
 @notes: Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau.
 
-Ba thuật toán hậu FedAvg hay bị xếp cạnh nhau như ba mức độ tốt dần. Chúng không phải thế. Mỗi cái sửa **đúng một bệnh** và không sửa hai bệnh kia: **FedProx** sửa *trôi cục bộ*, bằng cách thêm một neo gần vào hàm mục tiêu cục bộ. **SCAFFOLD** sửa *lệch hướng cập nhật*, bằng cách trừ đi thiên lệch đã ước lượng, và trả giá bằng gấp đôi lượng truyền.
+Ba thuật toán hậu FedAvg hay bị xếp cạnh nhau như ba mức độ tốt dần. Chúng không phải thế. Mỗi cái sửa **đúng một bệnh** và không sửa hai bệnh kia: **FedProx** sửa *trôi cục bộ (client drift)*, bằng cách thêm một neo gần vào hàm mục tiêu cục bộ. **SCAFFOLD** sửa *lệch hướng cập nhật*, bằng cách trừ đi thiên lệch đã ước lượng, và trả giá bằng gấp đôi lượng truyền.
 
 ## Bốn thuật toán (tiếp)
 @phut: 1
@@ -192,7 +192,7 @@ vong = {{s007}}, P = {{s008}}, bit = {{s009}}
 
 `2⋆vong⋆P⋆bit/8/1e9`
 
-{{s011}} GB mỗi client cho {{s007}} vòng. Con số này đáng nhớ vì nó biến một câu định tính thành một ràng buộc: với client dùng gói dữ liệu di động, gần {{s012}} GB cho một lần huấn luyện là không chạy được, và đó là lý do thật của mọi phần nén trong các bài FL cross-device.
+{{s011}} GB mỗi client cho {{s007}} vòng. Con số này đáng nhớ vì nó biến một câu định tính thành một ràng buộc: với client dùng gói (packet) dữ liệu di động, gần {{s012}} GB cho một lần huấn luyện là không chạy được, và đó là lý do thật của mọi phần nén trong các bài FL cross-device.
 
 ## Tính ra con số · đáp (tiếp)
 @phut: 1

@@ -25,7 +25,7 @@ moc-ngay: bản kho 2026.10.06-2
 
 !luu-y Câu phải mang về | {{TAKE_HOME}}
 
-Ở băng Ka, biên dự phòng mưa của tôi là bao nhiêu dB, và nếu bỏ nó thì SE tôi báo bị thổi lên bao nhiêu?
+Ở băng Ka, biên dự phòng mưa (rain margin) của tôi là bao nhiêu dB, và nếu bỏ nó thì SE tôi báo bị thổi lên bao nhiêu?
 
 ## SE là một hàm của mức khả dụng
 @phut: 1.5
@@ -38,13 +38,13 @@ Module {{s001}} cho khoảng cách. Module này đổi khoảng cách thành dB,
 @phut: 1
 @che-do: noi
 
-Tầng không gian tự do thì sạch: `FSPL = {{s002}} + 20·log₁₀ d(km) + 20·log₁₀ f(GHz)`, không có tham số nào để chọn. Ở {{s003}} GHz, chênh giữa đỉnh đầu và chân trời ở cao độ {{s004}} km là **{{s005}} dB**, và con số đó rút thẳng ra từ tỉ số khoảng xiên {{s006}} lần của module {{s001}}.
+Tầng không gian tự do thì sạch: `FSPL = {{s002}} + 20·log₁₀ d(km) + 20·log₁₀ f(GHz)`, không có tham số nào để chọn. Ở {{s003}} GHz, chênh giữa đỉnh đầu và chân trời ở cao độ {{s004}} km là **{{s005}} dB**, và con số đó rút thẳng ra từ tỉ số khoảng xiên (slant range) {{s006}} lần của module {{s001}}.
 
 ## SE là một hàm của mức khả dụng (tiếp)
 @phut: 1
 @che-do: noi
 
-Tầng mưa thì không sạch. Suy hao mưa là một biến ngẫu nhiên, nên **SE là hàm của mức khả dụng**. Một bài báo in đúng một con số SE mà không nói mức khả dụng thì con số đó không so được với bài nào, kể cả với chính nó ở một tháng khác. Mất {{s007}} dB biên chỉ hạ SNR từ {{s008}} dB về {{s009}} dB, mà SE tụt **{{s010}}**:
+Tầng mưa thì không sạch. Suy hao mưa là một biến ngẫu nhiên, nên **SE là hàm của mức khả dụng (availability)**. Một bài báo in đúng một con số SE mà không nói mức khả dụng thì con số đó không so được với bài nào, kể cả với chính nó ở một tháng khác. Mất {{s007}} dB biên chỉ hạ SNR từ {{s008}} dB về {{s009}} dB, mà SE tụt **{{s010}}**:
 
 ## SE là một hàm của mức khả dụng (tiếp)
 @phut: 1

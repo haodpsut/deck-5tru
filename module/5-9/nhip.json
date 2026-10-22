@@ -1,7 +1,7 @@
 {
   "profile": "giang-day",
-  "tong_phut_khai": 86.5,
-  "tong_phut_cong": 86.5,
+  "tong_phut_khai": 87.5,
+  "tong_phut_cong": 87.5,
   "moc": [
     {
       "id": "s01",
@@ -194,110 +194,110 @@
     },
     {
       "id": "s22",
-      "tieu_de": "Công thức · ghi chú",
+      "tieu_de": "Công thức và giả thiết (tiếp)",
       "dang": "noi-dung",
-      "che_do": "noi",
+      "che_do": "so",
       "bat_dau": 24.0,
       "phut": 1.0,
       "wow": false
     },
     {
       "id": "s23",
-      "tieu_de": "Số phải biết",
+      "tieu_de": "Công thức · ghi chú",
       "dang": "noi-dung",
-      "che_do": "so",
+      "che_do": "noi",
       "bat_dau": 25.0,
-      "phut": 2.0,
+      "phut": 1.0,
       "wow": true
     },
     {
       "id": "s24",
-      "tieu_de": "Ba hệ dùng song song",
+      "tieu_de": "Số phải biết",
       "dang": "noi-dung",
-      "che_do": "hoi",
-      "bat_dau": 27.0,
-      "phut": 1.0,
+      "che_do": "so",
+      "bat_dau": 26.0,
+      "phut": 2.0,
       "wow": false
     },
     {
       "id": "s25",
-      "tieu_de": "Ba hệ dùng song song · đáp",
+      "tieu_de": "Ba hệ dùng song song",
       "dang": "noi-dung",
-      "che_do": "noi",
+      "che_do": "hoi",
       "bat_dau": 28.0,
-      "phut": 1.5,
+      "phut": 1.0,
       "wow": false
     },
     {
       "id": "s26",
-      "tieu_de": "Cùng cấu hình đó: ba hệ",
+      "tieu_de": "Ba hệ dùng song song · đáp",
       "dang": "noi-dung",
-      "che_do": "hoi",
-      "bat_dau": 29.5,
-      "phut": 1.0,
+      "che_do": "noi",
+      "bat_dau": 29.0,
+      "phut": 1.5,
       "wow": false
     },
     {
       "id": "s27",
-      "tieu_de": "Cùng cấu hình đó: ba hệ · đáp",
+      "tieu_de": "Cùng cấu hình đó: ba hệ",
       "dang": "noi-dung",
-      "che_do": "noi",
+      "che_do": "hoi",
       "bat_dau": 30.5,
-      "phut": 1.5,
+      "phut": 1.0,
       "wow": false
     },
     {
       "id": "s28",
-      "tieu_de": "Chọn một phương án",
-      "dang": "noi-dung",
-      "che_do": "hoi",
-      "bat_dau": 32.0,
-      "phut": 1.0,
-      "wow": false
-    },
-    {
-      "id": "s29",
-      "tieu_de": "Chọn một phương án · đáp",
+      "tieu_de": "Cùng cấu hình đó: ba hệ · đáp",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 33.0,
+      "bat_dau": 31.5,
       "phut": 1.5,
       "wow": false
     },
     {
-      "id": "s30",
-      "tieu_de": "Chọn một phương án · đáp (tiếp)",
+      "id": "s29",
+      "tieu_de": "Chọn một phương án",
       "dang": "noi-dung",
-      "che_do": "noi",
-      "bat_dau": 34.5,
+      "che_do": "hoi",
+      "bat_dau": 33.0,
       "phut": 1.0,
       "wow": false
     },
     {
-      "id": "s31",
-      "tieu_de": "Bài học đúng rút ra từ ca SIKE là gì?",
+      "id": "s30",
+      "tieu_de": "Chọn một phương án · đáp",
       "dang": "noi-dung",
-      "che_do": "hoi",
+      "che_do": "noi",
+      "bat_dau": 34.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s31",
+      "tieu_de": "Chọn một phương án · đáp (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
       "bat_dau": 35.5,
       "phut": 1.0,
       "wow": false
     },
     {
       "id": "s32",
-      "tieu_de": "Bài học đúng rút ra từ ca SIKE là gì? · đáp",
+      "tieu_de": "Bài học đúng rút ra từ ca SIKE là gì?",
       "dang": "noi-dung",
-      "che_do": "noi",
+      "che_do": "hoi",
       "bat_dau": 36.5,
-      "phut": 1.5,
+      "phut": 1.0,
       "wow": false
     },
     {
       "id": "s33",
-      "tieu_de": "Bài học đúng rút ra từ ca SIKE là gì? · đáp (tiếp)",
+      "tieu_de": "Bài học đúng rút ra từ ca SIKE là gì? · đáp",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 38.0,
-      "phut": 1.0,
+      "bat_dau": 37.5,
+      "phut": 1.5,
       "wow": false
     },
     {
@@ -311,65 +311,65 @@
     },
     {
       "id": "s35",
-      "tieu_de": "Phản biện viết",
+      "tieu_de": "Bài học đúng rút ra từ ca SIKE là gì? · đáp (tiếp)",
       "dang": "noi-dung",
-      "che_do": "hoi",
+      "che_do": "noi",
       "bat_dau": 40.0,
       "phut": 1.0,
       "wow": false
     },
     {
       "id": "s36",
-      "tieu_de": "Phản biện viết (tiếp)",
+      "tieu_de": "Phản biện viết",
       "dang": "noi-dung",
       "che_do": "hoi",
       "bat_dau": 41.0,
-      "phut": 0.5,
-      "wow": false
-    },
-    {
-      "id": "s37",
-      "tieu_de": "Phản biện viết · đáp",
-      "dang": "noi-dung",
-      "che_do": "noi",
-      "bat_dau": 41.5,
-      "phut": 1.5,
-      "wow": false
-    },
-    {
-      "id": "s38",
-      "tieu_de": "Phản biện viết · đáp (tiếp)",
-      "dang": "noi-dung",
-      "che_do": "noi",
-      "bat_dau": 43.0,
       "phut": 1.0,
       "wow": false
     },
     {
-      "id": "s39",
-      "tieu_de": "Câu nào không được số nào chống đỡ · ca một",
+      "id": "s37",
+      "tieu_de": "Phản biện viết (tiếp)",
       "dang": "noi-dung",
       "che_do": "hoi",
+      "bat_dau": 42.0,
+      "phut": 0.5,
+      "wow": false
+    },
+    {
+      "id": "s38",
+      "tieu_de": "Phản biện viết · đáp",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 42.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s39",
+      "tieu_de": "Phản biện viết · đáp (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
       "bat_dau": 44.0,
       "phut": 1.0,
       "wow": false
     },
     {
       "id": "s40",
-      "tieu_de": "Câu không được chống đỡ · ca một · đáp",
+      "tieu_de": "Câu nào không được số nào chống đỡ · ca một",
       "dang": "noi-dung",
-      "che_do": "noi",
+      "che_do": "hoi",
       "bat_dau": 45.0,
-      "phut": 1.5,
+      "phut": 1.0,
       "wow": false
     },
     {
       "id": "s41",
-      "tieu_de": "Câu không được chống đỡ · ca một · đáp (tiếp)",
+      "tieu_de": "Câu không được chống đỡ · ca một · đáp",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 46.5,
-      "phut": 1.0,
+      "bat_dau": 46.0,
+      "phut": 1.5,
       "wow": false
     },
     {
@@ -383,29 +383,29 @@
     },
     {
       "id": "s43",
-      "tieu_de": "Câu nào không được số nào chống đỡ · ca hai",
+      "tieu_de": "Câu không được chống đỡ · ca một · đáp (tiếp)",
       "dang": "noi-dung",
-      "che_do": "hoi",
+      "che_do": "noi",
       "bat_dau": 48.5,
       "phut": 1.0,
       "wow": false
     },
     {
       "id": "s44",
-      "tieu_de": "Câu không được chống đỡ · ca hai · đáp",
+      "tieu_de": "Câu nào không được số nào chống đỡ · ca hai",
       "dang": "noi-dung",
-      "che_do": "noi",
+      "che_do": "hoi",
       "bat_dau": 49.5,
-      "phut": 1.5,
+      "phut": 1.0,
       "wow": false
     },
     {
       "id": "s45",
-      "tieu_de": "Câu không được chống đỡ · ca hai · đáp (tiếp)",
+      "tieu_de": "Câu không được chống đỡ · ca hai · đáp",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 51.0,
-      "phut": 1.0,
+      "bat_dau": 50.5,
+      "phut": 1.5,
       "wow": false
     },
     {
@@ -419,29 +419,29 @@
     },
     {
       "id": "s47",
-      "tieu_de": "Câu nào không được số nào chống đỡ · ca ba",
+      "tieu_de": "Câu không được chống đỡ · ca hai · đáp (tiếp)",
       "dang": "noi-dung",
-      "che_do": "hoi",
+      "che_do": "noi",
       "bat_dau": 53.0,
       "phut": 1.0,
       "wow": false
     },
     {
       "id": "s48",
-      "tieu_de": "Câu không được chống đỡ · ca ba · đáp",
+      "tieu_de": "Câu nào không được số nào chống đỡ · ca ba",
       "dang": "noi-dung",
-      "che_do": "noi",
+      "che_do": "hoi",
       "bat_dau": 54.0,
-      "phut": 1.5,
+      "phut": 1.0,
       "wow": false
     },
     {
       "id": "s49",
-      "tieu_de": "Câu không được chống đỡ · ca ba · đáp (tiếp)",
+      "tieu_de": "Câu không được chống đỡ · ca ba · đáp",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 55.5,
-      "phut": 1.0,
+      "bat_dau": 55.0,
+      "phut": 1.5,
       "wow": false
     },
     {
@@ -455,38 +455,38 @@
     },
     {
       "id": "s51",
-      "tieu_de": "Dẫn lại từng bước",
+      "tieu_de": "Câu không được chống đỡ · ca ba · đáp (tiếp)",
       "dang": "noi-dung",
-      "che_do": "so",
+      "che_do": "noi",
       "bat_dau": 57.5,
-      "phut": 2.0,
+      "phut": 1.0,
       "wow": false
     },
     {
       "id": "s52",
-      "tieu_de": "Dẫn lại từng bước (tiếp)",
+      "tieu_de": "Dẫn lại từng bước",
       "dang": "noi-dung",
       "che_do": "so",
-      "bat_dau": 59.5,
-      "phut": 1.0,
-      "wow": false
-    },
-    {
-      "id": "s53",
-      "tieu_de": "Tắt từng giả thiết",
-      "dang": "noi-dung",
-      "che_do": "so",
-      "bat_dau": 60.5,
+      "bat_dau": 58.5,
       "phut": 2.0,
       "wow": false
     },
     {
-      "id": "s54",
-      "tieu_de": "Tắt từng giả thiết (tiếp)",
+      "id": "s53",
+      "tieu_de": "Dẫn lại từng bước (tiếp)",
       "dang": "noi-dung",
       "che_do": "so",
-      "bat_dau": 62.5,
+      "bat_dau": 60.5,
       "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s54",
+      "tieu_de": "Tắt từng giả thiết",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 61.5,
+      "phut": 2.0,
       "wow": false
     },
     {
@@ -500,38 +500,38 @@
     },
     {
       "id": "s56",
-      "tieu_de": "Chỗ này phải tự kéo, không xem được",
+      "tieu_de": "Tắt từng giả thiết (tiếp)",
       "dang": "noi-dung",
-      "che_do": "demo",
+      "che_do": "so",
       "bat_dau": 64.5,
-      "phut": 1.5,
+      "phut": 1.0,
       "wow": false
     },
     {
       "id": "s57",
-      "tieu_de": "Phản biện hỏi",
+      "tieu_de": "Chỗ này phải tự kéo, không xem được",
       "dang": "noi-dung",
-      "che_do": "hoi",
-      "bat_dau": 66.0,
+      "che_do": "demo",
+      "bat_dau": 65.5,
       "phut": 1.5,
       "wow": false
     },
     {
       "id": "s58",
-      "tieu_de": "Đáp mẫu",
+      "tieu_de": "Phản biện hỏi",
       "dang": "noi-dung",
-      "che_do": "noi",
-      "bat_dau": 67.5,
+      "che_do": "hoi",
+      "bat_dau": 67.0,
       "phut": 1.5,
       "wow": false
     },
     {
       "id": "s59",
-      "tieu_de": "Đáp mẫu (tiếp)",
+      "tieu_de": "Đáp mẫu",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 69.0,
-      "phut": 1.0,
+      "bat_dau": 68.5,
+      "phut": 1.5,
       "wow": false
     },
     {
@@ -545,7 +545,7 @@
     },
     {
       "id": "s61",
-      "tieu_de": "Thang chấm",
+      "tieu_de": "Đáp mẫu (tiếp)",
       "dang": "noi-dung",
       "che_do": "noi",
       "bat_dau": 71.0,
@@ -554,38 +554,38 @@
     },
     {
       "id": "s62",
-      "tieu_de": "Thang chấm (tiếp)",
+      "tieu_de": "Thang chấm",
       "dang": "noi-dung",
       "che_do": "noi",
       "bat_dau": 72.0,
-      "phut": 0.5,
+      "phut": 1.0,
       "wow": false
     },
     {
       "id": "s63",
-      "tieu_de": "Phản biện hỏi",
+      "tieu_de": "Thang chấm (tiếp)",
       "dang": "noi-dung",
-      "che_do": "hoi",
-      "bat_dau": 72.5,
-      "phut": 1.5,
+      "che_do": "noi",
+      "bat_dau": 73.0,
+      "phut": 0.5,
       "wow": false
     },
     {
       "id": "s64",
-      "tieu_de": "Đáp mẫu",
+      "tieu_de": "Phản biện hỏi",
       "dang": "noi-dung",
-      "che_do": "noi",
-      "bat_dau": 74.0,
+      "che_do": "hoi",
+      "bat_dau": 73.5,
       "phut": 1.5,
       "wow": false
     },
     {
       "id": "s65",
-      "tieu_de": "Đáp mẫu (tiếp)",
+      "tieu_de": "Đáp mẫu",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 75.5,
-      "phut": 1.0,
+      "bat_dau": 75.0,
+      "phut": 1.5,
       "wow": false
     },
     {
@@ -599,7 +599,7 @@
     },
     {
       "id": "s67",
-      "tieu_de": "Thang chấm",
+      "tieu_de": "Đáp mẫu (tiếp)",
       "dang": "noi-dung",
       "che_do": "noi",
       "bat_dau": 77.5,
@@ -608,38 +608,38 @@
     },
     {
       "id": "s68",
-      "tieu_de": "Thang chấm (tiếp)",
+      "tieu_de": "Thang chấm",
       "dang": "noi-dung",
       "che_do": "noi",
       "bat_dau": 78.5,
-      "phut": 0.5,
+      "phut": 1.0,
       "wow": false
     },
     {
       "id": "s69",
-      "tieu_de": "Phản biện hỏi",
+      "tieu_de": "Thang chấm (tiếp)",
       "dang": "noi-dung",
-      "che_do": "hoi",
-      "bat_dau": 79.0,
-      "phut": 1.5,
+      "che_do": "noi",
+      "bat_dau": 79.5,
+      "phut": 0.5,
       "wow": false
     },
     {
       "id": "s70",
-      "tieu_de": "Đáp mẫu",
+      "tieu_de": "Phản biện hỏi",
       "dang": "noi-dung",
-      "che_do": "noi",
-      "bat_dau": 80.5,
+      "che_do": "hoi",
+      "bat_dau": 80.0,
       "phut": 1.5,
       "wow": false
     },
     {
       "id": "s71",
-      "tieu_de": "Đáp mẫu (tiếp)",
+      "tieu_de": "Đáp mẫu",
       "dang": "noi-dung",
       "che_do": "noi",
-      "bat_dau": 82.0,
-      "phut": 1.0,
+      "bat_dau": 81.5,
+      "phut": 1.5,
       "wow": false
     },
     {
@@ -653,7 +653,7 @@
     },
     {
       "id": "s73",
-      "tieu_de": "Thang chấm",
+      "tieu_de": "Đáp mẫu (tiếp)",
       "dang": "noi-dung",
       "che_do": "noi",
       "bat_dau": 84.0,
@@ -662,28 +662,37 @@
     },
     {
       "id": "s74",
-      "tieu_de": "Thang chấm (tiếp)",
+      "tieu_de": "Thang chấm",
       "dang": "noi-dung",
       "che_do": "noi",
       "bat_dau": 85.0,
-      "phut": 0.5,
+      "phut": 1.0,
       "wow": false
     },
     {
       "id": "s75",
-      "tieu_de": "cam-on",
-      "dang": "cam-on",
-      "che_do": "lang",
-      "bat_dau": 85.5,
+      "tieu_de": "Thang chấm (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 86.0,
       "phut": 0.5,
       "wow": false
     },
     {
       "id": "s76",
+      "tieu_de": "cam-on",
+      "dang": "cam-on",
+      "che_do": "lang",
+      "bat_dau": 86.5,
+      "phut": 0.5,
+      "wow": false
+    },
+    {
+      "id": "s77",
       "tieu_de": "one-more-thing",
       "dang": "one-more-thing",
       "che_do": "noi",
-      "bat_dau": 86.0,
+      "bat_dau": 87.0,
       "phut": 0.5,
       "wow": false
     }

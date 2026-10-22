@@ -32,7 +32,7 @@ Thiết bị của tôi chịu bao nhiêu lần handover mỗi giờ, con số �
 @che-do: noi
 @notes: Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau.
 
-Module này tách hai thứ mà bài báo handover hay trộn. Thứ nhất là **chặn do hình học**: cao độ và góc nâng tối thiểu cho ra cửa sổ nhìn thấy, cửa sổ cho ra chặn trên của thời gian trú, và chặn trên của thời gian trú cho ra **chặn dưới** của tần suất handover. Phần này không cần mô phỏng, tính được bằng giấy, và reviewer kiểm lại được trong một phút.
+Module này tách hai thứ mà bài báo handover hay trộn. Thứ nhất là **chặn do hình học**: cao độ và góc nâng tối thiểu cho ra cửa sổ nhìn thấy, cửa sổ cho ra chặn trên của thời gian trú (dwell time), và chặn trên của thời gian trú cho ra **chặn dưới** của tần suất handover. Phần này không cần mô phỏng, tính được bằng giấy, và reviewer kiểm lại được trong một phút.
 
 ## Hình học cho chặn, mô hình đo cho con số (tiếp)
 @phut: 1
@@ -334,7 +334,7 @@ So nó với {{s041}} của một bài có mô hình đo nhiễu là so hai thư
 @che-do: so
 @notes: Bước nào có giả thiết riêng thì đó là chỗ gãy khi dùng lại.
 
-- Tính góc tâm Trái Đất θ = 90° − ε_min − arcsin[(R_E/(R_E+h))·cos ε_min]
+- Tính góc tâm Trái Đất (Earth central angle) θ = 90° − ε_min − arcsin[(R_E/(R_E+h))·cos ε_min]
 - Tính chu kỳ T = 2π·sqrt(a³/μ) với a = R_E + h
 - Cửa sổ nhìn thấy dài nhất t_vis = (2θ/360°)·T
 - Thời gian trú t_tru ≤ t_vis, vì còn chia chùm và chia tải

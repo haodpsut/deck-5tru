@@ -38,7 +38,7 @@ Module này ngắn nhất của trụ {{s001}} và cũng là module duy nhất k
 @phut: 1
 @che-do: noi
 
-**Danh mục khai tối thiểu, {{s002}} dòng:** cao độ · độ nghiêng · số vệ tinh và số mặt phẳng · góc nâng tối thiểu · băng tần · băng thông · EIRP · G/T · mô hình mưa kèm mức khả dụng · mô hình kênh kèm tham số · mô hình di động người dùng · nguồn ephemeris.
+**Danh mục khai tối thiểu, {{s002}} dòng:** cao độ · độ nghiêng · số vệ tinh và số mặt phẳng · góc nâng tối thiểu · băng tần · băng thông · EIRP · G/T · mô hình mưa kèm mức khả dụng (availability) · mô hình kênh kèm tham số · mô hình di động người dùng · nguồn ephemeris.
 
 ## Mười hai dòng, và luật hai đường (tiếp)
 @phut: 1
@@ -212,7 +212,7 @@ Một bài khai đủ cao độ, độ nghiêng, số vệ tinh, số mặt ph�
 
 - Số vệ tinh cần thiết, vì nó đã được khai
 - EIRP và G/T, vì chúng phụ thuộc hướng ăng ten
-- Cửa sổ nhìn thấy, thời gian trú và tần suất handover
+- Cửa sổ nhìn thấy, thời gian trú (dwell time) và tần suất handover
 - Hằng số Boltzmann, vì nó phụ thuộc hình học
 
 ## Một bài khai đủ cao độ · đáp
@@ -226,7 +226,7 @@ Một bài khai đủ cao độ, độ nghiêng, số vệ tinh, số mặt ph�
 @phut: 1
 @che-do: noi
 
-Góc nâng tối thiểu vào trực tiếp góc tâm Trái Đất, nên nó quyết định cửa sổ nhìn thấy và mọi thứ suy ra từ cửa sổ. Thử đoán 10° so với 30° ở {{s008}} km: cửa sổ nhìn thấy đi từ {{s014}} xuống {{s015}} phút, tức bất định {{s013}} lần, và tần suất handover bất định đúng {{s013}} lần theo. EIRP và G/T là hai dòng đã khai, còn hằng số Boltzmann là hằng số nên không phụ thuộc gì.
+Góc nâng tối thiểu vào trực tiếp góc tâm Trái Đất (Earth central angle), nên nó quyết định cửa sổ nhìn thấy và mọi thứ suy ra từ cửa sổ. Thử đoán 10° so với 30° ở {{s008}} km: cửa sổ nhìn thấy đi từ {{s014}} xuống {{s015}} phút, tức bất định {{s013}} lần, và tần suất handover bất định đúng {{s013}} lần theo. EIRP và G/T là hai dòng đã khai, còn hằng số Boltzmann là hằng số nên không phụ thuộc gì.
 
 ## Phần hình học của bài lấy từ TLE thật qua SGP4
 @phut: 1
@@ -275,7 +275,7 @@ Và câu nói 'hai công cụ đều được chấp nhận' không khai dòng n
 @che-do: hoi
 
 - Chòm sao gồm {{s020}} vệ tinh ở cao độ {{s008}} km, {{s021}} mặt phẳng, độ nghiêng 53°.
-- Liên kết dịch vụ ở băng Ka {{s006}} GHz, băng thông {{s010}} MHz, EIRP {{s022}} dBW, G/T {{s023}} dB/K.
+- Liên kết dịch vụ (service link) ở băng Ka {{s006}} GHz, băng thông {{s010}} MHz, EIRP {{s022}} dBW, G/T {{s023}} dB/K.
 - Kênh theo mô hình Rice với hệ số K = {{s009}} dB, người dùng tĩnh phân bố đều trong vệt.
 - Trung bình trên {{s024}} lượt qua, cửa sổ phục vụ của một vệ tinh là {{s025}} phút.
 
@@ -395,7 +395,7 @@ chạy cùng một đại lượng hình học qua CẢ HAI nguồn, in độ l�
 
 **Dữ liệu quỹ đạo lấy từ TLE của chòm sao, tải về từ một trang công khai.**
 
-Hai câu đầu là khai môi trường rất tốt: có máy, có phiên bản thư viện, có số hạt giống, có tệp khoá phiên bản. Câu thứ ba thì thiếu đúng thứ làm TLE trở thành dữ liệu: THỜI ĐIỂM GỐC của bộ TLE và cửa sổ thời gian truyền quỹ đạo.
+Hai câu đầu là khai môi trường rất tốt: có máy, có phiên bản thư viện, có số hạt giống, có tệp khoá phiên bản. Câu thứ ba thì thiếu đúng thứ làm TLE trở thành dữ liệu: THỜI ĐIỂM GỐC của bộ TLE và cửa sổ thời gian (time window) truyền quỹ đạo.
 
 ## Câu không được chống đỡ · ca bốn · đáp (tiếp)
 @phut: 1
@@ -414,7 +414,7 @@ công bố chính các tệp TLE đã dùng cùng thời điểm gốc của ch�
 @che-do: so
 @notes: Bước nào có giả thiết riêng thì đó là chỗ gãy khi dùng lại.
 
-- Cao độ và góc nâng tối thiểu cho khoảng xiên lớn nhất d
+- Cao độ và góc nâng tối thiểu cho khoảng xiên (slant range) lớn nhất d
 - d và băng tần cho FSPL
 - Mô hình mưa và mức khả dụng cho A_mưa tại góc nâng đó
 - EIRP, G/T và hằng số Boltzmann cho C/N₀

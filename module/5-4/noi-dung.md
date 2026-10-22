@@ -32,7 +32,7 @@ Hybrid của tôi ghép khoá theo cách nào, và nếu một nửa bị phá t
 @che-do: noi
 @notes: Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau.
 
-Hybrid ghép một bí mật cổ điển với một bí mật hậu lượng tử qua một **bộ tổ hợp**, sao cho khoá dẫn xuất còn an toàn miễn **ít nhất một** thành phần còn an toàn. Tính chất đó là của bộ ghép, không phải hệ quả của việc có hai thành phần. Đây là chỗ nhiều bài viết hybrid nên an toàn hơn mà không chứng minh gì.
+Hybrid ghép một bí mật cổ điển với một bí mật hậu lượng tử qua một **bộ tổ hợp (combiner)**, sao cho khoá dẫn xuất còn an toàn miễn **ít nhất một** thành phần còn an toàn. Tính chất đó là của bộ ghép, không phải hệ quả của việc có hai thành phần. Đây là chỗ nhiều bài viết hybrid nên an toàn hơn mà không chứng minh gì.
 
 ## Hybrid mua tính dự phòng, và nó mua bằng byte (tiếp)
 @phut: 1
@@ -299,7 +299,7 @@ Trong hybrid X25519 cộng ML-KEM-768, vì sao phía khách và phía chủ khô
 @phut: 1
 @che-do: noi
 
-Trong một KEM, luồng là: phía khách gửi khoá công khai, phía chủ đóng gói và gửi bản mã. Với ML-KEM-768 thì khoá công khai {{s013}} byte và bản mã {{s012}} byte, nên hai chiều chênh {{s009}} byte. Đáp án thứ ba sai vì chữ ký là một quyết định riêng, không phải thuộc tính của KEM; nó cộng vào cả hai chiều tuỳ cấu hình xác thực.
+Trong một KEM, luồng (flow) là: phía khách gửi khoá công khai, phía chủ đóng gói (packet) và gửi bản mã. Với ML-KEM-768 thì khoá công khai {{s013}} byte và bản mã {{s012}} byte, nên hai chiều chênh {{s009}} byte. Đáp án thứ ba sai vì chữ ký là một quyết định riêng, không phải thuộc tính của KEM; nó cộng vào cả hai chiều tuỳ cấu hình xác thực.
 
 ## Câu nào không được số nào chống đỡ · ca một
 @phut: 1

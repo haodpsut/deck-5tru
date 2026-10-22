@@ -34,7 +34,7 @@ Doppler đỉnh của tôi là bao nhiêu kHz, nó lớn hơn khoảng cách só
 
 Module này có một con số và một cái bẫy.
 
-Con số: ở cao độ {{s001}} km, thành phần vận tốc theo đường ngắm lớn nhất là **{{s002}} km/s**, không phải {{s003}} km/s. Lấy vận tốc quỹ đạo thay cho thành phần theo đường ngắm thổi Doppler lên **{{s004}}**. Doppler đỉnh ở {{s005}} GHz là khoảng **{{s006}} kHz**, tức **{{s007}} lần** khoảng sóng mang con {{s008}} kHz.
+Con số: ở cao độ {{s001}} km, thành phần vận tốc theo đường ngắm (line of sight velocity) lớn nhất là **{{s002}} km/s**, không phải {{s003}} km/s. Lấy vận tốc quỹ đạo thay cho thành phần theo đường ngắm thổi Doppler lên **{{s004}}**. Doppler đỉnh ở {{s005}} GHz là khoảng **{{s006}} kHz**, tức **{{s007}} lần** khoảng sóng mang con {{s008}} kHz.
 
 ## Hai cực trị, hai chỗ khác nhau (tiếp)
 @phut: 1

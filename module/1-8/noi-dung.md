@@ -317,7 +317,7 @@ Dataset nào trong bốn thứ dưới đây làm cho lập luận cây thắng 
 @che-do: hoi
 
 - Luồng đã trích {{s023}} đặc trưng số bằng CICFlowMeter
-- Byte thô của gói tin, tức dữ liệu chuỗi có cấu trúc cục bộ và thứ tự quan trọng
+- Byte thô của gói (packet) tin, tức dữ liệu chuỗi có cấu trúc cục bộ và thứ tự quan trọng
 - Bảng luồng có nhiều đặc trưng vô ích
 - Bảng luồng mà một số đặc trưng bị đổi đơn vị từ byte sang kilobyte
 
@@ -338,7 +338,7 @@ Ba lý do cây thắng đều là lý do về dữ liệu BẢNG: bất biến �
 @phut: 1
 @che-do: noi
 
-muốn đề một kiến trúc mới thì chọn đơn vị quan sát nơi dữ liệu không còn là bảng, đó là lập luận bền hơn nhiều so với việc đua điểm trên cùng một bảng.
+muốn đề một kiến trúc mới thì chọn đơn vị quan sát (observation unit) nơi dữ liệu không còn là bảng, đó là lập luận bền hơn nhiều so với việc đua điểm trên cùng một bảng.
 
 ## Câu nào không được số nào chống đỡ · ca một
 @phut: 1
