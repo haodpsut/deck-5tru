@@ -1,0 +1,1 @@
+Mô hình nằm trong vòng điều khiển thì dữ liệu của nó là thứ kẻ

@@ -1,0 +1,138 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Năm trụ · bộ slide</title><style>
+:root{--accent:#2C6E9B;--giay:#f7f8fa;--ink:#17202a;--ink-mo:#5b6775;--vien:#e3e7ec}
+*{box-sizing:border-box}
+body{margin:0;background:var(--giay);color:var(--ink);
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+ line-height:1.55}
+header{padding:3rem 1.5rem 2rem;max-width:1180px;margin:0 auto}
+.gach{width:56px;height:4px;background:var(--accent);border-radius:2px;margin-bottom:1.1rem}
+h1{font-size:clamp(1.8rem, 1.2rem + 2vw, 2.8rem);margin:0 0 .5rem;letter-spacing:-.02em}
+.phu{color:var(--ink-mo);margin:0 0 1.4rem;max-width:62ch}
+.so{display:flex;gap:2.2rem;flex-wrap:wrap;margin:0 0 .4rem}
+.so div b{display:block;font-size:1.7rem;color:var(--accent);font-variant-numeric:tabular-nums}
+.so div span{font-size:.82rem;color:var(--ink-mo)}
+main{max-width:1180px;margin:0 auto;padding:0 1.5rem 4rem}
+#tim{width:100%;max-width:420px;padding:.7rem .9rem;border:1px solid var(--vien);
+ border-radius:10px;font:inherit;background:#fff;margin:1.2rem 0 2rem}
+h2{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mo);
+ margin:2.4rem 0 .9rem;font-weight:650}
+.luoi{display:grid;gap:.85rem;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+/* thẻ cao bằng nhau trong một hàng thì dòng chân phải NEO ĐÁY, nếu không
+   mỗi thẻ một chỗ và hàng nhìn như so le */
+.the{display:flex;flex-direction:column;background:#fff;border:1px solid var(--vien);
+ border-radius:12px;padding:.95rem 1.05rem;text-decoration:none;color:inherit;transition:.15s}
+.the:hover{border-color:var(--accent);transform:translateY(-2px);
+ box-shadow:0 6px 18px rgba(23,32,42,.07)}
+.tren{display:flex;align-items:baseline;gap:.5rem;margin-bottom:.3rem}
+.ma{font-size:.72rem;color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums}
+.the b{font-size:1.02rem;letter-spacing:-.01em}
+.the p{margin:0 0 .7rem;font-size:.84rem;color:var(--ink-mo)}
+.chan{display:flex;gap:.9rem;font-size:.74rem;color:var(--ink-mo);margin-top:auto;
+ border-top:1px solid var(--vien);padding-top:.5rem;font-variant-numeric:tabular-nums}
+.the.chua{opacity:.45;pointer-events:none}
+footer{max-width:1180px;margin:0 auto;padding:0 1.5rem 3rem;color:var(--ink-mo);font-size:.84rem}
+footer a{color:var(--accent)}
+@media (prefers-color-scheme:dark){
+ :root{--giay:#11161c;--ink:#e8edf3;--ink-mo:#96a2b1;--vien:#222a33}
+ .the{background:#161c23}}
+</style></head><body>
+<header><div class="gach"></div>
+<h1>Năm trụ, bộ slide</h1>
+<p class="phu">Deck để <b>nói</b>, kho để <b>nhớ</b>. Phần lớn kho là khối phải LÀM, mà slide thì luôn hiện đáp án, nên deck ở đây không thay được kho. Dùng deck khi cần ôn thành tiếng, cần bấm giờ, hoặc cần kể cho người khác.</p>
+<div class="so">
+<div><b>59</b><span>deck</span></div>
+<div><b>4,240</b><span>slide</span></div>
+<div><b>73</b><span>giờ nói</span></div>
+<div><b>47</b><span>module của kho</span></div>
+</div></header>
+<main><input id="tim" type="search" placeholder="Lọc theo tên hoặc mã module, ví dụ 1.4 hoặc doppler" autocomplete="off">
+<section><h2>Bắt đầu ở đây</h2><div class="luoi">
+<a class="the" href="ban-do/index.html"><div class="tren"><b>Năm trụ, một bản đồ</b></div><p>Tôi đang học gì, và vì sao đúng năm trụ ấy</p><div class="chan"><span>24 slide</span><span>37 phút</span></div></a>
+<a class="the" href="hoi-dap/index.html"><div class="tren"><b>Phòng hỏi đáp hội thảo</b></div><p>Trả lời NÓI, trong hai mươi tới sáu mươi giây, không có gì để trốn</p><div class="chan"><span>148 slide</span><span>75 phút</span></div></a>
+</div></section>
+<section><h2>Trụ 1 · Network Intrusion Detection</h2><div class="luoi">
+<a class="the" href="tru/1/index.html"><div class="tren"><b>Trụ 1 · NID</b></div><p>Network Intrusion Detection · toàn trụ trong một lượt</p><div class="chan"><span>28 slide</span><span>40 phút</span></div></a>
+<a class="the" href="so/1/index.html"><div class="tren"><b>Số phải dẫn lại được trong ba mươi giây</b></div><p>Trụ 1 NID · số, công thức, và giả thiết của chúng</p><div class="chan"><span>147 slide</span><span>95 phút</span></div></a>
+<a class="the" href="module/1-1/index.html"><div class="tren"><span class="ma">1.1</span><b>Đặt bài toán phát hiện</b></div><p>Trụ 1 NID · module 1.1</p><div class="chan"><span>60 slide</span><span>68.5 phút</span></div></a>
+<a class="the" href="module/1-2/index.html"><div class="tren"><span class="ma">1.2</span><b>Dataset và vết thương riêng của từng cái</b></div><p>Trụ 1 NID · module 1.2</p><div class="chan"><span>65 slide</span><span>72.5 phút</span></div></a>
+<a class="the" href="module/1-3/index.html"><div class="tren"><span class="ma">1.3</span><b>Phép đo, và chi phí vận hành của phép đo</b></div><p>Trụ 1 NID · module 1.3</p><div class="chan"><span>38 slide</span><span>47.5 phút</span></div></a>
+<a class="the" href="module/1-4/index.html"><div class="tren"><span class="ma">1.4</span><b>Base-rate fallacy</b></div><p>Trụ 1 NID · module 1.4</p><div class="chan"><span>40 slide</span><span>50 phút</span></div></a>
+<a class="the" href="module/1-5/index.html"><div class="tren"><span class="ma">1.5</span><b>Drift và cách chia dữ liệu theo thời gian</b></div><p>Trụ 1 NID · module 1.5</p><div class="chan"><span>69 slide</span><span>75.5 phút</span></div></a>
+<a class="the" href="module/1-6/index.html"><div class="tren"><span class="ma">1.6</span><b>Lẩn tránh: không gian đặc trưng so với không gian vấn đề</b></div><p>Trụ 1 NID · module 1.6</p><div class="chan"><span>76 slide</span><span>82.5 phút</span></div></a>
+<a class="the" href="module/1-7/index.html"><div class="tren"><span class="ma">1.7</span><b>Giải thích được, và độ ổn định của lời giải thích</b></div><p>Trụ 1 NID · module 1.7</p><div class="chan"><span>70 slide</span><span>76.5 phút</span></div></a>
+<a class="the" href="module/1-8/index.html"><div class="tren"><span class="ma">1.8</span><b>Chọn kiến trúc mô hình, và chỗ đứng của KAN với QSVM</b></div><p>Trụ 1 NID · module 1.8</p><div class="chan"><span>83 slide</span><span>89 phút</span></div></a>
+<a class="the" href="module/1-9/index.html"><div class="tren"><span class="ma">1.9</span><b>Hiệu chuẩn: điểm số của mô hình có phải xác suất</b></div><p>Trụ 1 NID · module 1.9</p><div class="chan"><span>71 slide</span><span>81.5 phút</span></div></a>
+<a class="the" href="module/1-10/index.html"><div class="tren"><span class="ma">1.10</span><b>Lưu lượng mã hoá: TLS 1.3, QUIC, ECH và cái chết của soi tải</b></div><p>Trụ 1 NID · module 1.10</p><div class="chan"><span>73 slide</span><span>81.5 phút</span></div></a>
+</div></section>
+<section><h2>Trụ 2 · Federated Learning</h2><div class="luoi">
+<a class="the" href="tru/2/index.html"><div class="tren"><b>Trụ 2 · FL</b></div><p>Federated Learning · toàn trụ trong một lượt</p><div class="chan"><span>28 slide</span><span>40 phút</span></div></a>
+<a class="the" href="so/2/index.html"><div class="tren"><b>Số phải dẫn lại được trong ba mươi giây</b></div><p>Trụ 2 FL · số, công thức, và giả thiết của chúng</p><div class="chan"><span>144 slide</span><span>95 phút</span></div></a>
+<a class="the" href="module/2-1/index.html"><div class="tren"><span class="ma">2.1</span><b>Họ thuật toán và thứ mỗi cái sửa</b></div><p>Trụ 2 FL · module 2.1</p><div class="chan"><span>57 slide</span><span>67 phút</span></div></a>
+<a class="the" href="module/2-2/index.html"><div class="tren"><span class="ma">2.2</span><b>Non-IID: đo nó bằng gì</b></div><p>Trụ 2 FL · module 2.2</p><div class="chan"><span>59 slide</span><span>67.5 phút</span></div></a>
+<a class="the" href="module/2-3/index.html"><div class="tren"><span class="ma">2.3</span><b>Hội tụ: đọc được bound chứ không chỉ trích nó</b></div><p>Trụ 2 FL · module 2.3</p><div class="chan"><span>71 slide</span><span>80 phút</span></div></a>
+<a class="the" href="module/2-4/index.html"><div class="tren"><span class="ma">2.4</span><b>Nén và ngân sách truyền</b></div><p>Trụ 2 FL · module 2.4</p><div class="chan"><span>56 slide</span><span>64.5 phút</span></div></a>
+<a class="the" href="module/2-5/index.html"><div class="tren"><span class="ma">2.5</span><b>Riêng tư có định nghĩa: DP và kế toán</b></div><p>Trụ 2 FL · module 2.5</p><div class="chan"><span>83 slide</span><span>93.5 phút</span></div></a>
+<a class="the" href="module/2-6/index.html"><div class="tren"><span class="ma">2.6</span><b>Tấn công vào FL</b></div><p>Trụ 2 FL · module 2.6</p><div class="chan"><span>73 slide</span><span>81 phút</span></div></a>
+<a class="the" href="module/2-7/index.html"><div class="tren"><span class="ma">2.7</span><b>Phòng vệ và giới hạn cứng của nó</b></div><p>Trụ 2 FL · module 2.7</p><div class="chan"><span>75 slide</span><span>83.5 phút</span></div></a>
+<a class="the" href="module/2-8/index.html"><div class="tren"><span class="ma">2.8</span><b>FL cho IDS: dựng bài toán cho đúng</b></div><p>Trụ 2 FL · module 2.8</p><div class="chan"><span>77 slide</span><span>84.5 phút</span></div></a>
+<a class="the" href="module/2-9/index.html"><div class="tren"><span class="ma">2.9</span><b>Cá nhân hoá: khi một mô hình toàn cục là lời giải sai</b></div><p>Trụ 2 FL · module 2.9</p><div class="chan"><span>64 slide</span><span>71.5 phút</span></div></a>
+<a class="the" href="module/2-10/index.html"><div class="tren"><span class="ma">2.10</span><b>Hệ thống thật: kẻ chậm, client rơi, và thiên lệch do lấy mẫu</b></div><p>Trụ 2 FL · module 2.10</p><div class="chan"><span>69 slide</span><span>78 phút</span></div></a>
+</div></section>
+<section><h2>Trụ 3 · Non-Terrestrial Networks</h2><div class="luoi">
+<a class="the" href="tru/3/index.html"><div class="tren"><b>Trụ 3 · NTN</b></div><p>Non-Terrestrial Networks · toàn trụ trong một lượt</p><div class="chan"><span>28 slide</span><span>40 phút</span></div></a>
+<a class="the" href="so/3/index.html"><div class="tren"><b>Số phải dẫn lại được trong ba mươi giây</b></div><p>Trụ 3 NTN · số, công thức, và giả thiết của chúng</p><div class="chan"><span>177 slide</span><span>89 phút</span></div></a>
+<a class="the" href="module/3-1/index.html"><div class="tren"><span class="ma">3.1</span><b>Hình học quỹ đạo</b></div><p>Trụ 3 NTN · module 3.1</p><div class="chan"><span>56 slide</span><span>67.5 phút</span></div></a>
+<a class="the" href="module/3-2/index.html"><div class="tren"><span class="ma">3.2</span><b>Kênh: suy hao, mưa, nhiễu loạn</b></div><p>Trụ 3 NTN · module 3.2</p><div class="chan"><span>66 slide</span><span>78 phút</span></div></a>
+<a class="the" href="module/3-3/index.html"><div class="tren"><span class="ma">3.3</span><b>Doppler và định thời</b></div><p>Trụ 3 NTN · module 3.3</p><div class="chan"><span>61 slide</span><span>71 phút</span></div></a>
+<a class="the" href="module/3-4/index.html"><div class="tren"><span class="ma">3.4</span><b>Kiến trúc 3GPP NTN</b></div><p>Trụ 3 NTN · module 3.4</p><div class="chan"><span>65 slide</span><span>75.5 phút</span></div></a>
+<a class="the" href="module/3-5/index.html"><div class="tren"><span class="ma">3.5</span><b>Handover trong chòm sao LEO</b></div><p>Trụ 3 NTN · module 3.5</p><div class="chan"><span>59 slide</span><span>67 phút</span></div></a>
+<a class="the" href="module/3-6/index.html"><div class="tren"><span class="ma">3.6</span><b>UAV và HAPS: năng lượng và tuổi thông tin</b></div><p>Trụ 3 NTN · module 3.6</p><div class="chan"><span>68 slide</span><span>77 phút</span></div></a>
+<a class="the" href="module/3-7/index.html"><div class="tren"><span class="ma">3.7</span><b>Dung lượng và tài nguyên</b></div><p>Trụ 3 NTN · module 3.7</p><div class="chan"><span>58 slide</span><span>67.5 phút</span></div></a>
+<a class="the" href="module/3-8/index.html"><div class="tren"><span class="ma">3.8</span><b>Mô phỏng NTN đáng tin</b></div><p>Trụ 3 NTN · module 3.8</p><div class="chan"><span>74 slide</span><span>80.5 phút</span></div></a>
+<a class="the" href="module/3-9/index.html"><div class="tren"><span class="ma">3.9</span><b>Định tuyến trong chòm sao: liên kết giữa vệ tinh và đồ thị động</b></div><p>Trụ 3 NTN · module 3.9</p><div class="chan"><span>76 slide</span><span>84.5 phút</span></div></a>
+<a class="the" href="module/3-10/index.html"><div class="tren"><span class="ma">3.10</span><b>Học liên bang qua liên kết vệ tinh: khi vòng huấn luyện gặp cửa sổ nhìn thấy</b></div><p>Trụ 3 NTN · module 3.10</p><div class="chan"><span>75 slide</span><span>84.5 phút</span></div></a>
+</div></section>
+<section><h2>Trụ 4 · 6G Security</h2><div class="luoi">
+<a class="the" href="tru/4/index.html"><div class="tren"><b>Trụ 4 · 6G Sec</b></div><p>6G Security · toàn trụ trong một lượt</p><div class="chan"><span>24 slide</span><span>41 phút</span></div></a>
+<a class="the" href="so/4/index.html"><div class="tren"><b>Số phải dẫn lại được trong ba mươi giây</b></div><p>Trụ 4 6G Sec · số, công thức, và giả thiết của chúng</p><div class="chan"><span>114 slide</span><span>91.5 phút</span></div></a>
+<a class="the" href="module/4-1/index.html"><div class="tren"><span class="ma">4.1</span><b>Bề mặt tấn công: đọc kiến trúc trước khi nói về tấn công</b></div><p>Trụ 4 6G Sec · module 4.1</p><div class="chan"><span>79 slide</span><span>84.5 phút</span></div></a>
+<a class="the" href="module/4-2/index.html"><div class="tren"><span class="ma">4.2</span><b>Zero trust và danh tính, phần kế thừa từ 5G</b></div><p>Trụ 4 6G Sec · module 4.2</p><div class="chan"><span>77 slide</span><span>83.5 phút</span></div></a>
+<a class="the" href="module/4-3/index.html"><div class="tren"><span class="ma">4.3</span><b>An ninh của chính AI trong vòng điều khiển mạng</b></div><p>Trụ 4 6G Sec · module 4.3</p><div class="chan"><span>85 slide</span><span>91 phút</span></div></a>
+<a class="the" href="module/4-4/index.html"><div class="tren"><span class="ma">4.4</span><b>An ninh phi mặt đất: GNSS, đường vệ tinh, TT&amp;C</b></div><p>Trụ 4 6G Sec · module 4.4</p><div class="chan"><span>69 slide</span><span>78 phút</span></div></a>
+<a class="the" href="module/4-5/index.html"><div class="tren"><span class="ma">4.5</span><b>An ninh lớp vật lý: dùng được tới đâu</b></div><p>Trụ 4 6G Sec · module 4.5</p><div class="chan"><span>66 slide</span><span>74 phút</span></div></a>
+<a class="the" href="module/4-6/index.html"><div class="tren"><span class="ma">4.6</span><b>Chuẩn và cách trích chuẩn</b></div><p>Trụ 4 6G Sec · module 4.6</p><div class="chan"><span>58 slide</span><span>64.5 phút</span></div></a>
+<a class="the" href="module/4-7/index.html"><div class="tren"><span class="ma">4.7</span><b>Cô lập slice: cái gì thật sự được cô lập</b></div><p>Trụ 4 6G Sec · module 4.7</p><div class="chan"><span>83 slide</span><span>91 phút</span></div></a>
+<a class="the" href="module/4-8/index.html"><div class="tren"><span class="ma">4.8</span><b>Cảm biến tích hợp ISAC: mạng vừa truyền vừa biết anh ở đâu</b></div><p>Trụ 4 6G Sec · module 4.8</p><div class="chan"><span>79 slide</span><span>86.5 phút</span></div></a>
+</div></section>
+<section><h2>Trụ 5 · Post-Quantum Cryptography</h2><div class="luoi">
+<a class="the" href="tru/5/index.html"><div class="tren"><b>Trụ 5 · PQC</b></div><p>Post-Quantum Cryptography · toàn trụ trong một lượt</p><div class="chan"><span>26 slide</span><span>42 phút</span></div></a>
+<a class="the" href="so/5/index.html"><div class="tren"><b>Số phải dẫn lại được trong ba mươi giây</b></div><p>Trụ 5 PQC · số, công thức, và giả thiết của chúng</p><div class="chan"><span>146 slide</span><span>95 phút</span></div></a>
+<a class="the" href="module/5-1/index.html"><div class="tren"><span class="ma">5.1</span><b>Vì sao và khi nào phải đổi</b></div><p>Trụ 5 PQC · module 5.1</p><div class="chan"><span>59 slide</span><span>68.5 phút</span></div></a>
+<a class="the" href="module/5-2/index.html"><div class="tren"><span class="ma">5.2</span><b>Lattice: bài toán khó và cách ước lượng độ an toàn</b></div><p>Trụ 5 PQC · module 5.2</p><div class="chan"><span>66 slide</span><span>76 phút</span></div></a>
+<a class="the" href="module/5-3/index.html"><div class="tren"><span class="ma">5.3</span><b>Chuẩn NIST và kích thước</b></div><p>Trụ 5 PQC · module 5.3</p><div class="chan"><span>54 slide</span><span>63 phút</span></div></a>
+<a class="the" href="module/5-4/index.html"><div class="tren"><span class="ma">5.4</span><b>Hybrid và giao thức</b></div><p>Trụ 5 PQC · module 5.4</p><div class="chan"><span>71 slide</span><span>81 phút</span></div></a>
+<a class="the" href="module/5-5/index.html"><div class="tren"><span class="ma">5.5</span><b>Ràng buộc thiết bị: nơi lý thuyết gặp MTU</b></div><p>Trụ 5 PQC · module 5.5</p><div class="chan"><span>59 slide</span><span>69 phút</span></div></a>
+<a class="the" href="module/5-6/index.html"><div class="tren"><span class="ma">5.6</span><b>QKD, và cách so sánh công bằng với PQC</b></div><p>Trụ 5 PQC · module 5.6</p><div class="chan"><span>82 slide</span><span>94 phút</span></div></a>
+<a class="the" href="module/5-7/index.html"><div class="tren"><span class="ma">5.7</span><b>Di trú và cách viết phần mô hình đe doạ</b></div><p>Trụ 5 PQC · module 5.7</p><div class="chan"><span>80 slide</span><span>87 phút</span></div></a>
+<a class="the" href="module/5-8/index.html"><div class="tren"><span class="ma">5.8</span><b>Kênh bên trong cài đặt: chuẩn an toàn không có nghĩa là mã an toàn</b></div><p>Trụ 5 PQC · module 5.8</p><div class="chan"><span>76 slide</span><span>85.5 phút</span></div></a>
+<a class="the" href="module/5-9/index.html"><div class="tren"><span class="ma">5.9</span><b>Họ không phải lattice, và ca SIKE chết trong một buổi chiều</b></div><p>Trụ 5 PQC · module 5.9</p><div class="chan"><span>76 slide</span><span>86.5 phút</span></div></a>
+</div></section>
+</main>
+<footer>Sinh từ kho <a href="https://hoc-5-tru-web.vercel.app">hoc-5-tru-web</a>, bản 2026.10.06-2, bằng <code>slides/5tru/sinh.py</code>.
+Sửa thì sửa kho rồi dựng lại, đừng sửa tay vào deck. Mỗi deck mở bằng bàn phím, bấm <b>p</b> ra cửa sổ người nói có đồng hồ, bấm <b>e</b> để xuất PDF.</footer>
+<script>
+const o=document.getElementById('tim');
+o.addEventListener('input',()=>{
+ const q=o.value.trim().toLowerCase();
+ document.querySelectorAll('section').forEach(s=>{
+  let con=0;
+  s.querySelectorAll('.the').forEach(a=>{
+   const hop=!q||a.textContent.toLowerCase().includes(q);
+   a.style.display=hop?'':'none'; if(hop)con++;
+  });
+  s.style.display=con?'':'none';
+ });
+});
+</script></body></html>

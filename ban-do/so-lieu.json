@@ -1,0 +1,53 @@
+{
+  "_nguon": {
+    "kho": "working/hoc-5-tru-web/data, bản 2026.10.06-2",
+    "sinh_boi": "slides/5tru/sinh.py"
+  },
+  "s001": "47",
+  "s002": "5",
+  "s003": "977",
+  "s004": "36",
+  "s005": "1.3",
+  "bang_tru": {
+    "cot": [
+      "trụ",
+      "tên đầy đủ",
+      "module",
+      "khối"
+    ],
+    "hang": [
+      [
+        "NID",
+        "Network Intrusion Detection",
+        "10",
+        "199"
+      ],
+      [
+        "FL",
+        "Federated Learning",
+        "10",
+        "205"
+      ],
+      [
+        "NTN",
+        "Non-Terrestrial Networks",
+        "10",
+        "216"
+      ],
+      [
+        "6G Sec",
+        "6G Security",
+        "8",
+        "161"
+      ],
+      [
+        "PQC",
+        "Post-Quantum Cryptography",
+        "9",
+        "196"
+      ]
+    ],
+    "chu_thich": "Kho Năm trụ, bản 2026.10.06-2. Khối là đơn vị có chấm điểm, không phải trang.",
+    "nhan_hang": 0
+  }
+}

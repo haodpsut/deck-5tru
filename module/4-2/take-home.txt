@@ -1,0 +1,1 @@
+Phần lớn thứ gọi là đóng góp zero trust đã nằm trong TS 33.501

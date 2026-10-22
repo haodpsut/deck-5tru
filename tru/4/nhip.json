@@ -1,0 +1,223 @@
+{
+  "profile": "giang-day",
+  "tong_phut_khai": 41.0,
+  "tong_phut_cong": 41.0,
+  "moc": [
+    {
+      "id": "s01",
+      "tieu_de": "cover",
+      "dang": "cover",
+      "che_do": "noi",
+      "bat_dau": 0.0,
+      "phut": 0.5,
+      "wow": false
+    },
+    {
+      "id": "s02",
+      "tieu_de": "Trụ này trả lời câu gì",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 0.5,
+      "phut": 3.0,
+      "wow": false
+    },
+    {
+      "id": "s03",
+      "tieu_de": "Module nào dày nhất",
+      "dang": "noi-dung",
+      "che_do": "hinh",
+      "bat_dau": 3.5,
+      "phut": 3.5,
+      "wow": false
+    },
+    {
+      "id": "s04",
+      "tieu_de": "m4.1 Bề mặt tấn công",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 7.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s05",
+      "tieu_de": "m4.1 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 8.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s06",
+      "tieu_de": "m4.2 Zero trust và danh tính, phần kế thừa từ 5G",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 10.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s07",
+      "tieu_de": "m4.2 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 11.5,
+      "phut": 1.5,
+      "wow": true
+    },
+    {
+      "id": "s08",
+      "tieu_de": "m4.3 An ninh của chính AI trong vòng điều khiển mạng",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 13.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s09",
+      "tieu_de": "m4.3 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 14.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s10",
+      "tieu_de": "m4.4 An ninh phi mặt đất: GNSS, đường vệ tinh, TT&C",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 16.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s11",
+      "tieu_de": "m4.4 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 17.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s12",
+      "tieu_de": "m4.5 An ninh lớp vật lý: dùng được tới đâu",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 19.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s13",
+      "tieu_de": "m4.5 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 20.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s14",
+      "tieu_de": "m4.6 Chuẩn và cách trích chuẩn",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 22.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s15",
+      "tieu_de": "m4.6 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 23.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s16",
+      "tieu_de": "m4.7 Cô lập slice: cái gì thật sự được cô lập",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 25.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s17",
+      "tieu_de": "m4.7 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 26.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s18",
+      "tieu_de": "m4.8 Cảm biến tích hợp ISAC",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 28.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s19",
+      "tieu_de": "m4.8 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 29.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s20",
+      "tieu_de": "Số của trụ",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 31.0,
+      "phut": 3.0,
+      "wow": false
+    },
+    {
+      "id": "s21",
+      "tieu_de": "Số của trụ (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 34.0,
+      "phut": 3.0,
+      "wow": false
+    },
+    {
+      "id": "s22",
+      "tieu_de": "Số của trụ (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 37.0,
+      "phut": 3.0,
+      "wow": false
+    },
+    {
+      "id": "s23",
+      "tieu_de": "cam-on",
+      "dang": "cam-on",
+      "che_do": "lang",
+      "bat_dau": 40.0,
+      "phut": 0.5,
+      "wow": false
+    },
+    {
+      "id": "s24",
+      "tieu_de": "one-more-thing",
+      "dang": "one-more-thing",
+      "che_do": "noi",
+      "bat_dau": 40.5,
+      "phut": 0.5,
+      "wow": false
+    }
+  ]
+}

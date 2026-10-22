@@ -1,0 +1,259 @@
+{
+  "profile": "giang-day",
+  "tong_phut_khai": 40.0,
+  "tong_phut_cong": 40.0,
+  "moc": [
+    {
+      "id": "s01",
+      "tieu_de": "cover",
+      "dang": "cover",
+      "che_do": "noi",
+      "bat_dau": 0.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s02",
+      "tieu_de": "Trụ này trả lời câu gì",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 1.5,
+      "phut": 2.5,
+      "wow": false
+    },
+    {
+      "id": "s03",
+      "tieu_de": "Module nào dày nhất",
+      "dang": "noi-dung",
+      "che_do": "hinh",
+      "bat_dau": 4.0,
+      "phut": 3.0,
+      "wow": false
+    },
+    {
+      "id": "s04",
+      "tieu_de": "m1.1 Đặt bài toán phát hiện",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 7.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s05",
+      "tieu_de": "m1.1 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 8.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s06",
+      "tieu_de": "m1.2 Dataset và vết thương riêng của từng cái",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 10.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s07",
+      "tieu_de": "m1.2 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 11.5,
+      "phut": 1.5,
+      "wow": true
+    },
+    {
+      "id": "s08",
+      "tieu_de": "m1.3 Phép đo, và chi phí vận hành của phép đo",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 13.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s09",
+      "tieu_de": "m1.3 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 14.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s10",
+      "tieu_de": "m1.4 Base-rate fallacy",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 16.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s11",
+      "tieu_de": "m1.4 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 17.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s12",
+      "tieu_de": "m1.5 Drift và cách chia dữ liệu theo thời gian",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 18.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s13",
+      "tieu_de": "m1.5 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 19.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s14",
+      "tieu_de": "m1.6 Lẩn tránh: không gian đặc trưng so với không gian",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 20.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s15",
+      "tieu_de": "m1.6 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 21.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s16",
+      "tieu_de": "m1.7 Giải thích được, và độ ổn định của lời giải thích",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 22.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s17",
+      "tieu_de": "m1.7 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 23.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s18",
+      "tieu_de": "m1.8 Chọn kiến trúc mô hình, và chỗ đứng của KAN với",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 24.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s19",
+      "tieu_de": "m1.8 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 25.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s20",
+      "tieu_de": "m1.9 Hiệu chuẩn: điểm số của mô hình có phải xác suất",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 26.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s21",
+      "tieu_de": "m1.9 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 27.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s22",
+      "tieu_de": "m1.10 Lưu lượng mã hoá: TLS 1.3",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 28.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s23",
+      "tieu_de": "m1.10 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 29.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s24",
+      "tieu_de": "Số của trụ",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 30.5,
+      "phut": 2.5,
+      "wow": false
+    },
+    {
+      "id": "s25",
+      "tieu_de": "Số của trụ (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 33.0,
+      "phut": 2.5,
+      "wow": false
+    },
+    {
+      "id": "s26",
+      "tieu_de": "Số của trụ (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 35.5,
+      "phut": 2.5,
+      "wow": false
+    },
+    {
+      "id": "s27",
+      "tieu_de": "cam-on",
+      "dang": "cam-on",
+      "che_do": "lang",
+      "bat_dau": 38.0,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s28",
+      "tieu_de": "one-more-thing",
+      "dang": "one-more-thing",
+      "che_do": "noi",
+      "bat_dau": 39.0,
+      "phut": 1.0,
+      "wow": false
+    }
+  ]
+}

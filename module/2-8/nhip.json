@@ -1,0 +1,700 @@
+{
+  "profile": "giang-day",
+  "tong_phut_khai": 84.5,
+  "tong_phut_cong": 84.5,
+  "moc": [
+    {
+      "id": "s01",
+      "tieu_de": "cover",
+      "dang": "cover",
+      "che_do": "noi",
+      "bat_dau": 0.0,
+      "phut": 0.5,
+      "wow": false
+    },
+    {
+      "id": "s02",
+      "tieu_de": "Câu hỏi của module",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 0.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s03",
+      "tieu_de": "Ba câu hỏi dựng bài toán",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 2.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s04",
+      "tieu_de": "Ba câu hỏi dựng bài toán (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 3.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s05",
+      "tieu_de": "Ba câu hỏi dựng bài toán (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 4.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s06",
+      "tieu_de": "Ba câu hỏi dựng bài toán (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 5.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s07",
+      "tieu_de": "Ba câu hỏi dựng bài toán (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 6.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s08",
+      "tieu_de": "Cross-silo và cross-device, bốn trục phân biệt",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 7.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s09",
+      "tieu_de": "Cross-silo và cross-device, bốn trục phân biệt · đáp",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 8.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s10",
+      "tieu_de": "Cross-silo và cross-device, bốn trục phân biệt · (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 10.0,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s11",
+      "tieu_de": "Cross-silo và cross-device, bốn trục phân biệt · (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 11.0,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s12",
+      "tieu_de": "Vấn đề nhãn trong IDS liên bang",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 12.0,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s13",
+      "tieu_de": "Vấn đề nhãn trong IDS liên bang · đáp",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 13.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s14",
+      "tieu_de": "Vấn đề nhãn trong IDS liên bang · đáp (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 14.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s15",
+      "tieu_de": "Vấn đề nhãn trong IDS liên bang · đáp (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 15.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s16",
+      "tieu_de": "Ba lý do chính đáng để không gom",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 16.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s17",
+      "tieu_de": "Ba lý do chính đáng để không gom · đáp",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 17.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s18",
+      "tieu_de": "Ba lý do chính đáng để không gom · đáp (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 19.0,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s19",
+      "tieu_de": "Ba lý do chính đáng để không gom · đáp (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 20.0,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s20",
+      "tieu_de": "Tỉ số byte gom trên byte liên bang",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 21.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s21",
+      "tieu_de": "Tỉ số byte gom trên byte liên bang (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 22.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s22",
+      "tieu_de": "Tỉ số byte gom trên byte liên bang (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 23.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s23",
+      "tieu_de": "Tỉ số byte gom trên byte liên bang · ghi chú",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 24.5,
+      "phut": 1.0,
+      "wow": true
+    },
+    {
+      "id": "s24",
+      "tieu_de": "Số phải biết",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 25.5,
+      "phut": 2.0,
+      "wow": false
+    },
+    {
+      "id": "s25",
+      "tieu_de": "Tính ra con số",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 27.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s26",
+      "tieu_de": "Tính ra con số · đáp",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 28.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s27",
+      "tieu_de": "Tính ra con số · đáp (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 30.0,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s28",
+      "tieu_de": "Tính ra con số",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 31.0,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s29",
+      "tieu_de": "Tính ra con số · đáp",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 32.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s30",
+      "tieu_de": "Tính ra con số · đáp (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 33.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s31",
+      "tieu_de": "Một bài khai chế độ cross-silo giữa 8 bệnh viện",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 34.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s32",
+      "tieu_de": "Một bài khai chế độ cross-silo giữa 8 bệnh viện (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 35.5,
+      "phut": 0.5,
+      "wow": false
+    },
+    {
+      "id": "s33",
+      "tieu_de": "Một bài khai chế độ cross-silo giữa 8 bệnh viện · đáp",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 36.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s34",
+      "tieu_de": "Một bài khai chế độ cross-silo giữa 8 bệnh viện · (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 37.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s35",
+      "tieu_de": "Chọn một phương án",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 38.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s36",
+      "tieu_de": "Chọn một phương án · đáp",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 39.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s37",
+      "tieu_de": "Chọn một phương án · đáp (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 41.0,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s38",
+      "tieu_de": "Chọn một phương án",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 42.0,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s39",
+      "tieu_de": "Chọn một phương án (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 43.0,
+      "phut": 0.5,
+      "wow": false
+    },
+    {
+      "id": "s40",
+      "tieu_de": "Chọn một phương án (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 43.5,
+      "phut": 0.5,
+      "wow": false
+    },
+    {
+      "id": "s41",
+      "tieu_de": "Chọn một phương án · đáp",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 44.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s42",
+      "tieu_de": "Chọn một phương án · đáp (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 45.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s43",
+      "tieu_de": "Chọn một phương án · đáp (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 46.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s44",
+      "tieu_de": "Câu nào không được số nào chống đỡ · ca một",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 47.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s45",
+      "tieu_de": "Câu nào không được số nào chống đỡ · ca một (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 48.5,
+      "phut": 0.5,
+      "wow": false
+    },
+    {
+      "id": "s46",
+      "tieu_de": "Câu không được chống đỡ · ca một · đáp",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 49.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s47",
+      "tieu_de": "Câu không được chống đỡ · ca một · đáp (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 50.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s48",
+      "tieu_de": "Câu không được chống đỡ · ca một · đáp (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 51.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s49",
+      "tieu_de": "Câu nào không được số nào chống đỡ · ca hai",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 52.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s50",
+      "tieu_de": "Câu không được chống đỡ · ca hai · đáp",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 53.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s51",
+      "tieu_de": "Câu không được chống đỡ · ca hai · đáp (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 55.0,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s52",
+      "tieu_de": "Dẫn lại từng bước",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 56.0,
+      "phut": 2.0,
+      "wow": false
+    },
+    {
+      "id": "s53",
+      "tieu_de": "Tắt từng giả thiết",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 58.0,
+      "phut": 2.0,
+      "wow": false
+    },
+    {
+      "id": "s54",
+      "tieu_de": "Tắt từng giả thiết (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 60.0,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s55",
+      "tieu_de": "Tắt từng giả thiết (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 61.0,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s56",
+      "tieu_de": "Chỗ này phải tự kéo, không xem được",
+      "dang": "noi-dung",
+      "che_do": "demo",
+      "bat_dau": 62.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s57",
+      "tieu_de": "Phản biện hỏi",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 63.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s58",
+      "tieu_de": "Đáp mẫu",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 65.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s59",
+      "tieu_de": "Đáp mẫu (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 66.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s60",
+      "tieu_de": "Đáp mẫu (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 67.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s61",
+      "tieu_de": "Thang chấm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 68.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s62",
+      "tieu_de": "Thang chấm (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 69.5,
+      "phut": 0.5,
+      "wow": false
+    },
+    {
+      "id": "s63",
+      "tieu_de": "Phản biện hỏi",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 70.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s64",
+      "tieu_de": "Đáp mẫu",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 71.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s65",
+      "tieu_de": "Đáp mẫu (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 73.0,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s66",
+      "tieu_de": "Đáp mẫu (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 74.0,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s67",
+      "tieu_de": "Thang chấm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 75.0,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s68",
+      "tieu_de": "Thang chấm (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 76.0,
+      "phut": 0.5,
+      "wow": false
+    },
+    {
+      "id": "s69",
+      "tieu_de": "Phản biện hỏi",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 76.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s70",
+      "tieu_de": "Đáp mẫu",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 78.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s71",
+      "tieu_de": "Đáp mẫu (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 79.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s72",
+      "tieu_de": "Đáp mẫu (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 80.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s73",
+      "tieu_de": "Thang chấm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 81.5,
+      "phut": 1.0,
+      "wow": false
+    },
+    {
+      "id": "s74",
+      "tieu_de": "Thang chấm (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 82.5,
+      "phut": 0.5,
+      "wow": false
+    },
+    {
+      "id": "s75",
+      "tieu_de": "Thang chấm (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 83.0,
+      "phut": 0.5,
+      "wow": false
+    },
+    {
+      "id": "s76",
+      "tieu_de": "cam-on",
+      "dang": "cam-on",
+      "che_do": "lang",
+      "bat_dau": 83.5,
+      "phut": 0.5,
+      "wow": false
+    },
+    {
+      "id": "s77",
+      "tieu_de": "one-more-thing",
+      "dang": "one-more-thing",
+      "che_do": "noi",
+      "bat_dau": 84.0,
+      "phut": 0.5,
+      "wow": false
+    }
+  ]
+}

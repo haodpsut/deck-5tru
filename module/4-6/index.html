@@ -1,0 +1,1153 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chuẩn và cách trích chuẩn</title>
+<style>/* ===========================================================================
+   deck.css  ·  bộ kit slide web của nhà
+   Không tham chiếu tài nguyên ngoài: phòng họp mất mạng vẫn chạy đủ.
+   Đổi một deck = đổi MỘT dòng --accent ở :root của index.html.
+   =========================================================================== */
+
+:root{
+  --accent:#2C6E9B;        /* MỘT màu nhấn duy nhất cho cả deck */
+  --accent-manh:#1F5476;
+  --ink:#1b1e23;
+  --ink-mo:#4a5260;
+  --giay:#f7f7f5;
+  --giay-sau:#eceae6;
+  --ke:#1b1e2326;
+  --header:3.25rem;
+  --le:clamp(1.25rem,4vw,4rem);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{
+  scroll-behavior:smooth;
+  scroll-snap-type:y mandatory;
+  -webkit-text-size-adjust:100%;
+}
+body{
+  margin:0;
+  background:var(--giay);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px;
+  line-height:1.55;
+  font-feature-settings:"kern" 1;
+}
+img,svg{max-width:100%;height:auto}
+[hidden]{display:none!important}
+
+/* ---------------- cấp chữ, tên theo nghĩa chứ không theo cỡ ---------------- */
+.d1{font-size:clamp(2.1rem,1.2rem + 3.4vw,4.1rem);font-weight:650;line-height:1.02;letter-spacing:-.03em;text-wrap:balance;margin:0}
+.d2{font-size:clamp(1.6rem,1.1rem + 2vw,2.9rem);font-weight:620;line-height:1.08;letter-spacing:-.025em;text-wrap:balance;margin:0}
+.lead{font-size:clamp(1.05rem,1rem + .45vw,1.4rem);line-height:1.5;color:var(--ink-mo);max-width:46ch}
+.label{font-size:.8125rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mo);margin:0}
+.num{font-size:clamp(2.4rem,1.6rem + 3vw,4.6rem);font-weight:620;line-height:1;letter-spacing:-.04em;
+     font-variant-numeric:tabular-nums;color:var(--accent)}
+
+/* ---------------- khung slide ---------------- */
+.slide{
+  min-height:100svh;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:calc(var(--header) + 1.5rem) var(--le) 4rem;
+  position:relative;
+  overflow:hidden;            /* ⚠ chính chỗ này nuốt nội dung: cổng G12 đo nó */
+}
+.slide-trong{max-width:68rem;width:100%;margin:0 auto}
+.slide > .slide-trong > * + *{margin-top:1.25rem}
+.slide p{margin:0;font-size:clamp(1.05rem,1rem + .5vw,1.45rem);line-height:1.5;max-width:52ch}
+.slide ul,.slide ol{margin:0;padding-left:1.4em;max-width:52ch}
+.slide li{margin-top:.6rem;font-size:clamp(1rem,.95rem + .4vw,1.3rem)}
+.slide strong{font-weight:680}
+.slide em{font-style:normal;color:var(--accent);font-weight:600}
+.slide code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em;
+            background:var(--giay-sau);padding:.1em .35em}
+
+/* vạch nhấn trước tiêu đề, mô-típ nhận dạng duy nhất của kit */
+.slide .d2::before{
+  content:"";display:block;width:2.5rem;height:.3rem;background:var(--accent);
+  margin-bottom:1.1rem;transform-origin:0;
+}
+
+/* bìa, cảm ơn, one more thing.
+   ⚠ KHÔNG khai màu nền ở đây. Nền chỉ đến từ một nguồn là các lớp .nen-* bên dưới,
+   chọn bằng @nen và mặc định trong kit/nen.json. Hai nguồn nền là hai sự thật. */
+.slide.cover .gach{width:4rem;height:.35rem;background:var(--accent);margin-bottom:1.6rem}
+.slide.omt{text-align:center;align-items:center}
+.slide.omt .d2::before{margin-left:auto;margin-right:auto}
+.slide.omt p{margin-left:auto;margin-right:auto;text-align:center;
+             font-size:clamp(1.5rem,1rem + 2vw,2.6rem);line-height:1.3;max-width:24ch}
+.slide.cam-on p{font-size:clamp(1.4rem,1rem + 1.8vw,2.4rem);line-height:1.3;max-width:26ch}
+/* ⚠ Slide dự phòng KHÔNG được có nền riêng. Trước đây nó là sọc chéo hardcode,
+   tức đúng thứ luật G18 cấm: nền khai ngoài bộ chuẩn. Nay nó dùng chung nền với
+   slide nội dung, và chỉ phân biệt bằng CHỮ: nhãn "Dự phòng" và số trang "BK". */
+
+/* khối số liệu */
+.so-khoi{display:flex;flex-wrap:wrap;gap:2.5rem 3.5rem;margin-top:1.5rem}
+.so-o{min-width:9rem}
+.so-o .nhan{font-size:.95rem;color:var(--ink-mo);margin-top:.4rem;max-width:22ch}
+
+/* ---------------- panel ngang trong một slide ---------------- */
+.panels{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:var(--le);
+        scrollbar-width:none;margin-top:1rem}
+.panels::-webkit-scrollbar{display:none}
+.panel{flex:0 0 100%;scroll-snap-align:start;min-width:0}
+.panel-dots{display:flex;gap:.45rem;align-items:center;margin-top:1.5rem;font-size:.8125rem;color:var(--ink-mo)}
+.panel-dots b{width:.5rem;height:.5rem;background:var(--ke);display:block}
+.panel-dots b[data-on]{background:var(--accent)}
+
+/* ---------------- thanh trên, tiến độ ---------------- */
+.thanh{position:fixed;inset-inline:0;top:0;height:var(--header);z-index:40;
+       background:color-mix(in srgb,var(--giay) 92%,transparent);backdrop-filter:blur(8px);
+       border-bottom:1px solid var(--ke);display:flex;align-items:center;
+       gap:1rem;padding:0 var(--le);font-size:.8125rem;color:var(--ink-mo)}
+.thanh .ten{font-weight:650;color:var(--ink)}
+.thanh .phai{margin-left:auto;display:flex;gap:1rem;align-items:center;font-variant-numeric:tabular-nums}
+.tien-do{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:50;
+         transform:scaleX(var(--pct,0));transform-origin:0;width:100%;transition:transform .15s linear}
+
+/* ---------------- hiện dần: phần THÊM, không phải điều kiện đọc ---------------- */
+[data-reveal]{opacity:1}
+.js [data-reveal]{opacity:0;transform:translateY(.75rem);
+  transition:opacity .6s cubic-bezier(.2,.7,.1,1),transform .6s cubic-bezier(.2,.7,.1,1);
+  transition-delay:var(--tre,0s)}
+.js [data-reveal].hien{opacity:1;transform:none}
+.js [data-reveal] .w{display:inline-block;opacity:0;transform:translateY(.4em);
+  transition:opacity .5s,transform .7s cubic-bezier(.2,.7,.1,1);
+  transition-delay:calc(var(--w) * 42ms + .1s)}
+.js [data-reveal].hien .w{opacity:1;transform:none}
+
+/* ---------------- chế độ tổng quan (bấm o) ---------------- */
+body.tong-quan{scroll-snap-type:none;overflow:auto}
+body.tong-quan .slide{min-height:0;height:16rem;padding:1.5rem;border:1px solid var(--ke);
+  overflow:hidden;cursor:pointer;zoom:.5}
+body.tong-quan main{display:grid;grid-template-columns:repeat(auto-fill,minmax(20rem,1fr));
+  gap:1rem;padding:calc(var(--header) + 1rem) 1rem 4rem}
+body.tong-quan .panels{overflow:hidden}
+
+/* ---------------- bảng trợ giúp ---------------- */
+.giup{position:fixed;inset:0;z-index:60;background:#1b1e23f2;color:#fff;display:grid;
+      place-items:center;padding:2rem}
+.giup table{border-collapse:collapse;font-size:1rem}
+.giup td{padding:.45rem 1.2rem .45rem 0;vertical-align:top}
+.giup kbd{background:#ffffff1f;border:1px solid #ffffff38;padding:.1em .45em;
+          font-family:inherit;font-size:.95em}
+
+/* ---------------- nhịp: biểu đồ sự tập trung ---------------- */
+.nhip{width:100%;height:auto;margin-top:1rem;border:1px solid var(--ke);background:#fff}
+
+/* ---------------- tôn trọng thiết lập người dùng ---------------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js [data-reveal],.js [data-reveal] .w{opacity:1;transform:none;transition:none}
+  .tien-do{transition:none}
+}
+
+/* ---------------- chế độ PDF: một slide một trang, hoạt cảnh đóng băng ----------
+   Dùng chung cho @media print và cho class .pdf do bộ xuất đặt vào.
+   ------------------------------------------------------------------------------ */
+@page{size:1280px 720px;margin:0}
+body.pdf{scroll-snap-type:none}
+body.pdf .thanh,body.pdf .tien-do,body.pdf .giup,body.pdf .panel-dots{display:none!important}
+body.pdf .slide{
+  min-height:0;height:720px;width:1280px;break-after:page;page-break-after:always;
+  padding:3.5rem 4.5rem;overflow:hidden;
+}
+body.pdf .slide:last-child{break-after:auto;page-break-after:auto}
+body.pdf [data-reveal],body.pdf [data-reveal] .w{opacity:1!important;transform:none!important;transition:none!important}
+body.pdf .panels{display:block;overflow:visible}
+body.pdf .panel{flex:none;width:100%}
+body.pdf .panel + .panel{margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--ke)}
+@media print{
+  html{scroll-snap-type:none}
+  .thanh,.tien-do,.giup,.panel-dots{display:none!important}
+  .slide{min-height:0;height:720px;break-after:page;page-break-after:always;overflow:hidden}
+  [data-reveal],[data-reveal] .w{opacity:1!important;transform:none!important}
+  .panels{display:block;overflow:visible}
+  .panel{flex:none;width:100%}
+}
+
+/* ===========================================================================
+   NỀN SLIDE · chọn bằng @nen trong noi-dung.md
+   Mọi nền vẽ bằng CSS thuần, không tệp ảnh, giữ lời hứa chạy offline.
+   Nền là thứ nằm DƯỚI, không bao giờ được ăn vào độ đọc của chữ:
+   mọi hoa văn dưới đây đều dưới 5% độ đậm.
+   =========================================================================== */
+/* HAI LỚP NỀN, tách bạch để không lớp nào kéo lớp kia:
+     ::before = VÂN phủ cả slide, đổi theo @nen
+     ::after  = VẠCH CHÂN TRANG, dấu nhận dạng chung của mọi slide, cao cố định
+   Vạch cao cố định chứ không tính theo phần trăm: khổ slide nào cũng ra đúng một dải
+   thước ở chân, không bao giờ chạm vùng nội dung. */
+.slide::before,.slide::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0}
+.slide::after{
+  background-image:linear-gradient(to right,var(--vach-mau,#1b1e2316) 1px,transparent 1px);
+  background-size:12.5% var(--vach-cao,84px);
+  background-position:left bottom;
+  background-repeat:repeat-x;
+}
+.slide > .slide-trong{position:relative;z-index:1}
+
+/* vạch dọc, mô-típ nhận dạng của kit, mặc định cho slide nội dung */
+/* mặc định cho slide nội dung. Vân để lớp khí quyển lo (lưới có mặt nạ, khối loang,
+   tối góc), ở đây không chồng thêm hoa văn nào nữa: hai lớp vân cùng lúc đọc thành rối. */
+.nen-vach::before{background:none}
+/* lưới chấm */
+.nen-luoi::before{
+  background-image:radial-gradient(circle at 1px 1px,#1b1e231f 1px,transparent 0);
+  background-size:22px 22px;
+}
+/* gạch chéo nhẹ */
+.nen-cheo::before{
+  background-image:repeating-linear-gradient(135deg,#1b1e230f 0 1px,transparent 1px 11px);
+}
+/* loang màu nhấn từ góc trên phải */
+.nen-sang::before{
+  background-image:
+    radial-gradient(circle at 1px 1px,#1b1e2314 1px,transparent 0),
+    radial-gradient(62% 72% at 88% 5%,color-mix(in srgb,var(--accent) 16%,transparent) 0%,transparent 70%);
+  background-size:26px 26px,100% 100%;
+  background-repeat:repeat,no-repeat;
+}
+/* nền tối, dùng cho bìa và one more thing */
+.nen-toi{background:var(--ink);color:var(--giay)}
+.nen-toi .d1,.nen-toi .d2{color:#fff}
+.nen-toi .lead,.nen-toi .label,.nen-toi p,.nen-toi li{color:#cfd4dc}
+.nen-toi strong{color:#fff}
+.nen-toi .bang th{color:#fff;border-bottom-color:var(--accent)}
+.nen-toi .bang td{border-bottom-color:#ffffff1f}
+.nen-toi::before{
+  background-image:radial-gradient(circle at 1px 1px,#ffffff14 1px,transparent 0);
+  background-size:26px 26px;
+}
+.nen-toi::after{background-image:linear-gradient(to right,#ffffff16 1px,transparent 1px)}
+.nen-trong::before,.nen-trong::after{background:none}
+
+/* hình trang trí ở bìa: vẽ bằng SVG sinh sẵn, đứng yên khi in */
+.bia-hinh{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.9}
+.bia-hinh .vong{animation:bia-quay 64s linear infinite;transform-origin:center}
+.bia-hinh .cham{animation:bia-nhay 5.5s ease-in-out infinite;animation-delay:calc(var(--i) * .5s)}
+@keyframes bia-quay{to{transform:rotate(360deg)}}
+@keyframes bia-nhay{0%,100%{opacity:.25}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.bia-hinh *{animation:none!important}}
+body.pdf .bia-hinh *{animation:none!important}
+
+/* ===========================================================================
+   BẢNG · ít đường kẻ, số canh phải, một cột được nhấn
+   =========================================================================== */
+.bang-khung{overflow-x:auto;margin-top:1.25rem}
+/* ⚠ width:100% kéo mọi đường kẻ ngang ra hết bề ngang slide, trông như gạch chân
+   cả trang. Bảng rộng theo NỘI DUNG, đường kẻ dừng ở đúng chỗ bảng hết. */
+.bang{border-collapse:collapse;width:auto;max-width:100%;font-variant-numeric:tabular-nums;
+      font-size:clamp(.95rem,.85rem + .5vw,1.25rem)}
+.bang-rong .bang{width:100%}
+.bang caption{caption-side:bottom;margin-top:.75rem;font-size:.9rem;color:var(--ink-mo);
+              text-align:left}
+.bang th{text-align:left;font-weight:650;padding:.5rem 1.8rem .5rem 0;
+         border-bottom:2px solid var(--accent);white-space:nowrap}
+.bang td{padding:.5rem 1.8rem .5rem 0;border-bottom:1px solid var(--ke);vertical-align:top}
+/* ⚠ cột số canh phải vẫn PHẢI giữ khoảng đệm, bỏ đi là chữ hai cột dính nhau */
+.bang td.so,.bang th.so{text-align:right;font-variant-numeric:tabular-nums}
+.bang tr > *:last-child{padding-right:0}
+.bang tr[data-nhan] td{padding-left:.6rem}
+.bang tbody tr:last-child td{border-bottom:none}
+.bang .nhan{color:var(--accent);font-weight:650}
+.bang tr[data-nhan] td{background:color-mix(in srgb,var(--accent) 10%,transparent);
+                       font-weight:600}
+
+/* ===========================================================================
+   HÌNH · SVG nhúng thẳng để thừa kế màu nhấn và vẫn chạy offline
+   =========================================================================== */
+figure{margin:1.25rem 0 0}
+figure svg,figure img{display:block;width:100%;height:auto;max-height:52svh}
+body.pdf figure svg,body.pdf figure img{max-height:380px}
+figcaption{margin-top:.6rem;font-size:.9rem;color:var(--ink-mo);max-width:60ch}
+figcaption b{color:var(--ink);font-weight:650}
+.nen-toi figcaption{color:#aab1bd}.nen-toi figcaption b{color:#fff}
+.hinh-doi{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:end}
+@media (max-width:720px){.hinh-doi{grid-template-columns:1fr}}
+
+/* ===========================================================================
+   NÚT XUẤT PDF trên thanh trên, và bảng chỉ dẫn in
+   =========================================================================== */
+.nut{font:inherit;font-size:.8125rem;font-weight:600;background:none;color:var(--ink-mo);
+     border:1px solid var(--ke);padding:.3rem .7rem;cursor:pointer}
+.nut:hover{color:var(--ink);border-color:var(--ink)}
+.in-huong{position:fixed;inset:0;z-index:70;background:#1b1e23f2;color:#fff;
+          display:grid;place-items:center;padding:2rem}
+.in-huong .hop{max-width:34rem;background:#20242b;padding:2rem;border:1px solid #343a44}
+.in-huong h3{margin:0 0 1rem;font-size:1.3rem}
+.in-huong ol{margin:0 0 1.5rem;padding-left:1.3em;line-height:1.7}
+.in-huong b{color:#fff}
+.in-huong code{background:#ffffff1a;padding:.1em .4em}
+@media print{.nut,.in-huong{display:none!important}}
+body.pdf .nut,body.pdf .in-huong{display:none!important}
+
+/* ===========================================================================
+   BÓC TỪ deck "DAU DIGITAL" 30/09/2026 · ba thiết bị đáng lấy
+   =========================================================================== */
+
+/* 1) CHÂN TRANG XUẤT XỨ: mọi slide nội dung tự mang theo nguồn số và mốc ngày.
+   Đây là thứ đáng giá nhất của deck ấy: bóc một slide ra khỏi bộ vẫn biết số
+   lấy từ đâu và tính tới ngày nào. */
+.chan{position:absolute;left:var(--le);right:var(--le);bottom:1.5rem;z-index:1;
+      display:flex;gap:1rem;align-items:baseline;
+      font-size:.78rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+      color:var(--ink-mo)}
+.chan .so-trang{margin-left:auto;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.nen-toi .chan{color:#8e97a5}
+
+/* 2) Ô SỐ BA TẦNG: số, nhãn, và MỐC SO SÁNH. Một con số không có mốc so sánh
+   thì không nói được điều gì, nên tầng thứ ba là bắt buộc. */
+.so-o .moc{margin-top:.35rem;font-size:.85rem;line-height:1.35;color:var(--ink-mo);
+           max-width:24ch}
+.so-o .moc.trong-moc{font-style:italic;opacity:.75}
+.so-khoi.cot{display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));
+             gap:1.75rem 2rem}
+.so-khoi.cot > .so-o{border-left:1px solid var(--ke);padding-left:1.25rem}
+.so-khoi.cot > .so-o:first-child{border-left:none;padding-left:0}
+
+/* 3) KHỐI LƯU Ý: viền trái màu nhấn, nền pha rất nhạt */
+.luu-y{display:flex;gap:1.5rem;margin-top:1.25rem;padding:1.1rem 1.4rem;
+       border-left:4px solid var(--accent);
+       background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.luu-y .nhan{flex:0 0 11rem;font-size:.8rem;font-weight:700;letter-spacing:.08em;
+             text-transform:uppercase;color:var(--accent);line-height:1.4}
+.luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
+.nen-toi .luu-y{background:#ffffff0f}
+@media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
+
+/* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
+.co-cau-khoi{margin-top:1.25rem}
+.co-cau-dau{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:.6rem}
+.co-cau-dau .nhan{font-size:.8rem;font-weight:700;letter-spacing:.08em;
+                 text-transform:uppercase;color:var(--ink-mo)}
+.co-cau-chu{display:flex;gap:1rem;margin-left:auto;flex-wrap:wrap;font-size:.82rem;
+           color:var(--ink-mo)}
+.co-cau-chu span{display:flex;align-items:center;gap:.4rem}
+.co-cau-chu i{width:.7rem;height:.7rem;display:block}
+.co-cau{display:flex;height:2.6rem;overflow:hidden}
+.co-cau > div{display:grid;place-items:center;font-size:.95rem;font-weight:650;
+             font-variant-numeric:tabular-nums;color:#fff;min-width:0}
+.co-cau > div[data-nhat]{color:var(--ink)}
+
+
+/* HÌNH LỚN: slide dành cho một hình lấy từ bài. Tiêu đề thu nhỏ, bỏ kicker,
+   để hình có thêm khoảng một trăm bốn mươi điểm ảnh chiều cao. Hình của bài tạp chí
+   vẽ cho khổ một cột, mang sang slide thì chữ trong hình tụt xuống dưới ngưỡng đọc. */
+.slide.hinh-lon .label{display:none}
+/* vẫn phải trên sàn đọc của G15: thu tiêu đề không được thu xuống dưới 34px */
+.slide.hinh-lon .d2{font-size:clamp(2.15rem,1.7rem + .9vw,2.6rem)}
+.slide.hinh-lon .d2::before{width:2rem;height:.25rem;margin-bottom:.7rem}
+.slide.hinh-lon figure{margin-top:.8rem}
+.slide.hinh-lon figure svg,.slide.hinh-lon figure img{max-height:54svh}
+body.pdf .slide.hinh-lon figure svg,body.pdf .slide.hinh-lon figure img{max-height:445px}
+
+
+/* ===========================================================================
+   LỚP KHÍ QUYỂN · bóc từ working/ra-mat
+   Ba kỹ thuật lấy về:
+     a) lưới vuông có MẶT NẠ ellipse, nhạt dần ra biên nên không bao giờ đọc
+        thành cái khung, và không chặn ở đâu cả;
+     b) ba khối màu loang rất lớn đặt LỆCH RA NGOÀI mép, alpha thấp, trôi chậm;
+     c) một lớp tối góc cực nhẹ để giữ mắt vào giữa.
+   Khác bản gốc hai chỗ: alpha hạ xuống vì slide phải chiếu chứ không phải xem
+   trên màn hình cá nhân, và mọi hoạt cảnh đóng băng khi in.
+   =========================================================================== */
+.nen{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.nen::before,.nen::after{content:"";position:absolute;inset:0}
+
+/* a) lưới có mặt nạ, và KHOÉT RỖNG ở chỗ có nội dung.
+   Lưới chạy sau lưng bảng thì các đường ngang cắt qua dòng bảng, đọc rất mệt.
+   Mặt nạ gồm hai lớp trừ nhau: lớp một là vùng lưới được hiện, lớp hai là lỗ khoét.
+   Toạ độ lỗ do deck.js đo từ hộp nội dung thật của từng slide rồi đặt vào biến;
+   không có JS thì rơi về bộ số mặc định dưới đây, vẫn dùng được. */
+.nen::before{
+  background-image:
+    linear-gradient(var(--luoi-mau,#1b1e230d) 1px,transparent 1px),
+    linear-gradient(90deg,var(--luoi-mau,#1b1e230d) 1px,transparent 1px);
+  background-size:64px 64px;
+  --mn-hien:radial-gradient(ellipse 80% 74% at 52% 46%,#000 22%,transparent 78%);
+  --mn-khoet:radial-gradient(ellipse var(--kh-w,52%) var(--kh-h,42%)
+              at var(--kh-x,34%) var(--kh-y,52%),#000 52%,transparent 100%);
+  -webkit-mask-image:var(--mn-hien),var(--mn-khoet);
+          mask-image:var(--mn-hien),var(--mn-khoet);
+  -webkit-mask-composite:source-out;
+          mask-composite:subtract;
+}
+/* b) ba khối loang, đặt lệch ra ngoài mép như bản gốc */
+.nen .khoi{position:absolute;display:block;border-radius:50%;will-change:transform}
+.nen .k1{width:52%;height:92%;left:-16%;top:-28%;
+         background:radial-gradient(circle,color-mix(in srgb,var(--accent) 16%,transparent),transparent 66%);
+         animation:troi-1 34s ease-in-out infinite alternate}
+.nen .k2{width:44%;height:80%;right:-14%;top:12%;
+         background:radial-gradient(circle,color-mix(in srgb,var(--accent) 11%,transparent),transparent 66%);
+         animation:troi-2 42s ease-in-out infinite alternate}
+.nen .k3{width:40%;height:72%;left:28%;bottom:-30%;
+         background:radial-gradient(circle,color-mix(in srgb,var(--ink) 7%,transparent),transparent 66%);
+         animation:troi-3 38s ease-in-out infinite alternate}
+@keyframes troi-1{to{transform:translate(4%,6%)}}
+@keyframes troi-2{to{transform:translate(-5%,-4%)}}
+@keyframes troi-3{to{transform:translate(3%,-5%)}}
+/* c) tối góc */
+.nen::after{background:radial-gradient(ellipse 118% 104% at 50% 50%,transparent 60%,#1b1e230e)}
+
+/* slide nền mực: lưới và khối sáng lên, tối góc đổi chiều */
+.nen-toi .nen{--luoi-mau:#ffffff0d}
+.nen-toi .nen .k3{background:radial-gradient(circle,#ffffff12,transparent 66%)}
+.nen-toi .nen::after{background:radial-gradient(ellipse 118% 104% at 50% 50%,transparent 58%,#00000038)}
+
+/* nền 'trong' thì không có lớp khí quyển nào */
+.nen-trong .nen{display:none}
+
+@media (prefers-reduced-motion:reduce){.nen .khoi{animation:none!important}}
+body.pdf .nen .khoi{animation:none!important}
+
+
+/* ===========================================================================
+   BỘ HÌNH CHO WEB · đúng vai txstyle.tex bên LaTeX
+   Luật làm nên khác biệt giữa hình VẼ TẠI CHỖ và hình DÁN VÀO:
+     1. không khai font trong SVG, để nó THỪA KẾ chữ của deck;
+     2. không khai mã màu, dùng currentColor và biến của deck;
+     3. viewBox dựng ở ĐÚNG KHỔ SẼ CHIẾU, tỉ lệ phóng xấp xỉ một, nhờ vậy cỡ chữ
+        trong hình bằng đúng cỡ chữ khai ra, không bị khổ hình kéo đi.
+   Quy ước tên lấy nguyên từ transaction-figure-kit.
+   =========================================================================== */
+figure svg text{font-family:inherit}
+/* ⚠ Bộ hình của BÀI BÁO (transaction-figure-kit) cấm bóng và bo góc, vì in đen trắng
+   trên giấy. Bộ hình của SLIDE thì khác: chiếu lên tường, cần lớp và nhịp thị giác để
+   mắt bám được. Đây là chỗ hai bộ CỐ Ý khác nhau, không phải quên đồng bộ. */
+.hk-blk{fill:var(--giay);stroke:var(--ke-dam,#1b1e2340);stroke-width:1.4}
+.hk-prop{fill:var(--accent);stroke:none}
+.hk-mo{fill:var(--giay-sau);stroke:var(--ke);stroke-width:1.2}
+/* ⭐ Sắc độ của CÙNG một màu nhấn, không phải màu thứ hai: vẫn giữ luật một màu
+   nhấn mà hình có chiều sâu. 10% cho khối trên đường còn sống, 100% cho khối đinh. */
+.hk-tint{fill:color-mix(in srgb,var(--accent) 9%,var(--giay));
+         stroke:color-mix(in srgb,var(--accent) 32%,transparent);stroke-width:1.4}
+.hk-spine{stroke:color-mix(in srgb,var(--accent) 30%,transparent);stroke-width:3;
+          stroke-linecap:round}
+.hk-spine-mo{stroke:var(--ke);stroke-width:3;stroke-linecap:round}
+.hk-cham{fill:var(--accent)}
+.hk-cham-mo{fill:var(--ink-mo);opacity:.4}
+.hk-lon{fill:var(--accent);font-weight:680;font-variant-numeric:tabular-nums;
+        letter-spacing:-.02em}
+.hk-lon-mo{fill:var(--ink-mo);opacity:.5;font-weight:680;
+           font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.hk-vach{fill:var(--ink-mo);opacity:.55}
+.hk-vach-prop{fill:#fff;opacity:.8}
+.hk-ten{fill:var(--ink);font-weight:650}
+.hk-prop-ten{fill:#fff;font-weight:650}
+.hk-phu{fill:var(--ink-mo)}
+.hk-prop-phu{fill:#dbe6ef}
+.hk-so{fill:var(--ink-mo);opacity:.65;font-weight:700;letter-spacing:.06em}
+.hk-so-prop{fill:#fff;opacity:.75;font-weight:700;letter-spacing:.06em}
+.hk-flow{stroke:var(--ink-mo);stroke-width:2.2;fill:none;stroke-linecap:round}
+.hk-fb{stroke:var(--ink-mo);stroke-width:2;fill:none;stroke-linecap:round;
+       stroke-dasharray:1 7;opacity:.75}
+.hk-alab{fill:var(--ink-mo)}
+.hk-alab-nen{fill:var(--giay);stroke:var(--ke);stroke-width:1}
+.hk-zone{fill:color-mix(in srgb,var(--ink) 3%,transparent);stroke:none}
+.hk-zlab{fill:var(--ink-mo);font-weight:700;letter-spacing:.1em}
+.hk-truc{stroke:var(--ke);stroke-width:1}
+.hk-truc-chinh{stroke:var(--ink-mo);stroke-width:1.5}
+.hk-diem{fill:var(--ink-mo);opacity:.55}
+.hk-diem-nhan{fill:var(--accent)}
+.hk-cot{fill:var(--ink-mo);opacity:.45}
+/* dải dao động của đối chứng: nền rất nhạt, không cạnh tranh với cột */
+.hk-dai{fill:var(--ink-mo);opacity:.10}
+.hk-dai-net{stroke:var(--ink-mo);stroke-width:1;stroke-dasharray:5 4;opacity:.55}
+/* vạch ngưỡng cam kết: màu nhấn, vì ngưỡng là THỨ HÌNH NÓI VỀ */
+.hk-nguong{stroke:var(--accent);stroke-width:2;stroke-dasharray:6 5}
+.hk-nguong-chu{fill:var(--accent);font-weight:600;text-anchor:middle}
+.hk-cot-nhan{fill:var(--accent)}
+/* ---- hình số liệu, phiên bản hai ---- */
+.hk-thanh{fill:var(--ink-mo);opacity:.32}
+.hk-thanh-nhan{fill:var(--accent)}
+.hk-thanh-nen{fill:var(--ink);opacity:.045}
+.hk-gt{fill:var(--ink);font-weight:680;font-variant-numeric:tabular-nums}
+.hk-gt-nhan{fill:var(--accent);font-weight:680;font-variant-numeric:tabular-nums}
+.hk-nhan-o{fill:var(--ink-mo);font-weight:600}
+.hk-chip{fill:var(--ink);opacity:.06}
+.hk-chip-chu{fill:var(--ink-mo);font-weight:650;font-variant-numeric:tabular-nums}
+.hk-moc{stroke:var(--ink-mo);stroke-width:1.5;stroke-dasharray:5 4;opacity:.55;fill:none}
+.hk-ghi{fill:var(--accent);font-weight:650}
+.hk-ghi-duong{stroke:var(--accent);stroke-width:1.6;fill:none;opacity:.8}
+.hk-o-nhiet{stroke:var(--giay);stroke-width:2}
+.hk-cham-lon{fill:var(--accent)}
+.hk-cham-nho{fill:var(--ink-mo);opacity:.45}
+.hk-que{stroke:var(--ink-mo);stroke-width:2;opacity:.35;stroke-linecap:round;fill:none}
+.hk-que-nhan{stroke:var(--accent);stroke-width:2.6;stroke-linecap:round;fill:none}
+.nen-toi .hk-thanh{fill:#aab1bd;opacity:.45}
+.nen-toi .hk-gt{fill:#fff}
+.nen-toi .hk-chip{fill:#fff;opacity:.1}
+.nen-toi .hk-chip-chu,.nen-toi .hk-nhan-o{fill:#aab1bd}
+.nen-toi .hk-blk{fill:#ffffff0f;stroke:#ffffff40}
+.nen-toi .hk-mo{fill:#ffffff08;stroke:#ffffff26}
+.nen-toi .hk-zone{fill:#ffffff0a}
+.nen-toi .hk-vach{fill:#aab1bd}
+.nen-toi .hk-alab-nen{fill:var(--ink);stroke:#ffffff26}
+.nen-toi .hk-so{fill:#aab1bd}
+.nen-toi .hk-tint{fill:#ffffff14;stroke:#ffffff33}
+.nen-toi .hk-lon-mo{fill:#aab1bd}
+.nen-toi .hk-ten{fill:#fff}
+.nen-toi .hk-phu,.nen-toi .hk-alab,.nen-toi .hk-zlab{fill:#aab1bd}
+.nen-toi .hk-flow,.nen-toi .hk-fb{stroke:#aab1bd}
+.nen-toi .hk-alab-nen{fill:var(--ink)}
+
+
+/* HÌNH TRỌN SLIDE (@hinh: toan): dành cho hình VUÔNG, tỉ lệ dưới 1,6.
+   Hình vuông nằm trong khung ngang thì bị giới hạn bởi CHIỀU CAO, nên dù chữ trong
+   hình đủ to so với bề ngang hình, nó vẫn tụt dưới ngưỡng đọc khi chiếu.
+   Chế độ này bỏ kicker, hạ tiêu đề xuống một dòng nhỏ, bỏ chú thích xuống chân,
+   và nhường gần sáu trăm điểm ảnh chiều cao cho hình. */
+/* chừa đủ chỗ cho chân trang: chân cao chừng 40px kể cả lề dưới */
+/* ⚠ PHẢI ghim chiều cao, không chỉ min-height: hình ở đây là flex co giãn nên nó
+   đẩy slide CAO HƠN MỘT MÀN HÌNH lúc trình bày, dù khổ PDF vẫn vừa. Cổng G26 giữ. */
+.slide.hinh-toan{padding:1.6rem var(--le) 4.2rem;height:100svh}
+.slide.hinh-toan .label{display:none}
+.slide.hinh-toan .d2{font-size:clamp(1.05rem,.9rem + .5vw,1.35rem);font-weight:650;
+                     letter-spacing:.01em}
+.slide.hinh-toan .d2::before{display:none}
+.slide.hinh-toan .slide-trong{max-width:none}
+.slide.hinh-toan figure{margin:.6rem 0 0}
+/* ⚠ Giới hạn chiều cao hình bằng một giá trị THEO CỬA SỔ, tất định, thay vì dựa vào
+   chuỗi flex. Đã trả giá: figure không phải con trực tiếp của khối nội dung (bộ dựng
+   bọc nó trong một div để hiện dần), nên chuỗi co giãn đứt ở đó và hình phình tới hơn
+   một nghìn điểm ảnh rồi bị overflow:hidden CẮT, trong khi khung vẫn đúng một màn
+   hình nên phép đo chiều cao slide mù hoàn toàn. */
+.slide.hinh-toan figure svg,.slide.hinh-toan figure img{width:100%;height:auto;
+                        max-height:70svh}
+.slide.hinh-toan figcaption{margin-top:.5rem;font-size:.85rem}
+body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-height:486px}
+</style>
+<!-- ⚠ PHẢI đặt SAU deck.css: deck.css có :root{--accent:...} mặc định, cùng độ ưu
+     tiên nên khai báo nào đứng sau thì thắng. Đặt trước là màu riêng của deck không
+     bao giờ tới được trang, mà nhìn vào tệp nguồn thì vẫn thấy có khai. -->
+<style>:root{--accent:#2C6E9B}</style>
+</head>
+<body>
+<div class="tien-do"></div>
+<header class="thanh">
+  <span class="ten">Chuẩn và cách trích chuẩn</span>
+  <span data-ten-slide></span>
+  <span class="phai">
+    <span>64.5 phút · giang-day</span>
+    <span data-dong-ho>00:00</span>
+    <span data-so-slide></span>
+    <button class="nut" data-in>Xuất PDF</button>
+    <span>? trợ giúp</span>
+  </span>
+</header>
+<main>
+<section id="s01" class="slide cover nen-toi" data-slide data-title="Bìa" data-phut="0.5" data-chedo="noi" data-notes="Đọc tên module rồi im. Để câu hỏi của module làm việc."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div><svg class="bia-hinh" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="vong"><circle cx="980" cy="360" r="130" fill="none" stroke="#ffffff3a" stroke-dasharray="3 8"/><circle cx="980" cy="360" r="215" fill="none" stroke="#ffffff30" stroke-dasharray="2 9"/><circle cx="980" cy="360" r="300" fill="none" stroke="#ffffff26" stroke-dasharray="2 11"/><circle cx="980" cy="360" r="385" fill="none" stroke="#ffffff1e" stroke-dasharray="1 13"/><path d="M 980 60 A 300 300 0 0 1 1280 360" fill="none" stroke="#2C6E9B" stroke-width="2.5" opacity=".85"/></g><circle class="cham" style="--i:0" cx="1107.4" cy="385.8" r="5" fill="#2C6E9B"/><circle class="cham" style="--i:1" cx="1158.3" cy="480.1" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:2" cx="1145.8" cy="610.0" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:3" cx="1053.7" cy="737.9" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:4" cx="954.2" cy="487.4" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:5" cx="859.9" cy="538.3" r="5" fill="#2C6E9B"/><circle class="cham" style="--i:6" cx="730.0" cy="525.8" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:7" cx="602.1" cy="433.7" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:8" cx="852.6" cy="334.2" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:9" cx="801.7" cy="239.9" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:10" cx="814.2" cy="110.0" r="5" fill="#2C6E9B"/><circle class="cham" style="--i:11" cx="906.3" cy="-17.9" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:12" cx="1005.8" cy="232.6" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:13" cx="1100.1" cy="181.7" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:14" cx="1230.0" cy="194.2" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:15" cx="1357.9" cy="286.3" r="5" fill="#2C6E9B"/></svg>
+<div class="slide-trong"><div class="gach"></div><p class="label">Tự ôn, bộ Năm trụ</p><h1 class="d1" data-reveal><span class="w" style="--w:0">Chuẩn</span> <span class="w" style="--w:1">và</span> <span class="w" style="--w:2">cách</span> <span class="w" style="--w:3">trích</span> <span class="w" style="--w:4">chuẩn</span></h1><p class="lead" data-reveal style="--tre:.35s">Trụ 4 6G Sec · module 4.6</p><p class="label" data-reveal style="--tre:.5s;margin-top:2rem">Đỗ Phúc Hảo · CAIRA, Đại học Kiến trúc Đà Nẵng</p></div>
+</section>
+<section id="s02" class="slide nen-vach" data-slide data-title="Câu hỏi của module" data-phut="1.5" data-chedo="hoi" data-notes="Hỏi rồi đếm ba giây. Đây là câu phải trả lời được khi hết module."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">02</p><h2 class="d2" data-reveal>Câu hỏi của module</h2><div data-reveal style="--tre:.18s"><div class="luu-y"><div class="nhan">Câu phải mang về</div><p class="noi">Trích chuẩn là một phép kiểm được, nên nó bị kiểm</p></div>
+<p>Tài liệu tôi trích còn hiệu lực không, và tôi trích đúng mục hay trích cả tài liệu?</p></div></div><div class="chan"><span>Câu hỏi của module · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">02</span></div>
+</section>
+<section id="s03" class="slide nen-vach" data-slide data-title="Trích chuẩn là một phép kiểm được, nên nó bị kiểm" data-phut="1.5" data-chedo="noi" data-notes="Phần dẫn. Nói nhanh, chỗ đáng dừng nằm ở các thẻ phía sau."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">03</p><h2 class="d2" data-reveal>Trích chuẩn là một phép kiểm được, nên nó bị kiểm</h2><div data-reveal style="--tre:.18s"><p>Module này không có công tắc giả thiết riêng: khi cần bàn giao diện mở của O-RAN thì dùng lại công tắc của module 4.1. Bù lại nó là module nặng nhất về <strong>bắt lỗi</strong>, vì trích chuẩn là chỗ duy nhất trong một bài an ninh mà người đọc kiểm được tuyên bố của anh <strong>mà không cần chạy lại gì cả</strong>. Họ chỉ cần mở tài liệu.</p></div></div><div class="chan"><span>Trích chuẩn là một phép kiểm được, nên nó bị kiểm · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">03</span></div>
+</section>
+<section id="s04" class="slide nen-vach" data-slide data-title="Trích chuẩn là một phép kiểm được, nên nó bị kiểm (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">04</p><h2 class="d2" data-reveal>Trích chuẩn là một phép kiểm được, nên nó bị kiểm (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Ba luật của module, gọn tới mức học thuộc được. Một, <strong>TS là đặc tả, TR là nghiên cứu</strong>, nên trích TR như một yêu cầu bắt buộc là sai thẩm quyền, không phải sai định dạng. Hai, một trích dẫn chuẩn khai được phải có <strong>số tài liệu, số bản, và mục cụ thể</strong>; thiếu một trường là không khai được.</p></div></div><div class="chan"><span>Trích chuẩn là một phép kiểm được, nên nó bị kiểm (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">04</span></div>
+</section>
+<section id="s05" class="slide nen-vach" data-slide data-title="Trích chuẩn là một phép kiểm được, nên nó bị kiểm (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">05</p><h2 class="d2" data-reveal>Trích chuẩn là một phép kiểm được, nên nó bị kiểm (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Ba, về trạng thái tài liệu thì dùng chữ <strong>hết hiệu lực</strong> chứ không dùng chữ thay thế, khi chưa kiểm quan hệ kế thừa.</p></div></div><div class="chan"><span>Trích chuẩn là một phép kiểm được, nên nó bị kiểm (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">05</span></div>
+</section>
+<section id="s06" class="slide nen-vach" data-slide data-title="Trích chuẩn là một phép kiểm được, nên nó bị kiểm (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">06</p><h2 class="d2" data-reveal>Trích chuẩn là một phép kiểm được, nên nó bị kiểm (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Luật thứ ba nhìn như chuyện câu chữ nhưng không phải: nói A thay thế B là khẳng định một quan hệ kế thừa có hướng, tức khẳng định mọi yêu cầu của B đã được A tiếp nhận. Đó là một tuyên bố mạnh hơn hẳn chuyện B hết hiệu lực, và nó sai trong rất nhiều ca thật, vì một tài liệu có thể hết hiệu lực mà phần nội dung của nó tách ra nhiều tài liệu khác nhau.</p></div></div><div class="chan"><span>Trích chuẩn là một phép kiểm được, nên nó bị kiểm (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">06</span></div>
+</section>
+<section id="s07" class="slide nen-vach" data-slide data-title="TS, TR, và thẩm quyền của câu được trích" data-phut="1.0" data-chedo="hoi" data-notes="HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">07</p><h2 class="d2" data-reveal>TS, TR, và thẩm quyền của câu được trích</h2><div data-reveal style="--tre:.18s"><p>Nói <strong>định nghĩa</strong>, rồi lật.</p>
+<p><em>Tầng 1 trên bốn.</em></p></div></div><div class="chan"><span>TS, TR, và thẩm quyền của câu được trích · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">07</span></div>
+</section>
+<section id="s08" class="slide nen-vach" data-slide data-title="TS, TR, và thẩm quyền của câu được trích · đáp" data-phut="1.5" data-chedo="noi" data-notes="So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">08</p><h2 class="d2" data-reveal>TS, TR, và thẩm quyền của câu được trích · đáp</h2><div data-reveal style="--tre:.18s"><p>Trong 3GPP, nhóm <strong>SA3</strong> phụ trách an ninh và ra các tài liệu số <code>33.xxx</code>, trong đó <code>TS 33.501</code> là đặc tả kiến trúc và thủ tục an ninh cho hệ 5G.</p>
+<p><strong>TS</strong> (technical specification) là đặc tả: nó phát ra yêu cầu, và một hệ tuân thủ phải làm theo. <strong>TR</strong> (technical report) là báo cáo nghiên cứu: nó khảo sát phương án, nêu đánh đổi, có khi nêu cả phương án bị loại.</p></div></div><div class="chan"><span>TS, TR, và thẩm quyền của câu được trích · đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">08</span></div>
+</section>
+<section id="s09" class="slide nen-vach" data-slide data-title="TS, TR, và thẩm quyền của câu được trích · đáp (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">09</p><h2 class="d2" data-reveal>TS, TR, và thẩm quyền của câu được trích · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Điểm phải nhớ: <strong>trích TR như một yêu cầu bắt buộc là sai thẩm quyền</strong>. Câu trong TR có thể hoàn toàn đúng về kỹ thuật mà vẫn không phải yêu cầu, vì nó là một phương án đang xét. Đây là lỗi nặng hơn lỗi định dạng, vì nó làm sai phần nền của lập luận: anh đang nói chuẩn ĐÒI một thứ mà chuẩn chỉ mới BÀN.</p></div></div><div class="chan"><span>TS, TR, và thẩm quyền của câu được trích · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">09</span></div>
+</section>
+<section id="s10" class="slide nen-vach" data-slide data-title="Luật ba trường" data-phut="1.0" data-chedo="hoi" data-notes="HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">10</p><h2 class="d2" data-reveal>Luật ba trường</h2><div data-reveal style="--tre:.18s"><p>Nói định nghĩa và <strong>điểm phải nhớ</strong>, rồi lật.</p>
+<p><em>Tầng 2 trên bốn.</em></p></div></div><div class="chan"><span>Luật ba trường · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">10</span></div>
+</section>
+<section id="s11" class="slide nen-vach" data-slide data-title="Luật ba trường · đáp" data-phut="1.5" data-chedo="noi" data-notes="So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">11</p><h2 class="d2" data-reveal>Luật ba trường · đáp</h2><div data-reveal style="--tre:.18s"><p>Mỗi trích dẫn chuẩn phải có: <strong>số tài liệu</strong>, <strong>số bản</strong> (Release hoặc version), và <strong>mục cụ thể</strong>. Cộng ngày tra, vì tài liệu chuẩn có bản mới theo thời gian.</p></div></div><div class="chan"><span>Luật ba trường · đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">11</span></div>
+</section>
+<section id="s12" class="slide nen-vach" data-slide data-title="Luật ba trường · đáp (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">12</p><h2 class="d2" data-reveal>Luật ba trường · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Vì sao cả ba đều bắt buộc: số mục chỉ có nghĩa bên trong một số bản, bởi cùng một tài liệu ở hai bản khác nhau có thể đánh số mục khác nhau và chia mục khác nhau. Nên một trích dẫn có số mục mà không có số bản là một con trỏ không trỏ tới đâu, còn một trích dẫn có số bản mà không có số mục thì đẩy việc tìm sang người đọc.</p></div></div><div class="chan"><span>Luật ba trường · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">12</span></div>
+</section>
+<section id="s13" class="slide nen-vach" data-slide data-title="Luật ba trường · đáp (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">13</p><h2 class="d2" data-reveal>Luật ba trường · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Điểm phải nhớ: <strong>trích cả tài liệu là không khai được</strong>. Câu kiểu xem TS 33.501 để biết chi tiết nói với người đọc rằng anh đã đọc tài liệu đó, chứ không nói tài liệu đó đỡ cho điều gì. Và nó là loại lỗi tự lộ: ai mở tài liệu ra cũng thấy nó dài hàng trăm trang.</p></div></div><div class="chan"><span>Luật ba trường · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">13</span></div>
+</section>
+<section id="s14" class="slide nen-vach" data-slide data-title="Trạng thái tài liệu: hết hiệu lực" data-phut="1.0" data-chedo="hoi" data-notes="HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">14</p><h2 class="d2" data-reveal>Trạng thái tài liệu: hết hiệu lực</h2><div data-reveal style="--tre:.18s"><p>Nói định nghĩa, điểm phải nhớ, và <strong>chỗ nó gãy</strong>, rồi lật.</p>
+<p><em>Tầng 3 trên bốn.</em></p></div></div><div class="chan"><span>Trạng thái tài liệu: hết hiệu lực · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">14</span></div>
+</section>
+<section id="s15" class="slide nen-vach" data-slide data-title="Trạng thái tài liệu: hết hiệu lực · đáp" data-phut="1.5" data-chedo="noi" data-notes="So lời mình vừa nói với mặt sau. Khác chỗ nào thì chỗ đó là chỗ chưa nắm."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">15</p><h2 class="d2" data-reveal>Trạng thái tài liệu: hết hiệu lực · đáp</h2><div data-reveal style="--tre:.18s"><p>Khi một tài liệu không còn là bản đang dùng, câu đứng được là <strong>tài liệu đó đã hết hiệu lực từ ngày nêu</strong>, kèm nguồn cho ngày đó.</p></div></div><div class="chan"><span>Trạng thái tài liệu: hết hiệu lực · đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">15</span></div>
+</section>
+<section id="s16" class="slide nen-vach" data-slide data-title="Trạng thái tài liệu: hết hiệu lực · đáp (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">16</p><h2 class="d2" data-reveal>Trạng thái tài liệu: hết hiệu lực · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Chữ <strong>thay thế</strong> là một tuyên bố mạnh hơn: nó khẳng định một quan hệ kế thừa có hướng, tức mọi yêu cầu của tài liệu cũ đã được tài liệu mới tiếp nhận. Muốn viết chữ đó thì phải kiểm được quan hệ kế thừa, và trong nhiều ca thật quan hệ đó không tồn tại: tài liệu cũ hết hiệu lực mà nội dung của nó tách ra nhiều tài liệu khác nhau, hoặc một phần bị bỏ hẳn.</p></div></div><div class="chan"><span>Trạng thái tài liệu: hết hiệu lực · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">16</span></div>
+</section>
+<section id="s17" class="slide nen-vach" data-slide data-title="Trạng thái tài liệu: hết hiệu lực · đáp (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">17</p><h2 class="d2" data-reveal>Trạng thái tài liệu: hết hiệu lực · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Điểm phải nhớ: <strong>chưa kiểm quan hệ kế thừa thì viết hết hiệu lực</strong>. Luật này sinh từ một ca thật trong sổ của nhà, và nó rẻ: viết hết hiệu lực không bao giờ sai, còn viết thay thế thì sai được. Cũng để ý một ca riêng: tài liệu HẾT HIỆU LỰC vẫn trích được một cách hợp lệ, miễn là anh đang nói về trạng thái lịch sử và nói rõ điều đó.</p></div></div><div class="chan"><span>Trạng thái tài liệu: hết hiệu lực · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">17</span></div>
+</section>
+<section id="s18" class="slide nen-vach" data-slide data-title="Một trích dẫn chuẩn khai được" data-phut="1.5" data-chedo="so" data-notes="Giả thiết là phần đáng nhớ, không phải biểu thức." data-wow><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">18</p><h2 class="d2" data-reveal>Một trích dẫn chuẩn khai được</h2><div data-reveal style="--tre:.18s"><p><code>trích dẫn khai được = số tài liệu + số bản (Release hoặc version) + mục cụ thể + ngày tra</code></p>
+<p><strong>Giả thiết nó đứng trên:</strong></p></div></div><div class="chan"><span>Một trích dẫn chuẩn khai được · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">18</span></div>
+</section>
+<section id="s19" class="slide nen-vach" data-slide data-title="Một trích dẫn chuẩn khai được (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">19</p><h2 class="d2" data-reveal>Một trích dẫn chuẩn khai được (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>số mục chỉ có nghĩa BÊN TRONG một số bản: cùng một tài liệu, hai bản khác nhau có thể đánh số mục khác nhau, nên thiếu số bản thì số mục không trỏ tới đâu</li><li>tài liệu chuẩn sống động, tức có bản mới theo thời gian, nên ngày tra là phần của trích dẫn chứ không phải phần của phép lịch sự</li></ul></div></div><div class="chan"><span>Một trích dẫn chuẩn khai được (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">19</span></div>
+</section>
+<section id="s20" class="slide nen-vach" data-slide data-title="Một trích dẫn chuẩn khai được (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">20</p><h2 class="d2" data-reveal>Một trích dẫn chuẩn khai được (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>thẩm quyền của câu được trích đến từ LOẠI tài liệu: đặc tả thì phát ra yêu cầu, báo cáo nghiên cứu thì không</li><li>nếu dùng để đỡ một tuyên bố bắt buộc thì phải trích câu có động từ quy phạm trong mục đó, không trích tiêu đề mục</li></ul></div></div><div class="chan"><span>Một trích dẫn chuẩn khai được (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">20</span></div>
+</section>
+<section id="s21" class="slide nen-vach" data-slide data-title="Một trích dẫn chuẩn khai được · ghi chú" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">21</p><h2 class="d2" data-reveal>Một trích dẫn chuẩn khai được · ghi chú</h2><div data-reveal style="--tre:.18s"><p>Phép kiểm nhanh một danh mục tham khảo: đếm số trích dẫn chuẩn thiếu <strong>bất kỳ</strong> một trong bốn trường. Tỉ lệ đó là thứ reviewer đo được trong vài phút mà không cần hiểu bài, nên nó là bề mặt tuyên bố rẻ nhất để làm sạch và cũng là chỗ mất điểm vô ích nhất. Nối với sổ lỗi của nhà: văn xuôi của hiện vật cũng là bề mặt tuyên bố.</p></div></div><div class="chan"><span>Một trích dẫn chuẩn khai được · ghi chú · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">21</span></div>
+</section>
+<section id="s22" class="slide nen-vach" data-slide data-title="Số phải biết" data-phut="2.0" data-chedo="so" data-notes="Đọc to con số và ĐƠN VỊ. Nhớ số mà quên đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">22</p><h2 class="d2" data-reveal>Số phải biết</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">4</div><div class="nhan">trường</div><div class="moc">Luật trích chuẩn của nhà đòi mỗi trích dẫn phải khai mấy</div></div><div class="so-o"><div class="num">15</div><div class="nhan">Release</div><div class="moc">Đặc tả kiến trúc an ninh của hệ 5G</div></div></div></div></div><div class="chan"><span>Số phải biết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">22</span></div>
+</section>
+<section id="s23" class="slide nen-vach" data-slide data-title="Bài tập ở cuối module có 8 trích dẫn" data-phut="1.0" data-chedo="hoi" data-notes="HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">23</p><h2 class="d2" data-reveal>Bài tập ở cuối module có 8 trích dẫn</h2><div data-reveal style="--tre:.18s"><p>Bài tập ở cuối module có 8 trích dẫn, trong đó 3 cái không khai được. Tỉ lệ không khai được là bao nhiêu phần trăm?</p>
+<p>loi = 3, tong = 8</p></div></div><div class="chan"><span>Bài tập ở cuối module có 8 trích dẫn · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">23</span></div>
+</section>
+<section id="s24" class="slide nen-vach" data-slide data-title="Bài tập ở cuối module có 8 trích dẫn · đáp" data-phut="1.5" data-chedo="noi" data-notes="Dẫn lại bằng miệng trong ba mươi giây, đừng bấm máy tính."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">24</p><h2 class="d2" data-reveal>Bài tập ở cuối module có 8 trích dẫn · đáp</h2><div data-reveal style="--tre:.18s"><p><code>100 × loi / tong</code></p>
+<p>37,5%. Con số này cao hơn hẳn cảm giác của người viết, và đó là điều đáng chú ý: ba lỗi trong tám trích dẫn nghe như ít, còn gần bốn trên mười trích dẫn không khai được thì nghe như một danh mục chưa kiểm. Cùng một dữ kiện, hai cách đọc, và reviewer đọc theo cách thứ hai.</p></div></div><div class="chan"><span>Bài tập ở cuối module có 8 trích dẫn · đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">24</span></div>
+</section>
+<section id="s25" class="slide nen-vach" data-slide data-title="Danh mục 8 trích dẫn" data-phut="1.0" data-chedo="hoi" data-notes="HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">25</p><h2 class="d2" data-reveal>Danh mục 8 trích dẫn</h2><div data-reveal style="--tre:.18s"><p>Danh mục 8 trích dẫn, 3 cái không khai được, nên 5 cái sạch. Người đọc mở 3 cái khác nhau, lấy ngẫu nhiên không hoàn lại. Xác suất họ bắt được ít nhất một lỗi là bao nhiêu phần trăm?</p>
+<p>sach = 5, tong = 8</p></div></div><div class="chan"><span>Danh mục 8 trích dẫn · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">25</span></div>
+</section>
+<section id="s26" class="slide nen-vach" data-slide data-title="Danh mục 8 trích dẫn · đáp" data-phut="1.5" data-chedo="noi" data-notes="Dẫn lại bằng miệng trong ba mươi giây, đừng bấm máy tính."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">26</p><h2 class="d2" data-reveal>Danh mục 8 trích dẫn · đáp</h2><div data-reveal style="--tre:.18s"><p><code>100 × (1 - (sach⋆(sach-1)⋆(sach-2))/(tong⋆(tong-1)⋆(tong-2)))</code></p>
+<p>Khoảng 82,1%, tức mở ba trích dẫn trong tám thì hơn bốn lần trên năm là thấy vấn đề, vì xác suất ba cái đều sạch chỉ là 10 trên 56. Con số này nói ngược hẳn với mô phỏng ở trên, và lý do là ở đó danh mục dài 40 cái với tỉ lệ lỗi 10%: chính TỈ LỆ lỗi quyết định xác suất bị bắt, không phải số lỗi.</p></div></div><div class="chan"><span>Danh mục 8 trích dẫn · đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">26</span></div>
+</section>
+<section id="s27" class="slide nen-vach" data-slide data-title="Danh mục 8 trích dẫn · đáp (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">27</p><h2 class="d2" data-reveal>Danh mục 8 trích dẫn · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Danh mục tám cái với ba lỗi có tỉ lệ 37,5%, gần bốn lần cao hơn.</p></div></div><div class="chan"><span>Danh mục 8 trích dẫn · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">27</span></div>
+</section>
+<section id="s28" class="slide nen-vach" data-slide data-title="Bản thảo viết: theo TR 33.809 của 3GPP" data-phut="1.0" data-chedo="hoi" data-notes="HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">28</p><h2 class="d2" data-reveal>Bản thảo viết: theo TR 33.809 của 3GPP</h2><div data-reveal style="--tre:.18s"><p>Bản thảo viết: theo TR 33.809 của 3GPP, bộ thu bắt buộc phải phát hiện trạm gốc giả trước khi nối. Lỗi ở đâu?</p>
+<ul><li>Sai vì phải trích tài liệu mới nhất</li><li>Không có lỗi, vì TR cũng là tài liệu của 3GPP</li><li>Sai thẩm quyền: TR là báo cáo nghiên cứu, nó không phát ra yêu cầu bắt buộc</li><li>Chỉ thiếu số mục, thêm số mục là xong</li></ul></div></div><div class="chan"><span>Bản thảo viết: theo TR 33.809 của 3GPP · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">28</span></div>
+</section>
+<section id="s29" class="slide nen-vach" data-slide data-title="Bản thảo viết: theo TR 33.809 của 3GPP · đáp" data-phut="1.5" data-chedo="noi" data-notes="Vì sao ba phương án kia sai mới là phần đáng nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">29</p><h2 class="d2" data-reveal>Bản thảo viết: theo TR 33.809 của 3GPP · đáp</h2><div data-reveal style="--tre:.18s"><p><strong>Sai thẩm quyền: TR là báo cáo nghiên cứu, nó không phát ra yêu cầu bắt buộc</strong></p>
+<p>Câu trong một báo cáo nghiên cứu có thể đúng hoàn toàn về kỹ thuật mà vẫn không phải yêu cầu, vì nó là phương án đang xét chứ không phải điều một hệ tuân thủ phải làm. Thêm số mục không chữa được chỗ đó: nó làm trích dẫn đủ trường mà vẫn sai thẩm quyền. Cách sửa:</p></div></div><div class="chan"><span>Bản thảo viết: theo TR 33.809 của 3GPP · đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">29</span></div>
+</section>
+<section id="s30" class="slide nen-vach" data-slide data-title="Bản thảo viết: theo TR 33.809 của 3GPP · đáp (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">30</p><h2 class="d2" data-reveal>Bản thảo viết: theo TR 33.809 của 3GPP · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>hoặc đổi câu thành báo cáo nghiên cứu này KHẢO SÁT các phương án phát hiện trạm gốc giả, hoặc tìm một đặc tả có câu quy phạm tương ứng rồi trích đúng mục của nó.</p></div></div><div class="chan"><span>Bản thảo viết: theo TR 33.809 của 3GPP · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">30</span></div>
+</section>
+<section id="s31" class="slide nen-vach" data-slide data-title="Chọn một phương án" data-phut="1.0" data-chedo="hoi" data-notes="HỎI TRƯỚC. Không lật slide cho tới khi đã thử trả lời thành tiếng."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">31</p><h2 class="d2" data-reveal>Chọn một phương án</h2><div data-reveal style="--tre:.18s"><p>Anh thấy bản 2024 của một tài liệu không còn nằm trong danh mục bản đang dùng, và chưa kiểm được phần nội dung của nó đi đâu. Câu nào đứng được trong bản thảo?</p></div></div><div class="chan"><span>Chọn một phương án · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">31</span></div>
+</section>
+<section id="s32" class="slide nen-vach" data-slide data-title="Chọn một phương án (tiếp)" data-phut="0.5" data-chedo="hoi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">32</p><h2 class="d2" data-reveal>Chọn một phương án (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>Tài liệu đó đã bị tài liệu mới thay thế</li><li>Tài liệu đó đã hết hiệu lực từ ngày nêu, theo nguồn đã dẫn</li><li>Tài liệu đó không còn giá trị tham khảo</li><li>Tài liệu đó vẫn còn hiệu lực cho tới khi có thông báo</li></ul></div></div><div class="chan"><span>Chọn một phương án (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">32</span></div>
+</section>
+<section id="s33" class="slide nen-vach" data-slide data-title="Chọn một phương án · đáp" data-phut="1.5" data-chedo="noi" data-notes="Vì sao ba phương án kia sai mới là phần đáng nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">33</p><h2 class="d2" data-reveal>Chọn một phương án · đáp</h2><div data-reveal style="--tre:.18s"><p><strong>Tài liệu đó đã hết hiệu lực từ ngày nêu, theo nguồn đã dẫn</strong></p></div></div><div class="chan"><span>Chọn một phương án · đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">33</span></div>
+</section>
+<section id="s34" class="slide nen-vach" data-slide data-title="Chọn một phương án · đáp (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">34</p><h2 class="d2" data-reveal>Chọn một phương án · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Chữ thay thế khẳng định quan hệ kế thừa có hướng, tức mọi yêu cầu của bản cũ đã được bản mới tiếp nhận, và đó là điều anh vừa nói là chưa kiểm được. Phương án thứ ba nói quá theo chiều khác: tài liệu hết hiệu lực vẫn trích được hợp lệ khi bàn trạng thái lịch sử. Phương án cuối thì ngược với dữ kiện. Chỉ phương án thứ hai nói đúng những gì anh kiểm được, không hơn.</p></div></div><div class="chan"><span>Chọn một phương án · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">34</span></div>
+</section>
+<section id="s35" class="slide nen-vach" data-slide data-title="Câu nào không được số nào chống đỡ · ca một" data-phut="1.0" data-chedo="hoi" data-notes="HỎI TRƯỚC. Chỉ ra câu sai bằng miệng rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">35</p><h2 class="d2" data-reveal>Câu nào không được số nào chống đỡ · ca một</h2><div data-reveal style="--tre:.18s"><p>Ba trích dẫn đầu trong tám trích dẫn của bài tập. Một cái trỏ tới một tài liệu không tồn tại. Bấm vào cái đó.</p>
+<ul><li>[1] 3GPP TS 33.501, Release 17, mục 6.1 về thủ tục xác thực và thoả thuận khoá chính.</li><li>[2] 3GPP TS 33.501, Release 13, mục 6.1.3.2 về thủ tục 5G AKA.</li><li>[3] IS-GPS-200, bản revision đang hiệu lực ngày 05/10/2026, mục quy định mức công suất tín hiệu thu tối thiểu của L1 C/A.</li></ul></div></div><div class="chan"><span>Câu nào không được số nào chống đỡ · ca một · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">35</span></div>
+</section>
+<section id="s36" class="slide nen-vach" data-slide data-title="Câu không được chống đỡ · ca một · đáp" data-phut="1.5" data-chedo="noi" data-notes="Đây đúng là việc reviewer làm với bài của mình."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">36</p><h2 class="d2" data-reveal>Câu không được chống đỡ · ca một · đáp</h2><div data-reveal style="--tre:.18s"><p><strong>[2] 3GPP TS 33.501, Release 13, mục 6.1.3.2 về thủ tục 5G AKA.</strong></p>
+<p>Tài liệu TS 33.501 ra cùng pha đầu của hệ 5G, tức từ Release 15, nên không tồn tại bản Release 13 của nó. Đây là lỗi SỐ BẢN, và nó nặng hơn lỗi hình thức vì người đọc không mở được thứ anh trích: trích dẫn trỏ tới một tài liệu không có. Hai trích dẫn kia đều đủ ba trường và số bản của chúng tồn tại. Cách sửa:</p></div></div><div class="chan"><span>Câu không được chống đỡ · ca một · đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">36</span></div>
+</section>
+<section id="s37" class="slide nen-vach" data-slide data-title="Câu không được chống đỡ · ca một · đáp (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">37</p><h2 class="d2" data-reveal>Câu không được chống đỡ · ca một · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>chốt số bản mình thật sự đọc, mở đúng bản đó, rồi lấy số mục từ chính bản đó, vì hai bản khác nhau có thể đánh số mục khác nhau.</p></div></div><div class="chan"><span>Câu không được chống đỡ · ca một · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">37</span></div>
+</section>
+<section id="s38" class="slide nen-vach" data-slide data-title="Câu nào không được số nào chống đỡ · ca hai" data-phut="1.0" data-chedo="hoi" data-notes="HỎI TRƯỚC. Chỉ ra câu sai bằng miệng rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">38</p><h2 class="d2" data-reveal>Câu nào không được số nào chống đỡ · ca hai</h2><div data-reveal style="--tre:.18s"><p>Ba trích dẫn tiếp theo, lần này gắn với câu văn dùng chúng. Một cái dùng tài liệu sai thẩm quyền. Bấm vào cái đó.</p></div></div><div class="chan"><span>Câu nào không được số nào chống đỡ · ca hai · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">38</span></div>
+</section>
+<section id="s39" class="slide nen-vach" data-slide data-title="Câu nào không được số nào chống đỡ · ca hai (tiếp)" data-phut="0.5" data-chedo="hoi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">39</p><h2 class="d2" data-reveal>Câu nào không được số nào chống đỡ · ca hai (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>[4] Theo 3GPP TS 33.401, Release 16, mục về thủ tục an ninh giữa thiết bị người dùng và các phần tử mạng EPS, hệ LTE phải dẫn xuất khoá theo cây khoá đã nêu.</li><li>[5] Theo 3GPP TR 33.809, bản mới nhất, mục về phát hiện trạm gốc giả, bộ thu bắt buộc phải xác minh thông tin hệ thống trước khi nối.</li></ul></div></div><div class="chan"><span>Câu nào không được số nào chống đỡ · ca hai (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">39</span></div>
+</section>
+<section id="s40" class="slide nen-vach" data-slide data-title="Câu nào không được số nào chống đỡ · ca hai (tiếp)" data-phut="0.5" data-chedo="hoi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">40</p><h2 class="d2" data-reveal>Câu nào không được số nào chống đỡ · ca hai (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>[6] Theo RFC 9147, mục 4 về tầng bản ghi của DTLS 1.3, bản ghi mang số thứ tự được bảo vệ.</li></ul></div></div><div class="chan"><span>Câu nào không được số nào chống đỡ · ca hai (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">40</span></div>
+</section>
+<section id="s41" class="slide nen-vach" data-slide data-title="Câu không được chống đỡ · ca hai · đáp" data-phut="1.5" data-chedo="noi" data-notes="Đây đúng là việc reviewer làm với bài của mình."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">41</p><h2 class="d2" data-reveal>Câu không được chống đỡ · ca hai · đáp</h2><div data-reveal style="--tre:.18s"><p><strong>[5] Theo 3GPP TR 33.809, bản mới nhất, mục về phát hiện trạm gốc giả, bộ thu bắt buộc phải xác minh thông tin hệ thống trước khi nối.</strong></p></div></div><div class="chan"><span>Câu không được chống đỡ · ca hai · đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">41</span></div>
+</section>
+<section id="s42" class="slide nen-vach" data-slide data-title="Câu không được chống đỡ · ca hai · đáp (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">42</p><h2 class="d2" data-reveal>Câu không được chống đỡ · ca hai · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>TR là báo cáo nghiên cứu: nó khảo sát và so sánh phương án, nên nó không phát ra yêu cầu bắt buộc. Chữ bắt buộc phải ở đây gán cho nó thẩm quyền của một đặc tả. Để ý trích dẫn này còn thiếu số bản cụ thể, nhưng đó là lỗi nhẹ hơn và không phải lỗi chính: thêm số bản vào thì trích dẫn đủ trường mà vẫn sai thẩm quyền.</p></div></div><div class="chan"><span>Câu không được chống đỡ · ca hai · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">42</span></div>
+</section>
+<section id="s43" class="slide nen-vach" data-slide data-title="Câu không được chống đỡ · ca hai · đáp (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">43</p><h2 class="d2" data-reveal>Câu không được chống đỡ · ca hai · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Hai trích dẫn kia đều dùng đặc tả để đỡ tuyên bố bắt buộc, tức đúng loại tài liệu. Cách sửa: đổi câu thành báo cáo nghiên cứu này khảo sát các phương án phát hiện trạm gốc giả, hoặc tìm đặc tả có câu quy phạm tương ứng rồi trích đúng mục của nó.</p></div></div><div class="chan"><span>Câu không được chống đỡ · ca hai · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">43</span></div>
+</section>
+<section id="s44" class="slide nen-vach" data-slide data-title="Câu nào không được số nào chống đỡ · ca ba" data-phut="1.0" data-chedo="hoi" data-notes="HỎI TRƯỚC. Chỉ ra câu sai bằng miệng rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">44</p><h2 class="d2" data-reveal>Câu nào không được số nào chống đỡ · ca ba</h2><div data-reveal style="--tre:.18s"><p>Hai trích dẫn cuối trong tám. Một cái không khai được vì trích cả tài liệu. Bấm vào cái đó.</p>
+<ul><li>[7] Chi tiết về che danh tính thường trực của thuê bao, xem 3GPP TS 33.501.</li><li>[8] NIST FIPS 203, bản cuối tháng 8 năm 2024, mục 7 về các thuật toán của ML-KEM.</li></ul></div></div><div class="chan"><span>Câu nào không được số nào chống đỡ · ca ba · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">44</span></div>
+</section>
+<section id="s45" class="slide nen-vach" data-slide data-title="Câu không được chống đỡ · ca ba · đáp" data-phut="1.5" data-chedo="noi" data-notes="Đây đúng là việc reviewer làm với bài của mình."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">45</p><h2 class="d2" data-reveal>Câu không được chống đỡ · ca ba · đáp</h2><div data-reveal style="--tre:.18s"><p><strong>[7] Chi tiết về che danh tính thường trực của thuê bao, xem 3GPP TS 33.501.</strong></p></div></div><div class="chan"><span>Câu không được chống đỡ · ca ba · đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">45</span></div>
+</section>
+<section id="s46" class="slide nen-vach" data-slide data-title="Câu không được chống đỡ · ca ba · đáp (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">46</p><h2 class="d2" data-reveal>Câu không được chống đỡ · ca ba · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Trích cả tài liệu mà không có số bản và không có mục cụ thể. Câu này nói với người đọc rằng anh đã đọc tài liệu đó, chứ không nói tài liệu đó đỡ cho điều gì: nó đẩy việc tìm trong hàng trăm trang sang phía người đọc. Đây cũng là loại lỗi tự lộ nhất trong ba loại, vì ai mở tài liệu ra cũng thấy ngay. Trích dẫn [8] thì đủ cả ba trường nên khai được. Cách sửa:</p></div></div><div class="chan"><span>Câu không được chống đỡ · ca ba · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">46</span></div>
+</section>
+<section id="s47" class="slide nen-vach" data-slide data-title="Câu không được chống đỡ · ca ba · đáp (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">47</p><h2 class="d2" data-reveal>Câu không được chống đỡ · ca ba · đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>chốt số bản, tìm mục quy định cơ chế che danh tính trong đúng bản đó, rồi ghi cả số bản và số mục cùng ngày tra.</p></div></div><div class="chan"><span>Câu không được chống đỡ · ca ba · đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">47</span></div>
+</section>
+<section id="s48" class="slide nen-vach" data-slide data-title="Dẫn lại từng bước" data-phut="2.0" data-chedo="so" data-notes="Bước nào có giả thiết riêng thì đó là chỗ gãy khi dùng lại."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">48</p><h2 class="d2" data-reveal>Dẫn lại từng bước</h2><div data-reveal style="--tre:.18s"><ul><li>Đọc LOẠI tài liệu từ số của nó: đặc tả hay báo cáo nghiên cứu</li><li>So loại tài liệu với việc tôi đang dùng nó để làm gì: đỡ một yêu cầu bắt buộc, hay đỡ một nhận định về hiện trạng</li><li>Chốt số bản đang dùng, rồi mở đúng bản đó</li><li>Tìm mục cụ thể và đọc câu có động từ quy phạm trong mục đó, không lấy tiêu đề mục</li></ul></div></div><div class="chan"><span>Dẫn lại từng bước · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">48</span></div>
+</section>
+<section id="s49" class="slide nen-vach" data-slide data-title="Dẫn lại từng bước (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">49</p><h2 class="d2" data-reveal>Dẫn lại từng bước (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>Ghi lại số tài liệu, số bản, số mục và ngày tra; nếu bản đó không còn là bản đang dùng thì ghi là đã hết hiệu lực, không ghi là bị thay thế</li></ul></div></div><div class="chan"><span>Dẫn lại từng bước (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">49</span></div>
+</section>
+<section id="s50" class="slide nen-vach" data-slide data-title="Chỗ này phải tự kéo, không xem được" data-phut="1.5" data-chedo="demo" data-notes="Dừng bài, mở site, kéo thật. Đây là khối slide KHÔNG thay được."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">50</p><h2 class="d2" data-reveal>Chỗ này phải tự kéo, không xem được</h2><div data-reveal style="--tre:.18s"><p>Danh mục tham khảo của anh như một bài toán lấy mẫu. Kéo số trích dẫn, tỉ lệ trích dẫn không khai được, và số trích dẫn mà người đọc thật sự mở ra kiểm.</p>
+<p><em>Mở <code>https://hoc-5-tru-web.vercel.app/#/module/4.6</code> và kéo thanh. Slide đứng yên, mô phỏng thì không.</em></p></div></div><div class="chan"><span>Chỗ này phải tự kéo, không xem được · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">50</span></div>
+</section>
+<section id="s51" class="slide nen-vach" data-slide data-title="Phản biện hỏi" data-phut="1.5" data-chedo="hoi" data-notes="Đọc to như reviewer đọc. Trả lời bằng miệng trước khi lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">51</p><h2 class="d2" data-reveal>Phản biện hỏi</h2><div data-reveal style="--tre:.18s"><p>Reference [5] is a 3GPP technical report, yet Section III cites it as a mandatory requirement on the receiver. Several other standard references give no version and no clause, so I cannot check the statements they support. Please correct the normative basis of Section III and complete the standard citations.</p></div></div><div class="chan"><span>Phản biện hỏi · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">51</span></div>
+</section>
+<section id="s52" class="slide nen-vach" data-slide data-title="Đáp mẫu" data-phut="1.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">52</p><h2 class="d2" data-reveal>Đáp mẫu</h2><div data-reveal style="--tre:.18s"><p>We have corrected the normative basis and the citations. Section III no longer rests on a technical report: every requirement statement now cites a technical specification with document number, release and clause, and the technical report is cited only where we describe candidate mechanisms that are still under study, with the wording changed from the receiver shall to the report studies mechanisms in which the receiver verifies.</p></div></div><div class="chan"><span>Đáp mẫu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">52</span></div>
+</section>
+<section id="s53" class="slide nen-vach" data-slide data-title="Đáp mẫu (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">53</p><h2 class="d2" data-reveal>Đáp mẫu (tiếp)</h2><div data-reveal style="--tre:.18s"><p>All standard references now carry document number, release or version, the specific clause, and the date on which we consulted them, listed in Table II so that each statement can be checked without reading the whole document. We audited the complete reference list rather than a sample, which removed three further incomplete entries that the reviewer did not reach.</p></div></div><div class="chan"><span>Đáp mẫu (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">53</span></div>
+</section>
+<section id="s54" class="slide nen-vach" data-slide data-title="Đáp mẫu (tiếp)" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">54</p><h2 class="d2" data-reveal>Đáp mẫu (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Where a cited version is no longer the current one, we state that it is no longer in force as of the given date and we cite the source for that date; we deliberately avoid saying that it was superseded, because we have not verified that every requirement of the earlier version was carried into a single later document.</p></div></div><div class="chan"><span>Đáp mẫu (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">54</span></div>
+</section>
+<section id="s55" class="slide nen-vach" data-slide data-title="Thang chấm" data-phut="1.0" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">55</p><h2 class="d2" data-reveal>Thang chấm</h2><div data-reveal style="--tre:.18s"><p><strong>Chấm theo:</strong></p>
+<ul><li>Mức 1: thêm số mục vào trích dẫn báo cáo nghiên cứu và coi là xong. Trích dẫn thành đủ trường mà vẫn sai thẩm quyền, nên phản bác chính chưa được trả lời.</li><li>Mức 2: đổi câu văn từ bắt buộc sang được khuyến nghị nhưng vẫn để báo cáo nghiên cứu đỡ cho một yêu cầu thiết kế của bài, và vẫn còn trích dẫn thiếu số bản.</li></ul></div></div><div class="chan"><span>Thang chấm · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">55</span></div>
+</section>
+<section id="s56" class="slide nen-vach" data-slide data-title="Thang chấm (tiếp)" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">56</p><h2 class="d2" data-reveal>Thang chấm (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>Mức 3: tách rõ hai loại nguồn, dùng đặc tả cho mọi tuyên bố bắt buộc và dùng báo cáo nghiên cứu chỉ để mô tả phương án đang xét, cộng bổ số bản và mục cụ thể cho toàn bộ trích dẫn chuẩn.</li></ul></div></div><div class="chan"><span>Thang chấm (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">56</span></div>
+</section>
+<section id="s57" class="slide cam-on nen-toi" data-slide data-title="Cảm ơn" data-phut="0.5" data-chedo="lang" data-notes="Nhắc lại một lần rồi dừng."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">Cảm ơn</p><div data-reveal style="--tre:.18s"><p>Trích chuẩn là một phép kiểm được, nên nó bị kiểm</p></div></div><div class="chan"><span>kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">57</span></div>
+</section>
+<section id="s58" class="slide omt nen-toi" data-slide data-title="One more thing" data-phut="0.5" data-chedo="noi" data-notes="Món tặng: deck để NÓI, site để NHỚ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">One more thing</p><div data-reveal style="--tre:.18s"><p>Tiến độ lặp giãn cách nằm ở site, không nằm ở deck này. Học xong thì về <code>https://hoc-5-tru-web.vercel.app/#/module/4.6</code> bấm thẻ.</p></div></div><div class="chan"><span>kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">58</span></div>
+</section>
+</main>
+<div class="giup" hidden><table>
+<tr><td><kbd>&#8595;</kbd> <kbd>Space</kbd> <kbd>PageDn</kbd></td><td>slide sau</td></tr>
+<tr><td><kbd>&#8594;</kbd> <kbd>&#8592;</kbd></td><td>bước trong slide, hết panel thì sang slide</td></tr>
+<tr><td><kbd>Home</kbd> <kbd>End</kbd></td><td>đầu, cuối</td></tr>
+<tr><td><kbd>o</kbd></td><td>tổng quan toàn deck</td></tr>
+<tr><td><kbd>p</kbd></td><td>mở cửa sổ người nói</td></tr>
+<tr><td><kbd>x</kbd></td><td>tải nhịp thật ra tệp JSON</td></tr>
+<tr><td><kbd>e</kbd></td><td>xuất PDF ngay từ trang này</td></tr>
+<tr><td><kbd>?</kbd></td><td>bảng này</td></tr>
+</table></div>
+<div class="in-huong" hidden><div class="hop">
+<h3>Xuất PDF từ trang này</h3>
+<ol>
+<li>Bấm <b>Mở hộp thoại in</b> bên dưới.</li>
+<li>Đích chọn <b>Save as PDF</b>.</li>
+<li>Mở <b>More settings</b>, bật <b>Background graphics</b>, đặt <b>Margins</b> là <b>None</b>.</li>
+<li>Khổ giấy để <b>mặc định</b>, trang đã tự khai khổ mười sáu chín.</li>
+</ol>
+<p style="margin:0 0 1.25rem;color:#aab1bd;font-size:.95rem">Muốn bản nét hơn và có kèm ảnh từng slide thì dùng <code>python3 xuat_pdf.py &lt;dir&gt;</code>, bản đó cũng là bản mà cổng QA chấm.</p>
+<button class="nut" data-in-chay style="color:#fff;border-color:#fff">Mở hộp thoại in</button>
+<button class="nut" data-in-huy style="margin-left:.5rem">Thôi</button>
+</div></div>
+<script>/* ===========================================================================
+   deck.js · cơ chế trình bày. Không phụ thuộc thư viện ngoài.
+   Nguyên tắc: tắt JS thì deck vẫn đọc được đủ, chỉ mất phần điều khiển.
+   =========================================================================== */
+(function () {
+  "use strict";
+  // cửa sổ presenter dùng cùng tệp này nhưng do presenter.js điều khiển
+  if (new URLSearchParams(location.search).has("presenter")) return;
+  document.documentElement.classList.add("js");
+
+  var slides = [].slice.call(document.querySelectorAll("[data-slide]"));
+  if (!slides.length) return;
+  var keHoach = slides.map(function (s) { return parseFloat(s.dataset.phut || "0"); });
+  var hienTai = 0;
+  var batDau = null;             // mốc bắt đầu buổi nói
+  var vaoSlide = null;           // mốc vào slide hiện tại
+  var thucTe = slides.map(function () { return 0; });   // giây thật từng slide
+  var kenh = ("BroadcastChannel" in window) ? new BroadcastChannel("deck-nha") : null;
+
+  /* ---------- hiện dần ---------- */
+  var ioReveal = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) e.target.classList.add("hien"); });
+  }, { rootMargin: "0px 0px -12% 0px", threshold: 0.08 });
+  document.querySelectorAll("[data-reveal]").forEach(function (el) { ioReveal.observe(el); });
+
+  /* ---------- slide đang xem ---------- */
+  var ioSlide = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var i = slides.indexOf(e.target);
+      if (i === hienTai) return;
+      ghiNhan(i);
+      hienTai = i;
+      capNhat();
+    });
+  }, { rootMargin: "-50% 0px -50% 0px" });
+  slides.forEach(function (s) { ioSlide.observe(s); });
+
+  function ghiNhan(moi) {
+    var gio = Date.now();
+    if (vaoSlide !== null) thucTe[hienTai] += (gio - vaoSlide) / 1000;
+    vaoSlide = gio;
+    if (batDau === null) batDau = gio;
+    if (moi !== undefined) { /* chỉ cộng dồn */ }
+  }
+
+  /* ---------- thanh trên, tiến độ ---------- */
+  var elTen = document.querySelector("[data-ten-slide]");
+  var elSo = document.querySelector("[data-so-slide]");
+  var elDong = document.querySelector("[data-dong-ho]");
+  var tienDo = document.querySelector(".tien-do");
+
+  function capNhat() {
+    var s = slides[hienTai];
+    if (elTen) elTen.textContent = s.dataset.title || "";
+    if (elSo) elSo.textContent = (hienTai + 1) + "/" + slides.length;
+    if (tienDo) tienDo.style.setProperty("--pct", (hienTai + 1) / slides.length);
+    if (location.hash !== "#" + s.id) history.replaceState(null, "", "#" + s.id);
+    phatTin();
+  }
+
+  function phatTin() {
+    if (!kenh) return;
+    var ke = 0, i;
+    for (i = 0; i <= hienTai; i++) ke += keHoach[i];
+    kenh.postMessage({
+      loai: "nhip",
+      i: hienTai,
+      tong: slides.length,
+      title: slides[hienTai].dataset.title || "",
+      ghiChu: slides[hienTai].dataset.notes || "",
+      keTiep: hienTai + 1 < slides.length ? (slides[hienTai + 1].dataset.title || "") : "",
+      phutKeHoachLuyKe: ke,
+      giayThat: batDau ? (Date.now() - batDau) / 1000 : 0,
+      phutSlideNay: keHoach[hienTai]
+    });
+  }
+  setInterval(function () { if (batDau) phatTin(); }, 1000);
+
+  function dongHo() {
+    if (!elDong) return;
+    if (!batDau) { elDong.textContent = "00:00"; return; }
+    var g = Math.floor((Date.now() - batDau) / 1000);
+    elDong.textContent = String(Math.floor(g / 60)).padStart(2, "0") + ":" + String(g % 60).padStart(2, "0");
+  }
+  setInterval(dongHo, 500);
+
+  /* ---------- panel ngang ---------- */
+  function buocPanel(slide, huong) {
+    var p = slide.querySelector(".panels");
+    if (!p) return false;
+    var items = [].slice.call(p.querySelectorAll(".panel"));
+    var w = p.clientWidth || 1;
+    var cur = Math.round(p.scrollLeft / w);
+    var muon = cur + huong;
+    if (muon < 0 || muon >= items.length) return false;
+    p.scrollTo({ left: muon * w, behavior: motion() });
+    danhDauDots(p, muon);
+    return true;
+  }
+  function danhDauDots(p, k) {
+    var dots = p.parentNode.querySelectorAll(".panel-dots b");
+    dots.forEach(function (d, j) { if (j === k) d.setAttribute("data-on", ""); else d.removeAttribute("data-on"); });
+    var so = p.parentNode.querySelector(".panel-dots span");
+    if (so) so.textContent = String(k + 1).padStart(2, "0") + "/" + String(dots.length).padStart(2, "0");
+  }
+  function motion() {
+    return matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  }
+
+  /* ---------- đi tới slide ---------- */
+  function toi(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    slides[i].scrollIntoView({ behavior: motion() });
+  }
+
+  /* ---------- bàn phím ---------- */
+  var giup = document.querySelector(".giup");
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    var t = e.target;
+    if (t && t.closest && t.closest("input,textarea,select,[contenteditable]")) return;
+    var k = e.key;
+
+    if (k === "?" || k === "/") { e.preventDefault(); if (giup) giup.hidden = !giup.hidden; return; }
+    if (giup && !giup.hidden) { giup.hidden = true; if (k === "Escape") return; }
+
+    if (k === "o" || k === "O") {
+      e.preventDefault();
+      document.body.classList.toggle("tong-quan");
+      if (!document.body.classList.contains("tong-quan")) toi(hienTai);
+      return;
+    }
+    if (k === "p" || k === "P") { e.preventDefault(); moPresenter(); return; }
+    if (k === "x" || k === "X") { e.preventDefault(); taiNhip(); return; }
+    if (k === "e" || k === "E") { e.preventDefault(); moIn(); return; }
+    if (k === "Escape") { document.body.classList.remove("tong-quan"); return; }
+
+    var huong = 0, ngang = false;
+    switch (k) {
+      case "ArrowDown": case "PageDown": case "j": huong = 1; break;
+      case "ArrowUp": case "PageUp": case "k": huong = -1; break;
+      case " ": if (t && t.closest && t.closest("a,button,summary")) return; huong = e.shiftKey ? -1 : 1; break;
+      case "ArrowRight": huong = 1; ngang = true; break;
+      case "ArrowLeft": huong = -1; ngang = true; break;
+      case "Home": e.preventDefault(); toi(0); return;
+      case "End": e.preventDefault(); toi(slides.length - 1); return;
+      default: return;
+    }
+    e.preventDefault();
+    if (ngang && buocPanel(slides[hienTai], huong)) return;
+    toi(hienTai + huong);
+  });
+
+  /* dấu chấm panel bấm được, và theo dõi cuộn ngang */
+  document.querySelectorAll(".panels").forEach(function (p) {
+    p.addEventListener("scroll", function () {
+      danhDauDots(p, Math.round(p.scrollLeft / (p.clientWidth || 1)));
+    }, { passive: true });
+  });
+  document.querySelectorAll(".panel-dots").forEach(function (d) {
+    d.querySelectorAll("b").forEach(function (b, j) {
+      b.style.cursor = "pointer";
+      b.addEventListener("click", function () {
+        var p = d.parentNode.querySelector(".panels");
+        p.scrollTo({ left: j * p.clientWidth, behavior: motion() });
+      });
+    });
+  });
+
+  /* tổng quan: bấm vào một slide thì về chế độ trình bày tại slide đó */
+  slides.forEach(function (s, i) {
+    s.addEventListener("click", function () {
+      if (!document.body.classList.contains("tong-quan")) return;
+      document.body.classList.remove("tong-quan");
+      setTimeout(function () { toi(i); }, 0);
+    });
+  });
+
+  /* ---------- presenter ---------- */
+  function moPresenter() {
+    var u = new URL(location.href);
+    u.searchParams.set("presenter", "1");
+    u.hash = "";
+    window.open(u.toString(), "deck-presenter", "width=1100,height=760");
+  }
+  if (kenh) {
+    kenh.onmessage = function (ev) {
+      var m = ev.data || {};
+      if (m.loai === "di") toi(m.i);
+      if (m.loai === "xin") phatTin();
+      if (m.loai === "tai-nhip") taiNhip();
+    };
+  }
+
+  /* ---------- xuất PDF ngay từ trang ---------- */
+  var hopIn = document.querySelector(".in-huong");
+  function moIn() { if (hopIn) hopIn.hidden = false; }
+  function inThat() {
+    if (hopIn) hopIn.hidden = true;
+    document.body.classList.add("pdf");
+    document.querySelectorAll("[data-reveal]").forEach(function (el) { el.classList.add("hien"); });
+    setTimeout(function () {
+      window.print();
+      setTimeout(function () { document.body.classList.remove("pdf"); toi(hienTai); }, 400);
+    }, 120);
+  }
+  var btIn = document.querySelector("[data-in]");
+  if (btIn) btIn.addEventListener("click", moIn);
+  var btChay = document.querySelector("[data-in-chay]");
+  if (btChay) btChay.addEventListener("click", inThat);
+  var btHuy = document.querySelector("[data-in-huy]");
+  if (btHuy) btHuy.addEventListener("click", function () { if (hopIn) hopIn.hidden = true; });
+
+  /* ---------- xuất nhịp thật ra tệp, để chấm lại buổi nói ---------- */
+  function taiNhip() {
+    ghiNhan();
+    var d = new Date();
+    var p2 = function (n) { return String(n).padStart(2, "0"); };
+    var ten = d.getFullYear() + "-" + p2(d.getMonth() + 1) + "-" + p2(d.getDate())
+            + "_" + p2(d.getHours()) + p2(d.getMinutes());
+    var data = {
+      deck: document.title,
+      ngay: ten,
+      tong_phut_ke_hoach: keHoach.reduce(function (a, b) { return a + b; }, 0),
+      tong_phut_that: batDau ? (Date.now() - batDau) / 60000 : 0,
+      slide: slides.map(function (s, i) {
+        return {
+          id: s.id, tieu_de: s.dataset.title || "",
+          che_do: s.dataset.chedo || "",
+          phut_ke_hoach: keHoach[i],
+          giay_ke_hoach: Math.round(keHoach[i] * 60),
+          giay_that: Math.round(thucTe[i] * 10) / 10
+        };
+      })
+    };
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }));
+    a.download = "nhip-" + ten + ".json";
+    a.click();
+  }
+
+  /* ---------- khoét lưới nền ở chỗ có nội dung ----------
+     Lưới chạy sau lưng bảng thì đường ngang cắt qua dòng bảng. Đo hộp nội dung
+     THẬT của từng slide rồi đặt toạ độ lỗ khoét vào biến CSS. Không chạy được thì
+     mặt nạ rơi về bộ số mặc định trong deck.css, vẫn dùng được. */
+  function doLoKhoet() {
+    slides.forEach(function (s) {
+      var noi = s.querySelector(".slide-trong");
+      if (!noi) return;
+      var rs = s.getBoundingClientRect(), rn = noi.getBoundingClientRect();
+      if (!rs.width || !rs.height || !rn.height) return;
+      var dem = 1.10;  // nới ra một chút để mép lỗ không cắt sát chữ
+      s.style.setProperty("--kh-x", ((rn.left - rs.left + rn.width / 2) / rs.width * 100).toFixed(1) + "%");
+      s.style.setProperty("--kh-y", ((rn.top - rs.top + rn.height / 2) / rs.height * 100).toFixed(1) + "%");
+      s.style.setProperty("--kh-w", Math.min(96, rn.width / rs.width * 100 * dem).toFixed(1) + "%");
+      s.style.setProperty("--kh-h", Math.min(92, rn.height / rs.height * 100 * dem).toFixed(1) + "%");
+    });
+  }
+  doLoKhoet();
+  addEventListener("resize", doLoKhoet);
+  addEventListener("beforeprint", doLoKhoet);
+
+  /* ---------- khởi động ---------- */
+  if (location.hash) {
+    var k = slides.findIndex(function (s) { return "#" + s.id === location.hash; });
+    if (k >= 0) hienTai = k;
+  }
+  document.querySelectorAll(".panels").forEach(function (p) { danhDauDots(p, 0); });
+  capNhat();
+})();
+</script>
+<script>/* ===========================================================================
+   presenter.js · cửa sổ người nói. Mở bằng phím p từ cửa sổ deck.
+   Cho ba thứ mà PDF và deck UNIOS đều không có:
+     1. ghi chú người nói
+     2. đồng hồ và PHÚT THẬT so với PHÚT KẾ HOẠCH
+     3. slide kế tiếp
+   Kết thúc bấm x để tải nhip-*.json, dùng để chấm lại buổi nói.
+   =========================================================================== */
+(function () {
+  "use strict";
+  if (!new URLSearchParams(location.search).has("presenter")) return;
+
+  var slides = [].slice.call(document.querySelectorAll("[data-slide]"));
+  var keHoach = slides.map(function (s) { return parseFloat(s.dataset.phut || "0"); });
+  var tongKe = keHoach.reduce(function (a, b) { return a + b; }, 0);
+  var kenh = ("BroadcastChannel" in window) ? new BroadcastChannel("deck-nha") : null;
+
+  document.documentElement.setAttribute("data-presenter", "");
+  var css = document.createElement("style");
+  css.textContent = [
+    "html[data-presenter]{scroll-snap-type:none}",
+    "html[data-presenter] body{overflow:auto;background:#14161a;color:#e8e9ec}",
+    "html[data-presenter] main,html[data-presenter] .thanh,html[data-presenter] .tien-do{display:none}",
+    ".pv{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:1px;background:#2a2e35;min-height:100vh}",
+    ".pv > div{background:#14161a;padding:1.5rem 1.75rem}",
+    ".pv h2{margin:.25rem 0 1rem;font-size:1.9rem;line-height:1.15;font-weight:650;color:#fff}",
+    ".pv .ghi{font-size:1.3rem;line-height:1.5;white-space:pre-wrap;color:#dfe2e7}",
+    ".pv .nh{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#8b93a1;margin:0 0 .4rem}",
+    ".pv .dh{font-size:3.6rem;font-weight:620;font-variant-numeric:tabular-nums;line-height:1;color:#fff}",
+    ".pv .lech{font-size:1.5rem;font-weight:650;font-variant-numeric:tabular-nums;margin-top:.5rem}",
+    ".pv .som{color:#5fb878}.pv .muon{color:#e0564f}.pv .dung{color:#8b93a1}",
+    ".pv ol{list-style:none;margin:0;padding:0;font-size:.95rem}",
+    ".pv li{display:flex;gap:.6rem;padding:.3rem 0;border-bottom:1px solid #22262d;color:#9aa2b1}",
+    ".pv li[data-on]{color:#fff;font-weight:620}",
+    ".pv li b{min-width:2.4rem;text-align:right;font-variant-numeric:tabular-nums;font-weight:500}",
+    ".pv .ke{font-size:1.05rem;color:#9aa2b1;margin-top:.4rem}",
+    ".pv button{font:inherit;background:#22262d;color:#e8e9ec;border:1px solid #343a44;",
+    "  padding:.5rem .9rem;margin:.35rem .35rem 0 0;cursor:pointer}",
+    ".pv button:hover{background:#2d323b}"
+  ].join("\n");
+  document.head.appendChild(css);
+
+  var box = document.createElement("div");
+  box.className = "pv";
+  box.innerHTML =
+    '<div>' +
+      '<p class="nh">Slide <span id="pv-so">1/1</span> · kế hoạch <span id="pv-kh">0</span> phút</p>' +
+      '<h2 id="pv-td">...</h2>' +
+      '<div class="ghi" id="pv-ghi"></div>' +
+      '<p class="nh" style="margin-top:2rem">Tiếp theo</p>' +
+      '<div class="ke" id="pv-ke"></div>' +
+      '<div style="margin-top:1.5rem">' +
+        '<button id="pv-lui">&#8592; Lùi</button>' +
+        '<button id="pv-tien">Tiến &#8594;</button>' +
+        '<button id="pv-tai">Tải nhịp thật (x)</button>' +
+      '</div>' +
+    '</div>' +
+    '<div>' +
+      '<p class="nh">Đã nói</p><div class="dh" id="pv-dh">00:00</div>' +
+      '<div class="lech dung" id="pv-lech">đúng nhịp</div>' +
+      '<p class="nh" style="margin-top:1.75rem">Tổng kế hoạch ' + tongKe.toFixed(1) + ' phút</p>' +
+      '<ol id="pv-ds"></ol>' +
+    '</div>';
+  document.body.appendChild(box);
+
+  var ds = document.getElementById("pv-ds");
+  slides.forEach(function (s, i) {
+    var li = document.createElement("li");
+    li.innerHTML = '<b>' + (keHoach[i] ? keHoach[i].toFixed(1) : "bk") + '</b><span>' +
+      (s.dataset.title || s.id) + '</span>';
+    li.addEventListener("click", function () { gui({ loai: "di", i: i }); });
+    li.style.cursor = "pointer";
+    ds.appendChild(li);
+  });
+
+  var i0 = 0;
+  function gui(m) { if (kenh) kenh.postMessage(m); }
+  document.getElementById("pv-lui").onclick = function () { gui({ loai: "di", i: i0 - 1 }); };
+  document.getElementById("pv-tien").onclick = function () { gui({ loai: "di", i: i0 + 1 }); };
+  document.getElementById("pv-tai").onclick = function () { gui({ loai: "tai-nhip" }); };
+
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    var k = e.key, d = 0;
+    if (k === "ArrowRight" || k === "ArrowDown" || k === "PageDown" || k === " ") d = 1;
+    else if (k === "ArrowLeft" || k === "ArrowUp" || k === "PageUp") d = -1;
+    else if (k === "x" || k === "X") { e.preventDefault(); gui({ loai: "tai-nhip" }); return; }
+    else return;
+    e.preventDefault();
+    gui({ loai: "di", i: i0 + d });
+  });
+
+  function p2(n) { return String(n).padStart(2, "0"); }
+  if (kenh) {
+    kenh.onmessage = function (ev) {
+      var m = ev.data || {};
+      if (m.loai !== "nhip") return;
+      i0 = m.i;
+      document.getElementById("pv-so").textContent = (m.i + 1) + "/" + m.tong;
+      document.getElementById("pv-kh").textContent = (m.phutSlideNay || 0).toFixed(1);
+      document.getElementById("pv-td").textContent = m.title || "";
+      document.getElementById("pv-ghi").textContent = m.ghiChu || "";
+      document.getElementById("pv-ke").textContent = m.keTiep || "(hết)";
+      var g = Math.floor(m.giayThat || 0);
+      document.getElementById("pv-dh").textContent = p2(Math.floor(g / 60)) + ":" + p2(g % 60);
+      var lech = g / 60 - (m.phutKeHoachLuyKe || 0);
+      var el = document.getElementById("pv-lech");
+      el.className = "lech " + (Math.abs(lech) < 0.5 ? "dung" : (lech < 0 ? "som" : "muon"));
+      el.textContent = Math.abs(lech) < 0.5 ? "đúng nhịp"
+        : (lech > 0 ? "muộn " : "sớm ") + Math.abs(lech).toFixed(1) + " phút";
+      [].slice.call(ds.children).forEach(function (li, j) {
+        if (j === m.i) li.setAttribute("data-on", ""); else li.removeAttribute("data-on");
+      });
+    };
+    gui({ loai: "xin" });
+  }
+})();
+</script>
+</body>
+</html>

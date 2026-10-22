@@ -1,0 +1,10 @@
+# hiện vật dựng ra, sinh lại được bằng xuat_pdf.py. 3,4 GB nếu đẩy lên.
+*/*/anh/
+*/*/deck.pdf
+*/anh/
+*/deck.pdf
+
+# rác hệ thống
+.DS_Store
+__pycache__/
+*.pyc

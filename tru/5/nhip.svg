@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" class="nhip" font-family="system-ui,sans-serif">
+<rect width="900" height="300" fill="#fff"/>
+<line x1="50" x2="880" y1="198.0" y2="198.0" stroke="#1b1e2320"/>
+<line x1="50" x2="880" y1="140.0" y2="140.0" stroke="#1b1e2320"/>
+<line x1="50" x2="880" y1="82.0" y2="82.0" stroke="#1b1e2320"/>
+<line x1="50" x2="880" y1="24.0" y2="24.0" stroke="#1b1e2320"/>
+<path d="M50.0 24.0 L54.9 31.1 L59.9 38.1 L59.9 32.0 L64.8 38.9 L69.8 45.6 L74.7 52.1 L79.6 58.4 L84.6 64.4 L89.5 70.3 L94.5 76.0 L99.4 81.6 L104.3 86.9 L109.3 92.1 L109.3 63.3 L114.2 69.3 L119.2 75.0 L124.1 80.6 L129.0 86.0 L134.0 91.2 L138.9 96.3 L143.9 101.2 L148.8 106.0 L153.8 110.6 L158.7 115.1 L163.6 119.4 L168.6 123.6 L173.5 127.7 L178.5 131.6 L178.5 87.2 L183.4 92.4 L188.3 97.5 L193.3 102.3 L198.2 107.1 L203.2 111.6 L208.1 116.1 L208.1 79.6 L213.0 85.0 L218.0 90.3 L222.9 95.4 L227.9 100.3 L232.8 105.1 L237.7 109.8 L237.7 77.1 L242.7 82.6 L247.6 87.9 L252.6 93.1 L257.5 98.1 L262.4 103.0 L267.4 107.7 L267.4 24.0 L272.3 31.1 L277.3 38.1 L282.2 44.8 L287.1 51.3 L292.1 57.6 L297.0 63.7 L297.0 53.6 L302.0 59.8 L306.9 65.8 L311.8 71.7 L316.8 77.4 L321.7 82.9 L326.7 88.2 L326.7 68.0 L331.6 73.8 L336.5 79.4 L341.5 84.8 L346.4 90.1 L351.4 95.2 L356.3 100.1 L356.3 75.5 L361.2 81.1 L366.2 86.4 L371.1 91.7 L376.1 96.7 L381.0 101.6 L386.0 106.4 L386.0 79.9 L390.9 85.3 L395.8 90.5 L400.8 95.6 L405.7 100.6 L410.7 105.3 L415.6 110.0 L415.6 82.8 L420.5 88.1 L425.5 93.3 L430.4 98.3 L435.4 103.1 L440.3 107.8 L445.2 112.4 L445.2 85.0 L450.2 90.3 L455.1 95.4 L460.1 100.3 L465.0 105.1 L469.9 109.8 L474.9 114.3 L474.9 87.0 L479.8 92.2 L484.8 97.3 L489.7 102.1 L494.6 106.9 L499.6 111.5 L504.5 115.9 L504.5 88.8 L509.5 94.0 L514.4 99.0 L519.3 103.8 L524.3 108.5 L529.2 113.0 L534.2 117.4 L534.2 90.6 L539.1 95.7 L544.0 100.6 L549.0 105.4 L553.9 110.0 L558.9 114.5 L563.8 118.9 L563.8 92.3 L568.8 97.4 L573.7 102.3 L578.6 107.0 L583.6 111.6 L588.5 116.0 L593.5 120.3 L593.5 94.1 L598.4 99.0 L603.3 103.9 L608.3 108.6 L613.2 113.1 L618.2 117.5 L623.1 121.8 L623.1 95.8 L628.0 100.7 L633.0 105.5 L637.9 110.1 L642.9 114.6 L647.8 119.0 L652.7 123.2 L652.7 97.5 L657.7 102.4 L662.6 107.1 L667.6 111.7 L672.5 116.1 L677.4 120.4 L682.4 124.6 L682.4 99.2 L687.3 104.0 L692.3 108.7 L697.2 113.2 L702.1 117.6 L707.1 121.9 L712.0 126.0 L712.0 100.9 L717.0 105.7 L721.9 110.3 L726.8 114.8 L731.8 119.2 L736.7 123.4 L741.7 127.4 L746.6 131.4 L751.5 135.2 L756.5 138.9 L761.4 142.5 L761.4 142.5 L766.4 146.0 L771.3 149.4 L776.2 152.7 L781.2 155.9 L786.1 159.0 L791.1 161.9 L796.0 164.8 L801.0 167.6 L805.9 170.4 L810.8 173.0 L810.8 173.0 L815.8 175.6 L820.7 178.0 L825.7 180.4 L830.6 182.7 L835.5 185.0 L840.5 187.2 L845.4 189.3 L850.4 191.4 L855.3 193.3 L860.2 195.3 L860.2 143.7 L865.2 147.1 L870.1 150.5 L870.1 119.4 L875.1 123.6 L880.0 127.6" fill="none" stroke="#2C6E9B" stroke-width="2.5"/>
+<line x1="50.0" x2="50.0" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="50.0" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="59.9" x2="59.9" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="59.9" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="109.3" x2="109.3" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="109.3" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hinh</text>
+<line x1="178.5" x2="178.5" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="178.5" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="208.1" x2="208.1" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="208.1" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="237.7" x2="237.7" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="237.7" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="267.4" x2="267.4" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="267.4" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<circle cx="267.4" cy="24.0" r="5" fill="#2C6E9B"/>
+<text x="267.4" y="14.0" font-size="11" font-weight="600" fill="#2C6E9B" text-anchor="middle">WOW</text>
+<line x1="297.0" x2="297.0" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="297.0" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="326.7" x2="326.7" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="326.7" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="356.3" x2="356.3" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="356.3" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="386.0" x2="386.0" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="386.0" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="415.6" x2="415.6" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="415.6" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="445.2" x2="445.2" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="445.2" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="474.9" x2="474.9" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="474.9" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="504.5" x2="504.5" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="504.5" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="534.2" x2="534.2" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="534.2" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="563.8" x2="563.8" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="563.8" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="593.5" x2="593.5" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="593.5" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="623.1" x2="623.1" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="623.1" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="652.7" x2="652.7" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="652.7" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="682.4" x2="682.4" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="682.4" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="712.0" x2="712.0" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="712.0" y="269" font-size="9" fill="#4a5260" text-anchor="middle">so</text>
+<line x1="761.4" x2="761.4" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="761.4" y="269" font-size="9" fill="#4a5260" text-anchor="middle">so</text>
+<line x1="810.8" x2="810.8" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="810.8" y="269" font-size="9" fill="#4a5260" text-anchor="middle">so</text>
+<line x1="860.2" x2="860.2" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="860.2" y="269" font-size="9" fill="#4a5260" text-anchor="middle">lang</text>
+<line x1="870.1" x2="870.1" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="870.1" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<text x="50" y="14" font-size="11" fill="#4a5260">muc tap trung uoc luong</text>
+<text x="22" y="256" font-size="10" fill="#4a5260">0 phut</text>
+<text x="880" y="292" font-size="10" fill="#4a5260" text-anchor="end">42 phut</text>
+</svg>

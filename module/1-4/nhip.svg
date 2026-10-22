@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" class="nhip" font-family="system-ui,sans-serif">
+<rect width="900" height="300" fill="#fff"/>
+<line x1="50" x2="880" y1="198.0" y2="198.0" stroke="#1b1e2320"/>
+<line x1="50" x2="880" y1="140.0" y2="140.0" stroke="#1b1e2320"/>
+<line x1="50" x2="880" y1="82.0" y2="82.0" stroke="#1b1e2320"/>
+<line x1="50" x2="880" y1="24.0" y2="24.0" stroke="#1b1e2320"/>
+<path d="M50.0 24.0 L54.1 31.1 L58.3 38.1 L58.3 32.0 L62.5 38.9 L66.6 45.6 L70.8 52.0 L74.9 58.3 L79.0 64.4 L83.2 70.3 L83.2 50.5 L87.3 56.8 L91.5 63.0 L95.7 68.9 L99.8 74.7 L104.0 80.2 L108.1 85.6 L108.1 85.6 L112.2 90.9 L116.4 96.0 L120.5 100.9 L124.7 105.7 L124.7 71.3 L128.8 76.9 L133.0 82.5 L137.2 87.8 L141.3 93.0 L141.3 64.8 L145.4 70.7 L149.6 76.4 L153.8 81.9 L157.9 87.3 L162.1 92.5 L166.2 97.5 L166.2 68.1 L170.3 73.9 L174.5 79.5 L178.7 84.9 L182.8 90.2 L182.8 64.6 L186.9 70.5 L191.1 76.2 L195.2 81.7 L199.4 87.1 L203.6 92.3 L207.7 97.3 L207.7 97.3 L211.8 102.2 L216.0 106.9 L220.2 111.5 L224.3 115.9 L224.3 80.0 L228.4 85.5 L232.6 90.7 L236.8 95.8 L240.9 100.7 L245.1 105.5 L249.2 110.1 L249.2 77.6 L253.3 83.1 L257.5 88.4 L261.6 93.6 L265.8 98.6 L265.8 24.0 L269.9 31.1 L274.1 38.1 L278.2 44.8 L282.4 51.3 L286.6 57.6 L290.7 63.7 L294.9 69.6 L299.0 75.3 L299.0 60.1 L303.1 66.1 L307.3 71.9 L311.4 77.6 L315.6 83.1 L315.6 64.8 L319.8 70.7 L323.9 76.4 L328.1 82.0 L332.2 87.3 L336.4 92.5 L340.5 97.5 L340.5 73.6 L344.6 79.2 L348.8 84.6 L352.9 89.9 L357.1 95.0 L357.1 72.7 L361.2 78.4 L365.4 83.8 L369.6 89.1 L373.7 94.2 L377.9 99.2 L382.0 104.0 L382.0 78.5 L386.1 83.9 L390.3 89.2 L394.4 94.4 L398.6 99.3 L398.6 76.4 L402.8 81.9 L406.9 87.3 L411.1 92.5 L415.2 97.5 L419.4 102.4 L423.5 107.1 L423.5 81.5 L427.6 86.8 L431.8 92.0 L435.9 97.1 L440.1 102.0 L440.1 79.1 L444.2 84.6 L448.4 89.9 L452.6 95.0 L456.7 99.9 L460.9 104.7 L465.0 109.4 L465.0 84.0 L469.1 89.3 L473.3 94.4 L477.4 99.4 L481.6 104.2 L481.6 81.7 L485.8 87.1 L489.9 92.3 L494.1 97.3 L498.2 102.2 L502.4 106.9 L506.5 111.5 L506.5 86.5 L510.6 91.7 L514.8 96.7 L519.0 101.6 L523.1 106.4 L523.1 84.2 L527.2 89.5 L531.4 94.6 L535.5 99.6 L539.7 104.4 L543.9 109.0 L548.0 113.6 L548.0 88.9 L552.1 94.1 L556.3 99.0 L560.5 103.9 L564.6 108.6 L564.6 86.7 L568.8 91.9 L572.9 96.9 L577.0 101.8 L581.2 106.6 L585.4 111.2 L589.5 115.6 L589.5 91.4 L593.6 96.4 L597.8 101.3 L602.0 106.1 L606.1 110.7 L610.2 115.2 L614.4 119.5 L618.5 123.7 L622.7 127.8 L622.7 127.8 L626.9 131.7 L631.0 135.5 L635.1 139.3 L639.3 142.8 L643.5 146.3 L647.6 149.7 L651.8 153.0 L655.9 156.1 L655.9 156.1 L660.0 159.2 L664.2 162.2 L668.4 165.1 L672.5 167.9 L672.5 167.9 L676.6 170.6 L680.8 173.2 L685.0 175.8 L689.1 178.2 L689.1 128.9 L693.2 132.8 L697.4 136.6 L701.5 140.3 L705.7 143.9 L709.9 147.3 L714.0 150.7 L714.0 114.5 L718.1 118.9 L722.3 123.1 L726.5 127.2 L730.6 131.2 L734.8 135.0 L738.9 138.7 L738.9 108.8 L743.0 113.3 L747.2 117.7 L751.4 121.9 L755.5 126.1 L759.6 130.1 L763.8 133.9 L763.8 133.9 L768.0 137.7 L772.1 141.3 L776.2 144.9 L780.4 148.3 L780.4 148.3 L784.5 151.6 L788.7 154.8 L792.9 157.9 L797.0 160.9 L797.0 122.8 L801.1 126.9 L805.3 130.9 L809.5 134.7 L813.6 138.5 L817.8 142.1 L821.9 145.6 L821.9 115.1 L826.0 119.5 L830.2 123.7 L834.4 127.7 L838.5 131.7 L842.6 135.5 L846.8 139.2 L846.8 139.2 L851.0 142.8 L855.1 146.3 L859.2 149.7 L863.4 152.9 L863.4 120.5 L867.5 124.7 L871.7 128.7 L871.7 107.4 L875.9 112.0 L880.0 116.4" fill="none" stroke="#2C6E9B" stroke-width="2.5"/>
+<line x1="50.0" x2="50.0" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="50.0" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="58.3" x2="58.3" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="58.3" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="83.2" x2="83.2" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="83.2" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="108.1" x2="108.1" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="108.1" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="124.7" x2="124.7" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="124.7" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="141.3" x2="141.3" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="141.3" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="166.2" x2="166.2" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="166.2" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="182.8" x2="182.8" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="182.8" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="207.7" x2="207.7" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="207.7" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="224.3" x2="224.3" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="224.3" y="269" font-size="9" fill="#4a5260" text-anchor="middle">so</text>
+<line x1="249.2" x2="249.2" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="249.2" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="265.8" x2="265.8" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="265.8" y="269" font-size="9" fill="#4a5260" text-anchor="middle">so</text>
+<circle cx="265.8" cy="24.0" r="5" fill="#2C6E9B"/>
+<text x="265.8" y="14.0" font-size="11" font-weight="600" fill="#2C6E9B" text-anchor="middle">WOW</text>
+<line x1="299.0" x2="299.0" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="299.0" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="315.6" x2="315.6" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="315.6" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="340.5" x2="340.5" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="340.5" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="357.1" x2="357.1" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="357.1" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="382.0" x2="382.0" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="382.0" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="398.6" x2="398.6" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="398.6" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="423.5" x2="423.5" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="423.5" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="440.1" x2="440.1" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="440.1" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="465.0" x2="465.0" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="465.0" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="481.6" x2="481.6" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="481.6" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="506.5" x2="506.5" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="506.5" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="523.1" x2="523.1" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="523.1" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="548.0" x2="548.0" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="548.0" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="564.6" x2="564.6" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="564.6" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="589.5" x2="589.5" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="589.5" y="269" font-size="9" fill="#4a5260" text-anchor="middle">so</text>
+<line x1="622.7" x2="622.7" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="622.7" y="269" font-size="9" fill="#4a5260" text-anchor="middle">so</text>
+<line x1="655.9" x2="655.9" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="655.9" y="269" font-size="9" fill="#4a5260" text-anchor="middle">so</text>
+<line x1="672.5" x2="672.5" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="672.5" y="269" font-size="9" fill="#4a5260" text-anchor="middle">so</text>
+<line x1="689.1" x2="689.1" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="689.1" y="269" font-size="9" fill="#4a5260" text-anchor="middle">demo</text>
+<line x1="714.0" x2="714.0" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="714.0" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="738.9" x2="738.9" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="738.9" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="763.8" x2="763.8" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="763.8" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="780.4" x2="780.4" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="780.4" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="797.0" x2="797.0" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="797.0" y="269" font-size="9" fill="#4a5260" text-anchor="middle">hoi</text>
+<line x1="821.9" x2="821.9" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="821.9" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="846.8" x2="846.8" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="846.8" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<line x1="863.4" x2="863.4" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="863.4" y="269" font-size="9" fill="#4a5260" text-anchor="middle">lang</text>
+<line x1="871.7" x2="871.7" y1="24" y2="256" stroke="#1b1e2318"/>
+<text x="871.7" y="269" font-size="9" fill="#4a5260" text-anchor="middle">noi</text>
+<text x="50" y="14" font-size="11" fill="#4a5260">muc tap trung uoc luong</text>
+<text x="22" y="256" font-size="10" fill="#4a5260">0 phut</text>
+<text x="880" y="292" font-size="10" fill="#4a5260" text-anchor="end">50 phut</text>
+</svg>

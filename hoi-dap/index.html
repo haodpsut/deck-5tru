@@ -1,0 +1,1479 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phòng hỏi đáp hội thảo</title>
+<style>/* ===========================================================================
+   deck.css  ·  bộ kit slide web của nhà
+   Không tham chiếu tài nguyên ngoài: phòng họp mất mạng vẫn chạy đủ.
+   Đổi một deck = đổi MỘT dòng --accent ở :root của index.html.
+   =========================================================================== */
+
+:root{
+  --accent:#2C6E9B;        /* MỘT màu nhấn duy nhất cho cả deck */
+  --accent-manh:#1F5476;
+  --ink:#1b1e23;
+  --ink-mo:#4a5260;
+  --giay:#f7f7f5;
+  --giay-sau:#eceae6;
+  --ke:#1b1e2326;
+  --header:3.25rem;
+  --le:clamp(1.25rem,4vw,4rem);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{
+  scroll-behavior:smooth;
+  scroll-snap-type:y mandatory;
+  -webkit-text-size-adjust:100%;
+}
+body{
+  margin:0;
+  background:var(--giay);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px;
+  line-height:1.55;
+  font-feature-settings:"kern" 1;
+}
+img,svg{max-width:100%;height:auto}
+[hidden]{display:none!important}
+
+/* ---------------- cấp chữ, tên theo nghĩa chứ không theo cỡ ---------------- */
+.d1{font-size:clamp(2.1rem,1.2rem + 3.4vw,4.1rem);font-weight:650;line-height:1.02;letter-spacing:-.03em;text-wrap:balance;margin:0}
+.d2{font-size:clamp(1.6rem,1.1rem + 2vw,2.9rem);font-weight:620;line-height:1.08;letter-spacing:-.025em;text-wrap:balance;margin:0}
+.lead{font-size:clamp(1.05rem,1rem + .45vw,1.4rem);line-height:1.5;color:var(--ink-mo);max-width:46ch}
+.label{font-size:.8125rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mo);margin:0}
+.num{font-size:clamp(2.4rem,1.6rem + 3vw,4.6rem);font-weight:620;line-height:1;letter-spacing:-.04em;
+     font-variant-numeric:tabular-nums;color:var(--accent)}
+
+/* ---------------- khung slide ---------------- */
+.slide{
+  min-height:100svh;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:calc(var(--header) + 1.5rem) var(--le) 4rem;
+  position:relative;
+  overflow:hidden;            /* ⚠ chính chỗ này nuốt nội dung: cổng G12 đo nó */
+}
+.slide-trong{max-width:68rem;width:100%;margin:0 auto}
+.slide > .slide-trong > * + *{margin-top:1.25rem}
+.slide p{margin:0;font-size:clamp(1.05rem,1rem + .5vw,1.45rem);line-height:1.5;max-width:52ch}
+.slide ul,.slide ol{margin:0;padding-left:1.4em;max-width:52ch}
+.slide li{margin-top:.6rem;font-size:clamp(1rem,.95rem + .4vw,1.3rem)}
+.slide strong{font-weight:680}
+.slide em{font-style:normal;color:var(--accent);font-weight:600}
+.slide code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em;
+            background:var(--giay-sau);padding:.1em .35em}
+
+/* vạch nhấn trước tiêu đề, mô-típ nhận dạng duy nhất của kit */
+.slide .d2::before{
+  content:"";display:block;width:2.5rem;height:.3rem;background:var(--accent);
+  margin-bottom:1.1rem;transform-origin:0;
+}
+
+/* bìa, cảm ơn, one more thing.
+   ⚠ KHÔNG khai màu nền ở đây. Nền chỉ đến từ một nguồn là các lớp .nen-* bên dưới,
+   chọn bằng @nen và mặc định trong kit/nen.json. Hai nguồn nền là hai sự thật. */
+.slide.cover .gach{width:4rem;height:.35rem;background:var(--accent);margin-bottom:1.6rem}
+.slide.omt{text-align:center;align-items:center}
+.slide.omt .d2::before{margin-left:auto;margin-right:auto}
+.slide.omt p{margin-left:auto;margin-right:auto;text-align:center;
+             font-size:clamp(1.5rem,1rem + 2vw,2.6rem);line-height:1.3;max-width:24ch}
+.slide.cam-on p{font-size:clamp(1.4rem,1rem + 1.8vw,2.4rem);line-height:1.3;max-width:26ch}
+/* ⚠ Slide dự phòng KHÔNG được có nền riêng. Trước đây nó là sọc chéo hardcode,
+   tức đúng thứ luật G18 cấm: nền khai ngoài bộ chuẩn. Nay nó dùng chung nền với
+   slide nội dung, và chỉ phân biệt bằng CHỮ: nhãn "Dự phòng" và số trang "BK". */
+
+/* khối số liệu */
+.so-khoi{display:flex;flex-wrap:wrap;gap:2.5rem 3.5rem;margin-top:1.5rem}
+.so-o{min-width:9rem}
+.so-o .nhan{font-size:.95rem;color:var(--ink-mo);margin-top:.4rem;max-width:22ch}
+
+/* ---------------- panel ngang trong một slide ---------------- */
+.panels{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:var(--le);
+        scrollbar-width:none;margin-top:1rem}
+.panels::-webkit-scrollbar{display:none}
+.panel{flex:0 0 100%;scroll-snap-align:start;min-width:0}
+.panel-dots{display:flex;gap:.45rem;align-items:center;margin-top:1.5rem;font-size:.8125rem;color:var(--ink-mo)}
+.panel-dots b{width:.5rem;height:.5rem;background:var(--ke);display:block}
+.panel-dots b[data-on]{background:var(--accent)}
+
+/* ---------------- thanh trên, tiến độ ---------------- */
+.thanh{position:fixed;inset-inline:0;top:0;height:var(--header);z-index:40;
+       background:color-mix(in srgb,var(--giay) 92%,transparent);backdrop-filter:blur(8px);
+       border-bottom:1px solid var(--ke);display:flex;align-items:center;
+       gap:1rem;padding:0 var(--le);font-size:.8125rem;color:var(--ink-mo)}
+.thanh .ten{font-weight:650;color:var(--ink)}
+.thanh .phai{margin-left:auto;display:flex;gap:1rem;align-items:center;font-variant-numeric:tabular-nums}
+.tien-do{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:50;
+         transform:scaleX(var(--pct,0));transform-origin:0;width:100%;transition:transform .15s linear}
+
+/* ---------------- hiện dần: phần THÊM, không phải điều kiện đọc ---------------- */
+[data-reveal]{opacity:1}
+.js [data-reveal]{opacity:0;transform:translateY(.75rem);
+  transition:opacity .6s cubic-bezier(.2,.7,.1,1),transform .6s cubic-bezier(.2,.7,.1,1);
+  transition-delay:var(--tre,0s)}
+.js [data-reveal].hien{opacity:1;transform:none}
+.js [data-reveal] .w{display:inline-block;opacity:0;transform:translateY(.4em);
+  transition:opacity .5s,transform .7s cubic-bezier(.2,.7,.1,1);
+  transition-delay:calc(var(--w) * 42ms + .1s)}
+.js [data-reveal].hien .w{opacity:1;transform:none}
+
+/* ---------------- chế độ tổng quan (bấm o) ---------------- */
+body.tong-quan{scroll-snap-type:none;overflow:auto}
+body.tong-quan .slide{min-height:0;height:16rem;padding:1.5rem;border:1px solid var(--ke);
+  overflow:hidden;cursor:pointer;zoom:.5}
+body.tong-quan main{display:grid;grid-template-columns:repeat(auto-fill,minmax(20rem,1fr));
+  gap:1rem;padding:calc(var(--header) + 1rem) 1rem 4rem}
+body.tong-quan .panels{overflow:hidden}
+
+/* ---------------- bảng trợ giúp ---------------- */
+.giup{position:fixed;inset:0;z-index:60;background:#1b1e23f2;color:#fff;display:grid;
+      place-items:center;padding:2rem}
+.giup table{border-collapse:collapse;font-size:1rem}
+.giup td{padding:.45rem 1.2rem .45rem 0;vertical-align:top}
+.giup kbd{background:#ffffff1f;border:1px solid #ffffff38;padding:.1em .45em;
+          font-family:inherit;font-size:.95em}
+
+/* ---------------- nhịp: biểu đồ sự tập trung ---------------- */
+.nhip{width:100%;height:auto;margin-top:1rem;border:1px solid var(--ke);background:#fff}
+
+/* ---------------- tôn trọng thiết lập người dùng ---------------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js [data-reveal],.js [data-reveal] .w{opacity:1;transform:none;transition:none}
+  .tien-do{transition:none}
+}
+
+/* ---------------- chế độ PDF: một slide một trang, hoạt cảnh đóng băng ----------
+   Dùng chung cho @media print và cho class .pdf do bộ xuất đặt vào.
+   ------------------------------------------------------------------------------ */
+@page{size:1280px 720px;margin:0}
+body.pdf{scroll-snap-type:none}
+body.pdf .thanh,body.pdf .tien-do,body.pdf .giup,body.pdf .panel-dots{display:none!important}
+body.pdf .slide{
+  min-height:0;height:720px;width:1280px;break-after:page;page-break-after:always;
+  padding:3.5rem 4.5rem;overflow:hidden;
+}
+body.pdf .slide:last-child{break-after:auto;page-break-after:auto}
+body.pdf [data-reveal],body.pdf [data-reveal] .w{opacity:1!important;transform:none!important;transition:none!important}
+body.pdf .panels{display:block;overflow:visible}
+body.pdf .panel{flex:none;width:100%}
+body.pdf .panel + .panel{margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--ke)}
+@media print{
+  html{scroll-snap-type:none}
+  .thanh,.tien-do,.giup,.panel-dots{display:none!important}
+  .slide{min-height:0;height:720px;break-after:page;page-break-after:always;overflow:hidden}
+  [data-reveal],[data-reveal] .w{opacity:1!important;transform:none!important}
+  .panels{display:block;overflow:visible}
+  .panel{flex:none;width:100%}
+}
+
+/* ===========================================================================
+   NỀN SLIDE · chọn bằng @nen trong noi-dung.md
+   Mọi nền vẽ bằng CSS thuần, không tệp ảnh, giữ lời hứa chạy offline.
+   Nền là thứ nằm DƯỚI, không bao giờ được ăn vào độ đọc của chữ:
+   mọi hoa văn dưới đây đều dưới 5% độ đậm.
+   =========================================================================== */
+/* HAI LỚP NỀN, tách bạch để không lớp nào kéo lớp kia:
+     ::before = VÂN phủ cả slide, đổi theo @nen
+     ::after  = VẠCH CHÂN TRANG, dấu nhận dạng chung của mọi slide, cao cố định
+   Vạch cao cố định chứ không tính theo phần trăm: khổ slide nào cũng ra đúng một dải
+   thước ở chân, không bao giờ chạm vùng nội dung. */
+.slide::before,.slide::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0}
+.slide::after{
+  background-image:linear-gradient(to right,var(--vach-mau,#1b1e2316) 1px,transparent 1px);
+  background-size:12.5% var(--vach-cao,84px);
+  background-position:left bottom;
+  background-repeat:repeat-x;
+}
+.slide > .slide-trong{position:relative;z-index:1}
+
+/* vạch dọc, mô-típ nhận dạng của kit, mặc định cho slide nội dung */
+/* mặc định cho slide nội dung. Vân để lớp khí quyển lo (lưới có mặt nạ, khối loang,
+   tối góc), ở đây không chồng thêm hoa văn nào nữa: hai lớp vân cùng lúc đọc thành rối. */
+.nen-vach::before{background:none}
+/* lưới chấm */
+.nen-luoi::before{
+  background-image:radial-gradient(circle at 1px 1px,#1b1e231f 1px,transparent 0);
+  background-size:22px 22px;
+}
+/* gạch chéo nhẹ */
+.nen-cheo::before{
+  background-image:repeating-linear-gradient(135deg,#1b1e230f 0 1px,transparent 1px 11px);
+}
+/* loang màu nhấn từ góc trên phải */
+.nen-sang::before{
+  background-image:
+    radial-gradient(circle at 1px 1px,#1b1e2314 1px,transparent 0),
+    radial-gradient(62% 72% at 88% 5%,color-mix(in srgb,var(--accent) 16%,transparent) 0%,transparent 70%);
+  background-size:26px 26px,100% 100%;
+  background-repeat:repeat,no-repeat;
+}
+/* nền tối, dùng cho bìa và one more thing */
+.nen-toi{background:var(--ink);color:var(--giay)}
+.nen-toi .d1,.nen-toi .d2{color:#fff}
+.nen-toi .lead,.nen-toi .label,.nen-toi p,.nen-toi li{color:#cfd4dc}
+.nen-toi strong{color:#fff}
+.nen-toi .bang th{color:#fff;border-bottom-color:var(--accent)}
+.nen-toi .bang td{border-bottom-color:#ffffff1f}
+.nen-toi::before{
+  background-image:radial-gradient(circle at 1px 1px,#ffffff14 1px,transparent 0);
+  background-size:26px 26px;
+}
+.nen-toi::after{background-image:linear-gradient(to right,#ffffff16 1px,transparent 1px)}
+.nen-trong::before,.nen-trong::after{background:none}
+
+/* hình trang trí ở bìa: vẽ bằng SVG sinh sẵn, đứng yên khi in */
+.bia-hinh{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.9}
+.bia-hinh .vong{animation:bia-quay 64s linear infinite;transform-origin:center}
+.bia-hinh .cham{animation:bia-nhay 5.5s ease-in-out infinite;animation-delay:calc(var(--i) * .5s)}
+@keyframes bia-quay{to{transform:rotate(360deg)}}
+@keyframes bia-nhay{0%,100%{opacity:.25}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.bia-hinh *{animation:none!important}}
+body.pdf .bia-hinh *{animation:none!important}
+
+/* ===========================================================================
+   BẢNG · ít đường kẻ, số canh phải, một cột được nhấn
+   =========================================================================== */
+.bang-khung{overflow-x:auto;margin-top:1.25rem}
+/* ⚠ width:100% kéo mọi đường kẻ ngang ra hết bề ngang slide, trông như gạch chân
+   cả trang. Bảng rộng theo NỘI DUNG, đường kẻ dừng ở đúng chỗ bảng hết. */
+.bang{border-collapse:collapse;width:auto;max-width:100%;font-variant-numeric:tabular-nums;
+      font-size:clamp(.95rem,.85rem + .5vw,1.25rem)}
+.bang-rong .bang{width:100%}
+.bang caption{caption-side:bottom;margin-top:.75rem;font-size:.9rem;color:var(--ink-mo);
+              text-align:left}
+.bang th{text-align:left;font-weight:650;padding:.5rem 1.8rem .5rem 0;
+         border-bottom:2px solid var(--accent);white-space:nowrap}
+.bang td{padding:.5rem 1.8rem .5rem 0;border-bottom:1px solid var(--ke);vertical-align:top}
+/* ⚠ cột số canh phải vẫn PHẢI giữ khoảng đệm, bỏ đi là chữ hai cột dính nhau */
+.bang td.so,.bang th.so{text-align:right;font-variant-numeric:tabular-nums}
+.bang tr > *:last-child{padding-right:0}
+.bang tr[data-nhan] td{padding-left:.6rem}
+.bang tbody tr:last-child td{border-bottom:none}
+.bang .nhan{color:var(--accent);font-weight:650}
+.bang tr[data-nhan] td{background:color-mix(in srgb,var(--accent) 10%,transparent);
+                       font-weight:600}
+
+/* ===========================================================================
+   HÌNH · SVG nhúng thẳng để thừa kế màu nhấn và vẫn chạy offline
+   =========================================================================== */
+figure{margin:1.25rem 0 0}
+figure svg,figure img{display:block;width:100%;height:auto;max-height:52svh}
+body.pdf figure svg,body.pdf figure img{max-height:380px}
+figcaption{margin-top:.6rem;font-size:.9rem;color:var(--ink-mo);max-width:60ch}
+figcaption b{color:var(--ink);font-weight:650}
+.nen-toi figcaption{color:#aab1bd}.nen-toi figcaption b{color:#fff}
+.hinh-doi{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:end}
+@media (max-width:720px){.hinh-doi{grid-template-columns:1fr}}
+
+/* ===========================================================================
+   NÚT XUẤT PDF trên thanh trên, và bảng chỉ dẫn in
+   =========================================================================== */
+.nut{font:inherit;font-size:.8125rem;font-weight:600;background:none;color:var(--ink-mo);
+     border:1px solid var(--ke);padding:.3rem .7rem;cursor:pointer}
+.nut:hover{color:var(--ink);border-color:var(--ink)}
+.in-huong{position:fixed;inset:0;z-index:70;background:#1b1e23f2;color:#fff;
+          display:grid;place-items:center;padding:2rem}
+.in-huong .hop{max-width:34rem;background:#20242b;padding:2rem;border:1px solid #343a44}
+.in-huong h3{margin:0 0 1rem;font-size:1.3rem}
+.in-huong ol{margin:0 0 1.5rem;padding-left:1.3em;line-height:1.7}
+.in-huong b{color:#fff}
+.in-huong code{background:#ffffff1a;padding:.1em .4em}
+@media print{.nut,.in-huong{display:none!important}}
+body.pdf .nut,body.pdf .in-huong{display:none!important}
+
+/* ===========================================================================
+   BÓC TỪ deck "DAU DIGITAL" 30/09/2026 · ba thiết bị đáng lấy
+   =========================================================================== */
+
+/* 1) CHÂN TRANG XUẤT XỨ: mọi slide nội dung tự mang theo nguồn số và mốc ngày.
+   Đây là thứ đáng giá nhất của deck ấy: bóc một slide ra khỏi bộ vẫn biết số
+   lấy từ đâu và tính tới ngày nào. */
+.chan{position:absolute;left:var(--le);right:var(--le);bottom:1.5rem;z-index:1;
+      display:flex;gap:1rem;align-items:baseline;
+      font-size:.78rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+      color:var(--ink-mo)}
+.chan .so-trang{margin-left:auto;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.nen-toi .chan{color:#8e97a5}
+
+/* 2) Ô SỐ BA TẦNG: số, nhãn, và MỐC SO SÁNH. Một con số không có mốc so sánh
+   thì không nói được điều gì, nên tầng thứ ba là bắt buộc. */
+.so-o .moc{margin-top:.35rem;font-size:.85rem;line-height:1.35;color:var(--ink-mo);
+           max-width:24ch}
+.so-o .moc.trong-moc{font-style:italic;opacity:.75}
+.so-khoi.cot{display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));
+             gap:1.75rem 2rem}
+.so-khoi.cot > .so-o{border-left:1px solid var(--ke);padding-left:1.25rem}
+.so-khoi.cot > .so-o:first-child{border-left:none;padding-left:0}
+
+/* 3) KHỐI LƯU Ý: viền trái màu nhấn, nền pha rất nhạt */
+.luu-y{display:flex;gap:1.5rem;margin-top:1.25rem;padding:1.1rem 1.4rem;
+       border-left:4px solid var(--accent);
+       background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.luu-y .nhan{flex:0 0 11rem;font-size:.8rem;font-weight:700;letter-spacing:.08em;
+             text-transform:uppercase;color:var(--accent);line-height:1.4}
+.luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
+.nen-toi .luu-y{background:#ffffff0f}
+@media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
+
+/* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
+.co-cau-khoi{margin-top:1.25rem}
+.co-cau-dau{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:.6rem}
+.co-cau-dau .nhan{font-size:.8rem;font-weight:700;letter-spacing:.08em;
+                 text-transform:uppercase;color:var(--ink-mo)}
+.co-cau-chu{display:flex;gap:1rem;margin-left:auto;flex-wrap:wrap;font-size:.82rem;
+           color:var(--ink-mo)}
+.co-cau-chu span{display:flex;align-items:center;gap:.4rem}
+.co-cau-chu i{width:.7rem;height:.7rem;display:block}
+.co-cau{display:flex;height:2.6rem;overflow:hidden}
+.co-cau > div{display:grid;place-items:center;font-size:.95rem;font-weight:650;
+             font-variant-numeric:tabular-nums;color:#fff;min-width:0}
+.co-cau > div[data-nhat]{color:var(--ink)}
+
+
+/* HÌNH LỚN: slide dành cho một hình lấy từ bài. Tiêu đề thu nhỏ, bỏ kicker,
+   để hình có thêm khoảng một trăm bốn mươi điểm ảnh chiều cao. Hình của bài tạp chí
+   vẽ cho khổ một cột, mang sang slide thì chữ trong hình tụt xuống dưới ngưỡng đọc. */
+.slide.hinh-lon .label{display:none}
+/* vẫn phải trên sàn đọc của G15: thu tiêu đề không được thu xuống dưới 34px */
+.slide.hinh-lon .d2{font-size:clamp(2.15rem,1.7rem + .9vw,2.6rem)}
+.slide.hinh-lon .d2::before{width:2rem;height:.25rem;margin-bottom:.7rem}
+.slide.hinh-lon figure{margin-top:.8rem}
+.slide.hinh-lon figure svg,.slide.hinh-lon figure img{max-height:54svh}
+body.pdf .slide.hinh-lon figure svg,body.pdf .slide.hinh-lon figure img{max-height:445px}
+
+
+/* ===========================================================================
+   LỚP KHÍ QUYỂN · bóc từ working/ra-mat
+   Ba kỹ thuật lấy về:
+     a) lưới vuông có MẶT NẠ ellipse, nhạt dần ra biên nên không bao giờ đọc
+        thành cái khung, và không chặn ở đâu cả;
+     b) ba khối màu loang rất lớn đặt LỆCH RA NGOÀI mép, alpha thấp, trôi chậm;
+     c) một lớp tối góc cực nhẹ để giữ mắt vào giữa.
+   Khác bản gốc hai chỗ: alpha hạ xuống vì slide phải chiếu chứ không phải xem
+   trên màn hình cá nhân, và mọi hoạt cảnh đóng băng khi in.
+   =========================================================================== */
+.nen{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.nen::before,.nen::after{content:"";position:absolute;inset:0}
+
+/* a) lưới có mặt nạ, và KHOÉT RỖNG ở chỗ có nội dung.
+   Lưới chạy sau lưng bảng thì các đường ngang cắt qua dòng bảng, đọc rất mệt.
+   Mặt nạ gồm hai lớp trừ nhau: lớp một là vùng lưới được hiện, lớp hai là lỗ khoét.
+   Toạ độ lỗ do deck.js đo từ hộp nội dung thật của từng slide rồi đặt vào biến;
+   không có JS thì rơi về bộ số mặc định dưới đây, vẫn dùng được. */
+.nen::before{
+  background-image:
+    linear-gradient(var(--luoi-mau,#1b1e230d) 1px,transparent 1px),
+    linear-gradient(90deg,var(--luoi-mau,#1b1e230d) 1px,transparent 1px);
+  background-size:64px 64px;
+  --mn-hien:radial-gradient(ellipse 80% 74% at 52% 46%,#000 22%,transparent 78%);
+  --mn-khoet:radial-gradient(ellipse var(--kh-w,52%) var(--kh-h,42%)
+              at var(--kh-x,34%) var(--kh-y,52%),#000 52%,transparent 100%);
+  -webkit-mask-image:var(--mn-hien),var(--mn-khoet);
+          mask-image:var(--mn-hien),var(--mn-khoet);
+  -webkit-mask-composite:source-out;
+          mask-composite:subtract;
+}
+/* b) ba khối loang, đặt lệch ra ngoài mép như bản gốc */
+.nen .khoi{position:absolute;display:block;border-radius:50%;will-change:transform}
+.nen .k1{width:52%;height:92%;left:-16%;top:-28%;
+         background:radial-gradient(circle,color-mix(in srgb,var(--accent) 16%,transparent),transparent 66%);
+         animation:troi-1 34s ease-in-out infinite alternate}
+.nen .k2{width:44%;height:80%;right:-14%;top:12%;
+         background:radial-gradient(circle,color-mix(in srgb,var(--accent) 11%,transparent),transparent 66%);
+         animation:troi-2 42s ease-in-out infinite alternate}
+.nen .k3{width:40%;height:72%;left:28%;bottom:-30%;
+         background:radial-gradient(circle,color-mix(in srgb,var(--ink) 7%,transparent),transparent 66%);
+         animation:troi-3 38s ease-in-out infinite alternate}
+@keyframes troi-1{to{transform:translate(4%,6%)}}
+@keyframes troi-2{to{transform:translate(-5%,-4%)}}
+@keyframes troi-3{to{transform:translate(3%,-5%)}}
+/* c) tối góc */
+.nen::after{background:radial-gradient(ellipse 118% 104% at 50% 50%,transparent 60%,#1b1e230e)}
+
+/* slide nền mực: lưới và khối sáng lên, tối góc đổi chiều */
+.nen-toi .nen{--luoi-mau:#ffffff0d}
+.nen-toi .nen .k3{background:radial-gradient(circle,#ffffff12,transparent 66%)}
+.nen-toi .nen::after{background:radial-gradient(ellipse 118% 104% at 50% 50%,transparent 58%,#00000038)}
+
+/* nền 'trong' thì không có lớp khí quyển nào */
+.nen-trong .nen{display:none}
+
+@media (prefers-reduced-motion:reduce){.nen .khoi{animation:none!important}}
+body.pdf .nen .khoi{animation:none!important}
+
+
+/* ===========================================================================
+   BỘ HÌNH CHO WEB · đúng vai txstyle.tex bên LaTeX
+   Luật làm nên khác biệt giữa hình VẼ TẠI CHỖ và hình DÁN VÀO:
+     1. không khai font trong SVG, để nó THỪA KẾ chữ của deck;
+     2. không khai mã màu, dùng currentColor và biến của deck;
+     3. viewBox dựng ở ĐÚNG KHỔ SẼ CHIẾU, tỉ lệ phóng xấp xỉ một, nhờ vậy cỡ chữ
+        trong hình bằng đúng cỡ chữ khai ra, không bị khổ hình kéo đi.
+   Quy ước tên lấy nguyên từ transaction-figure-kit.
+   =========================================================================== */
+figure svg text{font-family:inherit}
+/* ⚠ Bộ hình của BÀI BÁO (transaction-figure-kit) cấm bóng và bo góc, vì in đen trắng
+   trên giấy. Bộ hình của SLIDE thì khác: chiếu lên tường, cần lớp và nhịp thị giác để
+   mắt bám được. Đây là chỗ hai bộ CỐ Ý khác nhau, không phải quên đồng bộ. */
+.hk-blk{fill:var(--giay);stroke:var(--ke-dam,#1b1e2340);stroke-width:1.4}
+.hk-prop{fill:var(--accent);stroke:none}
+.hk-mo{fill:var(--giay-sau);stroke:var(--ke);stroke-width:1.2}
+/* ⭐ Sắc độ của CÙNG một màu nhấn, không phải màu thứ hai: vẫn giữ luật một màu
+   nhấn mà hình có chiều sâu. 10% cho khối trên đường còn sống, 100% cho khối đinh. */
+.hk-tint{fill:color-mix(in srgb,var(--accent) 9%,var(--giay));
+         stroke:color-mix(in srgb,var(--accent) 32%,transparent);stroke-width:1.4}
+.hk-spine{stroke:color-mix(in srgb,var(--accent) 30%,transparent);stroke-width:3;
+          stroke-linecap:round}
+.hk-spine-mo{stroke:var(--ke);stroke-width:3;stroke-linecap:round}
+.hk-cham{fill:var(--accent)}
+.hk-cham-mo{fill:var(--ink-mo);opacity:.4}
+.hk-lon{fill:var(--accent);font-weight:680;font-variant-numeric:tabular-nums;
+        letter-spacing:-.02em}
+.hk-lon-mo{fill:var(--ink-mo);opacity:.5;font-weight:680;
+           font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.hk-vach{fill:var(--ink-mo);opacity:.55}
+.hk-vach-prop{fill:#fff;opacity:.8}
+.hk-ten{fill:var(--ink);font-weight:650}
+.hk-prop-ten{fill:#fff;font-weight:650}
+.hk-phu{fill:var(--ink-mo)}
+.hk-prop-phu{fill:#dbe6ef}
+.hk-so{fill:var(--ink-mo);opacity:.65;font-weight:700;letter-spacing:.06em}
+.hk-so-prop{fill:#fff;opacity:.75;font-weight:700;letter-spacing:.06em}
+.hk-flow{stroke:var(--ink-mo);stroke-width:2.2;fill:none;stroke-linecap:round}
+.hk-fb{stroke:var(--ink-mo);stroke-width:2;fill:none;stroke-linecap:round;
+       stroke-dasharray:1 7;opacity:.75}
+.hk-alab{fill:var(--ink-mo)}
+.hk-alab-nen{fill:var(--giay);stroke:var(--ke);stroke-width:1}
+.hk-zone{fill:color-mix(in srgb,var(--ink) 3%,transparent);stroke:none}
+.hk-zlab{fill:var(--ink-mo);font-weight:700;letter-spacing:.1em}
+.hk-truc{stroke:var(--ke);stroke-width:1}
+.hk-truc-chinh{stroke:var(--ink-mo);stroke-width:1.5}
+.hk-diem{fill:var(--ink-mo);opacity:.55}
+.hk-diem-nhan{fill:var(--accent)}
+.hk-cot{fill:var(--ink-mo);opacity:.45}
+/* dải dao động của đối chứng: nền rất nhạt, không cạnh tranh với cột */
+.hk-dai{fill:var(--ink-mo);opacity:.10}
+.hk-dai-net{stroke:var(--ink-mo);stroke-width:1;stroke-dasharray:5 4;opacity:.55}
+/* vạch ngưỡng cam kết: màu nhấn, vì ngưỡng là THỨ HÌNH NÓI VỀ */
+.hk-nguong{stroke:var(--accent);stroke-width:2;stroke-dasharray:6 5}
+.hk-nguong-chu{fill:var(--accent);font-weight:600;text-anchor:middle}
+.hk-cot-nhan{fill:var(--accent)}
+/* ---- hình số liệu, phiên bản hai ---- */
+.hk-thanh{fill:var(--ink-mo);opacity:.32}
+.hk-thanh-nhan{fill:var(--accent)}
+.hk-thanh-nen{fill:var(--ink);opacity:.045}
+.hk-gt{fill:var(--ink);font-weight:680;font-variant-numeric:tabular-nums}
+.hk-gt-nhan{fill:var(--accent);font-weight:680;font-variant-numeric:tabular-nums}
+.hk-nhan-o{fill:var(--ink-mo);font-weight:600}
+.hk-chip{fill:var(--ink);opacity:.06}
+.hk-chip-chu{fill:var(--ink-mo);font-weight:650;font-variant-numeric:tabular-nums}
+.hk-moc{stroke:var(--ink-mo);stroke-width:1.5;stroke-dasharray:5 4;opacity:.55;fill:none}
+.hk-ghi{fill:var(--accent);font-weight:650}
+.hk-ghi-duong{stroke:var(--accent);stroke-width:1.6;fill:none;opacity:.8}
+.hk-o-nhiet{stroke:var(--giay);stroke-width:2}
+.hk-cham-lon{fill:var(--accent)}
+.hk-cham-nho{fill:var(--ink-mo);opacity:.45}
+.hk-que{stroke:var(--ink-mo);stroke-width:2;opacity:.35;stroke-linecap:round;fill:none}
+.hk-que-nhan{stroke:var(--accent);stroke-width:2.6;stroke-linecap:round;fill:none}
+.nen-toi .hk-thanh{fill:#aab1bd;opacity:.45}
+.nen-toi .hk-gt{fill:#fff}
+.nen-toi .hk-chip{fill:#fff;opacity:.1}
+.nen-toi .hk-chip-chu,.nen-toi .hk-nhan-o{fill:#aab1bd}
+.nen-toi .hk-blk{fill:#ffffff0f;stroke:#ffffff40}
+.nen-toi .hk-mo{fill:#ffffff08;stroke:#ffffff26}
+.nen-toi .hk-zone{fill:#ffffff0a}
+.nen-toi .hk-vach{fill:#aab1bd}
+.nen-toi .hk-alab-nen{fill:var(--ink);stroke:#ffffff26}
+.nen-toi .hk-so{fill:#aab1bd}
+.nen-toi .hk-tint{fill:#ffffff14;stroke:#ffffff33}
+.nen-toi .hk-lon-mo{fill:#aab1bd}
+.nen-toi .hk-ten{fill:#fff}
+.nen-toi .hk-phu,.nen-toi .hk-alab,.nen-toi .hk-zlab{fill:#aab1bd}
+.nen-toi .hk-flow,.nen-toi .hk-fb{stroke:#aab1bd}
+.nen-toi .hk-alab-nen{fill:var(--ink)}
+
+
+/* HÌNH TRỌN SLIDE (@hinh: toan): dành cho hình VUÔNG, tỉ lệ dưới 1,6.
+   Hình vuông nằm trong khung ngang thì bị giới hạn bởi CHIỀU CAO, nên dù chữ trong
+   hình đủ to so với bề ngang hình, nó vẫn tụt dưới ngưỡng đọc khi chiếu.
+   Chế độ này bỏ kicker, hạ tiêu đề xuống một dòng nhỏ, bỏ chú thích xuống chân,
+   và nhường gần sáu trăm điểm ảnh chiều cao cho hình. */
+/* chừa đủ chỗ cho chân trang: chân cao chừng 40px kể cả lề dưới */
+/* ⚠ PHẢI ghim chiều cao, không chỉ min-height: hình ở đây là flex co giãn nên nó
+   đẩy slide CAO HƠN MỘT MÀN HÌNH lúc trình bày, dù khổ PDF vẫn vừa. Cổng G26 giữ. */
+.slide.hinh-toan{padding:1.6rem var(--le) 4.2rem;height:100svh}
+.slide.hinh-toan .label{display:none}
+.slide.hinh-toan .d2{font-size:clamp(1.05rem,.9rem + .5vw,1.35rem);font-weight:650;
+                     letter-spacing:.01em}
+.slide.hinh-toan .d2::before{display:none}
+.slide.hinh-toan .slide-trong{max-width:none}
+.slide.hinh-toan figure{margin:.6rem 0 0}
+/* ⚠ Giới hạn chiều cao hình bằng một giá trị THEO CỬA SỔ, tất định, thay vì dựa vào
+   chuỗi flex. Đã trả giá: figure không phải con trực tiếp của khối nội dung (bộ dựng
+   bọc nó trong một div để hiện dần), nên chuỗi co giãn đứt ở đó và hình phình tới hơn
+   một nghìn điểm ảnh rồi bị overflow:hidden CẮT, trong khi khung vẫn đúng một màn
+   hình nên phép đo chiều cao slide mù hoàn toàn. */
+.slide.hinh-toan figure svg,.slide.hinh-toan figure img{width:100%;height:auto;
+                        max-height:70svh}
+.slide.hinh-toan figcaption{margin-top:.5rem;font-size:.85rem}
+body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-height:486px}
+</style>
+<!-- ⚠ PHẢI đặt SAU deck.css: deck.css có :root{--accent:...} mặc định, cùng độ ưu
+     tiên nên khai báo nào đứng sau thì thắng. Đặt trước là màu riêng của deck không
+     bao giờ tới được trang, mà nhìn vào tệp nguồn thì vẫn thấy có khai. -->
+<style>:root{--accent:#2C6E9B}</style>
+</head>
+<body>
+<div class="tien-do"></div>
+<header class="thanh">
+  <span class="ten">Phòng hỏi đáp hội thảo</span>
+  <span data-ten-slide></span>
+  <span class="phai">
+    <span>75.0 phút · giang-day</span>
+    <span data-dong-ho>00:00</span>
+    <span data-so-slide></span>
+    <button class="nut" data-in>Xuất PDF</button>
+    <span>? trợ giúp</span>
+  </span>
+</header>
+<main>
+<section id="s01" class="slide cover nen-toi" data-slide data-title="Bìa" data-phut="0.5" data-chedo="noi" data-notes="Mở cửa sổ người nói, bấm p. Đồng hồ là phần chính của deck này."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div><svg class="bia-hinh" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="vong"><circle cx="980" cy="360" r="130" fill="none" stroke="#ffffff3a" stroke-dasharray="3 8"/><circle cx="980" cy="360" r="215" fill="none" stroke="#ffffff30" stroke-dasharray="2 9"/><circle cx="980" cy="360" r="300" fill="none" stroke="#ffffff26" stroke-dasharray="2 11"/><circle cx="980" cy="360" r="385" fill="none" stroke="#ffffff1e" stroke-dasharray="1 13"/><path d="M 980 60 A 300 300 0 0 1 1280 360" fill="none" stroke="#2C6E9B" stroke-width="2.5" opacity=".85"/></g><circle class="cham" style="--i:0" cx="1107.4" cy="385.8" r="5" fill="#2C6E9B"/><circle class="cham" style="--i:1" cx="1158.3" cy="480.1" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:2" cx="1145.8" cy="610.0" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:3" cx="1053.7" cy="737.9" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:4" cx="954.2" cy="487.4" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:5" cx="859.9" cy="538.3" r="5" fill="#2C6E9B"/><circle class="cham" style="--i:6" cx="730.0" cy="525.8" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:7" cx="602.1" cy="433.7" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:8" cx="852.6" cy="334.2" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:9" cx="801.7" cy="239.9" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:10" cx="814.2" cy="110.0" r="5" fill="#2C6E9B"/><circle class="cham" style="--i:11" cx="906.3" cy="-17.9" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:12" cx="1005.8" cy="232.6" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:13" cx="1100.1" cy="181.7" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:14" cx="1230.0" cy="194.2" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:15" cx="1357.9" cy="286.3" r="5" fill="#2C6E9B"/></svg>
+<div class="slide-trong"><div class="gach"></div><p class="label">Tự ôn, bộ Năm trụ</p><h1 class="d1" data-reveal><span class="w" style="--w:0">Phòng</span> <span class="w" style="--w:1">hỏi</span> <span class="w" style="--w:2">đáp</span> <span class="w" style="--w:3"><em>hội</em></span> <span class="w" style="--w:4"><em>thảo</em></span></h1><p class="lead" data-reveal style="--tre:.35s">Trả lời NÓI, trong hai mươi tới sáu mươi giây, không có gì để trốn</p><p class="label" data-reveal style="--tre:.5s;margin-top:2rem">Đỗ Phúc Hảo · CAIRA, Đại học Kiến trúc Đà Nẵng</p></div>
+</section>
+<section id="s02" class="slide nen-vach" data-slide data-title="Luật của phòng này" data-phut="1.5" data-chedo="noi" data-notes="Đọc luật rồi bắt đầu. Không tua lại thẻ đã làm hỏng."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">02</p><h2 class="d2" data-reveal>Luật của phòng này</h2><div data-reveal style="--tre:.18s"><p>Trả lời nói trong khung giờ, không phải trả lời đúng mà dài</p>
+<p>Khác Phòng phản biện ở chỗ cốt yếu: phản biện là trả lời VIẾT, có thời gian, tra được bảng. Đây là trả lời NÓI, trong 20 tới 60 giây, không có gì để trốn. Luật nhà: ⛔ không lấy nội dung từ bài đang under review. Mọi câu dưới đây dựng từ nội dung 5 trụ và từ các bài đã có kết luận.</p></div></div><div class="chan"><span>Luật của phòng này · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">02</span></div>
+</section>
+<section id="s03" class="slide nen-vach" data-slide data-title="Người hỏi: chuyên gia đối đầu" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">03 &#183; NID</p><h2 class="d2" data-reveal>Người hỏi: chuyên gia đối đầu</h2><div data-reveal style="--tre:.18s"><p>You report 99.8% accuracy. What is the false positive rate at that operating point, and how many alerts per day does it produce at the traffic volume you described?</p>
+<p><em>Trụ NID. Khung trả lời 45 giây.</em></p></div></div><div class="chan"><span>NID · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">03</span></div>
+</section>
+<section id="s04" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">04</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Câu hỏi nhận chìm anh bằng chính con số anh tự hào. Bẫy là nó mời anh bảo vệ accuracy, trong khi người hỏi đã biết accuracy vô nghĩa ở tỉ lệ nền thật và đang chờ xem anh có biết điều đó không.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">04</span></div>
+</section>
+<section id="s05" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">05</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nói thẳng rằng accuracy không phải con số đúng để đánh giá, trước khi ai kịp hỏi thêm.</li><li>Cho FPR và số cảnh báo mỗi ngày, ví dụ FPR 10⁻³ trên 10 triệu luồng lành là 10.000 cảnh báo sai mỗi ngày.</li><li>Tự khai rằng con số đó vượt ngân sách của một SOC, và nói cơ chế nào trong bài xử lý chuyện đó.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">05</span></div>
+</section>
+<section id="s06" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">06</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "nhưng accuracy của chúng tôi cao hơn các công trình trước". Nó xác nhận rằng anh vẫn đang nghĩ bằng accuracy, và người hỏi sẽ hỏi tiếp bằng tỉ lệ nền.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">06</span></div>
+</section>
+<section id="s07" class="slide nen-vach" data-slide data-title="Người hỏi: người ngoài ngành" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">07</p><h2 class="d2" data-reveal>Người hỏi: người ngoài ngành</h2><div data-reveal style="--tre:.18s"><p>Why not just use a firewall for this?</p>
+<p><em>Trụ NID. Khung trả lời 40 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người ngoài ngành · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">07</span></div>
+</section>
+<section id="s08" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">08</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Bẫy không phải câu hỏi, bẫy là phản xạ của anh. Câu này nghe ngây thơ nên dễ trả lời bằng giọng hạ cố, và cả phòng sẽ thấy. Người hỏi thường là người sẽ bỏ phiếu cho anh ở một hội đồng khác.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">08</span></div>
+</section>
+<section id="s09" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">09</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nhận rằng tường lửa làm đúng một việc và làm tốt: chặn theo luật đã biết.</li><li>Cho một con số về phần còn lại, ví dụ tỉ lệ tấn công không có luật sẵn hoặc đã mã hoá.</li><li>Nói giới hạn của chính mình: hệ của anh không thay tường lửa, nó xếp hạng cái tường lửa cho đi qua.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">09</span></div>
+</section>
+<section id="s10" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">10</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "tường lửa chỉ xem cổng và địa chỉ IP thôi" bằng giọng giải thích cho người mới. Tường lửa hiện đại làm nhiều hơn thế, và câu đó vừa sai vừa làm anh mất phòng.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">10</span></div>
+</section>
+<section id="s11" class="slide nen-vach" data-slide data-title="Người hỏi: người biết đúng điểm yếu" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">11</p><h2 class="d2" data-reveal>Người hỏi: người biết đúng điểm yếu</h2><div data-reveal style="--tre:.18s"><p>Your evaluation uses CIC-IDS2017. That capture predates widespread TLS 1.3, QUIC and encrypted client hello. Do the features your model relies on still exist in a 2026 network?</p>
+<p><em>Trụ NID. Khung trả lời 45 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người biết đúng điểm yếu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">11</span></div>
+</section>
+<section id="s12" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">12</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Người hỏi đã đọc phần đặc trưng của anh. Bẫy là trả lời về TUỔI của dataset, trong khi câu hỏi thật là về NHÓM ĐẶC TRƯNG nào còn lấy được. Nói "chúng tôi sẽ dùng dataset mới hơn" là trả lời sai câu.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">12</span></div>
+</section>
+<section id="s13" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">13</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Phân nhóm đặc trưng ngay: tải tin, siêu dữ liệu bắt tay, hình dáng luồng.</li><li>Cho con số: bao nhiêu đặc trưng của anh thuộc nhóm còn sống.</li><li>Tự khai nhóm nào chết và kết quả nào trong bài phụ thuộc nhóm đó.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">13</span></div>
+</section>
+<section id="s14" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">14</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "công việc tương lai của chúng tôi là thu dataset mới". Nó biến một câu hỏi về tính hợp lệ thành một lời hứa, và người hỏi sẽ ghi lại đúng chỗ đó.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">14</span></div>
+</section>
+<section id="s15" class="slide nen-vach" data-slide data-title="Người hỏi: chuyên gia đối đầu" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">15 &#183; FL</p><h2 class="d2" data-reveal>Người hỏi: chuyên gia đối đầu</h2><div data-reveal style="--tre:.18s"><p>Why do you need federated learning at all? You could pool the data at one site and train a stronger model.</p>
+<p><em>Trụ FL. Khung trả lời 45 giây.</em></p></div></div><div class="chan"><span>FL · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">15</span></div>
+</section>
+<section id="s16" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">16</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Câu hỏi kinh điển nhất của mọi bài FL, và nó mời anh trả lời bằng chữ: riêng tư, pháp lý, bảo mật. Trả lời bằng chữ là mất điểm. Nó phải có SỐ, hoặc một điều khoản cụ thể.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">16</span></div>
+</section>
+<section id="s17" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">17</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nói thẳng lý do nào trong ba lý do là lý do thật của anh: pháp lý, khối lượng, hay độ nhạy.</li><li>Cho tỉ số byte, ví dụ gom hết là 10.000 GB một ngày so với 40 GB nếu truyền mô hình, tức 250 lần.</li><li>Tự khai vùng mà gom lại RẺ HƠN, vì tỉ số đó đảo chiều khi lưu lượng mỗi site nhỏ hơn hai lần kích thước mô hình.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">17</span></div>
+</section>
+<section id="s18" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">18</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "vì quy định không cho phép chia sẻ dữ liệu" mà không nêu được điều khoản nào. Người hỏi sẽ hỏi điều khoản, và anh không có.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">18</span></div>
+</section>
+<section id="s19" class="slide nen-vach" data-slide data-title="Người hỏi: người biết đúng điểm yếu" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">19</p><h2 class="d2" data-reveal>Người hỏi: người biết đúng điểm yếu</h2><div data-reveal style="--tre:.18s"><p>You report epsilon equals eight. The classical Gaussian mechanism bound only holds for epsilon below one. Which accountant did you use, and what is your sampling assumption?</p>
+<p><em>Trụ FL. Khung trả lời 40 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người biết đúng điểm yếu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">19</span></div>
+</section>
+<section id="s20" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">20</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Đây là câu hỏi của người đã làm DP thật. Bẫy là nó có hai phần, và trả lời một phần sẽ bị hỏi lại ngay. Phần thứ hai, giả thiết lấy mẫu, là chỗ phần lớn bài DP-FL hở.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">20</span></div>
+</section>
+<section id="s21" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">21</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Trả lời tên bộ kế toán ngay, đừng vòng.</li><li>Cho tham số: noise multiplier, clip norm, sampling rate, số vòng, và delta.</li><li>Tự khai giả thiết lấy mẫu và nói nếu cài đặt dùng shuffling thì con số epsilon không còn là bảo đảm.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">21</span></div>
+</section>
+<section id="s22" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">22</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "epsilon bằng tám là mức thường dùng trong tài liệu". Đó là lời kêu gọi theo số đông cho một đại lượng có định nghĩa chính xác, và người hỏi biết điều đó.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">22</span></div>
+</section>
+<section id="s23" class="slide nen-vach" data-slide data-title="Người hỏi: chủ toạ ép thời gian" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">23</p><h2 class="d2" data-reveal>Người hỏi: chủ toạ ép thời gian</h2><div data-reveal style="--tre:.18s"><p>We are out of time. In one sentence, what is the contribution?</p>
+<p><em>Trụ FL. Khung trả lời 30 giây.</em></p></div></div><div class="chan"><span>Người hỏi: chủ toạ ép thời gian · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">23</span></div>
+</section>
+<section id="s24" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">24</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Bẫy là anh có một bài dài và muốn nói ba đóng góp. Chủ toạ cho anh một câu, và nếu anh dùng hai câu thì câu thứ hai không ai nghe. Đây là bài tập nén, không phải bài tập nội dung.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">24</span></div>
+</section>
+<section id="s25" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">25</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Một câu duy nhất, có động từ, nói anh ĐO được cái gì mà trước đó chưa ai đo.</li><li>Một con số trong chính câu đó.</li><li>Không khai giới hạn ở đây. Giới hạn dành cho câu hỏi tiếp, không dành cho 20 giây này.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">25</span></div>
+</section>
+<section id="s26" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">26</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "chúng tôi có ba đóng góp". Chủ toạ vừa nói hết giờ, và câu đó báo rằng anh không nghe.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">26</span></div>
+</section>
+<section id="s27" class="slide nen-vach" data-slide data-title="Người hỏi: người biết đúng điểm yếu" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">27 &#183; NTN</p><h2 class="d2" data-reveal>Người hỏi: người biết đúng điểm yếu</h2><div data-reveal style="--tre:.18s"><p>Your handover rate assumes one beam per satellite. Operational constellations use dozens of beams per satellite. Does your result survive that change?</p>
+<p><em>Trụ NTN. Khung trả lời 45 giây.</em></p></div></div><div class="chan"><span>NTN · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">27</span></div>
+</section>
+<section id="s28" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">28</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Người hỏi biết hình học. Bẫy là trả lời "chúng tôi sẽ mở rộng", trong khi con số thật đổi theo một hệ số đơn giản và anh nên biết hệ số đó ngay tại chỗ.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">28</span></div>
+</section>
+<section id="s29" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">29</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nói hướng đổi trước khi nói độ lớn: nhiều chùm thì tần suất chuyển giao TĂNG, không giảm.</li><li>Cho con số: cửa sổ nhìn thấy 7,95 phút cho chặn dưới 7,55 lần mỗi giờ với một chùm, và khoảng 60 lần với tám chùm.</li><li>Tự khai rằng kết luận định tính sống sót nhưng con số tuyệt đối thì không, và chỉ ra chỗ nào trong bài phụ thuộc con số tuyệt đối.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">29</span></div>
+</section>
+<section id="s30" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">30</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "số chùm không ảnh hưởng kết quả của chúng tôi". Nó ảnh hưởng, và người hỏi biết nó ảnh hưởng theo hướng nào.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">30</span></div>
+</section>
+<section id="s31" class="slide nen-vach" data-slide data-title="Người hỏi: người ngoài ngành" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">31</p><h2 class="d2" data-reveal>Người hỏi: người ngoài ngành</h2><div data-reveal style="--tre:.18s"><p>Is this not already solved? Commercial satellite internet seems to work.</p>
+<p><em>Trụ NTN. Khung trả lời 45 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người ngoài ngành · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">31</span></div>
+</section>
+<section id="s32" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">32</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Bẫy là trả lời bằng cách hạ thấp hệ thống thương mại, hoặc bằng cách nói bài của anh khác mà không nói khác ở đâu. Cả hai đều nghe như biện hộ.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">32</span></div>
+</section>
+<section id="s33" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">33</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nhận rằng nó hoạt động, và nói rõ nó hoạt động cho trường hợp nào.</li><li>Cho con số phân biệt trường hợp của anh, ví dụ thiết bị không có nguồn liên tục, hoặc liên kết chỉ nhìn thấy 8 phút một lượt.</li><li>Tự khai rằng nếu điều kiện của anh không xảy ra trong thực tế thì bài của anh mất lý do tồn tại.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">33</span></div>
+</section>
+<section id="s34" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">34</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "hệ thống thương mại không công bố chi tiết nên không so được". Nó nghe như tránh câu hỏi.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">34</span></div>
+</section>
+<section id="s35" class="slide nen-vach" data-slide data-title="Người hỏi: chuyên gia đối đầu" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">35</p><h2 class="d2" data-reveal>Người hỏi: chuyên gia đối đầu</h2><div data-reveal style="--tre:.18s"><p>Your UAV energy model is linear in distance flown. In that model hovering is free. Is that not the whole difficulty of the problem?</p>
+<p><em>Trụ NTN. Khung trả lời 50 giây.</em></p></div></div><div class="chan"><span>Người hỏi: chuyên gia đối đầu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">35</span></div>
+</section>
+<section id="s36" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">36</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Người hỏi vừa chỉ ra rằng mô hình của anh bỏ mất chính cơ chế đắt nhất. Bẫy là chống đỡ. Câu trả lời đúng bắt đầu bằng việc nhận, và đi kèm con số cho thấy anh ĐÃ đo độ lệch.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">36</span></div>
+</section>
+<section id="s37" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">37</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nhận ngay rằng mô hình tuyến tính coi treo một chỗ là miễn phí, và đó là sai cơ chế.</li><li>Cho con số độ lệch: mô hình phi tuyến cho khoảng 122 kJ trên cùng một quỹ đạo, tuyến tính cho khoảng 64 kJ, lệch gần một nửa.</li><li>Tự khai hệ quả nặng hơn: nghiệm quỹ đạo tối ưu của hai mô hình khác nhau về bản chất, không chỉ khác con số.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">37</span></div>
+</section>
+<section id="s38" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">38</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "mô hình tuyến tính là một xấp xỉ hợp lý trong tài liệu". Nó biến một lỗi cơ chế thành một lựa chọn phong cách, và người hỏi sẽ không chấp nhận.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">38</span></div>
+</section>
+<section id="s39" class="slide nen-vach" data-slide data-title="Người hỏi: chuyên gia đối đầu" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">39 &#183; 6G SEC</p><h2 class="d2" data-reveal>Người hỏi: chuyên gia đối đầu</h2><div data-reveal style="--tre:.18s"><p>Your threat model gives the attacker read access to the E2 interface but not write access. Why is that the right split, and what breaks if you give write access too?</p>
+<p><em>Trụ 6G Sec. Khung trả lời 45 giây.</em></p></div></div><div class="chan"><span>6G SEC · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">39</span></div>
+</section>
+<section id="s40" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">40</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Bẫy là câu hỏi nghe như đòi biện minh một lựa chọn, nhưng thật ra nó kiểm xem anh có biết kết quả nào của mình phụ thuộc lựa chọn đó. Nếu anh không biết, cả phòng sẽ thấy.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">40</span></div>
+</section>
+<section id="s41" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">41</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nói lý do chọn bằng một tính chất của hệ, không bằng sự tiện lợi.</li><li>Cho con số hoặc một danh sách: bao nhiêu phát hiện trong bài còn đứng khi cho thêm quyền ghi.</li><li>Tự khai rằng với quyền ghi thì phòng vệ dựa biên giới mạng mất hiệu lực, không phải yếu đi.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">41</span></div>
+</section>
+<section id="s42" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">42</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "chúng tôi chọn mô hình chỉ đọc để bài toán đơn giản hơn". Đó là lý do của tác giả, không phải lý do của hệ thống.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">42</span></div>
+</section>
+<section id="s43" class="slide nen-vach" data-slide data-title="Người hỏi: người biết đúng điểm yếu" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">43</p><h2 class="d2" data-reveal>Người hỏi: người biết đúng điểm yếu</h2><div data-reveal style="--tre:.18s"><p>You claim the slices are isolated, but the radio scheduler is shared. Did you measure the correlation between slice A load and slice B latency?</p>
+<p><em>Trụ 6G Sec. Khung trả lời 50 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người biết đúng điểm yếu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">43</span></div>
+</section>
+<section id="s44" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes="" data-wow><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">44</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Người hỏi đã biết chỗ hở của mọi tuyên bố cô lập. Bẫy là trả lời "có, chúng tôi cô lập" mà không nói cô lập ở TẦNG NÀO, và người hỏi sẽ đọc lại slide của anh.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">44</span></div>
+</section>
+<section id="s45" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">45</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Tách bốn tầng cô lập ngay, và nói rõ tầng nào anh có và tầng nào dùng chung.</li><li>Cho con số tương quan nếu đã đo, hoặc nói thẳng là chưa đo.</li><li>Tự khai rằng khi bộ lập lịch dùng chung thì cô lập chỉ là cô lập ba tầng, và viết lại tuyên bố cho đúng.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">45</span></div>
+</section>
+<section id="s46" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">46</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "theo chuẩn thì các slice được cô lập". Chuẩn định nghĩa nhiều mức cô lập, và câu đó chỉ cho người hỏi biết anh chưa đọc mức nào.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">46</span></div>
+</section>
+<section id="s47" class="slide nen-vach" data-slide data-title="Người hỏi: chuyên gia đối đầu" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">47 &#183; PQC</p><h2 class="d2" data-reveal>Người hỏi: chuyên gia đối đầu</h2><div data-reveal style="--tre:.18s"><p>Your hybrid handshake is over 1200 bytes on a link whose frames are 127 bytes. That is more than a dozen fragments. Did the handshake actually complete on your testbed, and at what loss rate?</p>
+<p><em>Trụ PQC. Khung trả lời 40 giây.</em></p></div></div><div class="chan"><span>PQC · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">47</span></div>
+</section>
+<section id="s48" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">48</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Người hỏi đã nhẩm ra số mảnh trước khi hỏi. Bẫy là trả lời về kích thước khoá, trong khi câu hỏi là về XÁC SUẤT HOÀN TẤT, và đó là một đại lượng khác hẳn.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">48</span></div>
+</section>
+<section id="s49" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">49</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Trả lời số mảnh và xác suất hoàn tất ngay, vì đó là điều được hỏi.</li><li>Cho con số: 1216 byte với tải khả dụng khoảng 100 byte là 13 mảnh, và với tỉ lệ mất 5% mỗi mảnh thì xác suất hoàn tất khoảng 51%.</li><li>Tự khai mô hình mất gói, vì con số trên giả định mất độc lập và mất theo chùm cho kết quả khác.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">49</span></div>
+</section>
+<section id="s50" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">50</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "ML-KEM-768 là mức NIST khuyến nghị nên chúng tôi dùng nó". Nó trả lời câu hỏi về lựa chọn thuật toán, trong khi người ta hỏi về xác suất hoàn tất.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">50</span></div>
+</section>
+<section id="s51" class="slide nen-vach" data-slide data-title="Người hỏi: người ngoài ngành" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">51</p><h2 class="d2" data-reveal>Người hỏi: người ngoài ngành</h2><div data-reveal style="--tre:.18s"><p>Quantum computers that can break RSA do not exist. Why should anyone spend money on this now?</p>
+<p><em>Trụ PQC. Khung trả lời 45 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người ngoài ngành · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">51</span></div>
+</section>
+<section id="s52" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">52</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Bẫy là tranh luận về việc máy lượng tử bao giờ có, tức đi vào đúng chỗ không ai thắng được. Câu trả lời đúng chuyển trục sang một bất đẳng thức không cần biết ngày.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">52</span></div>
+</section>
+<section id="s53" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">53</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Chuyển trục ngay: vấn đề không phải khi nào có máy, mà là dữ liệu hôm nay giữ mật bao lâu.</li><li>Cho ba con số của bất đẳng thức Mosca: thời gian giữ mật, thời gian di trú, thời gian tới khi có máy.</li><li>Tự khai rằng con số thứ ba là ước lượng, nên kết luận phải viết ở dạng điều kiện.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">53</span></div>
+</section>
+<section id="s54" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">54</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "các chuyên gia dự đoán khoảng năm 2035". Anh vừa biến câu trả lời của mình thành một con số mà anh không bảo vệ được.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">54</span></div>
+</section>
+<section id="s55" class="slide nen-vach" data-slide data-title="Người hỏi: người biết đúng điểm yếu" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">55</p><h2 class="d2" data-reveal>Người hỏi: người biết đúng điểm yếu</h2><div data-reveal style="--tre:.18s"><p>You use a standardised algorithm, but is your implementation constant time, and is it masked?</p>
+<p><em>Trụ PQC. Khung trả lời 45 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người biết đúng điểm yếu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">55</span></div>
+</section>
+<section id="s56" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">56</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Bẫy là trả lời bằng tên chuẩn. Câu hỏi nằm ở lớp cài đặt, nơi chuẩn không bảo đảm gì, và người hỏi biết chính xác chỗ đó.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">56</span></div>
+</section>
+<section id="s57" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">57</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Tách ba lớp ngay: thuật toán, giao thức, cài đặt. Nói chuẩn bảo đảm lớp nào.</li><li>Cho con số về cài đặt của anh: thư viện nào, bản nào, có che mặt nạ hay không, và nếu có thì chậm bao nhiêu lần.</li><li>Tự khai rằng nếu chưa kiểm thời gian hằng thì kết quả an ninh của bài không nói gì về lớp cài đặt.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">57</span></div>
+</section>
+<section id="s58" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">58</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "chúng tôi dùng ML-KEM nên nó an toàn". Đó đúng là câu mà câu hỏi được thiết kế để bắt.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">58</span></div>
+</section>
+<section id="s59" class="slide nen-vach" data-slide data-title="Người hỏi: người hỏi lệch chủ đề" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">59 &#183; NID</p><h2 class="d2" data-reveal>Người hỏi: người hỏi lệch chủ đề</h2><div data-reveal style="--tre:.18s"><p>Have you considered applying large language models to this problem?</p>
+<p><em>Trụ NID. Khung trả lời 40 giây.</em></p></div></div><div class="chan"><span>NID · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">59</span></div>
+</section>
+<section id="s60" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">60</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Câu hỏi không nằm trong bài và người hỏi cũng biết thế. Bẫy là hai cực: chê câu hỏi, hoặc hứa hẹn một thứ anh chưa làm. Cả hai đều mất điểm, và cách ra đúng là từ chối có kèm một tiêu chí.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">60</span></div>
+</section>
+<section id="s61" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">61</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nhận câu hỏi trong một câu, không khen không chê.</li><li>Cho một tiêu chí cụ thể để nói vì sao nó không nằm trong bài này, kèm con số nếu có.</li><li>Tự khai điều kiện nào sẽ làm anh đổi ý, để lời từ chối có nội dung.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">61</span></div>
+</section>
+<section id="s62" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">62</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "đó là công việc tương lai thú vị" rồi dừng. Nó là cách nói không mà nghe như có, và người hỏi sẽ nhớ anh không có tiêu chí nào.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">62</span></div>
+</section>
+<section id="s63" class="slide nen-vach" data-slide data-title="Người hỏi: chủ toạ ép thời gian" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">63</p><h2 class="d2" data-reveal>Người hỏi: chủ toạ ép thời gian</h2><div data-reveal style="--tre:.18s"><p>We are over time, so thirty seconds only. Is the number your model outputs a probability, yes or no?</p>
+<p><em>Trụ NID. Khung trả lời 30 giây.</em></p></div></div><div class="chan"><span>Người hỏi: chủ toạ ép thời gian · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">63</span></div>
+</section>
+<section id="s64" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">64</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Chủ toạ cho anh 30 giây và một câu hỏi có đúng hai đáp án. Bẫy là dùng 30 giây để giải thích rồi bị cắt giữa câu, và cả phòng nghe thấy phần giải thích chứ không nghe thấy câu trả lời. Phải nói có hoặc không TRƯỚC, phần còn lại chỉ nói nếu còn giờ.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">64</span></div>
+</section>
+<section id="s65" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">65</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nói "không" ngay từ chữ đầu tiên, vì đó là đáp án đúng và chủ toạ chỉ cần một chữ.</li><li>Một con số làm chứng: điểm 0,9 ở tỉ lệ nền 10⁻⁵ tương ứng PPV dưới 1 phần trăm, chứ không phải 90 phần trăm.</li><li>Tự khai đã làm gì: hiệu chuẩn lại trên một tập giữ riêng, và báo đường tin cậy cạnh AUROC.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">65</span></div>
+</section>
+<section id="s66" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">66</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng mở đầu bằng "câu này hơi phức tạp". Chủ toạ hỏi vì hết giờ, và câu đó tiêu đúng số giây anh còn.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">66</span></div>
+</section>
+<section id="s67" class="slide nen-vach" data-slide data-title="Người hỏi: người đọc sai kết quả" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">67</p><h2 class="d2" data-reveal>Người hỏi: người đọc sai kết quả</h2><div data-reveal style="--tre:.18s"><p>Your figure shows an AUROC of 0.98. So at one percent false positives you detect about 98 percent of attacks, correct?</p>
+<p><em>Trụ NID. Khung trả lời 40 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người đọc sai kết quả · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">67</span></div>
+</section>
+<section id="s68" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">68</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Người hỏi đọc sai, và đọc sai theo hướng CÓ LỢI cho anh. Bẫy là gật đầu. Nếu câu đó được để đứng thì nó vào biên bản, rồi một người khác trong phòng sẽ bác, và lúc đó anh là người nói quá. Phải sửa mà không làm người hỏi mất mặt.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">68</span></div>
+</section>
+<section id="s69" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">69</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Sửa ngay nhưng đứng về phía người hỏi: AUROC không khoá điểm làm việc nào cả.</li><li>Con số: một đường ROC nằm sát trục tới FPR 1 phần trăm rồi dựng đứng vẫn cho diện tích 0,99, nên AUROC 0,98 tương thích với việc bắt được 0 phần trăm ở đúng ngưỡng đó.</li><li>Cho con số người hỏi thật sự muốn: TPR tại một FPR cố định, lấy từ bảng điểm làm việc.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">69</span></div>
+</section>
+<section id="s70" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">70</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "đúng rồi, gần như vậy". Đó là cách một con số sai đi vào biên bản hội thảo dưới tên anh.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">70</span></div>
+</section>
+<section id="s71" class="slide nen-vach" data-slide data-title="Người hỏi: người đòi được trích dẫn" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">71</p><h2 class="d2" data-reveal>Người hỏi: người đòi được trích dẫn</h2><div data-reveal style="--tre:.18s"><p>Our group published a graph based intrusion detector in 2023 on the same dataset with higher reported numbers. Why is it not in your comparison table?</p>
+<p><em>Trụ NID. Khung trả lời 45 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người đòi được trích dẫn · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">71</span></div>
+</section>
+<section id="s72" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">72</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Hai bẫy chồng nhau. Bẫy thứ nhất là xin lỗi và hứa thêm vào, tức nhận rằng bảng của anh thiếu trong khi anh chưa biết nó có so được không. Bẫy thứ hai là chê công trình của họ, và người đó thường đang phản biện anh ở một nơi khác. Đường ra là chốt điều kiện so sánh.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">72</span></div>
+</section>
+<section id="s73" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">73</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Xin tên bài chính xác và nói sẽ đọc, không hứa đưa vào bảng trước khi biết nó so được không.</li><li>Nêu ba điều kiện để hai con số nói về cùng một việc, rồi cho con số của mình ở đúng ba điều kiện đó: cùng phép chia dữ liệu, cùng điểm làm việc, cùng đơn vị báo cáo.</li><li>Tự khai: nếu nó so được và họ cao hơn thì đó là kết quả phải dẫn, và anh sẽ dẫn.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">73</span></div>
+</section>
+<section id="s74" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">74</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "tôi không biết bài đó" rồi dừng. Nó vừa hạ anh vừa không trả lời, và người hỏi sẽ nhắc lại lúc thảo luận chung.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">74</span></div>
+</section>
+<section id="s75" class="slide nen-vach" data-slide data-title="Người hỏi: người ngoài ngành" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">75 &#183; FL</p><h2 class="d2" data-reveal>Người hỏi: người ngoài ngành</h2><div data-reveal style="--tre:.18s"><p>If every hospital keeps its own data and never shares it, how can the model learn anything at all?</p>
+<p><em>Trụ FL. Khung trả lời 40 giây.</em></p></div></div><div class="chan"><span>FL · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">75</span></div>
+</section>
+<section id="s76" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">76</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Câu hỏi thật thà và đúng chỗ, nên bẫy nằm ở giọng và ở mức trừu tượng. Dễ trả lời bằng sơ đồ kiến trúc, mà người hỏi không cần kiến trúc: họ cần biết CÁI GÌ đi qua đường truyền. Không nói được cái gì đi qua thì cả phòng sẽ cho rằng dữ liệu vẫn đi qua.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">76</span></div>
+</section>
+<section id="s77" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">77</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nói rõ thứ đi qua đường truyền không phải bệnh án mà là bản cập nhật tham số.</li><li>Cho khối lượng: một mô hình một triệu tham số ở float32 là khoảng 4 MB mỗi client mỗi vòng.</li><li>Tự khai giới hạn: bản cập nhật vẫn rỉ thông tin, nên phải có kế toán riêng tư, không phải chỉ có một lời hứa.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">77</span></div>
+</section>
+<section id="s78" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">78</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "dữ liệu không bao giờ rời khỏi bệnh viện nên hoàn toàn riêng tư". Câu sau phủ định câu trước, và người biết nghề trong phòng sẽ nhặt đúng chỗ đó.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">78</span></div>
+</section>
+<section id="s79" class="slide nen-vach" data-slide data-title="Người hỏi: người hỏi lệch chủ đề" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">79</p><h2 class="d2" data-reveal>Người hỏi: người hỏi lệch chủ đề</h2><div data-reveal style="--tre:.18s"><p>Could blockchain be used here to make the whole process trustworthy?</p>
+<p><em>Trụ FL. Khung trả lời 40 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người hỏi lệch chủ đề · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">79</span></div>
+</section>
+<section id="s80" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">80</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Câu lệch, nhưng lệch một cách lịch sự, nên không được gạt. Bẫy là hai cực: gật cho qua rồi bị hỏi tiếp chi tiết không có, hoặc bác thẳng và thành người khó chịu suốt phần còn lại của phiên. Việc cần làm là nói nó giải bài toán NÀO, rồi chỉ ra bài toán của anh không phải bài toán đó.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">80</span></div>
+</section>
+<section id="s81" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">81</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nói rõ sổ ghi phân tán giải một bài toán thật: ai gửi cái gì, ghi lại và không sửa được về sau.</li><li>Con số: mỗi vòng của chúng tôi có 100 bản cập nhật, nên sổ phải chốt 100 bản ghi trong một vòng tính bằng giây.</li><li>Tự khai giới hạn của chính sổ đó: nó ghi rất trung thực một bản cập nhật độc hại, nên nó không phải phòng vệ đầu độc.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">81</span></div>
+</section>
+<section id="s82" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">82</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "blockchain không liên quan gì tới bài này". Nó đóng cửa câu hỏi, và phần sau của phiên anh sẽ nói một mình.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">82</span></div>
+</section>
+<section id="s83" class="slide nen-vach" data-slide data-title="Người hỏi: người biết đúng điểm yếu" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">83</p><h2 class="d2" data-reveal>Người hỏi: người biết đúng điểm yếu</h2><div data-reveal style="--tre:.18s"><p>You report one hundred rounds. What fraction of clients actually participated in a typical round, and were the clients you dropped random?</p>
+<p><em>Trụ FL. Khung trả lời 45 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người biết đúng điểm yếu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">83</span></div>
+</section>
+<section id="s84" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">84</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Người hỏi biết số vòng là con số dễ báo còn tỉ lệ tham gia là con số dễ bỏ qua. Bẫy nằm ở chữ random: nếu anh cắt theo hạn chờ thì client bị cắt là client CHẬM, tức thiên lệch có hệ thống. Trả lời "ngẫu nhiên" là tự khai một điều sai, và họ hỏi vì họ đã biết điều đó.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">84</span></div>
+</section>
+<section id="s85" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">85</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Cho tỉ lệ tham gia trước khi bị hỏi lại, và nói cơ chế chọn client là gì.</li><li>Con số: chọn 10 trên 100 client mỗi vòng thì sau 100 vòng kỳ vọng mỗi client vào 10 lần, nhưng con số thật của client chậm thấp hơn.</li><li>Tự khai rằng cắt theo hạn chờ là thiên lệch có hệ thống chứ không ngẫu nhiên, và nói anh đo nó bằng gì.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">85</span></div>
+</section>
+<section id="s86" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">86</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "client rơi là ngẫu nhiên nên không ảnh hưởng". Đó là một giả thiết, không phải một phép đo, và người hỏi đang hỏi vì họ biết nó thường sai.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">86</span></div>
+</section>
+<section id="s87" class="slide nen-vach" data-slide data-title="Người hỏi: chuyên gia đối đầu" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">87</p><h2 class="d2" data-reveal>Người hỏi: chuyên gia đối đầu</h2><div data-reveal style="--tre:.18s"><p>If every client keeps a personalised head, what exactly is being federated, and whose accuracy is the number on your slide?</p>
+<p><em>Trụ FL. Khung trả lời 45 giây.</em></p></div></div><div class="chan"><span>Người hỏi: chuyên gia đối đầu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">87</span></div>
+</section>
+<section id="s88" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">88</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Hai câu gói làm một, và câu thứ hai là câu giết. Khi mỗi client có đầu riêng thì KHÔNG AI chạy mô hình toàn cục, nên một con số trung bình trên mô hình toàn cục là con số của một mô hình không tồn tại. Bẫy là trả lời câu đầu cho gọn rồi dừng lại.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">88</span></div>
+</section>
+<section id="s89" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">89</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nói rõ phần nào chia chung và phần nào riêng, bằng tên lớp chứ không bằng chữ cá nhân hoá.</li><li>Con số: báo trung bình có trọng số theo số mẫu VÀ phân vị thứ 10, vì trung bình che được một phần mười client tệ nhất.</li><li>Tự khai rằng mô hình toàn cục không ai chạy, nên con số của nó là chẩn đoán chứ không phải kết quả.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">89</span></div>
+</section>
+<section id="s90" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">90</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "chúng tôi báo độ chính xác trung bình trên tất cả client" rồi im. Trung bình trên các mô hình khác nhau không phải phép đo của một hệ, nó là một con số không có chủ.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">90</span></div>
+</section>
+<section id="s91" class="slide nen-vach" data-slide data-title="Người hỏi: người đọc sai kết quả" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">91</p><h2 class="d2" data-reveal>Người hỏi: người đọc sai kết quả</h2><div data-reveal style="--tre:.18s"><p>You use epsilon equals eight. That means roughly an eight percent chance that a record leaks, does it not?</p>
+<p><em>Trụ FL. Khung trả lời 40 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người đọc sai kết quả · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">91</span></div>
+</section>
+<section id="s92" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">92</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Người hỏi gắn epsilon với một xác suất, và cách đọc đó nghe hợp lý nên cả phòng sẽ tin nếu anh không sửa. Bẫy ngược là sửa bằng một định nghĩa dài rồi hết giờ mà chưa cho con số nào. Phải đưa đúng một con số thay thế, và con số đó là e mũ 8.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">92</span></div>
+</section>
+<section id="s93" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">93</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nói rõ epsilon không phải xác suất, nó chặn một tỉ số khả năng xảy ra.</li><li>Con số thay thế: e mũ 8 bằng 2981, tức một đầu ra có thể trở nên gần ba nghìn lần dễ xảy ra hơn khi đổi một bản ghi.</li><li>Tự khai rằng 2981 là một bảo đảm YẾU, và nói vì sao anh vẫn chọn mức đó.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">93</span></div>
+</section>
+<section id="s94" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">94</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "epsilon bằng 8 là mức thường dùng trong các công trình trước". Nó đổi câu hỏi về Ý NGHĨA thành một lời viện dẫn thói quen, và người hỏi sẽ hỏi lại đúng câu cũ.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">94</span></div>
+</section>
+<section id="s95" class="slide nen-vach" data-slide data-title="Người hỏi: chủ toạ ép thời gian" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">95 &#183; NTN</p><h2 class="d2" data-reveal>Người hỏi: chủ toạ ép thời gian</h2><div data-reveal style="--tre:.18s"><p>There are two questions left and one minute. Give us the single number that matters most in your work.</p>
+<p><em>Trụ NTN. Khung trả lời 30 giây.</em></p></div></div><div class="chan"><span>NTN · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">95</span></div>
+</section>
+<section id="s96" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">96</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Bẫy là chọn con số TO nhất thay vì con số RÀNG BUỘC nhất. Chủ toạ đang cho anh chọn thứ cả phòng sẽ nhớ: một con số về hiệu năng của anh thì bị quên sau mười phút, còn một con số về vật lý thì không ai bác được và nó kéo theo cả bài.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">96</span></div>
+</section>
+<section id="s97" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">97</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Chọn một con số của BÀI TOÁN, không phải một con số của phương pháp.</li><li>Cho nó kèm đơn vị và kèm hệ quả: 7,585 km/s ở cao độ 550 km, nên trong mười giây vệ tinh đi 76 kilômét.</li><li>Nói một câu hệ quả duy nhất, rồi dừng và nhường micro.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">97</span></div>
+</section>
+<section id="s98" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">98</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng chọn con số cải thiện của riêng mình, kiểu "chúng tôi giảm 23 phần trăm". Không ai kiểm được nó trong một phút, và không ai nhớ nó sau phiên.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">98</span></div>
+</section>
+<section id="s99" class="slide nen-vach" data-slide data-title="Người hỏi: người hỏi lệch chủ đề" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">99</p><h2 class="d2" data-reveal>Người hỏi: người hỏi lệch chủ đề</h2><div data-reveal style="--tre:.18s"><p>What about space debris? Should we be launching thousands of these satellites at all?</p>
+<p><em>Trụ NTN. Khung trả lời 35 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người hỏi lệch chủ đề · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">99</span></div>
+</section>
+<section id="s100" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">100</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Câu hỏi chính đáng nhưng không thuộc bài của anh, và nó mời anh phát biểu quan điểm. Bẫy là đoán một con số về rác quỹ đạo cho trông có hiểu biết. Bịa một con số ở đây thì mọi con số khác trong bài mất giá trị cùng lúc, vì cả phòng vừa thấy anh làm việc đó.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">100</span></div>
+</section>
+<section id="s101" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">101</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nhận câu hỏi là chính đáng trong một câu, và nói thẳng là anh không có số về nó.</li><li>Cho con số anh THẬT SỰ có, và nó dẫn về bài của anh: chu kỳ 95,6 phút, tức khoảng 15 lần qua lại trên cùng một vùng mỗi ngày.</li><li>Nói ranh giới của bài: anh nghiên cứu điều kiện liên kết, không nghiên cứu chính sách phóng.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">101</span></div>
+</section>
+<section id="s102" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">102</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói một con số về số vật thể đang bay. Nếu nó sai thì cả phòng vừa nghe anh bịa một con số, và họ sẽ áp cách đọc đó cho bảng kết quả của anh.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">102</span></div>
+</section>
+<section id="s103" class="slide nen-vach" data-slide data-title="Người hỏi: người biết đúng điểm yếu" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">103</p><h2 class="d2" data-reveal>Người hỏi: người biết đúng điểm yếu</h2><div data-reveal style="--tre:.18s"><p>Your routing graph is recomputed at fixed time steps. What is the step, and what happens to a path when a link breaks between two recomputations?</p>
+<p><em>Trụ NTN. Khung trả lời 50 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người biết đúng điểm yếu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">103</span></div>
+</section>
+<section id="s104" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">104</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Người hỏi đã nhìn ra rằng đồ thị tĩnh từng bước là một XẤP XỈ, và họ hỏi về khoảng GIỮA hai bước, tức đúng chỗ xấp xỉ đó hỏng. Bẫy là trả lời bước thời gian rồi dừng, vì phần thứ hai của câu mới là phần tính điểm.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">104</span></div>
+</section>
+<section id="s105" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">105</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Cho bước thời gian và nói ngay nó tương ứng bao nhiêu kilômét chuyển động.</li><li>Con số: bước 10 giây là 76 kilômét chuyển động của mỗi đầu liên kết, nên đồ thị luôn cũ hơn thực tế.</li><li>Tự khai hành vi giữa hai bước: gói đang trên đường đi theo bảng cũ, nên phải nói rõ anh đếm nó là mất, là trễ, hay không đếm.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">105</span></div>
+</section>
+<section id="s106" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">106</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "giữa hai bước thì liên kết coi như không đổi". Đó chính là giả thiết người hỏi đang nhắm vào, nhắc lại nó là nhận rằng anh chưa đo chỗ đó.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">106</span></div>
+</section>
+<section id="s107" class="slide nen-vach" data-slide data-title="Người hỏi: chuyên gia đối đầu" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">107</p><h2 class="d2" data-reveal>Người hỏi: chuyên gia đối đầu</h2><div data-reveal style="--tre:.18s"><p>A synchronous training round takes longer than one visibility window. So who aggregates, and does the convergence bound you cited still apply?</p>
+<p><em>Trụ NTN. Khung trả lời 45 giây.</em></p></div></div><div class="chan"><span>Người hỏi: chuyên gia đối đầu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">107</span></div>
+</section>
+<section id="s108" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">108</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Người hỏi nối hai thứ anh trình bày rời nhau: cửa sổ nhìn thấy ở phần hệ thống, và bound hội tụ ở phần lý thuyết. Bẫy là bảo vệ từng phần một. Bound anh dẫn gần như chắc chắn giả thiết tham gia đầy đủ hoặc lấy mẫu độc lập, còn lịch quá cảnh thì tuần hoàn, không độc lập.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">108</span></div>
+</section>
+<section id="s109" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">109</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nói ai tổng hợp và tổng hợp ở đâu: trên vệ tinh, ở trạm mặt đất, hay qua liên kết giữa vệ tinh.</li><li>Con số: chu kỳ 95,6 phút, nên lịch gặp lại là tuần hoàn chứ không phải lấy mẫu ngẫu nhiên độc lập.</li><li>Tự khai rằng bound dẫn trong bài giả thiết lấy mẫu độc lập, nên nó KHÔNG áp dụng nguyên văn, và nói anh dùng gì thay.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">109</span></div>
+</section>
+<section id="s110" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">110</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "bound vẫn đúng vì nó là trường hợp tổng quát hơn". Người hỏi biết nó không tổng quát hơn, và câu đó biến một giới hạn tự khai thành một tuyên bố sai.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">110</span></div>
+</section>
+<section id="s111" class="slide nen-vach" data-slide data-title="Người hỏi: người đòi được trích dẫn" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">111</p><h2 class="d2" data-reveal>Người hỏi: người đòi được trích dẫn</h2><div data-reveal style="--tre:.18s"><p>We proposed a predictive handover scheme in 2022 that already does this. How is your contribution different?</p>
+<p><em>Trụ NTN. Khung trả lời 40 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người đòi được trích dẫn · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">111</span></div>
+</section>
+<section id="s112" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">112</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Nghe như đòi trích dẫn, nhưng thật ra đòi anh nêu đóng góp trong một câu, trước mặt người đã làm việc gần nhất. Bẫy là so sánh định tính kiểu "của chúng tôi tổng quát hơn". Chữ tổng quát không có đơn vị, nên phải nêu một điều kiện ĐO ĐƯỢC chia hai bên.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">112</span></div>
+</section>
+<section id="s113" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">113</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nhận đó là công trình gần nhất và nói sẽ dẫn, nếu chưa dẫn thì nói thẳng là anh sẽ sửa.</li><li>Nêu một điều kiện đo được: ngưỡng góc nâng, vì chuyển từ 10 lên 40 độ là đổi hẳn số lần chuyển giao.</li><li>Tự khai phần anh KHÔNG khác: nếu cơ chế dự báo giống thì nói giống, rồi nói phần anh thêm là gì.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">113</span></div>
+</section>
+<section id="s114" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">114</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "của chúng tôi tổng quát hơn". Không có đơn vị nào cho chữ tổng quát, và người hỏi sẽ xin anh một ví dụ ngay tại chỗ.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">114</span></div>
+</section>
+<section id="s115" class="slide nen-vach" data-slide data-title="Người hỏi: người ngoài ngành" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">115 &#183; 6G SEC</p><h2 class="d2" data-reveal>Người hỏi: người ngoài ngành</h2><div data-reveal style="--tre:.18s"><p>Why is an AI inside the network a security problem? It is just another piece of software.</p>
+<p><em>Trụ 6G Sec. Khung trả lời 45 giây.</em></p></div></div><div class="chan"><span>6G SEC · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">115</span></div>
+</section>
+<section id="s116" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">116</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Câu hỏi thẳng và hợp lý, nên bẫy là trả lời bằng một danh sách thuật ngữ tấn công. Thứ phân biệt một mô hình với một phần mềm thường là mô hình có một đầu vào mà kẻ tấn công điều khiển được KHÔNG CẦN quyền gì, và hành vi của nó thay đổi theo đầu vào đó.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">116</span></div>
+</section>
+<section id="s117" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">117</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nói đúng điểm khác: phần mềm thường có hành vi do người viết quyết, mô hình học từ chính thứ kẻ tấn công gửi tới.</li><li>Cho con số: một mô hình cập nhật trực tuyến mỗi 5 phút cho kẻ tấn công 288 lượt dạy mỗi ngày.</li><li>Tự khai giới hạn: không phải mô hình nào trong mạng cũng học trực tuyến, nên nói rõ bài của anh nói về loại nào.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">117</span></div>
+</section>
+<section id="s118" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">118</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "AI thì luôn có thể bị tấn công đối kháng". Nó đúng ở mức khẩu hiệu mà không chỉ ra điều gì khác với phần mềm thường, nên người hỏi vẫn chưa được trả lời.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">118</span></div>
+</section>
+<section id="s119" class="slide nen-vach" data-slide data-title="Người hỏi: chủ toạ ép thời gian" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">119</p><h2 class="d2" data-reveal>Người hỏi: chủ toạ ép thời gian</h2><div data-reveal style="--tre:.18s"><p>We are over time. One sentence: what should an operator do tomorrow morning?</p>
+<p><em>Trụ 6G Sec. Khung trả lời 30 giây.</em></p></div></div><div class="chan"><span>Người hỏi: chủ toạ ép thời gian · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">119</span></div>
+</section>
+<section id="s120" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">120</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Chủ toạ xin một VIỆC LÀM ĐƯỢC, không xin một kết luận. Bẫy là tóm tắt bài. Nếu câu trả lời là một lời khuyên chung thì phần cuối phiên, thứ cả phòng nhớ nhất, là một câu không ai làm được sáng mai.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">120</span></div>
+</section>
+<section id="s121" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">121</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Một việc, có động từ, làm xong trong một ngày.</li><li>Một con số làm ngưỡng: chỉ cần MỘT thành phần đọc được giao diện điều khiển ngoài danh sách là mô hình đe doạ đã đổi.</li><li>Nói hệ quả nếu không làm, trong nửa câu, rồi dừng.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">121</span></div>
+</section>
+<section id="s122" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">122</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "cần một cách tiếp cận zero trust toàn diện". Nó không phải việc làm được sáng mai, và nó là câu cuối cùng cả phòng nghe thấy.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">122</span></div>
+</section>
+<section id="s123" class="slide nen-vach" data-slide data-title="Người hỏi: người hỏi lệch chủ đề" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">123</p><h2 class="d2" data-reveal>Người hỏi: người hỏi lệch chủ đề</h2><div data-reveal style="--tre:.18s"><p>Is this not a regulation problem rather than an engineering problem? Should regulators not simply require it?</p>
+<p><em>Trụ 6G Sec. Khung trả lời 40 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người hỏi lệch chủ đề · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">123</span></div>
+</section>
+<section id="s124" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">124</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Câu lệch nhưng có lý, và nó mời anh bàn chính sách, chỗ anh không có dữ liệu. Bẫy là đồng ý cho êm rồi tự đẩy đóng góp của mình thành phụ. Đường ra là chỉ đúng chỗ hai thứ gặp nhau: một yêu cầu pháp lý chỉ có nghĩa khi tồn tại một phép đo để kiểm nó.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">124</span></div>
+</section>
+<section id="s125" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">125</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Đồng ý một phần, trong một câu, và không bàn thêm về chính sách.</li><li>Cho con số của mình: một yêu cầu không kiểm được thì bằng không, và bài này đưa ra 3 phép đo cho 3 yêu cầu trong văn bản chuẩn.</li><li>Tự khai phần anh không trả lời: anh không nghiên cứu hiệu lực thực thi, chỉ nghiên cứu phép kiểm.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">125</span></div>
+</section>
+<section id="s126" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">126</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "đúng rồi, cần quy định bắt buộc chuyện này". Nó khiến phần kỹ thuật của anh thành một chi tiết, và không ai trong phòng kiểm được câu đó.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">126</span></div>
+</section>
+<section id="s127" class="slide nen-vach" data-slide data-title="Người hỏi: người biết đúng điểm yếu" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">127</p><h2 class="d2" data-reveal>Người hỏi: người biết đúng điểm yếu</h2><div data-reveal style="--tre:.18s"><p>If the network senses user position as a by-product, you have built a tracking system. Where is the privacy analysis in your paper?</p>
+<p><em>Trụ 6G Sec. Khung trả lời 50 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người biết đúng điểm yếu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">127</span></div>
+</section>
+<section id="s128" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">128</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Người hỏi biết bài anh không có mục riêng tư, và họ đóng khung hệ của anh bằng một từ. Hai bẫy ngược nhau: phủ nhận khả năng định vị để thoát, và như thế phủ nhận chính đóng góp cảm biến của mình; hay nhận cái khung đó và mất quyền mô tả hệ của mình. Đường ra là cho con số phân giải thật.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">128</span></div>
+</section>
+<section id="s129" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">129</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nhận rằng hệ sinh ra thông tin vị trí, và cho ngay độ phân giải thật thay vì tranh luận về từ ngữ.</li><li>Con số: phân giải khoảng cách bằng c chia hai lần băng thông, nên với 400 MHz là 37,5 xentimet, tức mức decimet chứ không phải xentimet.</li><li>Tự khai rằng bài không có phân tích riêng tư, và nói đúng cái thiếu là gì chứ không hứa một mục mới.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">129</span></div>
+</section>
+<section id="s130" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">130</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "chúng tôi chỉ cảm biến chứ không nhận dạng người dùng". Trong một mạng thì vị trí gắn với một kết nối đã xác thực, nên câu đó sai ngay trong kiến trúc của chính anh.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">130</span></div>
+</section>
+<section id="s131" class="slide nen-vach" data-slide data-title="Người hỏi: chủ toạ ép thời gian" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">131 &#183; PQC</p><h2 class="d2" data-reveal>Người hỏi: chủ toạ ép thời gian</h2><div data-reveal style="--tre:.18s"><p>Thirty seconds. Which algorithm should they deploy, and at which parameter set?</p>
+<p><em>Trụ PQC. Khung trả lời 30 giây.</em></p></div></div><div class="chan"><span>PQC · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">131</span></div>
+</section>
+<section id="s132" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">132</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Chủ toạ xin một khuyến nghị, và bẫy là trả lời "tuỳ ngữ cảnh". Câu đó đúng về mặt học thuật và vô dụng trong 30 giây, và nó khiến cả phòng nghĩ anh không có ý kiến. Phải chốt một tên và một mức ngay câu đầu, rồi mới nói một điều kiện trong nửa câu.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">132</span></div>
+</section>
+<section id="s133" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">133</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Một tên thuật toán và một bộ tham số, nói ra ngay câu đầu.</li><li>Một con số làm chứng là kích thước thật: khoá công khai ML-KEM-768 là 1184 byte, khoá công khai ML-DSA-65 là 1952 byte.</li><li>Một điều kiện duy nhất, nửa câu, rồi dừng.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">133</span></div>
+</section>
+<section id="s134" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">134</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "tuỳ vào yêu cầu cụ thể của hệ thống". Trong 30 giây nó tương đương với không trả lời, và chủ toạ sẽ chuyển micro.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">134</span></div>
+</section>
+<section id="s135" class="slide nen-vach" data-slide data-title="Người hỏi: người hỏi lệch chủ đề" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">135</p><h2 class="d2" data-reveal>Người hỏi: người hỏi lệch chủ đề</h2><div data-reveal style="--tre:.18s"><p>What is your opinion on recent quantum supremacy claims?</p>
+<p><em>Trụ PQC. Khung trả lời 40 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người hỏi lệch chủ đề · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">135</span></div>
+</section>
+<section id="s136" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">136</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Câu mời anh phát biểu quan điểm về một tranh luận không thuộc bài, và cả hai hướng trả lời đều làm anh yếu đi: nói máy lượng tử còn xa thì anh tự bác động lực của bài, nói nó gần thì anh đưa ra một con số không có nguồn. Đường ra là chỉ ra quyết định di trú không phụ thuộc vào câu đó.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">136</span></div>
+</section>
+<section id="s137" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">137</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Nói rằng anh không đoán mốc thời gian, và nói vì sao mốc đó không phải biến quyết định.</li><li>Cho con số điều kiện: nếu dữ liệu phải bí mật 15 năm thì việc thu hoạch hôm nay đã đủ thành vấn đề.</li><li>Tự khai giới hạn: điều đó đúng cho dữ liệu lưu lâu, không đúng cho mọi hệ.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">137</span></div>
+</section>
+<section id="s138" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">138</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "theo tôi thì còn khoảng mười năm nữa". Đó là một con số không có nguồn, và nó biến phần động lực của bài anh thành một dự đoán cá nhân.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">138</span></div>
+</section>
+<section id="s139" class="slide nen-vach" data-slide data-title="Người hỏi: người đọc sai kết quả" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">139</p><h2 class="d2" data-reveal>Người hỏi: người đọc sai kết quả</h2><div data-reveal style="--tre:.18s"><p>You said SIKE was broken in 2022. So isogeny based schemes are dead and lattices are the only safe family, correct?</p>
+<p><em>Trụ PQC. Khung trả lời 50 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người đọc sai kết quả · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">139</span></div>
+</section>
+<section id="s140" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">140</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Người hỏi nối ba bước, và hai bước sau đều sai, nhưng bước đầu là thứ anh vừa nói nên anh phải sửa phần họ SUY RA chứ không sửa phần họ nghe. Bẫy ngược là câu này nghe vừa tai: để nó đứng thì cả phòng nghĩ lattice là lựa chọn duy nhất, và đó là tuyên bố anh không muốn gắn tên vào.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">140</span></div>
+</section>
+<section id="s141" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">141</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Xác nhận phần đúng, rồi tách hai phần sai: một lược đồ bị phá không giết một họ, và lattice không phải họ duy nhất còn lại.</li><li>Cho con số: cài đặt Magma phá SIKEp434 trong khoảng 10 phút trên một nhân, nên đây là một tấn công thật chứ không phải một suy giảm an toàn.</li><li>Tự khai điều anh không biết: không ai chứng minh được lattice an toàn, nó chỉ là chưa bị phá.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">141</span></div>
+</section>
+<section id="s142" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">142</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "đúng rồi, nên giờ ai cũng dùng lattice". Nó biến một quan sát về thị trường thành một tuyên bố về an toàn, đúng loại câu mà ca SIKE vừa dạy chúng ta đừng nói.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">142</span></div>
+</section>
+<section id="s143" class="slide nen-vach" data-slide data-title="Người hỏi: người đòi được trích dẫn" data-phut="0.5" data-chedo="hoi" data-notes="BẤM ĐỒNG HỒ. Trả lời thành tiếng hết khung giờ rồi mới lật."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">143</p><h2 class="d2" data-reveal>Người hỏi: người đòi được trích dẫn</h2><div data-reveal style="--tre:.18s"><p>There is a 2024 paper on hybrid key exchange for constrained links reporting lower overhead than yours. Why is it missing from your related work?</p>
+<p><em>Trụ PQC. Khung trả lời 50 giây.</em></p></div></div><div class="chan"><span>Người hỏi: người đòi được trích dẫn · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">143</span></div>
+</section>
+<section id="s144" class="slide nen-vach" data-slide data-title="Bẫy nằm ở đâu" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">144</p><h2 class="d2" data-reveal>Bẫy nằm ở đâu</h2><div data-reveal style="--tre:.18s"><p>Bẫy là nhận rằng anh thiếu, rồi tranh luận về con số mào đầu của một bài anh chưa đọc. Người hỏi có thể đúng, và điều đó không sao cả. Việc phải làm là chốt ĐƠN VỊ so sánh trước khi bàn con số nào lớn hơn, vì mào đầu đo bằng byte, bằng phân đoạn, hay bằng số lần truyền lại là ba con số khác nhau.</p></div></div><div class="chan"><span>Bẫy nằm ở đâu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">144</span></div>
+</section>
+<section id="s145" class="slide nen-vach" data-slide data-title="Khung trả lời" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">145</p><h2 class="d2" data-reveal>Khung trả lời</h2><div data-reveal style="--tre:.18s"><ul><li>Xin tên bài, nói sẽ đọc và sẽ dẫn nếu nó so được, không phủ nhận cũng không hứa vượt.</li><li>Chốt đơn vị bằng con số của mình: 1184 cộng 32 là 1216 byte, trên khung 102 byte ở tầng MAC là khoảng 12 phân đoạn, chưa trừ mào đầu phân đoạn.</li><li>Tự khai: nếu họ ít phân đoạn hơn thì họ đã đổi một thứ, và việc của anh là tìm ra họ đổi gì, không phải bác con số.</li></ul></div></div><div class="chan"><span>Khung trả lời · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">145</span></div>
+</section>
+<section id="s146" class="slide nen-vach" data-slide data-title="Đừng nói" data-phut="0.5" data-chedo="noi" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">146</p><h2 class="d2" data-reveal>Đừng nói</h2><div data-reveal style="--tre:.18s"><p><strong>Đừng nói:</strong></p>
+<ul><li>Đừng nói "con số của họ chắc không tính mào đầu phân đoạn". Anh chưa đọc bài đó, nên đây là đoán về công trình của người đang ngồi trước mặt.</li></ul></div></div><div class="chan"><span>Đừng nói · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">146</span></div>
+</section>
+<section id="s147" class="slide cam-on nen-toi" data-slide data-title="Cảm ơn" data-phut="0.5" data-chedo="lang" data-notes="Nhắc lại rồi dừng."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">Cảm ơn</p><div data-reveal style="--tre:.18s"><p>Trả lời nói trong khung giờ, không phải trả lời đúng mà dài</p></div></div><div class="chan"><span>HỎI ĐÁP · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">147</span></div>
+</section>
+<section id="s148" class="slide omt nen-toi" data-slide data-title="One more thing" data-phut="0.5" data-chedo="noi" data-notes="Món tặng: tiêu chí ôn là THỜI GIAN, không phải đúng sai."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">One more thing</p><div data-reveal style="--tre:.18s"><p>Thẻ nào trả lời quá khung giờ thì ghi lại, đó mới là thẻ phải ôn, không phải thẻ trả lời sai.</p></div></div><div class="chan"><span>kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">148</span></div>
+</section>
+</main>
+<div class="giup" hidden><table>
+<tr><td><kbd>&#8595;</kbd> <kbd>Space</kbd> <kbd>PageDn</kbd></td><td>slide sau</td></tr>
+<tr><td><kbd>&#8594;</kbd> <kbd>&#8592;</kbd></td><td>bước trong slide, hết panel thì sang slide</td></tr>
+<tr><td><kbd>Home</kbd> <kbd>End</kbd></td><td>đầu, cuối</td></tr>
+<tr><td><kbd>o</kbd></td><td>tổng quan toàn deck</td></tr>
+<tr><td><kbd>p</kbd></td><td>mở cửa sổ người nói</td></tr>
+<tr><td><kbd>x</kbd></td><td>tải nhịp thật ra tệp JSON</td></tr>
+<tr><td><kbd>e</kbd></td><td>xuất PDF ngay từ trang này</td></tr>
+<tr><td><kbd>?</kbd></td><td>bảng này</td></tr>
+</table></div>
+<div class="in-huong" hidden><div class="hop">
+<h3>Xuất PDF từ trang này</h3>
+<ol>
+<li>Bấm <b>Mở hộp thoại in</b> bên dưới.</li>
+<li>Đích chọn <b>Save as PDF</b>.</li>
+<li>Mở <b>More settings</b>, bật <b>Background graphics</b>, đặt <b>Margins</b> là <b>None</b>.</li>
+<li>Khổ giấy để <b>mặc định</b>, trang đã tự khai khổ mười sáu chín.</li>
+</ol>
+<p style="margin:0 0 1.25rem;color:#aab1bd;font-size:.95rem">Muốn bản nét hơn và có kèm ảnh từng slide thì dùng <code>python3 xuat_pdf.py &lt;dir&gt;</code>, bản đó cũng là bản mà cổng QA chấm.</p>
+<button class="nut" data-in-chay style="color:#fff;border-color:#fff">Mở hộp thoại in</button>
+<button class="nut" data-in-huy style="margin-left:.5rem">Thôi</button>
+</div></div>
+<script>/* ===========================================================================
+   deck.js · cơ chế trình bày. Không phụ thuộc thư viện ngoài.
+   Nguyên tắc: tắt JS thì deck vẫn đọc được đủ, chỉ mất phần điều khiển.
+   =========================================================================== */
+(function () {
+  "use strict";
+  // cửa sổ presenter dùng cùng tệp này nhưng do presenter.js điều khiển
+  if (new URLSearchParams(location.search).has("presenter")) return;
+  document.documentElement.classList.add("js");
+
+  var slides = [].slice.call(document.querySelectorAll("[data-slide]"));
+  if (!slides.length) return;
+  var keHoach = slides.map(function (s) { return parseFloat(s.dataset.phut || "0"); });
+  var hienTai = 0;
+  var batDau = null;             // mốc bắt đầu buổi nói
+  var vaoSlide = null;           // mốc vào slide hiện tại
+  var thucTe = slides.map(function () { return 0; });   // giây thật từng slide
+  var kenh = ("BroadcastChannel" in window) ? new BroadcastChannel("deck-nha") : null;
+
+  /* ---------- hiện dần ---------- */
+  var ioReveal = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) e.target.classList.add("hien"); });
+  }, { rootMargin: "0px 0px -12% 0px", threshold: 0.08 });
+  document.querySelectorAll("[data-reveal]").forEach(function (el) { ioReveal.observe(el); });
+
+  /* ---------- slide đang xem ---------- */
+  var ioSlide = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var i = slides.indexOf(e.target);
+      if (i === hienTai) return;
+      ghiNhan(i);
+      hienTai = i;
+      capNhat();
+    });
+  }, { rootMargin: "-50% 0px -50% 0px" });
+  slides.forEach(function (s) { ioSlide.observe(s); });
+
+  function ghiNhan(moi) {
+    var gio = Date.now();
+    if (vaoSlide !== null) thucTe[hienTai] += (gio - vaoSlide) / 1000;
+    vaoSlide = gio;
+    if (batDau === null) batDau = gio;
+    if (moi !== undefined) { /* chỉ cộng dồn */ }
+  }
+
+  /* ---------- thanh trên, tiến độ ---------- */
+  var elTen = document.querySelector("[data-ten-slide]");
+  var elSo = document.querySelector("[data-so-slide]");
+  var elDong = document.querySelector("[data-dong-ho]");
+  var tienDo = document.querySelector(".tien-do");
+
+  function capNhat() {
+    var s = slides[hienTai];
+    if (elTen) elTen.textContent = s.dataset.title || "";
+    if (elSo) elSo.textContent = (hienTai + 1) + "/" + slides.length;
+    if (tienDo) tienDo.style.setProperty("--pct", (hienTai + 1) / slides.length);
+    if (location.hash !== "#" + s.id) history.replaceState(null, "", "#" + s.id);
+    phatTin();
+  }
+
+  function phatTin() {
+    if (!kenh) return;
+    var ke = 0, i;
+    for (i = 0; i <= hienTai; i++) ke += keHoach[i];
+    kenh.postMessage({
+      loai: "nhip",
+      i: hienTai,
+      tong: slides.length,
+      title: slides[hienTai].dataset.title || "",
+      ghiChu: slides[hienTai].dataset.notes || "",
+      keTiep: hienTai + 1 < slides.length ? (slides[hienTai + 1].dataset.title || "") : "",
+      phutKeHoachLuyKe: ke,
+      giayThat: batDau ? (Date.now() - batDau) / 1000 : 0,
+      phutSlideNay: keHoach[hienTai]
+    });
+  }
+  setInterval(function () { if (batDau) phatTin(); }, 1000);
+
+  function dongHo() {
+    if (!elDong) return;
+    if (!batDau) { elDong.textContent = "00:00"; return; }
+    var g = Math.floor((Date.now() - batDau) / 1000);
+    elDong.textContent = String(Math.floor(g / 60)).padStart(2, "0") + ":" + String(g % 60).padStart(2, "0");
+  }
+  setInterval(dongHo, 500);
+
+  /* ---------- panel ngang ---------- */
+  function buocPanel(slide, huong) {
+    var p = slide.querySelector(".panels");
+    if (!p) return false;
+    var items = [].slice.call(p.querySelectorAll(".panel"));
+    var w = p.clientWidth || 1;
+    var cur = Math.round(p.scrollLeft / w);
+    var muon = cur + huong;
+    if (muon < 0 || muon >= items.length) return false;
+    p.scrollTo({ left: muon * w, behavior: motion() });
+    danhDauDots(p, muon);
+    return true;
+  }
+  function danhDauDots(p, k) {
+    var dots = p.parentNode.querySelectorAll(".panel-dots b");
+    dots.forEach(function (d, j) { if (j === k) d.setAttribute("data-on", ""); else d.removeAttribute("data-on"); });
+    var so = p.parentNode.querySelector(".panel-dots span");
+    if (so) so.textContent = String(k + 1).padStart(2, "0") + "/" + String(dots.length).padStart(2, "0");
+  }
+  function motion() {
+    return matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  }
+
+  /* ---------- đi tới slide ---------- */
+  function toi(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    slides[i].scrollIntoView({ behavior: motion() });
+  }
+
+  /* ---------- bàn phím ---------- */
+  var giup = document.querySelector(".giup");
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    var t = e.target;
+    if (t && t.closest && t.closest("input,textarea,select,[contenteditable]")) return;
+    var k = e.key;
+
+    if (k === "?" || k === "/") { e.preventDefault(); if (giup) giup.hidden = !giup.hidden; return; }
+    if (giup && !giup.hidden) { giup.hidden = true; if (k === "Escape") return; }
+
+    if (k === "o" || k === "O") {
+      e.preventDefault();
+      document.body.classList.toggle("tong-quan");
+      if (!document.body.classList.contains("tong-quan")) toi(hienTai);
+      return;
+    }
+    if (k === "p" || k === "P") { e.preventDefault(); moPresenter(); return; }
+    if (k === "x" || k === "X") { e.preventDefault(); taiNhip(); return; }
+    if (k === "e" || k === "E") { e.preventDefault(); moIn(); return; }
+    if (k === "Escape") { document.body.classList.remove("tong-quan"); return; }
+
+    var huong = 0, ngang = false;
+    switch (k) {
+      case "ArrowDown": case "PageDown": case "j": huong = 1; break;
+      case "ArrowUp": case "PageUp": case "k": huong = -1; break;
+      case " ": if (t && t.closest && t.closest("a,button,summary")) return; huong = e.shiftKey ? -1 : 1; break;
+      case "ArrowRight": huong = 1; ngang = true; break;
+      case "ArrowLeft": huong = -1; ngang = true; break;
+      case "Home": e.preventDefault(); toi(0); return;
+      case "End": e.preventDefault(); toi(slides.length - 1); return;
+      default: return;
+    }
+    e.preventDefault();
+    if (ngang && buocPanel(slides[hienTai], huong)) return;
+    toi(hienTai + huong);
+  });
+
+  /* dấu chấm panel bấm được, và theo dõi cuộn ngang */
+  document.querySelectorAll(".panels").forEach(function (p) {
+    p.addEventListener("scroll", function () {
+      danhDauDots(p, Math.round(p.scrollLeft / (p.clientWidth || 1)));
+    }, { passive: true });
+  });
+  document.querySelectorAll(".panel-dots").forEach(function (d) {
+    d.querySelectorAll("b").forEach(function (b, j) {
+      b.style.cursor = "pointer";
+      b.addEventListener("click", function () {
+        var p = d.parentNode.querySelector(".panels");
+        p.scrollTo({ left: j * p.clientWidth, behavior: motion() });
+      });
+    });
+  });
+
+  /* tổng quan: bấm vào một slide thì về chế độ trình bày tại slide đó */
+  slides.forEach(function (s, i) {
+    s.addEventListener("click", function () {
+      if (!document.body.classList.contains("tong-quan")) return;
+      document.body.classList.remove("tong-quan");
+      setTimeout(function () { toi(i); }, 0);
+    });
+  });
+
+  /* ---------- presenter ---------- */
+  function moPresenter() {
+    var u = new URL(location.href);
+    u.searchParams.set("presenter", "1");
+    u.hash = "";
+    window.open(u.toString(), "deck-presenter", "width=1100,height=760");
+  }
+  if (kenh) {
+    kenh.onmessage = function (ev) {
+      var m = ev.data || {};
+      if (m.loai === "di") toi(m.i);
+      if (m.loai === "xin") phatTin();
+      if (m.loai === "tai-nhip") taiNhip();
+    };
+  }
+
+  /* ---------- xuất PDF ngay từ trang ---------- */
+  var hopIn = document.querySelector(".in-huong");
+  function moIn() { if (hopIn) hopIn.hidden = false; }
+  function inThat() {
+    if (hopIn) hopIn.hidden = true;
+    document.body.classList.add("pdf");
+    document.querySelectorAll("[data-reveal]").forEach(function (el) { el.classList.add("hien"); });
+    setTimeout(function () {
+      window.print();
+      setTimeout(function () { document.body.classList.remove("pdf"); toi(hienTai); }, 400);
+    }, 120);
+  }
+  var btIn = document.querySelector("[data-in]");
+  if (btIn) btIn.addEventListener("click", moIn);
+  var btChay = document.querySelector("[data-in-chay]");
+  if (btChay) btChay.addEventListener("click", inThat);
+  var btHuy = document.querySelector("[data-in-huy]");
+  if (btHuy) btHuy.addEventListener("click", function () { if (hopIn) hopIn.hidden = true; });
+
+  /* ---------- xuất nhịp thật ra tệp, để chấm lại buổi nói ---------- */
+  function taiNhip() {
+    ghiNhan();
+    var d = new Date();
+    var p2 = function (n) { return String(n).padStart(2, "0"); };
+    var ten = d.getFullYear() + "-" + p2(d.getMonth() + 1) + "-" + p2(d.getDate())
+            + "_" + p2(d.getHours()) + p2(d.getMinutes());
+    var data = {
+      deck: document.title,
+      ngay: ten,
+      tong_phut_ke_hoach: keHoach.reduce(function (a, b) { return a + b; }, 0),
+      tong_phut_that: batDau ? (Date.now() - batDau) / 60000 : 0,
+      slide: slides.map(function (s, i) {
+        return {
+          id: s.id, tieu_de: s.dataset.title || "",
+          che_do: s.dataset.chedo || "",
+          phut_ke_hoach: keHoach[i],
+          giay_ke_hoach: Math.round(keHoach[i] * 60),
+          giay_that: Math.round(thucTe[i] * 10) / 10
+        };
+      })
+    };
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }));
+    a.download = "nhip-" + ten + ".json";
+    a.click();
+  }
+
+  /* ---------- khoét lưới nền ở chỗ có nội dung ----------
+     Lưới chạy sau lưng bảng thì đường ngang cắt qua dòng bảng. Đo hộp nội dung
+     THẬT của từng slide rồi đặt toạ độ lỗ khoét vào biến CSS. Không chạy được thì
+     mặt nạ rơi về bộ số mặc định trong deck.css, vẫn dùng được. */
+  function doLoKhoet() {
+    slides.forEach(function (s) {
+      var noi = s.querySelector(".slide-trong");
+      if (!noi) return;
+      var rs = s.getBoundingClientRect(), rn = noi.getBoundingClientRect();
+      if (!rs.width || !rs.height || !rn.height) return;
+      var dem = 1.10;  // nới ra một chút để mép lỗ không cắt sát chữ
+      s.style.setProperty("--kh-x", ((rn.left - rs.left + rn.width / 2) / rs.width * 100).toFixed(1) + "%");
+      s.style.setProperty("--kh-y", ((rn.top - rs.top + rn.height / 2) / rs.height * 100).toFixed(1) + "%");
+      s.style.setProperty("--kh-w", Math.min(96, rn.width / rs.width * 100 * dem).toFixed(1) + "%");
+      s.style.setProperty("--kh-h", Math.min(92, rn.height / rs.height * 100 * dem).toFixed(1) + "%");
+    });
+  }
+  doLoKhoet();
+  addEventListener("resize", doLoKhoet);
+  addEventListener("beforeprint", doLoKhoet);
+
+  /* ---------- khởi động ---------- */
+  if (location.hash) {
+    var k = slides.findIndex(function (s) { return "#" + s.id === location.hash; });
+    if (k >= 0) hienTai = k;
+  }
+  document.querySelectorAll(".panels").forEach(function (p) { danhDauDots(p, 0); });
+  capNhat();
+})();
+</script>
+<script>/* ===========================================================================
+   presenter.js · cửa sổ người nói. Mở bằng phím p từ cửa sổ deck.
+   Cho ba thứ mà PDF và deck UNIOS đều không có:
+     1. ghi chú người nói
+     2. đồng hồ và PHÚT THẬT so với PHÚT KẾ HOẠCH
+     3. slide kế tiếp
+   Kết thúc bấm x để tải nhip-*.json, dùng để chấm lại buổi nói.
+   =========================================================================== */
+(function () {
+  "use strict";
+  if (!new URLSearchParams(location.search).has("presenter")) return;
+
+  var slides = [].slice.call(document.querySelectorAll("[data-slide]"));
+  var keHoach = slides.map(function (s) { return parseFloat(s.dataset.phut || "0"); });
+  var tongKe = keHoach.reduce(function (a, b) { return a + b; }, 0);
+  var kenh = ("BroadcastChannel" in window) ? new BroadcastChannel("deck-nha") : null;
+
+  document.documentElement.setAttribute("data-presenter", "");
+  var css = document.createElement("style");
+  css.textContent = [
+    "html[data-presenter]{scroll-snap-type:none}",
+    "html[data-presenter] body{overflow:auto;background:#14161a;color:#e8e9ec}",
+    "html[data-presenter] main,html[data-presenter] .thanh,html[data-presenter] .tien-do{display:none}",
+    ".pv{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:1px;background:#2a2e35;min-height:100vh}",
+    ".pv > div{background:#14161a;padding:1.5rem 1.75rem}",
+    ".pv h2{margin:.25rem 0 1rem;font-size:1.9rem;line-height:1.15;font-weight:650;color:#fff}",
+    ".pv .ghi{font-size:1.3rem;line-height:1.5;white-space:pre-wrap;color:#dfe2e7}",
+    ".pv .nh{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#8b93a1;margin:0 0 .4rem}",
+    ".pv .dh{font-size:3.6rem;font-weight:620;font-variant-numeric:tabular-nums;line-height:1;color:#fff}",
+    ".pv .lech{font-size:1.5rem;font-weight:650;font-variant-numeric:tabular-nums;margin-top:.5rem}",
+    ".pv .som{color:#5fb878}.pv .muon{color:#e0564f}.pv .dung{color:#8b93a1}",
+    ".pv ol{list-style:none;margin:0;padding:0;font-size:.95rem}",
+    ".pv li{display:flex;gap:.6rem;padding:.3rem 0;border-bottom:1px solid #22262d;color:#9aa2b1}",
+    ".pv li[data-on]{color:#fff;font-weight:620}",
+    ".pv li b{min-width:2.4rem;text-align:right;font-variant-numeric:tabular-nums;font-weight:500}",
+    ".pv .ke{font-size:1.05rem;color:#9aa2b1;margin-top:.4rem}",
+    ".pv button{font:inherit;background:#22262d;color:#e8e9ec;border:1px solid #343a44;",
+    "  padding:.5rem .9rem;margin:.35rem .35rem 0 0;cursor:pointer}",
+    ".pv button:hover{background:#2d323b}"
+  ].join("\n");
+  document.head.appendChild(css);
+
+  var box = document.createElement("div");
+  box.className = "pv";
+  box.innerHTML =
+    '<div>' +
+      '<p class="nh">Slide <span id="pv-so">1/1</span> · kế hoạch <span id="pv-kh">0</span> phút</p>' +
+      '<h2 id="pv-td">...</h2>' +
+      '<div class="ghi" id="pv-ghi"></div>' +
+      '<p class="nh" style="margin-top:2rem">Tiếp theo</p>' +
+      '<div class="ke" id="pv-ke"></div>' +
+      '<div style="margin-top:1.5rem">' +
+        '<button id="pv-lui">&#8592; Lùi</button>' +
+        '<button id="pv-tien">Tiến &#8594;</button>' +
+        '<button id="pv-tai">Tải nhịp thật (x)</button>' +
+      '</div>' +
+    '</div>' +
+    '<div>' +
+      '<p class="nh">Đã nói</p><div class="dh" id="pv-dh">00:00</div>' +
+      '<div class="lech dung" id="pv-lech">đúng nhịp</div>' +
+      '<p class="nh" style="margin-top:1.75rem">Tổng kế hoạch ' + tongKe.toFixed(1) + ' phút</p>' +
+      '<ol id="pv-ds"></ol>' +
+    '</div>';
+  document.body.appendChild(box);
+
+  var ds = document.getElementById("pv-ds");
+  slides.forEach(function (s, i) {
+    var li = document.createElement("li");
+    li.innerHTML = '<b>' + (keHoach[i] ? keHoach[i].toFixed(1) : "bk") + '</b><span>' +
+      (s.dataset.title || s.id) + '</span>';
+    li.addEventListener("click", function () { gui({ loai: "di", i: i }); });
+    li.style.cursor = "pointer";
+    ds.appendChild(li);
+  });
+
+  var i0 = 0;
+  function gui(m) { if (kenh) kenh.postMessage(m); }
+  document.getElementById("pv-lui").onclick = function () { gui({ loai: "di", i: i0 - 1 }); };
+  document.getElementById("pv-tien").onclick = function () { gui({ loai: "di", i: i0 + 1 }); };
+  document.getElementById("pv-tai").onclick = function () { gui({ loai: "tai-nhip" }); };
+
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    var k = e.key, d = 0;
+    if (k === "ArrowRight" || k === "ArrowDown" || k === "PageDown" || k === " ") d = 1;
+    else if (k === "ArrowLeft" || k === "ArrowUp" || k === "PageUp") d = -1;
+    else if (k === "x" || k === "X") { e.preventDefault(); gui({ loai: "tai-nhip" }); return; }
+    else return;
+    e.preventDefault();
+    gui({ loai: "di", i: i0 + d });
+  });
+
+  function p2(n) { return String(n).padStart(2, "0"); }
+  if (kenh) {
+    kenh.onmessage = function (ev) {
+      var m = ev.data || {};
+      if (m.loai !== "nhip") return;
+      i0 = m.i;
+      document.getElementById("pv-so").textContent = (m.i + 1) + "/" + m.tong;
+      document.getElementById("pv-kh").textContent = (m.phutSlideNay || 0).toFixed(1);
+      document.getElementById("pv-td").textContent = m.title || "";
+      document.getElementById("pv-ghi").textContent = m.ghiChu || "";
+      document.getElementById("pv-ke").textContent = m.keTiep || "(hết)";
+      var g = Math.floor(m.giayThat || 0);
+      document.getElementById("pv-dh").textContent = p2(Math.floor(g / 60)) + ":" + p2(g % 60);
+      var lech = g / 60 - (m.phutKeHoachLuyKe || 0);
+      var el = document.getElementById("pv-lech");
+      el.className = "lech " + (Math.abs(lech) < 0.5 ? "dung" : (lech < 0 ? "som" : "muon"));
+      el.textContent = Math.abs(lech) < 0.5 ? "đúng nhịp"
+        : (lech > 0 ? "muộn " : "sớm ") + Math.abs(lech).toFixed(1) + " phút";
+      [].slice.call(ds.children).forEach(function (li, j) {
+        if (j === m.i) li.setAttribute("data-on", ""); else li.removeAttribute("data-on");
+      });
+    };
+    gui({ loai: "xin" });
+  }
+})();
+</script>
+</body>
+</html>

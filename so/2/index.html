@@ -1,0 +1,1459 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Số phải dẫn lại được trong ba mươi giây</title>
+<style>/* ===========================================================================
+   deck.css  ·  bộ kit slide web của nhà
+   Không tham chiếu tài nguyên ngoài: phòng họp mất mạng vẫn chạy đủ.
+   Đổi một deck = đổi MỘT dòng --accent ở :root của index.html.
+   =========================================================================== */
+
+:root{
+  --accent:#2C6E9B;        /* MỘT màu nhấn duy nhất cho cả deck */
+  --accent-manh:#1F5476;
+  --ink:#1b1e23;
+  --ink-mo:#4a5260;
+  --giay:#f7f7f5;
+  --giay-sau:#eceae6;
+  --ke:#1b1e2326;
+  --header:3.25rem;
+  --le:clamp(1.25rem,4vw,4rem);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{
+  scroll-behavior:smooth;
+  scroll-snap-type:y mandatory;
+  -webkit-text-size-adjust:100%;
+}
+body{
+  margin:0;
+  background:var(--giay);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px;
+  line-height:1.55;
+  font-feature-settings:"kern" 1;
+}
+img,svg{max-width:100%;height:auto}
+[hidden]{display:none!important}
+
+/* ---------------- cấp chữ, tên theo nghĩa chứ không theo cỡ ---------------- */
+.d1{font-size:clamp(2.1rem,1.2rem + 3.4vw,4.1rem);font-weight:650;line-height:1.02;letter-spacing:-.03em;text-wrap:balance;margin:0}
+.d2{font-size:clamp(1.6rem,1.1rem + 2vw,2.9rem);font-weight:620;line-height:1.08;letter-spacing:-.025em;text-wrap:balance;margin:0}
+.lead{font-size:clamp(1.05rem,1rem + .45vw,1.4rem);line-height:1.5;color:var(--ink-mo);max-width:46ch}
+.label{font-size:.8125rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mo);margin:0}
+.num{font-size:clamp(2.4rem,1.6rem + 3vw,4.6rem);font-weight:620;line-height:1;letter-spacing:-.04em;
+     font-variant-numeric:tabular-nums;color:var(--accent)}
+
+/* ---------------- khung slide ---------------- */
+.slide{
+  min-height:100svh;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:calc(var(--header) + 1.5rem) var(--le) 4rem;
+  position:relative;
+  overflow:hidden;            /* ⚠ chính chỗ này nuốt nội dung: cổng G12 đo nó */
+}
+.slide-trong{max-width:68rem;width:100%;margin:0 auto}
+.slide > .slide-trong > * + *{margin-top:1.25rem}
+.slide p{margin:0;font-size:clamp(1.05rem,1rem + .5vw,1.45rem);line-height:1.5;max-width:52ch}
+.slide ul,.slide ol{margin:0;padding-left:1.4em;max-width:52ch}
+.slide li{margin-top:.6rem;font-size:clamp(1rem,.95rem + .4vw,1.3rem)}
+.slide strong{font-weight:680}
+.slide em{font-style:normal;color:var(--accent);font-weight:600}
+.slide code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em;
+            background:var(--giay-sau);padding:.1em .35em}
+
+/* vạch nhấn trước tiêu đề, mô-típ nhận dạng duy nhất của kit */
+.slide .d2::before{
+  content:"";display:block;width:2.5rem;height:.3rem;background:var(--accent);
+  margin-bottom:1.1rem;transform-origin:0;
+}
+
+/* bìa, cảm ơn, one more thing.
+   ⚠ KHÔNG khai màu nền ở đây. Nền chỉ đến từ một nguồn là các lớp .nen-* bên dưới,
+   chọn bằng @nen và mặc định trong kit/nen.json. Hai nguồn nền là hai sự thật. */
+.slide.cover .gach{width:4rem;height:.35rem;background:var(--accent);margin-bottom:1.6rem}
+.slide.omt{text-align:center;align-items:center}
+.slide.omt .d2::before{margin-left:auto;margin-right:auto}
+.slide.omt p{margin-left:auto;margin-right:auto;text-align:center;
+             font-size:clamp(1.5rem,1rem + 2vw,2.6rem);line-height:1.3;max-width:24ch}
+.slide.cam-on p{font-size:clamp(1.4rem,1rem + 1.8vw,2.4rem);line-height:1.3;max-width:26ch}
+/* ⚠ Slide dự phòng KHÔNG được có nền riêng. Trước đây nó là sọc chéo hardcode,
+   tức đúng thứ luật G18 cấm: nền khai ngoài bộ chuẩn. Nay nó dùng chung nền với
+   slide nội dung, và chỉ phân biệt bằng CHỮ: nhãn "Dự phòng" và số trang "BK". */
+
+/* khối số liệu */
+.so-khoi{display:flex;flex-wrap:wrap;gap:2.5rem 3.5rem;margin-top:1.5rem}
+.so-o{min-width:9rem}
+.so-o .nhan{font-size:.95rem;color:var(--ink-mo);margin-top:.4rem;max-width:22ch}
+
+/* ---------------- panel ngang trong một slide ---------------- */
+.panels{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:var(--le);
+        scrollbar-width:none;margin-top:1rem}
+.panels::-webkit-scrollbar{display:none}
+.panel{flex:0 0 100%;scroll-snap-align:start;min-width:0}
+.panel-dots{display:flex;gap:.45rem;align-items:center;margin-top:1.5rem;font-size:.8125rem;color:var(--ink-mo)}
+.panel-dots b{width:.5rem;height:.5rem;background:var(--ke);display:block}
+.panel-dots b[data-on]{background:var(--accent)}
+
+/* ---------------- thanh trên, tiến độ ---------------- */
+.thanh{position:fixed;inset-inline:0;top:0;height:var(--header);z-index:40;
+       background:color-mix(in srgb,var(--giay) 92%,transparent);backdrop-filter:blur(8px);
+       border-bottom:1px solid var(--ke);display:flex;align-items:center;
+       gap:1rem;padding:0 var(--le);font-size:.8125rem;color:var(--ink-mo)}
+.thanh .ten{font-weight:650;color:var(--ink)}
+.thanh .phai{margin-left:auto;display:flex;gap:1rem;align-items:center;font-variant-numeric:tabular-nums}
+.tien-do{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:50;
+         transform:scaleX(var(--pct,0));transform-origin:0;width:100%;transition:transform .15s linear}
+
+/* ---------------- hiện dần: phần THÊM, không phải điều kiện đọc ---------------- */
+[data-reveal]{opacity:1}
+.js [data-reveal]{opacity:0;transform:translateY(.75rem);
+  transition:opacity .6s cubic-bezier(.2,.7,.1,1),transform .6s cubic-bezier(.2,.7,.1,1);
+  transition-delay:var(--tre,0s)}
+.js [data-reveal].hien{opacity:1;transform:none}
+.js [data-reveal] .w{display:inline-block;opacity:0;transform:translateY(.4em);
+  transition:opacity .5s,transform .7s cubic-bezier(.2,.7,.1,1);
+  transition-delay:calc(var(--w) * 42ms + .1s)}
+.js [data-reveal].hien .w{opacity:1;transform:none}
+
+/* ---------------- chế độ tổng quan (bấm o) ---------------- */
+body.tong-quan{scroll-snap-type:none;overflow:auto}
+body.tong-quan .slide{min-height:0;height:16rem;padding:1.5rem;border:1px solid var(--ke);
+  overflow:hidden;cursor:pointer;zoom:.5}
+body.tong-quan main{display:grid;grid-template-columns:repeat(auto-fill,minmax(20rem,1fr));
+  gap:1rem;padding:calc(var(--header) + 1rem) 1rem 4rem}
+body.tong-quan .panels{overflow:hidden}
+
+/* ---------------- bảng trợ giúp ---------------- */
+.giup{position:fixed;inset:0;z-index:60;background:#1b1e23f2;color:#fff;display:grid;
+      place-items:center;padding:2rem}
+.giup table{border-collapse:collapse;font-size:1rem}
+.giup td{padding:.45rem 1.2rem .45rem 0;vertical-align:top}
+.giup kbd{background:#ffffff1f;border:1px solid #ffffff38;padding:.1em .45em;
+          font-family:inherit;font-size:.95em}
+
+/* ---------------- nhịp: biểu đồ sự tập trung ---------------- */
+.nhip{width:100%;height:auto;margin-top:1rem;border:1px solid var(--ke);background:#fff}
+
+/* ---------------- tôn trọng thiết lập người dùng ---------------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js [data-reveal],.js [data-reveal] .w{opacity:1;transform:none;transition:none}
+  .tien-do{transition:none}
+}
+
+/* ---------------- chế độ PDF: một slide một trang, hoạt cảnh đóng băng ----------
+   Dùng chung cho @media print và cho class .pdf do bộ xuất đặt vào.
+   ------------------------------------------------------------------------------ */
+@page{size:1280px 720px;margin:0}
+body.pdf{scroll-snap-type:none}
+body.pdf .thanh,body.pdf .tien-do,body.pdf .giup,body.pdf .panel-dots{display:none!important}
+body.pdf .slide{
+  min-height:0;height:720px;width:1280px;break-after:page;page-break-after:always;
+  padding:3.5rem 4.5rem;overflow:hidden;
+}
+body.pdf .slide:last-child{break-after:auto;page-break-after:auto}
+body.pdf [data-reveal],body.pdf [data-reveal] .w{opacity:1!important;transform:none!important;transition:none!important}
+body.pdf .panels{display:block;overflow:visible}
+body.pdf .panel{flex:none;width:100%}
+body.pdf .panel + .panel{margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--ke)}
+@media print{
+  html{scroll-snap-type:none}
+  .thanh,.tien-do,.giup,.panel-dots{display:none!important}
+  .slide{min-height:0;height:720px;break-after:page;page-break-after:always;overflow:hidden}
+  [data-reveal],[data-reveal] .w{opacity:1!important;transform:none!important}
+  .panels{display:block;overflow:visible}
+  .panel{flex:none;width:100%}
+}
+
+/* ===========================================================================
+   NỀN SLIDE · chọn bằng @nen trong noi-dung.md
+   Mọi nền vẽ bằng CSS thuần, không tệp ảnh, giữ lời hứa chạy offline.
+   Nền là thứ nằm DƯỚI, không bao giờ được ăn vào độ đọc của chữ:
+   mọi hoa văn dưới đây đều dưới 5% độ đậm.
+   =========================================================================== */
+/* HAI LỚP NỀN, tách bạch để không lớp nào kéo lớp kia:
+     ::before = VÂN phủ cả slide, đổi theo @nen
+     ::after  = VẠCH CHÂN TRANG, dấu nhận dạng chung của mọi slide, cao cố định
+   Vạch cao cố định chứ không tính theo phần trăm: khổ slide nào cũng ra đúng một dải
+   thước ở chân, không bao giờ chạm vùng nội dung. */
+.slide::before,.slide::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0}
+.slide::after{
+  background-image:linear-gradient(to right,var(--vach-mau,#1b1e2316) 1px,transparent 1px);
+  background-size:12.5% var(--vach-cao,84px);
+  background-position:left bottom;
+  background-repeat:repeat-x;
+}
+.slide > .slide-trong{position:relative;z-index:1}
+
+/* vạch dọc, mô-típ nhận dạng của kit, mặc định cho slide nội dung */
+/* mặc định cho slide nội dung. Vân để lớp khí quyển lo (lưới có mặt nạ, khối loang,
+   tối góc), ở đây không chồng thêm hoa văn nào nữa: hai lớp vân cùng lúc đọc thành rối. */
+.nen-vach::before{background:none}
+/* lưới chấm */
+.nen-luoi::before{
+  background-image:radial-gradient(circle at 1px 1px,#1b1e231f 1px,transparent 0);
+  background-size:22px 22px;
+}
+/* gạch chéo nhẹ */
+.nen-cheo::before{
+  background-image:repeating-linear-gradient(135deg,#1b1e230f 0 1px,transparent 1px 11px);
+}
+/* loang màu nhấn từ góc trên phải */
+.nen-sang::before{
+  background-image:
+    radial-gradient(circle at 1px 1px,#1b1e2314 1px,transparent 0),
+    radial-gradient(62% 72% at 88% 5%,color-mix(in srgb,var(--accent) 16%,transparent) 0%,transparent 70%);
+  background-size:26px 26px,100% 100%;
+  background-repeat:repeat,no-repeat;
+}
+/* nền tối, dùng cho bìa và one more thing */
+.nen-toi{background:var(--ink);color:var(--giay)}
+.nen-toi .d1,.nen-toi .d2{color:#fff}
+.nen-toi .lead,.nen-toi .label,.nen-toi p,.nen-toi li{color:#cfd4dc}
+.nen-toi strong{color:#fff}
+.nen-toi .bang th{color:#fff;border-bottom-color:var(--accent)}
+.nen-toi .bang td{border-bottom-color:#ffffff1f}
+.nen-toi::before{
+  background-image:radial-gradient(circle at 1px 1px,#ffffff14 1px,transparent 0);
+  background-size:26px 26px;
+}
+.nen-toi::after{background-image:linear-gradient(to right,#ffffff16 1px,transparent 1px)}
+.nen-trong::before,.nen-trong::after{background:none}
+
+/* hình trang trí ở bìa: vẽ bằng SVG sinh sẵn, đứng yên khi in */
+.bia-hinh{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.9}
+.bia-hinh .vong{animation:bia-quay 64s linear infinite;transform-origin:center}
+.bia-hinh .cham{animation:bia-nhay 5.5s ease-in-out infinite;animation-delay:calc(var(--i) * .5s)}
+@keyframes bia-quay{to{transform:rotate(360deg)}}
+@keyframes bia-nhay{0%,100%{opacity:.25}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.bia-hinh *{animation:none!important}}
+body.pdf .bia-hinh *{animation:none!important}
+
+/* ===========================================================================
+   BẢNG · ít đường kẻ, số canh phải, một cột được nhấn
+   =========================================================================== */
+.bang-khung{overflow-x:auto;margin-top:1.25rem}
+/* ⚠ width:100% kéo mọi đường kẻ ngang ra hết bề ngang slide, trông như gạch chân
+   cả trang. Bảng rộng theo NỘI DUNG, đường kẻ dừng ở đúng chỗ bảng hết. */
+.bang{border-collapse:collapse;width:auto;max-width:100%;font-variant-numeric:tabular-nums;
+      font-size:clamp(.95rem,.85rem + .5vw,1.25rem)}
+.bang-rong .bang{width:100%}
+.bang caption{caption-side:bottom;margin-top:.75rem;font-size:.9rem;color:var(--ink-mo);
+              text-align:left}
+.bang th{text-align:left;font-weight:650;padding:.5rem 1.8rem .5rem 0;
+         border-bottom:2px solid var(--accent);white-space:nowrap}
+.bang td{padding:.5rem 1.8rem .5rem 0;border-bottom:1px solid var(--ke);vertical-align:top}
+/* ⚠ cột số canh phải vẫn PHẢI giữ khoảng đệm, bỏ đi là chữ hai cột dính nhau */
+.bang td.so,.bang th.so{text-align:right;font-variant-numeric:tabular-nums}
+.bang tr > *:last-child{padding-right:0}
+.bang tr[data-nhan] td{padding-left:.6rem}
+.bang tbody tr:last-child td{border-bottom:none}
+.bang .nhan{color:var(--accent);font-weight:650}
+.bang tr[data-nhan] td{background:color-mix(in srgb,var(--accent) 10%,transparent);
+                       font-weight:600}
+
+/* ===========================================================================
+   HÌNH · SVG nhúng thẳng để thừa kế màu nhấn và vẫn chạy offline
+   =========================================================================== */
+figure{margin:1.25rem 0 0}
+figure svg,figure img{display:block;width:100%;height:auto;max-height:52svh}
+body.pdf figure svg,body.pdf figure img{max-height:380px}
+figcaption{margin-top:.6rem;font-size:.9rem;color:var(--ink-mo);max-width:60ch}
+figcaption b{color:var(--ink);font-weight:650}
+.nen-toi figcaption{color:#aab1bd}.nen-toi figcaption b{color:#fff}
+.hinh-doi{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:end}
+@media (max-width:720px){.hinh-doi{grid-template-columns:1fr}}
+
+/* ===========================================================================
+   NÚT XUẤT PDF trên thanh trên, và bảng chỉ dẫn in
+   =========================================================================== */
+.nut{font:inherit;font-size:.8125rem;font-weight:600;background:none;color:var(--ink-mo);
+     border:1px solid var(--ke);padding:.3rem .7rem;cursor:pointer}
+.nut:hover{color:var(--ink);border-color:var(--ink)}
+.in-huong{position:fixed;inset:0;z-index:70;background:#1b1e23f2;color:#fff;
+          display:grid;place-items:center;padding:2rem}
+.in-huong .hop{max-width:34rem;background:#20242b;padding:2rem;border:1px solid #343a44}
+.in-huong h3{margin:0 0 1rem;font-size:1.3rem}
+.in-huong ol{margin:0 0 1.5rem;padding-left:1.3em;line-height:1.7}
+.in-huong b{color:#fff}
+.in-huong code{background:#ffffff1a;padding:.1em .4em}
+@media print{.nut,.in-huong{display:none!important}}
+body.pdf .nut,body.pdf .in-huong{display:none!important}
+
+/* ===========================================================================
+   BÓC TỪ deck "DAU DIGITAL" 30/09/2026 · ba thiết bị đáng lấy
+   =========================================================================== */
+
+/* 1) CHÂN TRANG XUẤT XỨ: mọi slide nội dung tự mang theo nguồn số và mốc ngày.
+   Đây là thứ đáng giá nhất của deck ấy: bóc một slide ra khỏi bộ vẫn biết số
+   lấy từ đâu và tính tới ngày nào. */
+.chan{position:absolute;left:var(--le);right:var(--le);bottom:1.5rem;z-index:1;
+      display:flex;gap:1rem;align-items:baseline;
+      font-size:.78rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+      color:var(--ink-mo)}
+.chan .so-trang{margin-left:auto;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.nen-toi .chan{color:#8e97a5}
+
+/* 2) Ô SỐ BA TẦNG: số, nhãn, và MỐC SO SÁNH. Một con số không có mốc so sánh
+   thì không nói được điều gì, nên tầng thứ ba là bắt buộc. */
+.so-o .moc{margin-top:.35rem;font-size:.85rem;line-height:1.35;color:var(--ink-mo);
+           max-width:24ch}
+.so-o .moc.trong-moc{font-style:italic;opacity:.75}
+.so-khoi.cot{display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));
+             gap:1.75rem 2rem}
+.so-khoi.cot > .so-o{border-left:1px solid var(--ke);padding-left:1.25rem}
+.so-khoi.cot > .so-o:first-child{border-left:none;padding-left:0}
+
+/* 3) KHỐI LƯU Ý: viền trái màu nhấn, nền pha rất nhạt */
+.luu-y{display:flex;gap:1.5rem;margin-top:1.25rem;padding:1.1rem 1.4rem;
+       border-left:4px solid var(--accent);
+       background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.luu-y .nhan{flex:0 0 11rem;font-size:.8rem;font-weight:700;letter-spacing:.08em;
+             text-transform:uppercase;color:var(--accent);line-height:1.4}
+.luu-y .noi{font-size:clamp(.98rem,.9rem + .4vw,1.2rem);line-height:1.5;margin:0;max-width:none}
+.nen-toi .luu-y{background:#ffffff0f}
+@media (max-width:720px){.luu-y{flex-direction:column;gap:.5rem}.luu-y .nhan{flex:none}}
+
+/* 4) THANH CƠ CẤU: một thanh ngang chia phần, chú giải nằm cùng hàng tiêu đề */
+.co-cau-khoi{margin-top:1.25rem}
+.co-cau-dau{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:.6rem}
+.co-cau-dau .nhan{font-size:.8rem;font-weight:700;letter-spacing:.08em;
+                 text-transform:uppercase;color:var(--ink-mo)}
+.co-cau-chu{display:flex;gap:1rem;margin-left:auto;flex-wrap:wrap;font-size:.82rem;
+           color:var(--ink-mo)}
+.co-cau-chu span{display:flex;align-items:center;gap:.4rem}
+.co-cau-chu i{width:.7rem;height:.7rem;display:block}
+.co-cau{display:flex;height:2.6rem;overflow:hidden}
+.co-cau > div{display:grid;place-items:center;font-size:.95rem;font-weight:650;
+             font-variant-numeric:tabular-nums;color:#fff;min-width:0}
+.co-cau > div[data-nhat]{color:var(--ink)}
+
+
+/* HÌNH LỚN: slide dành cho một hình lấy từ bài. Tiêu đề thu nhỏ, bỏ kicker,
+   để hình có thêm khoảng một trăm bốn mươi điểm ảnh chiều cao. Hình của bài tạp chí
+   vẽ cho khổ một cột, mang sang slide thì chữ trong hình tụt xuống dưới ngưỡng đọc. */
+.slide.hinh-lon .label{display:none}
+/* vẫn phải trên sàn đọc của G15: thu tiêu đề không được thu xuống dưới 34px */
+.slide.hinh-lon .d2{font-size:clamp(2.15rem,1.7rem + .9vw,2.6rem)}
+.slide.hinh-lon .d2::before{width:2rem;height:.25rem;margin-bottom:.7rem}
+.slide.hinh-lon figure{margin-top:.8rem}
+.slide.hinh-lon figure svg,.slide.hinh-lon figure img{max-height:54svh}
+body.pdf .slide.hinh-lon figure svg,body.pdf .slide.hinh-lon figure img{max-height:445px}
+
+
+/* ===========================================================================
+   LỚP KHÍ QUYỂN · bóc từ working/ra-mat
+   Ba kỹ thuật lấy về:
+     a) lưới vuông có MẶT NẠ ellipse, nhạt dần ra biên nên không bao giờ đọc
+        thành cái khung, và không chặn ở đâu cả;
+     b) ba khối màu loang rất lớn đặt LỆCH RA NGOÀI mép, alpha thấp, trôi chậm;
+     c) một lớp tối góc cực nhẹ để giữ mắt vào giữa.
+   Khác bản gốc hai chỗ: alpha hạ xuống vì slide phải chiếu chứ không phải xem
+   trên màn hình cá nhân, và mọi hoạt cảnh đóng băng khi in.
+   =========================================================================== */
+.nen{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.nen::before,.nen::after{content:"";position:absolute;inset:0}
+
+/* a) lưới có mặt nạ, và KHOÉT RỖNG ở chỗ có nội dung.
+   Lưới chạy sau lưng bảng thì các đường ngang cắt qua dòng bảng, đọc rất mệt.
+   Mặt nạ gồm hai lớp trừ nhau: lớp một là vùng lưới được hiện, lớp hai là lỗ khoét.
+   Toạ độ lỗ do deck.js đo từ hộp nội dung thật của từng slide rồi đặt vào biến;
+   không có JS thì rơi về bộ số mặc định dưới đây, vẫn dùng được. */
+.nen::before{
+  background-image:
+    linear-gradient(var(--luoi-mau,#1b1e230d) 1px,transparent 1px),
+    linear-gradient(90deg,var(--luoi-mau,#1b1e230d) 1px,transparent 1px);
+  background-size:64px 64px;
+  --mn-hien:radial-gradient(ellipse 80% 74% at 52% 46%,#000 22%,transparent 78%);
+  --mn-khoet:radial-gradient(ellipse var(--kh-w,52%) var(--kh-h,42%)
+              at var(--kh-x,34%) var(--kh-y,52%),#000 52%,transparent 100%);
+  -webkit-mask-image:var(--mn-hien),var(--mn-khoet);
+          mask-image:var(--mn-hien),var(--mn-khoet);
+  -webkit-mask-composite:source-out;
+          mask-composite:subtract;
+}
+/* b) ba khối loang, đặt lệch ra ngoài mép như bản gốc */
+.nen .khoi{position:absolute;display:block;border-radius:50%;will-change:transform}
+.nen .k1{width:52%;height:92%;left:-16%;top:-28%;
+         background:radial-gradient(circle,color-mix(in srgb,var(--accent) 16%,transparent),transparent 66%);
+         animation:troi-1 34s ease-in-out infinite alternate}
+.nen .k2{width:44%;height:80%;right:-14%;top:12%;
+         background:radial-gradient(circle,color-mix(in srgb,var(--accent) 11%,transparent),transparent 66%);
+         animation:troi-2 42s ease-in-out infinite alternate}
+.nen .k3{width:40%;height:72%;left:28%;bottom:-30%;
+         background:radial-gradient(circle,color-mix(in srgb,var(--ink) 7%,transparent),transparent 66%);
+         animation:troi-3 38s ease-in-out infinite alternate}
+@keyframes troi-1{to{transform:translate(4%,6%)}}
+@keyframes troi-2{to{transform:translate(-5%,-4%)}}
+@keyframes troi-3{to{transform:translate(3%,-5%)}}
+/* c) tối góc */
+.nen::after{background:radial-gradient(ellipse 118% 104% at 50% 50%,transparent 60%,#1b1e230e)}
+
+/* slide nền mực: lưới và khối sáng lên, tối góc đổi chiều */
+.nen-toi .nen{--luoi-mau:#ffffff0d}
+.nen-toi .nen .k3{background:radial-gradient(circle,#ffffff12,transparent 66%)}
+.nen-toi .nen::after{background:radial-gradient(ellipse 118% 104% at 50% 50%,transparent 58%,#00000038)}
+
+/* nền 'trong' thì không có lớp khí quyển nào */
+.nen-trong .nen{display:none}
+
+@media (prefers-reduced-motion:reduce){.nen .khoi{animation:none!important}}
+body.pdf .nen .khoi{animation:none!important}
+
+
+/* ===========================================================================
+   BỘ HÌNH CHO WEB · đúng vai txstyle.tex bên LaTeX
+   Luật làm nên khác biệt giữa hình VẼ TẠI CHỖ và hình DÁN VÀO:
+     1. không khai font trong SVG, để nó THỪA KẾ chữ của deck;
+     2. không khai mã màu, dùng currentColor và biến của deck;
+     3. viewBox dựng ở ĐÚNG KHỔ SẼ CHIẾU, tỉ lệ phóng xấp xỉ một, nhờ vậy cỡ chữ
+        trong hình bằng đúng cỡ chữ khai ra, không bị khổ hình kéo đi.
+   Quy ước tên lấy nguyên từ transaction-figure-kit.
+   =========================================================================== */
+figure svg text{font-family:inherit}
+/* ⚠ Bộ hình của BÀI BÁO (transaction-figure-kit) cấm bóng và bo góc, vì in đen trắng
+   trên giấy. Bộ hình của SLIDE thì khác: chiếu lên tường, cần lớp và nhịp thị giác để
+   mắt bám được. Đây là chỗ hai bộ CỐ Ý khác nhau, không phải quên đồng bộ. */
+.hk-blk{fill:var(--giay);stroke:var(--ke-dam,#1b1e2340);stroke-width:1.4}
+.hk-prop{fill:var(--accent);stroke:none}
+.hk-mo{fill:var(--giay-sau);stroke:var(--ke);stroke-width:1.2}
+/* ⭐ Sắc độ của CÙNG một màu nhấn, không phải màu thứ hai: vẫn giữ luật một màu
+   nhấn mà hình có chiều sâu. 10% cho khối trên đường còn sống, 100% cho khối đinh. */
+.hk-tint{fill:color-mix(in srgb,var(--accent) 9%,var(--giay));
+         stroke:color-mix(in srgb,var(--accent) 32%,transparent);stroke-width:1.4}
+.hk-spine{stroke:color-mix(in srgb,var(--accent) 30%,transparent);stroke-width:3;
+          stroke-linecap:round}
+.hk-spine-mo{stroke:var(--ke);stroke-width:3;stroke-linecap:round}
+.hk-cham{fill:var(--accent)}
+.hk-cham-mo{fill:var(--ink-mo);opacity:.4}
+.hk-lon{fill:var(--accent);font-weight:680;font-variant-numeric:tabular-nums;
+        letter-spacing:-.02em}
+.hk-lon-mo{fill:var(--ink-mo);opacity:.5;font-weight:680;
+           font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.hk-vach{fill:var(--ink-mo);opacity:.55}
+.hk-vach-prop{fill:#fff;opacity:.8}
+.hk-ten{fill:var(--ink);font-weight:650}
+.hk-prop-ten{fill:#fff;font-weight:650}
+.hk-phu{fill:var(--ink-mo)}
+.hk-prop-phu{fill:#dbe6ef}
+.hk-so{fill:var(--ink-mo);opacity:.65;font-weight:700;letter-spacing:.06em}
+.hk-so-prop{fill:#fff;opacity:.75;font-weight:700;letter-spacing:.06em}
+.hk-flow{stroke:var(--ink-mo);stroke-width:2.2;fill:none;stroke-linecap:round}
+.hk-fb{stroke:var(--ink-mo);stroke-width:2;fill:none;stroke-linecap:round;
+       stroke-dasharray:1 7;opacity:.75}
+.hk-alab{fill:var(--ink-mo)}
+.hk-alab-nen{fill:var(--giay);stroke:var(--ke);stroke-width:1}
+.hk-zone{fill:color-mix(in srgb,var(--ink) 3%,transparent);stroke:none}
+.hk-zlab{fill:var(--ink-mo);font-weight:700;letter-spacing:.1em}
+.hk-truc{stroke:var(--ke);stroke-width:1}
+.hk-truc-chinh{stroke:var(--ink-mo);stroke-width:1.5}
+.hk-diem{fill:var(--ink-mo);opacity:.55}
+.hk-diem-nhan{fill:var(--accent)}
+.hk-cot{fill:var(--ink-mo);opacity:.45}
+/* dải dao động của đối chứng: nền rất nhạt, không cạnh tranh với cột */
+.hk-dai{fill:var(--ink-mo);opacity:.10}
+.hk-dai-net{stroke:var(--ink-mo);stroke-width:1;stroke-dasharray:5 4;opacity:.55}
+/* vạch ngưỡng cam kết: màu nhấn, vì ngưỡng là THỨ HÌNH NÓI VỀ */
+.hk-nguong{stroke:var(--accent);stroke-width:2;stroke-dasharray:6 5}
+.hk-nguong-chu{fill:var(--accent);font-weight:600;text-anchor:middle}
+.hk-cot-nhan{fill:var(--accent)}
+/* ---- hình số liệu, phiên bản hai ---- */
+.hk-thanh{fill:var(--ink-mo);opacity:.32}
+.hk-thanh-nhan{fill:var(--accent)}
+.hk-thanh-nen{fill:var(--ink);opacity:.045}
+.hk-gt{fill:var(--ink);font-weight:680;font-variant-numeric:tabular-nums}
+.hk-gt-nhan{fill:var(--accent);font-weight:680;font-variant-numeric:tabular-nums}
+.hk-nhan-o{fill:var(--ink-mo);font-weight:600}
+.hk-chip{fill:var(--ink);opacity:.06}
+.hk-chip-chu{fill:var(--ink-mo);font-weight:650;font-variant-numeric:tabular-nums}
+.hk-moc{stroke:var(--ink-mo);stroke-width:1.5;stroke-dasharray:5 4;opacity:.55;fill:none}
+.hk-ghi{fill:var(--accent);font-weight:650}
+.hk-ghi-duong{stroke:var(--accent);stroke-width:1.6;fill:none;opacity:.8}
+.hk-o-nhiet{stroke:var(--giay);stroke-width:2}
+.hk-cham-lon{fill:var(--accent)}
+.hk-cham-nho{fill:var(--ink-mo);opacity:.45}
+.hk-que{stroke:var(--ink-mo);stroke-width:2;opacity:.35;stroke-linecap:round;fill:none}
+.hk-que-nhan{stroke:var(--accent);stroke-width:2.6;stroke-linecap:round;fill:none}
+.nen-toi .hk-thanh{fill:#aab1bd;opacity:.45}
+.nen-toi .hk-gt{fill:#fff}
+.nen-toi .hk-chip{fill:#fff;opacity:.1}
+.nen-toi .hk-chip-chu,.nen-toi .hk-nhan-o{fill:#aab1bd}
+.nen-toi .hk-blk{fill:#ffffff0f;stroke:#ffffff40}
+.nen-toi .hk-mo{fill:#ffffff08;stroke:#ffffff26}
+.nen-toi .hk-zone{fill:#ffffff0a}
+.nen-toi .hk-vach{fill:#aab1bd}
+.nen-toi .hk-alab-nen{fill:var(--ink);stroke:#ffffff26}
+.nen-toi .hk-so{fill:#aab1bd}
+.nen-toi .hk-tint{fill:#ffffff14;stroke:#ffffff33}
+.nen-toi .hk-lon-mo{fill:#aab1bd}
+.nen-toi .hk-ten{fill:#fff}
+.nen-toi .hk-phu,.nen-toi .hk-alab,.nen-toi .hk-zlab{fill:#aab1bd}
+.nen-toi .hk-flow,.nen-toi .hk-fb{stroke:#aab1bd}
+.nen-toi .hk-alab-nen{fill:var(--ink)}
+
+
+/* HÌNH TRỌN SLIDE (@hinh: toan): dành cho hình VUÔNG, tỉ lệ dưới 1,6.
+   Hình vuông nằm trong khung ngang thì bị giới hạn bởi CHIỀU CAO, nên dù chữ trong
+   hình đủ to so với bề ngang hình, nó vẫn tụt dưới ngưỡng đọc khi chiếu.
+   Chế độ này bỏ kicker, hạ tiêu đề xuống một dòng nhỏ, bỏ chú thích xuống chân,
+   và nhường gần sáu trăm điểm ảnh chiều cao cho hình. */
+/* chừa đủ chỗ cho chân trang: chân cao chừng 40px kể cả lề dưới */
+/* ⚠ PHẢI ghim chiều cao, không chỉ min-height: hình ở đây là flex co giãn nên nó
+   đẩy slide CAO HƠN MỘT MÀN HÌNH lúc trình bày, dù khổ PDF vẫn vừa. Cổng G26 giữ. */
+.slide.hinh-toan{padding:1.6rem var(--le) 4.2rem;height:100svh}
+.slide.hinh-toan .label{display:none}
+.slide.hinh-toan .d2{font-size:clamp(1.05rem,.9rem + .5vw,1.35rem);font-weight:650;
+                     letter-spacing:.01em}
+.slide.hinh-toan .d2::before{display:none}
+.slide.hinh-toan .slide-trong{max-width:none}
+.slide.hinh-toan figure{margin:.6rem 0 0}
+/* ⚠ Giới hạn chiều cao hình bằng một giá trị THEO CỬA SỔ, tất định, thay vì dựa vào
+   chuỗi flex. Đã trả giá: figure không phải con trực tiếp của khối nội dung (bộ dựng
+   bọc nó trong một div để hiện dần), nên chuỗi co giãn đứt ở đó và hình phình tới hơn
+   một nghìn điểm ảnh rồi bị overflow:hidden CẮT, trong khi khung vẫn đúng một màn
+   hình nên phép đo chiều cao slide mù hoàn toàn. */
+.slide.hinh-toan figure svg,.slide.hinh-toan figure img{width:100%;height:auto;
+                        max-height:70svh}
+.slide.hinh-toan figcaption{margin-top:.5rem;font-size:.85rem}
+body.pdf .slide.hinh-toan figure svg,body.pdf .slide.hinh-toan figure img{max-height:486px}
+</style>
+<!-- ⚠ PHẢI đặt SAU deck.css: deck.css có :root{--accent:...} mặc định, cùng độ ưu
+     tiên nên khai báo nào đứng sau thì thắng. Đặt trước là màu riêng của deck không
+     bao giờ tới được trang, mà nhìn vào tệp nguồn thì vẫn thấy có khai. -->
+<style>:root{--accent:#2C6E9B}</style>
+</head>
+<body>
+<div class="tien-do"></div>
+<header class="thanh">
+  <span class="ten">Số phải dẫn lại được trong ba mươi giây</span>
+  <span data-ten-slide></span>
+  <span class="phai">
+    <span>95.0 phút · giang-day</span>
+    <span data-dong-ho>00:00</span>
+    <span data-so-slide></span>
+    <button class="nut" data-in>Xuất PDF</button>
+    <span>? trợ giúp</span>
+  </span>
+</header>
+<main>
+<section id="s01" class="slide cover nen-toi" data-slide data-title="Bìa" data-phut="0.5" data-chedo="noi" data-notes="Deck này để đọc to, có đồng hồ. Không để đọc thầm."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div><svg class="bia-hinh" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="vong"><circle cx="980" cy="360" r="130" fill="none" stroke="#ffffff3a" stroke-dasharray="3 8"/><circle cx="980" cy="360" r="215" fill="none" stroke="#ffffff30" stroke-dasharray="2 9"/><circle cx="980" cy="360" r="300" fill="none" stroke="#ffffff26" stroke-dasharray="2 11"/><circle cx="980" cy="360" r="385" fill="none" stroke="#ffffff1e" stroke-dasharray="1 13"/><path d="M 980 60 A 300 300 0 0 1 1280 360" fill="none" stroke="#2C6E9B" stroke-width="2.5" opacity=".85"/></g><circle class="cham" style="--i:0" cx="1107.4" cy="385.8" r="5" fill="#2C6E9B"/><circle class="cham" style="--i:1" cx="1158.3" cy="480.1" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:2" cx="1145.8" cy="610.0" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:3" cx="1053.7" cy="737.9" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:4" cx="954.2" cy="487.4" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:5" cx="859.9" cy="538.3" r="5" fill="#2C6E9B"/><circle class="cham" style="--i:6" cx="730.0" cy="525.8" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:7" cx="602.1" cy="433.7" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:8" cx="852.6" cy="334.2" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:9" cx="801.7" cy="239.9" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:10" cx="814.2" cy="110.0" r="5" fill="#2C6E9B"/><circle class="cham" style="--i:11" cx="906.3" cy="-17.9" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:12" cx="1005.8" cy="232.6" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:13" cx="1100.1" cy="181.7" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:14" cx="1230.0" cy="194.2" r="2.5" fill="#ffffff"/><circle class="cham" style="--i:15" cx="1357.9" cy="286.3" r="5" fill="#2C6E9B"/></svg>
+<div class="slide-trong"><div class="gach"></div><p class="label">Tự ôn, bộ Năm trụ</p><h1 class="d1" data-reveal><span class="w" style="--w:0">Số</span> <span class="w" style="--w:1">phải</span> <span class="w" style="--w:2">dẫn</span> <span class="w" style="--w:3">lại</span> <span class="w" style="--w:4">được</span> <span class="w" style="--w:5">trong</span> <span class="w" style="--w:6"><em>ba</em></span> <span class="w" style="--w:7"><em>mươi</em></span> <span class="w" style="--w:8"><em>giây</em></span></h1><p class="lead" data-reveal style="--tre:.35s">Trụ 2 FL · số, công thức, và giả thiết của chúng</p><p class="label" data-reveal style="--tre:.5s;margin-top:2rem">Đỗ Phúc Hảo · CAIRA, Đại học Kiến trúc Đà Nẵng</p></div>
+</section>
+<section id="s02" class="slide nen-vach" data-slide data-title="Luật của deck này" data-phut="0.5" data-chedo="noi" data-notes="Nói luật rồi bắt đầu. Đây là deck duy nhất của bộ mà đọc thầm là vô nghĩa."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">02</p><h2 class="d2" data-reveal>Luật của deck này</h2><div data-reveal style="--tre:.18s"><p>Dẫn lại được trong ba mươi giây mới tính là thuộc</p>
+<p>Mỗi slide hỏi một con số hoặc một công thức. Dẫn lại <strong>bằng miệng trong ba mươi giây</strong>, rồi mới lật. Bấm máy tính là tính sai mục đích.</p></div></div><div class="chan"><span>Luật của deck này · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">02</span></div>
+</section>
+<section id="s03" class="slide nen-vach" data-slide data-title="Công thức này đứng trên giả thiết nào" data-phut="0.5" data-chedo="hoi" data-notes="Kể đủ giả thiết trước khi lật. Thiếu một cái là chỗ gãy khi dùng lại."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">03</p><h2 class="d2" data-reveal>Công thức này đứng trên giả thiết nào</h2><div data-reveal style="--tre:.18s"><p><code>FedAvg: w^{t+1} = sum_k (n_k/n) w_k^{t,E} · FedProx cục bộ: min F_k(w) + (mu/2)||w - w^t||^2 · SCAFFOLD cục bộ: w_i &lt;- w_i - eta(g_i(w_i) - c_i + c) · FedNova: w^{t+1} = w^t + (sum_j p_j tau_j) · sum_k p_k (d_k / tau_k)</code></p></div></div><div class="chan"><span>Công thức này đứng trên giả thiết nào · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">03</span></div>
+</section>
+<section id="s04" class="slide nen-vach" data-slide data-title="Giả thiết" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">04</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>FedAvg như viết ở trên giả định mọi client chạy ĐÚNG E epoch và không client nào bị ngắt giữa vòng</li><li>Trọng số n_k/n giả định số mẫu là thước đo đúng của tầm quan trọng, tức mọi mẫu đáng giá như nhau giữa các client</li><li>FedProx giả định bài toán cục bộ được giải xấp xỉ tới một độ chính xác khai được, vì nếu giải quá ít bước thì neo gần chưa phát huy</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">04</span></div>
+</section>
+<section id="s05" class="slide nen-vach" data-slide data-title="Giả thiết (tiếp)" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">05</p><h2 class="d2" data-reveal>Giả thiết (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>SCAFFOLD giả định client CÓ TRẠNG THÁI giữa các vòng, nên c_i còn dùng được ở vòng sau</li><li>Cả bốn giả định mọi client dùng cùng một hàm mất mát và cùng một kiến trúc</li></ul></div></div><div class="chan"><span>Giả thiết (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">05</span></div>
+</section>
+<section id="s06" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">06</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Tỉ lệ client tham gia mỗi vòng, giá trị điển hình trong cấu hình cross-device. Nhập dưới dạng phân số thập phân.</p>
+<p><em>Module 2.1.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">06</span></div>
+</section>
+<section id="s07" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">07</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">0.1</div><div class="nhan">tỉ lệ C</div><div class="moc">module 2.1</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">07</span></div>
+</section>
+<section id="s08" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">08</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Lượng truyền một vòng một chiều của SCAFFOLD, tính theo lần so với FedAvg trên cùng mô hình.</p>
+<p><em>Module 2.1.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">08</span></div>
+</section>
+<section id="s09" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">09</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">2</div><div class="nhan">lần</div><div class="moc">module 2.1</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">09</span></div>
+</section>
+<section id="s10" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">10</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>FedAvg, ResNet-18 với 11,69 triệu tham số, fp32, 100 vòng, tính cả tải lên và tải xuống. Mỗi client đi qua bao nhiêu GB?</p>
+<p>vong = 100, P = 11690000, bit = 32</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">10</span></div>
+</section>
+<section id="s11" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">11</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>2⋆vong⋆P⋆bit/8/1e9</code></p>
+<p>9,352 GB mỗi client cho 100 vòng. Con số này đáng nhớ vì nó biến một câu định tính thành một ràng buộc: với client dùng gói dữ liệu di động, gần 10 GB cho một lần huấn luyện là không chạy được, và đó là lý do thật của mọi phần nén trong các bài FL cross-device.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">11</span></div>
+</section>
+<section id="s12" class="slide nen-vach" data-slide data-title="Đáp (tiếp)" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">12</p><h2 class="d2" data-reveal>Đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Để ý nó tuyến tính theo số vòng, nên giảm 100 vòng xuống 50 vòng chỉ cứu được một nửa, trong khi lượng tử 32 bit xuống 8 bit cứu được ba phần tư.</p></div></div><div class="chan"><span>Đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">12</span></div>
+</section>
+<section id="s13" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">13</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Thí nghiệm của anh cho SCAFFOLD cần 0,6 lần số vòng của FedAvg để tới cùng mục tiêu. Byte lên của SCAFFOLD bằng bao nhiêu lần byte lên của FedAvg?</p>
+<p>r = 0.6</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">13</span></div>
+</section>
+<section id="s14" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">14</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>2⋆r</code></p>
+<p>1,2 lần, tức SCAFFOLD tốn NHIỀU HƠN 20% byte trong khi tiết kiệm 40% vòng. Điểm hoà vốn là r = 0,5 đúng. Đây là lý do một bảng chỉ có cột số vòng không trả lời được câu hỏi reviewer sẽ hỏi, và cũng là lý do nên để cột byte tới mục tiêu ngay cạnh cột vòng tới mục tiêu.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">14</span></div>
+</section>
+<section id="s15" class="slide nen-vach" data-slide data-title="Công thức này đứng trên giả thiết nào" data-phut="0.5" data-chedo="hoi" data-notes="Kể đủ giả thiết trước khi lật. Thiếu một cái là chỗ gãy khi dùng lại."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">15</p><h2 class="d2" data-reveal>Công thức này đứng trên giả thiết nào</h2><div data-reveal style="--tre:.18s"><p><code>p_k ~ Dir(alpha·1_C) · TV(p_k, p) = (1/2)·sum_c |p_k(c) - p(c)| · E[sum_c p_k(c)^2] = (alpha+1)/(C·alpha+1) · m = 1/E[sum_c p_k(c)^2] = (C·alpha+1)/(alpha+1) · TV tương đương = (C-1)/(C·(alpha+1))</code></p></div></div><div class="chan"><span>Công thức này đứng trên giả thiết nào · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">15</span></div>
+</section>
+<section id="s16" class="slide nen-vach" data-slide data-title="Giả thiết" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">16</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>Dirichlet ĐỐI XỨNG, tức cùng một alpha cho mọi lớp; nếu dùng alpha khác nhau theo lớp thì mọi công thức dưới đây sai</li><li>Phân bố nhãn toàn cục p là đều trên C lớp; nếu tập gốc đã lệch lớp thì p không đều và TV phải tính với p thật</li><li>Số lớp C biết trước và mọi client dùng CÙNG tập lớp</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">16</span></div>
+</section>
+<section id="s17" class="slide nen-vach" data-slide data-title="Giả thiết (tiếp)" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">17</p><h2 class="d2" data-reveal>Giả thiết (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>Dòng TV tương đương là TV của một client giữ ĐỀU m lớp, với m là số lớp hiệu dụng ở trên. Nó KHÔNG phải kỳ vọng của TV dưới Dirichlet, mà là TV của một client đại diện có cùng chỉ số Simpson. Dùng nó để đọc bậc độ lớn thì được, dùng nó làm con số báo cáo thì phải khai đúng định nghĩa này</li></ul></div></div><div class="chan"><span>Giả thiết (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">17</span></div>
+</section>
+<section id="s18" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">18</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Dirichlet đối xứng với alpha = 0,1 trên C = 10 lớp. Số lớp hiệu dụng kỳ vọng mỗi client là bao nhiêu?</p>
+<p><em>Module 2.2.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">18</span></div>
+</section>
+<section id="s19" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">19</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">1.818</div><div class="nhan">lớp</div><div class="moc">module 2.2</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">19</span></div>
+</section>
+<section id="s20" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">20</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Cùng công thức, alpha = 0,5 và C = 10. Số lớp hiệu dụng kỳ vọng mỗi client là bao nhiêu?</p>
+<p><em>Module 2.2.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">20</span></div>
+</section>
+<section id="s21" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">21</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">4</div><div class="nhan">lớp</div><div class="moc">module 2.2</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">21</span></div>
+</section>
+<section id="s22" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">22</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>C = 10 lớp, mỗi client chỉ giữ đúng một lớp. TV giữa phân bố nhãn của client và phân bố đều toàn cục bằng bao nhiêu?</p>
+<p><em>Module 2.2.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">22</span></div>
+</section>
+<section id="s23" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">23</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">0.9</div><div class="nhan">TV</div><div class="moc">module 2.2</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">23</span></div>
+</section>
+<section id="s24" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">24</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Phân vùng Dirichlet đối xứng, C = 10 lớp, alpha = 0,5. Số lớp hiệu dụng kỳ vọng mỗi client bằng bao nhiêu?</p>
+<p>C = 10, a = 0.5</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">24</span></div>
+</section>
+<section id="s25" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">25</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>(C⋆a+1)/(a+1)</code></p>
+<p>Đúng 4,00 lớp trên 10, một con số tròn đáng nhớ. Nó khớp với câu lệch mạnh nhưng mọi lớp còn hiện diện: mọi lớp có xác suất dương, nhưng khối lượng tập trung vào bốn lớp. Để ý alpha = 0,1 cho 1,82 lớp, tức hai mức alpha này là hai chế độ khác nhau, không phải hai cách nói cùng một chuyện.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">25</span></div>
+</section>
+<section id="s26" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">26</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>C = 10 lớp, alpha = 0,8. TV tương đương so với phân bố nhãn đều bằng bao nhiêu?</p>
+<p>C = 10, a = 0.8</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">26</span></div>
+</section>
+<section id="s27" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">27</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>(C-1)/(C⋆(a+1))</code></p>
+<p>Đúng 0,500. Vậy mốc TV tương đương bằng một nửa ứng với alpha = (C-2)/C, bằng 0,8 khi C = 10. Con số này đáng để trong đầu vì nó cho ngay một cách đọc: alpha dưới 0,8 là vùng TV tương đương vượt 0,500, còn alpha = 100 cho TV tương đương chỉ khoảng 0,009, tức gần IID.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">27</span></div>
+</section>
+<section id="s28" class="slide nen-vach" data-slide data-title="Công thức này đứng trên giả thiết nào" data-phut="0.5" data-chedo="hoi" data-notes="Kể đủ giả thiết trước khi lật. Thiếu một cái là chỗ gãy khi dùng lại."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">28</p><h2 class="d2" data-reveal>Công thức này đứng trên giả thiết nào</h2><div data-reveal style="--tre:.18s"><p><code>E[F(w_T)] - F⋆ ≤ (kappa/(gamma + T - 1))·( 2B/mu + (mu·gamma/2)·||w_1 - w⋆||^2 ), kappa = L/mu, gamma = max{8·kappa, E}</code></p></div></div><div class="chan"><span>Công thức này đứng trên giả thiết nào · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">28</span></div>
+</section>
+<section id="s29" class="slide nen-vach" data-slide data-title="Giả thiết" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">29</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>F là mu-LỒI MẠNH. Đây là giả thiết loại mạng neural ra khỏi tầm, và khi nó tắt thì kappa cùng cả bound KHÔNG CÒN ĐỊNH NGHĨA ĐƯỢC</li><li>F là L-TRƠN, tức gradient Lipschitz với hằng số L; không có L thì cả kappa và số hạng 6L·Gamma mất nghĩa</li><li>Phương sai gradient ngẫu nhiên của client k bị chặn bởi sigma_k^2</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">29</span></div>
+</section>
+<section id="s30" class="slide nen-vach" data-slide data-title="Giả thiết (tiếp)" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">30</p><h2 class="d2" data-reveal>Giả thiết (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>Chuẩn gradient ngẫu nhiên bị chặn bởi G trên toàn miền; lưu ý giả thiết này chỏi với lồi mạnh trên miền không bị chặn</li><li>T đếm TỔNG SỐ BƯỚC SGD cục bộ, không phải số vòng truyền; số vòng truyền là T/E</li><li>Mọi client tham gia MỌI vòng, và trọng số p_k cố định. Lấy mẫu một phần client thêm số hạng riêng, không nằm trong B này</li></ul></div></div><div class="chan"><span>Giả thiết (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">30</span></div>
+</section>
+<section id="s31" class="slide nen-vach" data-slide data-title="Công thức này đứng trên giả thiết nào" data-phut="0.5" data-chedo="hoi" data-notes="Kể đủ giả thiết trước khi lật. Thiếu một cái là chỗ gãy khi dùng lại."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">31</p><h2 class="d2" data-reveal>Công thức này đứng trên giả thiết nào</h2><div data-reveal style="--tre:.18s"><p><code>B = sum_k p_k^2·sigma_k^2 + 6·L·Gamma + 8(E-1)^2·G^2, Gamma = F⋆ - sum_k p_k·F_k⋆</code></p></div></div><div class="chan"><span>Công thức này đứng trên giả thiết nào · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">31</span></div>
+</section>
+<section id="s32" class="slide nen-vach" data-slide data-title="Giả thiết" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">32</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>Gamma định nghĩa qua các GIÁ TRỊ TỐI ƯU F⋆ và F_k⋆, nên nó không phụ thuộc thuật toán, không phụ thuộc khởi tạo và không phụ thuộc E</li><li>Gamma ≥ 0 luôn đúng, vì F⋆ là cực tiểu của tổ hợp lồi của các F_k nên không nhỏ hơn tổ hợp các cực tiểu riêng</li><li>Gamma = 0 khi mọi F_k có cùng tập cực tiểu, mà trường hợp quen nhất của điều đó là dữ liệu IID</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">32</span></div>
+</section>
+<section id="s33" class="slide nen-vach" data-slide data-title="Giả thiết (tiếp)" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">33</p><h2 class="d2" data-reveal>Giả thiết (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>Trọng số p_k là hằng số, tổng bằng 1; với p_k = 1/K đồng đều thì số hạng thứ nhất bằng sigma^2/K</li></ul></div></div><div class="chan"><span>Giả thiết (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">33</span></div>
+</section>
+<section id="s34" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">34</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Trong B, số hạng chứa số bước cục bộ phình theo nó với bậc nào? Nhập bậc đó.</p>
+<p><em>Module 2.3.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">34</span></div>
+</section>
+<section id="s35" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">35</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">2</div><div class="nhan">bậc</div><div class="moc">module 2.3</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">35</span></div>
+</section>
+<section id="s36" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">36</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Bốn client, trọng số tổng hợp đồng đều, mỗi client có sigma_k = 2. Số hạng phương sai sum_k p_k^2 sigma_k^2 bằng bao nhiêu?</p>
+<p><em>Module 2.3.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">36</span></div>
+</section>
+<section id="s37" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">37</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">1</div><div class="nhan"></div><div class="moc">module 2.3</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">37</span></div>
+</section>
+<section id="s38" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">38</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Lấy L = 1 và mu = 0,1 nên kappa = L/mu. Bound dùng gamma = max{8·kappa, E}. Với E = 5 thì gamma bằng bao nhiêu?</p>
+<p><em>Module 2.3.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">38</span></div>
+</section>
+<section id="s39" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">39</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">80</div><div class="nhan"></div><div class="moc">module 2.3</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">39</span></div>
+</section>
+<section id="s40" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">40</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Lấy L = 1, 10 client trọng số đồng đều, sigma_k = 1, Gamma = 1, G = 1, E = 5. B bằng bao nhiêu?</p>
+<p>sig = 1, K = 10, L = 1, Gam = 1, E = 5, G = 1</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">40</span></div>
+</section>
+<section id="s41" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">41</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>sig⋆sig/K + 6⋆L⋆Gam + 8⋆Math.pow(E-1,2)⋆G⋆G</code></p>
+<p>B = 134,10, tách ra thành 0,10 cộng 6,00 cộng 128,00. Số hạng epoch một mình là 128,00, tức 95,5% của B, nên ở cấu hình này bound nói về giá của bước cục bộ chứ không nói về non-IID. Đổi E về 1 thì B tụt xuống 6,10, tức giảm 22 lần, trong khi mọi tham số dữ liệu giữ nguyên.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">41</span></div>
+</section>
+<section id="s42" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">42</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Giữ nguyên mọi thứ, tăng số bước cục bộ từ 2 lên 6. Số hạng 8(E-1)^2 G^2 nhân lên bao nhiêu lần?</p>
+<p>E1 = 2, E2 = 6</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">42</span></div>
+</section>
+<section id="s43" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">43</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>Math.pow((E2-1)/(E1-1), 2)</code></p>
+<p>25 lần, vì tỉ số là ((6-1)/(2-1))^2 = 5^2. Đây là nội dung thực tế của chữ bậc hai: nhân số bước cục bộ lên 3 lần thì số hạng đó nhân lên 25 lần, không phải 3 lần. Hai số hạng kia không đổi một chút nào, nên toàn bộ phần phình của B đến từ đúng một chỗ.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">43</span></div>
+</section>
+<section id="s44" class="slide nen-vach" data-slide data-title="Công thức này đứng trên giả thiết nào" data-phut="0.5" data-chedo="hoi" data-notes="Kể đủ giả thiết trước khi lật. Thiếu một cái là chỗ gãy khi dùng lại."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">44</p><h2 class="d2" data-reveal>Công thức này đứng trên giả thiết nào</h2><div data-reveal style="--tre:.18s"><p><code>byte một vòng một chiều = s·P·(b + idx)/8 + H, idx = ceil(log2 P) · E[Q(v)] = v cho lượng tử không chệch · R(s) = R0·(rho/s + 1 - rho) · byte tới mục tiêu = R(s)·(s·P·(b+idx)/8 + H) · s⋆ = sqrt(rho·H/((1-rho)·P·(b+idx)/8))</code></p></div></div><div class="chan"><span>Công thức này đứng trên giả thiết nào · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">44</span></div>
+</section>
+<section id="s45" class="slide nen-vach" data-slide data-title="Giả thiết" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">45</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>Mỗi toạ độ giữ lại tốn b bit giá trị CỘNG idx bit chỉ số; khi gửi dày đủ thì không cần chỉ số nên idx = 0</li><li>H là chi phí cố định mỗi vòng mỗi client, gồm bắt tay, tiêu đề, lịch chọn client và thiết lập secure aggregation; H phải ĐO ĐƯỢC trên hệ thật, không đoán</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">45</span></div>
+</section>
+<section id="s46" class="slide nen-vach" data-slide data-title="Giả thiết (tiếp)" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">46</p><h2 class="d2" data-reveal>Giả thiết (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>rho là hệ số phình vòng do nén, trong đoạn từ 0 tới 1, ĐO ĐƯỢC từ ablation của chính anh: rho = 0 là nén miễn phí, rho = 1 là trả đủ trần lý thuyết 1/delta của bộ nén delta-co với delta = s</li><li>R0 là số vòng tới mục tiêu khi KHÔNG nén, đo trên cùng một mức mục tiêu</li></ul></div></div><div class="chan"><span>Giả thiết (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">46</span></div>
+</section>
+<section id="s47" class="slide nen-vach" data-slide data-title="Giả thiết (tiếp)" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">47</p><h2 class="d2" data-reveal>Giả thiết (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>Mọi công thức trên giả định nén còn giữ được ĐIỂM TỚI, tức không chệch hoặc có phản hồi lỗi; nếu không thì không có mục tiêu nào để đếm byte tới</li><li>Mô hình chi phí là tuyến tính theo byte, tức băng thông là cổ chai; nếu độ trễ là cổ chai thì phải thay bằng mô hình theo số vòng</li></ul></div></div><div class="chan"><span>Giả thiết (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">47</span></div>
+</section>
+<section id="s48" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">48</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>ResNet-18 có 11,69 triệu tham số, lưu ở fp32. Lượng truyền một chiều một vòng một client là bao nhiêu MB?</p>
+<p><em>Module 2.4.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">48</span></div>
+</section>
+<section id="s49" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">49</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">46.76</div><div class="nhan">MB</div><div class="moc">module 2.4</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">49</span></div>
+</section>
+<section id="s50" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">50</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Cùng mô hình ResNet-18 đó, lượng tử hoá về 8 bit mỗi tham số. Lượng truyền một chiều một vòng là bao nhiêu MB?</p>
+<p><em>Module 2.4.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">50</span></div>
+</section>
+<section id="s51" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">51</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">11.69</div><div class="nhan">MB</div><div class="moc">module 2.4</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">51</span></div>
+</section>
+<section id="s52" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">52</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Cùng mô hình đó, giữ top 1% toạ độ, mỗi giá trị 32 bit và mỗi chỉ số 24 bit. Lượng truyền một chiều một vòng là bao nhiêu MB?</p>
+<p><em>Module 2.4.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">52</span></div>
+</section>
+<section id="s53" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">53</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">0.8183</div><div class="nhan">MB</div><div class="moc">module 2.4</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">53</span></div>
+</section>
+<section id="s54" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">54</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>So dense fp32 với top-1% có chỉ số 24 bit mỗi toạ độ. Payload nhỏ đi bao nhiêu lần?</p>
+<p>bit = 32, s = 0.01, idx = 24</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">54</span></div>
+</section>
+<section id="s55" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">55</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>bit/(s⋆(bit + idx))</code></p>
+<p>57,14 lần, không phải 100 lần. Chênh lệch đến từ chỉ số: mỗi toạ độ giữ lại tốn 32 bit giá trị cộng 24 bit chỉ số, tức 56 bit, nên tải trọng mỗi toạ độ tăng 1,75 lần so với dense. Một bảng báo giảm 100 lần là bảng quên chi phí chỉ số, và đây là con số mà phản biện kiểm trước tiên vì nó kiểm được bằng một phép chia.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">55</span></div>
+</section>
+<section id="s56" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">56</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>ResNet-18 với 11,69 triệu tham số, 32 bit giá trị và 24 bit chỉ số, chi phí cố định 2000 B mỗi vòng mỗi client, hệ số phình vòng rho = 0,5. Tỉ lệ thưa tối ưu s⋆ bằng bao nhiêu?</p>
+<p>rho = 0.5, H = 2000, P = 11690000, bit = 32, idx = 24</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">56</span></div>
+</section>
+<section id="s57" class="slide nen-vach" data-slide data-title="Đáp" data-phut="0.5" data-chedo="so" data-notes="" data-wow><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">57</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>Math.sqrt(rho⋆H/((1-rho)⋆P⋆(bit+idx)/8))</code></p>
+<p>0,00494, tức giữ khoảng 0,49% toạ độ là đáy của byte tới mục tiêu. Nén thưa hơn mức này làm byte tới mục tiêu TĂNG, vì số hạng rho·H/s phình theo 1/s trong khi tải trọng đã nhỏ tới mức không bù lại được. Để ý s⋆ phụ thuộc H: với H = 0 thì s⋆ về 0 và không có vùng đảo chiều, nên vùng đó là tính chất của chi phí cố định mỗi vòng, không phải của bộ nén.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">57</span></div>
+</section>
+<section id="s58" class="slide nen-vach" data-slide data-title="Công thức này đứng trên giả thiết nào" data-phut="0.5" data-chedo="hoi" data-notes="Kể đủ giả thiết trước khi lật. Thiếu một cái là chỗ gãy khi dùng lại."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">58</p><h2 class="d2" data-reveal>Công thức này đứng trên giả thiết nào</h2><div data-reveal style="--tre:.18s"><p><code>P[M(D) ∈ S] ≤ e^epsilon · P[M(D') ∈ S] + delta với mọi D, D' kề nhau và mọi S; Delta2 = max ||f(D) − f(D')||₂; sigma ≥ Delta2·sqrt(2·ln(1,25/delta))/epsilon</code></p></div></div><div class="chan"><span>Công thức này đứng trên giả thiết nào · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">58</span></div>
+</section>
+<section id="s59" class="slide nen-vach" data-slide data-title="Giả thiết" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">59</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>Quan hệ kề đã được khai rõ: khác đúng một bản ghi, hay khác đúng một người dùng. Đổi đơn vị là đổi bảo đảm</li><li>Delta2 là độ nhạy L2 trong trường hợp xấu nhất trên MỌI cặp kề, không phải độ nhạy quan sát được trên dữ liệu đang có</li><li>Chặn Gauss cổ điển chỉ được chứng minh với epsilon trong khoảng (0, 1); ngoài khoảng đó công thức vẫn chạy nhưng không còn là một chặn</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">59</span></div>
+</section>
+<section id="s60" class="slide nen-vach" data-slide data-title="Giả thiết (tiếp)" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">60</p><h2 class="d2" data-reveal>Giả thiết (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>Nhiễu cộng vào là Gauss độc lập từng toạ độ với cùng sigma, và nhiễu được cộng vào ĐẦU RA của f, không cộng vào dữ liệu</li></ul></div></div><div class="chan"><span>Giả thiết (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">60</span></div>
+</section>
+<section id="s61" class="slide nen-vach" data-slide data-title="Công thức này đứng trên giả thiết nào" data-phut="0.5" data-chedo="hoi" data-notes="Kể đủ giả thiết trước khi lật. Thiếu một cái là chỗ gãy khi dùng lại."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">61</p><h2 class="d2" data-reveal>Công thức này đứng trên giả thiết nào</h2><div data-reveal style="--tre:.18s"><p><code>cơ chế Gauss là (alpha, alpha/(2·sigma²))-RDP; epsilon(delta) = epsilon_RDP(alpha) + log(1/delta)/(alpha − 1), lấy min theo alpha; DP-SGD: cắt chuẩn gradient từng mẫu về C, cộng N(0, sigma²C²I), lấy mẫu Poisson tỉ lệ q, ghép T bước</code></p></div></div><div class="chan"><span>Công thức này đứng trên giả thiết nào · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">61</span></div>
+</section>
+<section id="s62" class="slide nen-vach" data-slide data-title="Giả thiết" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">62</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>Cắt chuẩn gradient được thực hiện TỪNG MẪU trước khi cộng, nên độ nhạy L2 của tổng trong một lô bị chặn bởi C</li><li>Lô được chọn bằng lấy mẫu Poisson độc lập với tỉ lệ q, không phải bằng xáo trộn rồi cắt lô cố định</li><li>RDP cộng tuyến tính khi ghép T bước, với cùng một alpha cho cả T bước trước khi lấy min</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">62</span></div>
+</section>
+<section id="s63" class="slide nen-vach" data-slide data-title="Giả thiết (tiếp)" data-phut="0.5" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">63</p><h2 class="d2" data-reveal>Giả thiết (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>sigma là tỉ số nhiễu trên chuẩn cắt, nên nhiễu thực tế cộng vào có độ lệch chuẩn sigma·C mỗi toạ độ</li></ul></div></div><div class="chan"><span>Giả thiết (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">63</span></div>
+</section>
+<section id="s64" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">64</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Chặn Gauss cổ điển sigma ≥ Delta2·sqrt(2·ln(1,25/delta))/epsilon chỉ được chứng minh khi epsilon nhỏ hơn một ngưỡng. Ngưỡng đó là bao nhiêu?</p>
+<p><em>Module 2.5.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">64</span></div>
+</section>
+<section id="s65" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">65</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">1</div><div class="nhan">chặn trên của epsilon</div><div class="moc">module 2.5</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">65</span></div>
+</section>
+<section id="s66" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">66</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Luật ngón tay là chọn delta nhỏ hơn nghịch đảo số bản ghi. Với một triệu bản ghi thì delta phải nhỏ hơn 10 luỹ thừa âm bao nhiêu? Nhập số mũ.</p>
+<p><em>Module 2.5.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">66</span></div>
+</section>
+<section id="s67" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">67</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">6</div><div class="nhan">số mũ âm</div><div class="moc">module 2.5</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">67</span></div>
+</section>
+<section id="s68" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">68</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Cơ chế đạt epsilon = 0,5 ở mức bản ghi. Mỗi người dùng đóng góp 10 bản ghi. Chặn riêng tư nhóm cho epsilon ở mức người dùng là bao nhiêu?</p>
+<p><em>Module 2.5.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">68</span></div>
+</section>
+<section id="s69" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">69</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">5</div><div class="nhan">epsilon mức người dùng</div><div class="moc">module 2.5</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">69</span></div>
+</section>
+<section id="s70" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">70</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Một truy vấn có độ nhạy L2 bằng 1. Muốn (epsilon = 0,5, delta = 10 luỹ thừa trừ 5)-DP bằng cơ chế Gauss cổ điển thì sigma nhỏ nhất là bao nhiêu?</p>
+<p>sens = 1, d = 5, eps = 0.5</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">70</span></div>
+</section>
+<section id="s71" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">71</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>sens × Math.sqrt(2 × (Math.log(1.25) + d × Math.LN10)) / eps</code></p>
+<p>Khoảng 9,69. Để ý epsilon = 0,5 nằm TRONG vùng hiệu lực, nên con số này là một chặn thật. Nhiễu phải có độ lệch chuẩn gần 10 lần độ nhạy của một bản ghi, và đó là lý do DP ở epsilon nhỏ hơn 1 đắt tới mức nhiều bài lặng lẽ đẩy epsilon lên 8 rồi giữ nguyên công thức.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">71</span></div>
+</section>
+<section id="s72" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">72</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Một bước Gauss với sigma = 4 là (alpha, alpha/(2·sigma²))-RDP. Chuyển về DP tại alpha = 10 và delta = 10 luỹ thừa trừ 5 cho epsilon bằng bao nhiêu?</p>
+<p>alpha = 10, sigma = 4, delta = 1e-05</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">72</span></div>
+</section>
+<section id="s73" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">73</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>alpha / (2 × sigma × sigma) + Math.log(1 / delta) / (alpha - 1)</code></p>
+<p>Khoảng 1,59. Hai điều phải đọc ra. Một, con số này LỚN hơn 1, nên ở đúng điểm này công thức Gauss cổ điển không áp được: muốn dùng nó anh phải tụt epsilon xuống dưới 1, tức tăng sigma.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">73</span></div>
+</section>
+<section id="s74" class="slide nen-vach" data-slide data-title="Đáp (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">74</p><h2 class="d2" data-reveal>Đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Hai, epsilon thật là min theo alpha nên nó nhỏ hơn hoặc bằng 1,59; lấy một alpha bất kỳ rồi báo kết quả là báo một chặn lỏng hơn mức cần thiết, và nếu lưới alpha quá hẹp thì min rơi vào biên lưới mà không ai thấy.</p></div></div><div class="chan"><span>Đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">74</span></div>
+</section>
+<section id="s75" class="slide nen-vach" data-slide data-title="Công thức này đứng trên giả thiết nào" data-phut="0.5" data-chedo="hoi" data-notes="Kể đủ giả thiết trước khi lật. Thiếu một cái là chỗ gãy khi dùng lại."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">75</p><h2 class="d2" data-reveal>Công thức này đứng trên giả thiết nào</h2><div data-reveal style="--tre:.18s"><p><code>truy ngược gradient: min theo (x', y') của ||grad W(x', y') − grad W||² ; thay thế mô hình: X = gamma·(X_xau − G_t) + G_t, gamma = n/eta ; suy luận thành viên: Adv = TPR − FPR</code></p></div></div><div class="chan"><span>Công thức này đứng trên giả thiết nào · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">75</span></div>
+</section>
+<section id="s76" class="slide nen-vach" data-slide data-title="Giả thiết" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">76</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>Truy ngược gradient cần bốn thứ cùng lúc: biết kiến trúc và hàm mất mát, thấy gradient THÔ của một client, lô nhỏ, và không có nhiễu DP đáng kể</li><li>Thay thế mô hình cần ba thứ: kẻ xấu được chọn trong vòng đó, mô hình đã gần hội tụ nên cập nhật lành gần triệt tiêu, và server không chặn chuẩn cập nhật</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">76</span></div>
+</section>
+<section id="s77" class="slide nen-vach" data-slide data-title="Giả thiết (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">77</p><h2 class="d2" data-reveal>Giả thiết (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>Adv đo ở CÙNG một ngưỡng cho cả hai lớp, và tập thành viên với tập không thành viên chỉ khác nhau ở yếu tố thành viên, không khác ở phân bố</li><li>Cả ba con số đều là hàm của năng lực kẻ tấn công đã khai, nên đổi mô hình đe doạ là đổi kết quả, không phải đổi cách trình bày</li></ul></div></div><div class="chan"><span>Giả thiết (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">77</span></div>
+</section>
+<section id="s78" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">78</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>FedAvg lấy một trăm client mỗi vòng và dùng bước server eta = 1. Hệ số nhân gamma mà tấn công thay thế mô hình phải dùng là bao nhiêu?</p>
+<p><em>Module 2.6.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">78</span></div>
+</section>
+<section id="s79" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">79</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">100</div><div class="nhan">lần</div><div class="moc">module 2.6</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">79</span></div>
+</section>
+<section id="s80" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">80</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Với mô hình đã gần hội tụ và không có chặn chuẩn ở server, tấn công thay thế mô hình cần kẻ xấu được chọn trong bao nhiêu vòng để mô hình toàn cục bằng đúng mô hình xấu?</p>
+<p><em>Module 2.6.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">80</span></div>
+</section>
+<section id="s81" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">81</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">1</div><div class="nhan">vòng</div><div class="moc">module 2.6</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">81</span></div>
+</section>
+<section id="s82" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">82</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Server lấy 200 client mỗi vòng và dùng bước eta = 0,5. Hệ số nhân gamma của tấn công thay thế mô hình là bao nhiêu?</p>
+<p>n = 200, eta = 0.5</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">82</span></div>
+</section>
+<section id="s83" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">83</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>n / eta</code></p>
+<p>Bằng 400, tức gấp bốn lần trường hợp n = 100 với eta = 1. Hai cách làm tấn công khó hơn nằm trong cùng một phân số: tăng số client mỗi vòng, hoặc hạ bước server. Cả hai đều buộc kẻ xấu nộp cập nhật có chuẩn lớn hơn, nên cả hai đều làm chặn chuẩn ở server hiệu quả hơn. Nhưng đừng đọc đây là tin tốt một chiều:</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">83</span></div>
+</section>
+<section id="s84" class="slide nen-vach" data-slide data-title="Đáp (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">84</p><h2 class="d2" data-reveal>Đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>thẻ mô phỏng cho thấy cùng lúc đó cửa hậu đã cài vào lại sống dai hơn.</p></div></div><div class="chan"><span>Đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">84</span></div>
+</section>
+<section id="s85" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">85</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Một cửa hậu đã cài xong, rồi kẻ xấu không được chọn nữa. Với mô hình co tuyến tính hệ số (1 − eta/n) mỗi vòng, n = 100 và eta = 1, cần bao nhiêu vòng để hiệu lực cửa hậu phai xuống dưới 10%?</p>
+<p>eta = 1, n = 100</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">85</span></div>
+</section>
+<section id="s86" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">86</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>Math.log(0.1) / Math.log(1 - eta / n)</code></p>
+<p>Khoảng 229 vòng, tức hơn hai trăm vòng huấn luyện lành mới xoá được tới mức một phần mười. Con số này chỉ để đọc BẬC ĐỘ LỚN, vì mô hình co tuyến tính là một mô hình quy ước, không phải phép đo. Điều đáng dùng là hệ quả thực nghiệm:</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">86</span></div>
+</section>
+<section id="s87" class="slide nen-vach" data-slide data-title="Đáp (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">87</p><h2 class="d2" data-reveal>Đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>một bài báo khai cửa hậu bị xoá sau vài vòng thì phải nói nó đo trên bao nhiêu vòng, vì đo trên 20 vòng và đo trên 300 vòng cho hai kết luận trái nhau với cùng một hệ.</p></div></div><div class="chan"><span>Đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">87</span></div>
+</section>
+<section id="s88" class="slide nen-vach" data-slide data-title="Công thức này đứng trên giả thiết nào" data-phut="0.5" data-chedo="hoi" data-notes="Kể đủ giả thiết trước khi lật. Thiếu một cái là chỗ gãy khi dùng lại."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">88</p><h2 class="d2" data-reveal>Công thức này đứng trên giả thiết nào</h2><div data-reveal style="--tre:.18s"><p><code>Krum: s(i) = tổng trên n−f−2 láng giềng gần nhất của ||w_i − w_j||², chọn i nhỏ nhất, cần n ≥ 2f+3; Trung bình cắt beta: bỏ beta phần cao nhất và thấp nhất theo TỪNG toạ độ, cần beta ≥ f/n; Trung vị theo toạ độ: điểm đổ vỡ 1/2; Trần chung: không bộ tổng hợp nào bền khi f/n ≥ 1/2</code></p></div></div><div class="chan"><span>Công thức này đứng trên giả thiết nào · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">88</span></div>
+</section>
+<section id="s89" class="slide nen-vach" data-slide data-title="Giả thiết" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">89</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>Các cập nhật của client lành gần nhau trong không gian tham số, nên khoảng cách lớn là dấu hiệu của kẻ xấu. Đây là giả thiết mà non-IID phá</li><li>f được biết, hoặc có một chặn trên của f, vì cả n−f−2 của Krum và beta của trung bình cắt đều cần con số đó</li><li>n ≥ 2f + 3, nếu không thì số láng giềng n−f−2 không còn đủ để bảo đảm có láng giềng lành trong tập so</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">89</span></div>
+</section>
+<section id="s90" class="slide nen-vach" data-slide data-title="Giả thiết (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">90</p><h2 class="d2" data-reveal>Giả thiết (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>Sai số của trung vị theo toạ độ tăng theo số chiều, nên điểm đổ vỡ 1/2 không có nghĩa là không mất gì ở mô hình lớn</li></ul></div></div><div class="chan"><span>Giả thiết (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">90</span></div>
+</section>
+<section id="s91" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">91</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Server lấy n = 100 client mỗi vòng và dùng Krum. Theo điều kiện tồn tại của Krum, số kẻ xấu tối đa chịu được là bao nhiêu?</p>
+<p><em>Module 2.7.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">91</span></div>
+</section>
+<section id="s92" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">92</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">48</div><div class="nhan">kẻ xấu</div><div class="moc">module 2.7</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">92</span></div>
+</section>
+<section id="s93" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">93</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Trần nguyên lý cho MỌI bộ tổng hợp, kể cả bộ chưa được phát minh: tỉ lệ kẻ xấu f/n phải nhỏ hơn giá trị nào thì mới còn hy vọng bền?</p>
+<p><em>Module 2.7.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">93</span></div>
+</section>
+<section id="s94" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">94</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">0.5</div><div class="nhan"></div><div class="moc">module 2.7</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">94</span></div>
+</section>
+<section id="s95" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">95</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Điều kiện tồn tại của Krum là n ≥ 2f + 3. Muốn chịu được đúng một kẻ xấu thì cần tối thiểu bao nhiêu client mỗi vòng?</p>
+<p><em>Module 2.7.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">95</span></div>
+</section>
+<section id="s96" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">96</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">5</div><div class="nhan">client</div><div class="moc">module 2.7</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">96</span></div>
+</section>
+<section id="s97" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">97</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Một hệ cross-silo chỉ có 37 site và site nào cũng dự mỗi vòng. Krum chịu được tối đa bao nhiêu site xấu?</p>
+<p>n = 37</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">97</span></div>
+</section>
+<section id="s98" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">98</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>Math.floor((n - 3) / 2)</code></p>
+<p>Bằng 17, vì (37 − 3)/2 = 17 đúng. Hai điều phải đọc. Một, tỉ lệ chịu được là 17 trên 37, tức khoảng 45,9%, chưa tới một nửa đúng như trần nguyên lý đòi. Hai, và đây là chỗ hay sai: con số 17 là chặn TỒN TẠI của thuật toán, không phải tỉ lệ kẻ xấu mà bài của anh đo được.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">98</span></div>
+</section>
+<section id="s99" class="slide nen-vach" data-slide data-title="Đáp (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">99</p><h2 class="d2" data-reveal>Đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Dùng nó làm tuyên bố thực nghiệm là nhầm một chặn lý thuyết với một kết quả, vì ở gần chặn đó độ chính xác đã tụt từ lâu trước khi thuật toán ngừng chạy.</p></div></div><div class="chan"><span>Đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">99</span></div>
+</section>
+<section id="s100" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">100</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Krum chạy với 100 client mỗi vòng và chặn trên của số kẻ xấu đặt là 20. Điểm Krum của mỗi client lấy tổng trên bao nhiêu láng giềng?</p>
+<p>n = 100, f = 20</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">100</span></div>
+</section>
+<section id="s101" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">101</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>n - f - 2</code></p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">101</span></div>
+</section>
+<section id="s102" class="slide nen-vach" data-slide data-title="Đáp (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">102</p><h2 class="d2" data-reveal>Đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Bằng 78 láng giềng. Để ý con số này giảm khi anh khai f bi quan hơn: khai f = 48 thì chỉ còn 50 láng giềng, và khai f = 49 với n = 100 thì điều kiện n ≥ 2f+3 vỡ. Nên chặn trên của f không phải một tham số an toàn miễn phí: khai cao cho chắc là tự thu hẹp tập so sánh, và tới một mức thì thuật toán không còn định nghĩa được.</p></div></div><div class="chan"><span>Đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">102</span></div>
+</section>
+<section id="s103" class="slide nen-vach" data-slide data-title="Công thức này đứng trên giả thiết nào" data-phut="0.5" data-chedo="hoi" data-notes="Kể đủ giả thiết trước khi lật. Thiếu một cái là chỗ gãy khi dùng lại."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">103</p><h2 class="d2" data-reveal>Công thức này đứng trên giả thiết nào</h2><div data-reveal style="--tre:.18s"><p><code>byte gom trong D ngày = S·V·D ; byte liên bang trong R vòng = 2·S·R·M ; lấy D = R thì tỉ số = V/(2·M), KHÔNG phụ thuộc S và R</code></p></div></div><div class="chan"><span>Công thức này đứng trên giả thiết nào · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">103</span></div>
+</section>
+<section id="s104" class="slide nen-vach" data-slide data-title="Giả thiết" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">104</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>S là số site, V là lưu lượng mỗi site mỗi ngày, M là kích thước mô hình, R là số vòng, và một vòng ứng với một ngày</li><li>Không nén, không lọc trước khi gửi, và cập nhật có cùng kích thước với mô hình; nén hoặc lượng tử hoá làm tỉ số tăng, lọc tại nguồn làm tỉ số giảm</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">104</span></div>
+</section>
+<section id="s105" class="slide nen-vach" data-slide data-title="Giả thiết (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">105</p><h2 class="d2" data-reveal>Giả thiết (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>Mọi site dự mọi vòng, tức chế độ cross-silo; với cross-device lấy mẫu tỉ lệ C thì vế liên bang nhân thêm C</li><li>Hệ số 2 là vì mỗi vòng mỗi site tải mô hình XUỐNG rồi tải cập nhật LÊN; bỏ một chiều là tự cho mình lợi thế gấp đôi</li></ul></div></div><div class="chan"><span>Giả thiết (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">105</span></div>
+</section>
+<section id="s106" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">106</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Theo bảng phân biệt hai chế độ FL, số client của chế độ cross-silo nằm trong khoảng từ hai tới khoảng bao nhiêu?</p>
+<p><em>Module 2.8.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">106</span></div>
+</section>
+<section id="s107" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">107</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">100</div><div class="nhan">client</div><div class="moc">module 2.8</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">107</span></div>
+</section>
+<section id="s108" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">108</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Chế độ cross-device có số client lên tới bậc mười luỹ thừa bao nhiêu? Nhập số mũ.</p>
+<p><em>Module 2.8.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">108</span></div>
+</section>
+<section id="s109" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">109</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">10</div><div class="nhan">số mũ của mười</div><div class="moc">module 2.8</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">109</span></div>
+</section>
+<section id="s110" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">110</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Mười site, mỗi site sinh 10 GB mỗi ngày, mô hình 20 MB, huấn luyện 100 vòng với một vòng mỗi ngày. Gom tốn gấp mấy lần liên bang?</p>
+<p>soSite = 10, luuLuong = 10, soVong = 100, moHinh = 20</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">110</span></div>
+</section>
+<section id="s111" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">111</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>soSite × luuLuong × soVong / ((soSite × soVong × moHinh + soSite × soVong × moHinh) / 1000)</code></p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">111</span></div>
+</section>
+<section id="s112" class="slide nen-vach" data-slide data-title="Đáp (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">112</p><h2 class="d2" data-reveal>Đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>250 lần: gom tốn 10000 GB còn liên bang tốn 40 GB. Đây là con số phải có trong bài để trả lời câu phản biện kinh điển. Nhưng phải đọc kèm phép rút gọn: tỉ số bằng lưu lượng chia hai lần kích thước mô hình, nên nó không phụ thuộc số site và không phụ thuộc số vòng. Câu nhiều site thì liên bang càng đáng giá là một câu không có cơ sở trong công thức này.</p></div></div><div class="chan"><span>Đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">112</span></div>
+</section>
+<section id="s113" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">113</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Mỗi site sinh 10 GB mỗi ngày. Mô hình phải lớn tới bao nhiêu MB thì liên bang tốn bằng đúng gom, tức tỉ số byte bằng 1?</p>
+<p>luuLuong = 10</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">113</span></div>
+</section>
+<section id="s114" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">114</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>luuLuong × 1000 / 2</code></p>
+<p>5000 MB, tức một mô hình 5 GB. Con số này là điểm đảo chiều của cả lập luận băng thông: mô hình lớn hơn thế thì gom RẺ HƠN liên bang, và câu trả lời quen thuộc cho câu phản biện không dùng được nữa. Điều kiện tổng quát là lưu lượng mỗi site mỗi ngày nhỏ hơn hai lần kích thước mô hình.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">114</span></div>
+</section>
+<section id="s115" class="slide nen-vach" data-slide data-title="Đáp (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">115</p><h2 class="d2" data-reveal>Đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Với mô hình thị giác hay mô hình ngôn ngữ cỡ vài trăm MB tới vài GB đặt cạnh các site chỉ sinh siêu dữ liệu luồng, hệ rơi vào vùng đảo chiều dễ hơn nhiều người tưởng, nên phải kiểm phân số này trước khi viết phần biện minh.</p></div></div><div class="chan"><span>Đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">115</span></div>
+</section>
+<section id="s116" class="slide nen-vach" data-slide data-title="Công thức này đứng trên giả thiết nào" data-phut="0.5" data-chedo="hoi" data-notes="Kể đủ giả thiết trước khi lật. Thiếu một cái là chỗ gãy khi dùng lại."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">116</p><h2 class="d2" data-reveal>Công thức này đứng trên giả thiết nào</h2><div data-reveal style="--tre:.18s"><p><code>min_{w_k} F_k(w_k) + (λ/2)·||w_k - w⋆||² ⇒ w_k = (θ̂_k + λ·w⋆)/(1+λ) ⇒ E||w_k - θ_k||² = (s + λ²·d_k²)/(1+λ)² với λ⋆ = s/d_k²</code></p></div></div><div class="chan"><span>Công thức này đứng trên giả thiết nào · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">116</span></div>
+</section>
+<section id="s117" class="slide nen-vach" data-slide data-title="Giả thiết" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">117</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>F_k xấp xỉ bậc hai với Hessian đơn vị quanh nghiệm cục bộ, nên nghiệm Ditto có dạng đóng. Mạng neural và KAN không thoả giả thiết này, nên dạng đóng là công cụ lấy trực giác chứ không phải một bảo đảm</li><li>θ̂_k = θ_k + e_k với E[e_k] = 0 và E||e_k||² = s, trong đó s = σ²/n_k là sai số ước lượng cục bộ, nên s lớn khi client ít dữ liệu</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">117</span></div>
+</section>
+<section id="s118" class="slide nen-vach" data-slide data-title="Giả thiết (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">118</p><h2 class="d2" data-reveal>Giả thiết (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>w⋆ coi như nghiệm toàn cục chính xác: sai số ước lượng của nó nhỏ hơn s khoảng K lần nên bỏ qua được</li><li>λ là siêu tham số do người làm chọn, không do dữ liệu quyết định, nên mọi so sánh phải khai dải dò λ</li><li>d_k² là bình phương khoảng cách từ nghiệm cụm của client k tới w⋆, một tính chất của dữ liệu và cách phân vùng</li></ul></div></div><div class="chan"><span>Giả thiết (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">118</span></div>
+</section>
+<section id="s119" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">119</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Trong Ditto với F_k xấp xỉ bậc hai Hessian đơn vị, đặt λ bằng một. Hệ số co của số hạng không đồng nhất, tức (λ/(1+λ))², bằng bao nhiêu?</p>
+<p><em>Module 2.9.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">119</span></div>
+</section>
+<section id="s120" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">120</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">0.25</div><div class="nhan"></div><div class="moc">module 2.9</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">120</span></div>
+</section>
+<section id="s121" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">121</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Client chia thành bốn cụm cách nhau đều, khoảng cách giữa hai cụm liền nhau bằng một đơn vị. Γ_cụm, tức phương sai của phân bố đều rời rạc trên bốn điểm đó, bằng bao nhiêu?</p>
+<p><em>Module 2.9.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">121</span></div>
+</section>
+<section id="s122" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">122</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">1.25</div><div class="nhan"></div><div class="moc">module 2.9</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">122</span></div>
+</section>
+<section id="s123" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">123</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Ở chế độ FedAvg, tức λ rất lớn, với bốn cụm cách nhau δ = 0,5 và hai trăm client. Khoảng cách giữa trung bình theo client và phân vị 10 theo client bằng bao nhiêu điểm phần trăm?</p>
+<p><em>Module 2.9.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">123</span></div>
+</section>
+<section id="s124" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">124</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">2.5</div><div class="nhan">điểm phần trăm</div><div class="moc">module 2.9</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">124</span></div>
+</section>
+<section id="s125" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">125</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Tổng số mẫu trong hệ là 200000, chia cho 400 client nên mỗi client có 500 mẫu, và phương sai gradient σ² = 100. Client chia thành 3 cụm cách nhau δ = 0,4. λ tối ưu bằng bao nhiêu?</p>
+<p>sig2 = 100, K = 400, N = 200000, del = 0.4, C = 3</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">125</span></div>
+</section>
+<section id="s126" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">126</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>(sig2⋆K/N) / (del⋆del⋆(C⋆C-1)/12)</code></p>
+<p>Khoảng 1,875, tức λ tối ưu nằm quanh một chứ không ở hai đầu dải, vì s = 1/5 và Γ_cụm = 8/75 cùng bậc độ lớn. Nếu anh dò λ trên lưới gồm 0,01 rồi 0,1 rồi 1 thì lưới đó không chứa điểm tối ưu, nên con số báo ra là của một λ chưa dò tới. Đó là lý do bảng kết quả phải khai DẢI dò chứ không chỉ khai rằng đã dò.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">126</span></div>
+</section>
+<section id="s127" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">127</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Bốn cụm cách nhau δ = 0,5, hai trăm client, tổng mẫu 200000, σ² = 100. Chuyển từ FedAvg sang Ditto ở λ tối ưu làm TRUNG BÌNH theo client tăng bao nhiêu điểm phần trăm?</p>
+<p>del = 0.5, C = 4, sig2 = 100, K = 200, N = 200000</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">127</span></div>
+</section>
+<section id="s128" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">128</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>10⋆Math.pow(del⋆del⋆(C⋆C-1)/12, 2) / (del⋆del⋆(C⋆C-1)/12 + sig2⋆K/N)</code></p>
+<p>Khoảng 2,37 điểm phần trăm, và đó là mức tăng của TRUNG BÌNH theo client. Độ chính xác toàn cục không tăng một điểm nào, vì nó là phép đo của w⋆ và w⋆ không phụ thuộc λ. Công thức là 10·Γ²/(Γ + s), nên mức tăng bằng 0 khi Γ = 0, tức một cụm, và tiến tới 10·Γ khi s tiến về 0, tức client nào cũng nhiều dữ liệu.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">128</span></div>
+</section>
+<section id="s129" class="slide nen-vach" data-slide data-title="Công thức này đứng trên giả thiết nào" data-phut="0.5" data-chedo="hoi" data-notes="Kể đủ giả thiết trước khi lật. Thiếu một cái là chỗ gãy khi dùng lại."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">129</p><h2 class="d2" data-reveal>Công thức này đứng trên giả thiết nào</h2><div data-reveal style="--tre:.18s"><p><code>T_vòng = max_{k∈S}(t_tính,k + t_truyền,k) · q_k = P(t_k ≤ D) · p̃_k = p_k·q_k / Σ_j p_j·q_j · cập nhật cũ τ vòng nhân 1/(1+τ)</code></p></div></div><div class="chan"><span>Công thức này đứng trên giả thiết nào · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">129</span></div>
+</section>
+<section id="s130" class="slide nen-vach" data-slide data-title="Giả thiết" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">130</p><h2 class="d2" data-reveal>Giả thiết</h2><div data-reveal style="--tre:.18s"><ul><li>Vòng là đồng bộ: server chờ tới khi mọi client trong S báo về hoặc tới hạn chờ D, rồi mới tổng hợp, nên thời gian vòng là max chứ không phải trung bình</li><li>Server chuẩn hoá lại trọng số theo tập người về kịp, tức chia cho tổng trọng số của những client có mặt; đây là điều cài đặt thật làm và cũng là chỗ sinh ra thiên lệch</li></ul></div></div><div class="chan"><span>Giả thiết · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">130</span></div>
+</section>
+<section id="s131" class="slide nen-vach" data-slide data-title="Giả thiết (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">131</p><h2 class="d2" data-reveal>Giả thiết (tiếp)</h2><div data-reveal style="--tre:.18s"><ul><li>q_k chỉ phụ thuộc thiết bị và đường truyền, không phụ thuộc nội dung cập nhật; đây chính là giả thiết bị tắt ở công tắc thứ nhất</li><li>Số client mỗi vòng đủ lớn để mẫu số tập trung quanh kỳ vọng, nên xấp xỉ bậc một của tỉ số kỳ vọng dùng được</li><li>Hệ số hạ trọng số 1/(1+τ) chọn trước chứ không học, nên nó là một giả thiết thiết kế phải khai, không phải một kết quả</li></ul></div></div><div class="chan"><span>Giả thiết (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">131</span></div>
+</section>
+<section id="s132" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">132</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Một vòng chọn 20 client, thời gian mỗi client phân bố đều độc lập trên khoảng từ 40 tới 80 giây. Kỳ vọng của thời gian vòng, tức kỳ vọng của cực đại, bằng bao nhiêu giây?</p>
+<p><em>Module 2.10.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">132</span></div>
+</section>
+<section id="s133" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">133</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">78.1</div><div class="nhan">giây</div><div class="moc">module 2.10</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">133</span></div>
+</section>
+<section id="s134" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">134</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Nhóm chậm chiếm tỉ lệ danh nghĩa 0,2 của dữ liệu và chỉ về kịp hạn chờ với xác suất 0,25, còn nhóm nhanh về kịp chắc chắn. Sau khi server chuẩn hoá lại, trọng số hiệu dụng của nhóm chậm bằng bao nhiêu?</p>
+<p><em>Module 2.10.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">134</span></div>
+</section>
+<section id="s135" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">135</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">0.0588</div><div class="nhan"></div><div class="moc">module 2.10</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">135</span></div>
+</section>
+<section id="s136" class="slide nen-vach" data-slide data-title="Con số này bằng bao nhiêu" data-phut="0.5" data-chedo="hoi" data-notes="Nói số VÀ đơn vị. Thiếu đơn vị là chưa nhớ."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">136</p><h2 class="d2" data-reveal>Con số này bằng bao nhiêu</h2><div data-reveal style="--tre:.18s"><p>Số client mỗi vòng tăng từ 10 lên 100, thời gian mỗi client vẫn phân bố đều độc lập trên khoảng từ 40 tới 80 giây. Thời gian vòng kỳ vọng tăng thêm bao nhiêu giây?</p>
+<p><em>Module 2.10.</em></p></div></div><div class="chan"><span>Con số này bằng bao nhiêu · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">136</span></div>
+</section>
+<section id="s137" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">137</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><div class="so-khoi cot"><div class="so-o"><div class="num">3.24</div><div class="nhan">giây</div><div class="moc">module 2.10</div></div></div></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">137</span></div>
+</section>
+<section id="s138" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">138</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Nhóm chậm có trọng số danh nghĩa 0,25 và về kịp với xác suất 0,2; nhóm nhanh về kịp với xác suất 0,95. Trọng số hiệu dụng của nhóm chậm bằng bao nhiêu phần trăm trọng số danh nghĩa của nó?</p>
+<p>pc = 0.25, qc = 0.2, qn = 0.95</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">138</span></div>
+</section>
+<section id="s139" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">139</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>100⋆qc/((1-pc)⋆qn + pc⋆qc)</code></p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">139</span></div>
+</section>
+<section id="s140" class="slide nen-vach" data-slide data-title="Đáp (tiếp)" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">140</p><h2 class="d2" data-reveal>Đáp (tiếp)</h2><div data-reveal style="--tre:.18s"><p>Khoảng 26,2% trọng số danh nghĩa. Nhóm chậm khai 25% dữ liệu nhưng chỉ còn 6,6% sức nặng trong tổng hợp, nên hệ đang tối thiểu hoá một tổng khác với tổng viết trong phần phương pháp. Con số phải vào bài là tỉ số này chứ không phải tỉ lệ client bị bỏ: ở cấu hình mặc định của mô phỏng, tỉ lệ bỏ là 20% trong khi tỉ số này bằng 0%, nên hai con số đo hai thứ khác nhau.</p></div></div><div class="chan"><span>Đáp (tiếp) · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">140</span></div>
+</section>
+<section id="s141" class="slide nen-vach" data-slide data-title="Tính ra con số" data-phut="0.5" data-chedo="hoi" data-notes="Dẫn bằng miệng, đừng bấm máy."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">141</p><h2 class="d2" data-reveal>Tính ra con số</h2><div data-reveal style="--tre:.18s"><p>Hạn chờ 90 giây là cái chặn thời gian vòng, và server mất thêm 12 giây tổng hợp mỗi vòng. Bao nhiêu vòng mỗi giờ?</p>
+<p>han = 90, tth = 12</p></div></div><div class="chan"><span>Tính ra con số · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">141</span></div>
+</section>
+<section id="s142" class="slide nen-vach" data-slide data-title="Đáp" data-phut="1.0" data-chedo="so" data-notes=""><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">142</p><h2 class="d2" data-reveal>Đáp</h2><div data-reveal style="--tre:.18s"><p><code>3600/(han + tth)</code></p>
+<p>Khoảng 35,3 vòng mỗi giờ, nên một thí nghiệm 2000 vòng cần khoảng 57 giờ đồng hồ treo tường. Bảng cấu hình ghi 2000 vòng không nói gì về chi phí đó, vì số vòng là đại lượng không có đơn vị thời gian. Hai đại lượng phải khai cạnh nó là hạn chờ và thời gian tổng hợp của server, và cả hai đều là lựa chọn của người làm chứ không phải tính chất của thuật toán.</p></div></div><div class="chan"><span>Đáp · kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">142</span></div>
+</section>
+<section id="s143" class="slide cam-on nen-toi" data-slide data-title="Cảm ơn" data-phut="0.5" data-chedo="lang" data-notes="Nhắc lại rồi dừng."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">Cảm ơn</p><div data-reveal style="--tre:.18s"><p>Dẫn lại được trong ba mươi giây mới tính là thuộc</p></div></div><div class="chan"><span>kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">143</span></div>
+</section>
+<section id="s144" class="slide omt nen-toi" data-slide data-title="One more thing" data-phut="0.5" data-chedo="noi" data-notes="Món tặng: tiêu chí là thời gian dẫn, không phải đáp đúng."><div class="nen" aria-hidden="true"><i class="khoi k1"></i><i class="khoi k2"></i><i class="khoi k3"></i></div>
+<div class="slide-trong"><p class="label">One more thing</p><div data-reveal style="--tre:.18s"><p>Số nào dẫn lại quá ba mươi giây thì nó chưa thuộc, dù đáp đúng.</p></div></div><div class="chan"><span>kho Năm trụ · https://hoc-5-tru-web.vercel.app · bản kho 2026.10.06-2</span><span class="so-trang">144</span></div>
+</section>
+</main>
+<div class="giup" hidden><table>
+<tr><td><kbd>&#8595;</kbd> <kbd>Space</kbd> <kbd>PageDn</kbd></td><td>slide sau</td></tr>
+<tr><td><kbd>&#8594;</kbd> <kbd>&#8592;</kbd></td><td>bước trong slide, hết panel thì sang slide</td></tr>
+<tr><td><kbd>Home</kbd> <kbd>End</kbd></td><td>đầu, cuối</td></tr>
+<tr><td><kbd>o</kbd></td><td>tổng quan toàn deck</td></tr>
+<tr><td><kbd>p</kbd></td><td>mở cửa sổ người nói</td></tr>
+<tr><td><kbd>x</kbd></td><td>tải nhịp thật ra tệp JSON</td></tr>
+<tr><td><kbd>e</kbd></td><td>xuất PDF ngay từ trang này</td></tr>
+<tr><td><kbd>?</kbd></td><td>bảng này</td></tr>
+</table></div>
+<div class="in-huong" hidden><div class="hop">
+<h3>Xuất PDF từ trang này</h3>
+<ol>
+<li>Bấm <b>Mở hộp thoại in</b> bên dưới.</li>
+<li>Đích chọn <b>Save as PDF</b>.</li>
+<li>Mở <b>More settings</b>, bật <b>Background graphics</b>, đặt <b>Margins</b> là <b>None</b>.</li>
+<li>Khổ giấy để <b>mặc định</b>, trang đã tự khai khổ mười sáu chín.</li>
+</ol>
+<p style="margin:0 0 1.25rem;color:#aab1bd;font-size:.95rem">Muốn bản nét hơn và có kèm ảnh từng slide thì dùng <code>python3 xuat_pdf.py &lt;dir&gt;</code>, bản đó cũng là bản mà cổng QA chấm.</p>
+<button class="nut" data-in-chay style="color:#fff;border-color:#fff">Mở hộp thoại in</button>
+<button class="nut" data-in-huy style="margin-left:.5rem">Thôi</button>
+</div></div>
+<script>/* ===========================================================================
+   deck.js · cơ chế trình bày. Không phụ thuộc thư viện ngoài.
+   Nguyên tắc: tắt JS thì deck vẫn đọc được đủ, chỉ mất phần điều khiển.
+   =========================================================================== */
+(function () {
+  "use strict";
+  // cửa sổ presenter dùng cùng tệp này nhưng do presenter.js điều khiển
+  if (new URLSearchParams(location.search).has("presenter")) return;
+  document.documentElement.classList.add("js");
+
+  var slides = [].slice.call(document.querySelectorAll("[data-slide]"));
+  if (!slides.length) return;
+  var keHoach = slides.map(function (s) { return parseFloat(s.dataset.phut || "0"); });
+  var hienTai = 0;
+  var batDau = null;             // mốc bắt đầu buổi nói
+  var vaoSlide = null;           // mốc vào slide hiện tại
+  var thucTe = slides.map(function () { return 0; });   // giây thật từng slide
+  var kenh = ("BroadcastChannel" in window) ? new BroadcastChannel("deck-nha") : null;
+
+  /* ---------- hiện dần ---------- */
+  var ioReveal = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) e.target.classList.add("hien"); });
+  }, { rootMargin: "0px 0px -12% 0px", threshold: 0.08 });
+  document.querySelectorAll("[data-reveal]").forEach(function (el) { ioReveal.observe(el); });
+
+  /* ---------- slide đang xem ---------- */
+  var ioSlide = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var i = slides.indexOf(e.target);
+      if (i === hienTai) return;
+      ghiNhan(i);
+      hienTai = i;
+      capNhat();
+    });
+  }, { rootMargin: "-50% 0px -50% 0px" });
+  slides.forEach(function (s) { ioSlide.observe(s); });
+
+  function ghiNhan(moi) {
+    var gio = Date.now();
+    if (vaoSlide !== null) thucTe[hienTai] += (gio - vaoSlide) / 1000;
+    vaoSlide = gio;
+    if (batDau === null) batDau = gio;
+    if (moi !== undefined) { /* chỉ cộng dồn */ }
+  }
+
+  /* ---------- thanh trên, tiến độ ---------- */
+  var elTen = document.querySelector("[data-ten-slide]");
+  var elSo = document.querySelector("[data-so-slide]");
+  var elDong = document.querySelector("[data-dong-ho]");
+  var tienDo = document.querySelector(".tien-do");
+
+  function capNhat() {
+    var s = slides[hienTai];
+    if (elTen) elTen.textContent = s.dataset.title || "";
+    if (elSo) elSo.textContent = (hienTai + 1) + "/" + slides.length;
+    if (tienDo) tienDo.style.setProperty("--pct", (hienTai + 1) / slides.length);
+    if (location.hash !== "#" + s.id) history.replaceState(null, "", "#" + s.id);
+    phatTin();
+  }
+
+  function phatTin() {
+    if (!kenh) return;
+    var ke = 0, i;
+    for (i = 0; i <= hienTai; i++) ke += keHoach[i];
+    kenh.postMessage({
+      loai: "nhip",
+      i: hienTai,
+      tong: slides.length,
+      title: slides[hienTai].dataset.title || "",
+      ghiChu: slides[hienTai].dataset.notes || "",
+      keTiep: hienTai + 1 < slides.length ? (slides[hienTai + 1].dataset.title || "") : "",
+      phutKeHoachLuyKe: ke,
+      giayThat: batDau ? (Date.now() - batDau) / 1000 : 0,
+      phutSlideNay: keHoach[hienTai]
+    });
+  }
+  setInterval(function () { if (batDau) phatTin(); }, 1000);
+
+  function dongHo() {
+    if (!elDong) return;
+    if (!batDau) { elDong.textContent = "00:00"; return; }
+    var g = Math.floor((Date.now() - batDau) / 1000);
+    elDong.textContent = String(Math.floor(g / 60)).padStart(2, "0") + ":" + String(g % 60).padStart(2, "0");
+  }
+  setInterval(dongHo, 500);
+
+  /* ---------- panel ngang ---------- */
+  function buocPanel(slide, huong) {
+    var p = slide.querySelector(".panels");
+    if (!p) return false;
+    var items = [].slice.call(p.querySelectorAll(".panel"));
+    var w = p.clientWidth || 1;
+    var cur = Math.round(p.scrollLeft / w);
+    var muon = cur + huong;
+    if (muon < 0 || muon >= items.length) return false;
+    p.scrollTo({ left: muon * w, behavior: motion() });
+    danhDauDots(p, muon);
+    return true;
+  }
+  function danhDauDots(p, k) {
+    var dots = p.parentNode.querySelectorAll(".panel-dots b");
+    dots.forEach(function (d, j) { if (j === k) d.setAttribute("data-on", ""); else d.removeAttribute("data-on"); });
+    var so = p.parentNode.querySelector(".panel-dots span");
+    if (so) so.textContent = String(k + 1).padStart(2, "0") + "/" + String(dots.length).padStart(2, "0");
+  }
+  function motion() {
+    return matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  }
+
+  /* ---------- đi tới slide ---------- */
+  function toi(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    slides[i].scrollIntoView({ behavior: motion() });
+  }
+
+  /* ---------- bàn phím ---------- */
+  var giup = document.querySelector(".giup");
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    var t = e.target;
+    if (t && t.closest && t.closest("input,textarea,select,[contenteditable]")) return;
+    var k = e.key;
+
+    if (k === "?" || k === "/") { e.preventDefault(); if (giup) giup.hidden = !giup.hidden; return; }
+    if (giup && !giup.hidden) { giup.hidden = true; if (k === "Escape") return; }
+
+    if (k === "o" || k === "O") {
+      e.preventDefault();
+      document.body.classList.toggle("tong-quan");
+      if (!document.body.classList.contains("tong-quan")) toi(hienTai);
+      return;
+    }
+    if (k === "p" || k === "P") { e.preventDefault(); moPresenter(); return; }
+    if (k === "x" || k === "X") { e.preventDefault(); taiNhip(); return; }
+    if (k === "e" || k === "E") { e.preventDefault(); moIn(); return; }
+    if (k === "Escape") { document.body.classList.remove("tong-quan"); return; }
+
+    var huong = 0, ngang = false;
+    switch (k) {
+      case "ArrowDown": case "PageDown": case "j": huong = 1; break;
+      case "ArrowUp": case "PageUp": case "k": huong = -1; break;
+      case " ": if (t && t.closest && t.closest("a,button,summary")) return; huong = e.shiftKey ? -1 : 1; break;
+      case "ArrowRight": huong = 1; ngang = true; break;
+      case "ArrowLeft": huong = -1; ngang = true; break;
+      case "Home": e.preventDefault(); toi(0); return;
+      case "End": e.preventDefault(); toi(slides.length - 1); return;
+      default: return;
+    }
+    e.preventDefault();
+    if (ngang && buocPanel(slides[hienTai], huong)) return;
+    toi(hienTai + huong);
+  });
+
+  /* dấu chấm panel bấm được, và theo dõi cuộn ngang */
+  document.querySelectorAll(".panels").forEach(function (p) {
+    p.addEventListener("scroll", function () {
+      danhDauDots(p, Math.round(p.scrollLeft / (p.clientWidth || 1)));
+    }, { passive: true });
+  });
+  document.querySelectorAll(".panel-dots").forEach(function (d) {
+    d.querySelectorAll("b").forEach(function (b, j) {
+      b.style.cursor = "pointer";
+      b.addEventListener("click", function () {
+        var p = d.parentNode.querySelector(".panels");
+        p.scrollTo({ left: j * p.clientWidth, behavior: motion() });
+      });
+    });
+  });
+
+  /* tổng quan: bấm vào một slide thì về chế độ trình bày tại slide đó */
+  slides.forEach(function (s, i) {
+    s.addEventListener("click", function () {
+      if (!document.body.classList.contains("tong-quan")) return;
+      document.body.classList.remove("tong-quan");
+      setTimeout(function () { toi(i); }, 0);
+    });
+  });
+
+  /* ---------- presenter ---------- */
+  function moPresenter() {
+    var u = new URL(location.href);
+    u.searchParams.set("presenter", "1");
+    u.hash = "";
+    window.open(u.toString(), "deck-presenter", "width=1100,height=760");
+  }
+  if (kenh) {
+    kenh.onmessage = function (ev) {
+      var m = ev.data || {};
+      if (m.loai === "di") toi(m.i);
+      if (m.loai === "xin") phatTin();
+      if (m.loai === "tai-nhip") taiNhip();
+    };
+  }
+
+  /* ---------- xuất PDF ngay từ trang ---------- */
+  var hopIn = document.querySelector(".in-huong");
+  function moIn() { if (hopIn) hopIn.hidden = false; }
+  function inThat() {
+    if (hopIn) hopIn.hidden = true;
+    document.body.classList.add("pdf");
+    document.querySelectorAll("[data-reveal]").forEach(function (el) { el.classList.add("hien"); });
+    setTimeout(function () {
+      window.print();
+      setTimeout(function () { document.body.classList.remove("pdf"); toi(hienTai); }, 400);
+    }, 120);
+  }
+  var btIn = document.querySelector("[data-in]");
+  if (btIn) btIn.addEventListener("click", moIn);
+  var btChay = document.querySelector("[data-in-chay]");
+  if (btChay) btChay.addEventListener("click", inThat);
+  var btHuy = document.querySelector("[data-in-huy]");
+  if (btHuy) btHuy.addEventListener("click", function () { if (hopIn) hopIn.hidden = true; });
+
+  /* ---------- xuất nhịp thật ra tệp, để chấm lại buổi nói ---------- */
+  function taiNhip() {
+    ghiNhan();
+    var d = new Date();
+    var p2 = function (n) { return String(n).padStart(2, "0"); };
+    var ten = d.getFullYear() + "-" + p2(d.getMonth() + 1) + "-" + p2(d.getDate())
+            + "_" + p2(d.getHours()) + p2(d.getMinutes());
+    var data = {
+      deck: document.title,
+      ngay: ten,
+      tong_phut_ke_hoach: keHoach.reduce(function (a, b) { return a + b; }, 0),
+      tong_phut_that: batDau ? (Date.now() - batDau) / 60000 : 0,
+      slide: slides.map(function (s, i) {
+        return {
+          id: s.id, tieu_de: s.dataset.title || "",
+          che_do: s.dataset.chedo || "",
+          phut_ke_hoach: keHoach[i],
+          giay_ke_hoach: Math.round(keHoach[i] * 60),
+          giay_that: Math.round(thucTe[i] * 10) / 10
+        };
+      })
+    };
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }));
+    a.download = "nhip-" + ten + ".json";
+    a.click();
+  }
+
+  /* ---------- khoét lưới nền ở chỗ có nội dung ----------
+     Lưới chạy sau lưng bảng thì đường ngang cắt qua dòng bảng. Đo hộp nội dung
+     THẬT của từng slide rồi đặt toạ độ lỗ khoét vào biến CSS. Không chạy được thì
+     mặt nạ rơi về bộ số mặc định trong deck.css, vẫn dùng được. */
+  function doLoKhoet() {
+    slides.forEach(function (s) {
+      var noi = s.querySelector(".slide-trong");
+      if (!noi) return;
+      var rs = s.getBoundingClientRect(), rn = noi.getBoundingClientRect();
+      if (!rs.width || !rs.height || !rn.height) return;
+      var dem = 1.10;  // nới ra một chút để mép lỗ không cắt sát chữ
+      s.style.setProperty("--kh-x", ((rn.left - rs.left + rn.width / 2) / rs.width * 100).toFixed(1) + "%");
+      s.style.setProperty("--kh-y", ((rn.top - rs.top + rn.height / 2) / rs.height * 100).toFixed(1) + "%");
+      s.style.setProperty("--kh-w", Math.min(96, rn.width / rs.width * 100 * dem).toFixed(1) + "%");
+      s.style.setProperty("--kh-h", Math.min(92, rn.height / rs.height * 100 * dem).toFixed(1) + "%");
+    });
+  }
+  doLoKhoet();
+  addEventListener("resize", doLoKhoet);
+  addEventListener("beforeprint", doLoKhoet);
+
+  /* ---------- khởi động ---------- */
+  if (location.hash) {
+    var k = slides.findIndex(function (s) { return "#" + s.id === location.hash; });
+    if (k >= 0) hienTai = k;
+  }
+  document.querySelectorAll(".panels").forEach(function (p) { danhDauDots(p, 0); });
+  capNhat();
+})();
+</script>
+<script>/* ===========================================================================
+   presenter.js · cửa sổ người nói. Mở bằng phím p từ cửa sổ deck.
+   Cho ba thứ mà PDF và deck UNIOS đều không có:
+     1. ghi chú người nói
+     2. đồng hồ và PHÚT THẬT so với PHÚT KẾ HOẠCH
+     3. slide kế tiếp
+   Kết thúc bấm x để tải nhip-*.json, dùng để chấm lại buổi nói.
+   =========================================================================== */
+(function () {
+  "use strict";
+  if (!new URLSearchParams(location.search).has("presenter")) return;
+
+  var slides = [].slice.call(document.querySelectorAll("[data-slide]"));
+  var keHoach = slides.map(function (s) { return parseFloat(s.dataset.phut || "0"); });
+  var tongKe = keHoach.reduce(function (a, b) { return a + b; }, 0);
+  var kenh = ("BroadcastChannel" in window) ? new BroadcastChannel("deck-nha") : null;
+
+  document.documentElement.setAttribute("data-presenter", "");
+  var css = document.createElement("style");
+  css.textContent = [
+    "html[data-presenter]{scroll-snap-type:none}",
+    "html[data-presenter] body{overflow:auto;background:#14161a;color:#e8e9ec}",
+    "html[data-presenter] main,html[data-presenter] .thanh,html[data-presenter] .tien-do{display:none}",
+    ".pv{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:1px;background:#2a2e35;min-height:100vh}",
+    ".pv > div{background:#14161a;padding:1.5rem 1.75rem}",
+    ".pv h2{margin:.25rem 0 1rem;font-size:1.9rem;line-height:1.15;font-weight:650;color:#fff}",
+    ".pv .ghi{font-size:1.3rem;line-height:1.5;white-space:pre-wrap;color:#dfe2e7}",
+    ".pv .nh{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#8b93a1;margin:0 0 .4rem}",
+    ".pv .dh{font-size:3.6rem;font-weight:620;font-variant-numeric:tabular-nums;line-height:1;color:#fff}",
+    ".pv .lech{font-size:1.5rem;font-weight:650;font-variant-numeric:tabular-nums;margin-top:.5rem}",
+    ".pv .som{color:#5fb878}.pv .muon{color:#e0564f}.pv .dung{color:#8b93a1}",
+    ".pv ol{list-style:none;margin:0;padding:0;font-size:.95rem}",
+    ".pv li{display:flex;gap:.6rem;padding:.3rem 0;border-bottom:1px solid #22262d;color:#9aa2b1}",
+    ".pv li[data-on]{color:#fff;font-weight:620}",
+    ".pv li b{min-width:2.4rem;text-align:right;font-variant-numeric:tabular-nums;font-weight:500}",
+    ".pv .ke{font-size:1.05rem;color:#9aa2b1;margin-top:.4rem}",
+    ".pv button{font:inherit;background:#22262d;color:#e8e9ec;border:1px solid #343a44;",
+    "  padding:.5rem .9rem;margin:.35rem .35rem 0 0;cursor:pointer}",
+    ".pv button:hover{background:#2d323b}"
+  ].join("\n");
+  document.head.appendChild(css);
+
+  var box = document.createElement("div");
+  box.className = "pv";
+  box.innerHTML =
+    '<div>' +
+      '<p class="nh">Slide <span id="pv-so">1/1</span> · kế hoạch <span id="pv-kh">0</span> phút</p>' +
+      '<h2 id="pv-td">...</h2>' +
+      '<div class="ghi" id="pv-ghi"></div>' +
+      '<p class="nh" style="margin-top:2rem">Tiếp theo</p>' +
+      '<div class="ke" id="pv-ke"></div>' +
+      '<div style="margin-top:1.5rem">' +
+        '<button id="pv-lui">&#8592; Lùi</button>' +
+        '<button id="pv-tien">Tiến &#8594;</button>' +
+        '<button id="pv-tai">Tải nhịp thật (x)</button>' +
+      '</div>' +
+    '</div>' +
+    '<div>' +
+      '<p class="nh">Đã nói</p><div class="dh" id="pv-dh">00:00</div>' +
+      '<div class="lech dung" id="pv-lech">đúng nhịp</div>' +
+      '<p class="nh" style="margin-top:1.75rem">Tổng kế hoạch ' + tongKe.toFixed(1) + ' phút</p>' +
+      '<ol id="pv-ds"></ol>' +
+    '</div>';
+  document.body.appendChild(box);
+
+  var ds = document.getElementById("pv-ds");
+  slides.forEach(function (s, i) {
+    var li = document.createElement("li");
+    li.innerHTML = '<b>' + (keHoach[i] ? keHoach[i].toFixed(1) : "bk") + '</b><span>' +
+      (s.dataset.title || s.id) + '</span>';
+    li.addEventListener("click", function () { gui({ loai: "di", i: i }); });
+    li.style.cursor = "pointer";
+    ds.appendChild(li);
+  });
+
+  var i0 = 0;
+  function gui(m) { if (kenh) kenh.postMessage(m); }
+  document.getElementById("pv-lui").onclick = function () { gui({ loai: "di", i: i0 - 1 }); };
+  document.getElementById("pv-tien").onclick = function () { gui({ loai: "di", i: i0 + 1 }); };
+  document.getElementById("pv-tai").onclick = function () { gui({ loai: "tai-nhip" }); };
+
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    var k = e.key, d = 0;
+    if (k === "ArrowRight" || k === "ArrowDown" || k === "PageDown" || k === " ") d = 1;
+    else if (k === "ArrowLeft" || k === "ArrowUp" || k === "PageUp") d = -1;
+    else if (k === "x" || k === "X") { e.preventDefault(); gui({ loai: "tai-nhip" }); return; }
+    else return;
+    e.preventDefault();
+    gui({ loai: "di", i: i0 + d });
+  });
+
+  function p2(n) { return String(n).padStart(2, "0"); }
+  if (kenh) {
+    kenh.onmessage = function (ev) {
+      var m = ev.data || {};
+      if (m.loai !== "nhip") return;
+      i0 = m.i;
+      document.getElementById("pv-so").textContent = (m.i + 1) + "/" + m.tong;
+      document.getElementById("pv-kh").textContent = (m.phutSlideNay || 0).toFixed(1);
+      document.getElementById("pv-td").textContent = m.title || "";
+      document.getElementById("pv-ghi").textContent = m.ghiChu || "";
+      document.getElementById("pv-ke").textContent = m.keTiep || "(hết)";
+      var g = Math.floor(m.giayThat || 0);
+      document.getElementById("pv-dh").textContent = p2(Math.floor(g / 60)) + ":" + p2(g % 60);
+      var lech = g / 60 - (m.phutKeHoachLuyKe || 0);
+      var el = document.getElementById("pv-lech");
+      el.className = "lech " + (Math.abs(lech) < 0.5 ? "dung" : (lech < 0 ? "som" : "muon"));
+      el.textContent = Math.abs(lech) < 0.5 ? "đúng nhịp"
+        : (lech > 0 ? "muộn " : "sớm ") + Math.abs(lech).toFixed(1) + " phút";
+      [].slice.call(ds.children).forEach(function (li, j) {
+        if (j === m.i) li.setAttribute("data-on", ""); else li.removeAttribute("data-on");
+      });
+    };
+    gui({ loai: "xin" });
+  }
+})();
+</script>
+</body>
+</html>

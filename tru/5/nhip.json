@@ -1,0 +1,241 @@
+{
+  "profile": "giang-day",
+  "tong_phut_khai": 42.0,
+  "tong_phut_cong": 42.0,
+  "moc": [
+    {
+      "id": "s01",
+      "tieu_de": "cover",
+      "dang": "cover",
+      "che_do": "noi",
+      "bat_dau": 0.0,
+      "phut": 0.5,
+      "wow": false
+    },
+    {
+      "id": "s02",
+      "tieu_de": "Trụ này trả lời câu gì",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 0.5,
+      "phut": 2.5,
+      "wow": false
+    },
+    {
+      "id": "s03",
+      "tieu_de": "Module nào dày nhất",
+      "dang": "noi-dung",
+      "che_do": "hinh",
+      "bat_dau": 3.0,
+      "phut": 3.5,
+      "wow": false
+    },
+    {
+      "id": "s04",
+      "tieu_de": "m5.1 Vì sao và khi nào phải đổi",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 6.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s05",
+      "tieu_de": "m5.1 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 8.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s06",
+      "tieu_de": "m5.2 Lattice: bài toán khó và cách ước lượng độ an toàn",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 9.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s07",
+      "tieu_de": "m5.2 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 11.0,
+      "phut": 1.5,
+      "wow": true
+    },
+    {
+      "id": "s08",
+      "tieu_de": "m5.3 Chuẩn NIST và kích thước",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 12.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s09",
+      "tieu_de": "m5.3 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 14.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s10",
+      "tieu_de": "m5.4 Hybrid và giao thức",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 15.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s11",
+      "tieu_de": "m5.4 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 17.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s12",
+      "tieu_de": "m5.5 Ràng buộc thiết bị: nơi lý thuyết gặp MTU",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 18.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s13",
+      "tieu_de": "m5.5 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 20.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s14",
+      "tieu_de": "m5.6 QKD, và cách so sánh công bằng với PQC",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 21.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s15",
+      "tieu_de": "m5.6 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 23.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s16",
+      "tieu_de": "m5.7 Di trú và cách viết phần mô hình đe doạ",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 24.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s17",
+      "tieu_de": "m5.7 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 26.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s18",
+      "tieu_de": "m5.8 Kênh bên trong cài đặt",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 27.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s19",
+      "tieu_de": "m5.8 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 29.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s20",
+      "tieu_de": "m5.9 Họ không phải lattice",
+      "dang": "noi-dung",
+      "che_do": "hoi",
+      "bat_dau": 30.5,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s21",
+      "tieu_de": "m5.9 · luận điểm",
+      "dang": "noi-dung",
+      "che_do": "noi",
+      "bat_dau": 32.0,
+      "phut": 1.5,
+      "wow": false
+    },
+    {
+      "id": "s22",
+      "tieu_de": "Số của trụ",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 33.5,
+      "phut": 2.5,
+      "wow": false
+    },
+    {
+      "id": "s23",
+      "tieu_de": "Số của trụ (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 36.0,
+      "phut": 2.5,
+      "wow": false
+    },
+    {
+      "id": "s24",
+      "tieu_de": "Số của trụ (tiếp)",
+      "dang": "noi-dung",
+      "che_do": "so",
+      "bat_dau": 38.5,
+      "phut": 2.5,
+      "wow": false
+    },
+    {
+      "id": "s25",
+      "tieu_de": "cam-on",
+      "dang": "cam-on",
+      "che_do": "lang",
+      "bat_dau": 41.0,
+      "phut": 0.5,
+      "wow": false
+    },
+    {
+      "id": "s26",
+      "tieu_de": "one-more-thing",
+      "dang": "one-more-thing",
+      "che_do": "noi",
+      "bat_dau": 41.5,
+      "phut": 0.5,
+      "wow": false
+    }
+  ]
+}

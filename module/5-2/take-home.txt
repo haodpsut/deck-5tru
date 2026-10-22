@@ -1,0 +1,1 @@
+Con số bit an toàn là con số của một mô hình
